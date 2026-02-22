@@ -2,4 +2,7 @@
 
 from src.data.data_pipeline import load_dataset_dataframe, PipelineOptions
 
-__all__ = ["load_dataset_dataframe", "PipelineOptions"]
+__all__ = [
+    "PipelineOptions",
+    "load_dataset_dataframe",
+]

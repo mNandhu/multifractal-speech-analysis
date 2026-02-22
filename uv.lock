@@ -468,6 +468,18 @@ wheels = [
 ]
 
 [[package]]
+name = "mfdfa"
+version = "0.4.3"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "numpy" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/b7/45/2e5105bb412cca88f01c0773eb2d18d98e90392acb3211cb606964d642d4/MFDFA-0.4.3.tar.gz", hash = "sha256:bfada3b905ede27170ebf5dedca171bca75ab2cf608720c6c5c040457e3f6524", size = 16290, upload-time = "2022-08-15T14:34:38.58Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/c9/e6/b8b91c231bde6082b0f649a13d780726b6e79759300946982d029b6474ae/MFDFA-0.4.3-py3-none-any.whl", hash = "sha256:8dc6772e2d2ffb8473b672fc4af422e073ef54d52dfe8b75f4d16a0c58f2f93c", size = 16261, upload-time = "2022-08-15T14:34:36.733Z" },
+]
+
+[[package]]
 name = "msgpack"
 version = "1.1.2"
 source = { registry = "https://pypi.org/simple" }
@@ -508,6 +520,7 @@ version = "0.1.0"
 source = { virtual = "." }
 dependencies = [
     { name = "librosa" },
+    { name = "mfdfa" },
     { name = "nspfile" },
     { name = "pandas" },
     { name = "seaborn" },
@@ -517,6 +530,7 @@ dependencies = [
 [package.metadata]
 requires-dist = [
     { name = "librosa", specifier = ">=0.11.0" },
+    { name = "mfdfa", specifier = ">=0.4.3" },
     { name = "nspfile", specifier = ">=0.2.0" },
     { name = "pandas", specifier = ">=3.0.0" },
     { name = "seaborn", specifier = ">=0.13.2" },
