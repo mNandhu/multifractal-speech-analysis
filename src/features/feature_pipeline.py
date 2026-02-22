@@ -79,6 +79,52 @@ class FeatureOptions:
         return self.resolve_path(self.output_summary_json)
 
 
+def _feature_build_config(options: FeatureOptions) -> dict[str, Any]:
+    return {
+        "input_manifest": str(options.resolved_input_manifest),
+        "include_splits": bool(options.include_splits),
+        "train_ratio": float(options.train_ratio),
+        "val_ratio": float(options.val_ratio),
+        "test_ratio": float(options.test_ratio),
+        "random_seed": int(options.random_seed),
+        "max_samples_per_class": options.max_samples_per_class,
+        "normalize_audio": bool(options.normalize_audio),
+        "target_sample_rate": options.target_sample_rate,
+        "mfdfa_order": int(options.mfdfa_order),
+        "mfdfa_q_min": float(options.mfdfa_q_min),
+        "mfdfa_q_max": float(options.mfdfa_q_max),
+        "mfdfa_q_step": float(options.mfdfa_q_step),
+        "mfdfa_num_scales": int(options.mfdfa_num_scales),
+    }
+
+
+def _feature_build_config_path(options: FeatureOptions) -> Path:
+    return options.resolved_output_summary_json.with_name("feature_build_config.json")
+
+
+def _save_feature_build_config(options: FeatureOptions) -> None:
+    path = _feature_build_config_path(options)
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(
+        json.dumps(_feature_build_config(options), indent=2, ensure_ascii=False),
+        encoding="utf-8",
+    )
+
+
+def _load_feature_build_config(options: FeatureOptions) -> dict[str, Any] | None:
+    path = _feature_build_config_path(options)
+    if not path.exists():
+        return None
+
+    try:
+        raw = json.loads(path.read_text(encoding="utf-8"))
+        if isinstance(raw, dict):
+            return raw
+    except Exception:  # pragma: no cover - defensive path
+        return None
+    return None
+
+
 def _ensure_required_manifest_columns(df: pd.DataFrame) -> None:
     required = ["sample_key", "wav_path", "pathology_de", "pathology_en"]
     missing = [col for col in required if col not in df.columns]
@@ -496,7 +542,7 @@ def _write_dataframe(df: pd.DataFrame, path: Path) -> None:
     raise ValueError(f"Unsupported file extension: {path}")
 
 
-def extract_feature_tables(options: FeatureOptions) -> dict[str, pd.DataFrame]:
+def _prepare_target_manifest(options: FeatureOptions) -> pd.DataFrame:
     base_pipeline_options = PipelineOptions(prefix=options.prefix)
     manifest_df = load_dataset_dataframe(
         manifest_path=options.input_manifest,
@@ -505,11 +551,27 @@ def extract_feature_tables(options: FeatureOptions) -> dict[str, pd.DataFrame]:
         save_if_built=True,
     )
     _ensure_required_manifest_columns(manifest_df)
-    manifest_df = _limit_samples_per_class(
+    return _limit_samples_per_class(
         manifest_df,
         max_samples_per_class=options.max_samples_per_class,
         random_seed=options.random_seed,
     )
+
+
+def _extract_feature_tables_from_manifest(
+    manifest_df: pd.DataFrame, options: FeatureOptions
+) -> dict[str, pd.DataFrame]:
+    if manifest_df.empty:
+        tables: dict[str, pd.DataFrame] = {
+            "core": pd.DataFrame(),
+            "acoustic": pd.DataFrame(),
+            "multifractal": pd.DataFrame(),
+        }
+        if options.include_splits:
+            tables["splits"] = pd.DataFrame(
+                columns=["sample_key", "split", "split_seed"]
+            )
+        return tables
 
     meta_columns = [
         "sample_key",
@@ -672,6 +734,103 @@ def extract_feature_tables(options: FeatureOptions) -> dict[str, pd.DataFrame]:
     return tables
 
 
+def extract_feature_tables(options: FeatureOptions) -> dict[str, pd.DataFrame]:
+    manifest_df = _prepare_target_manifest(options)
+    return _extract_feature_tables_from_manifest(manifest_df, options)
+
+
+def _dedupe_by_sample_key(df: pd.DataFrame) -> pd.DataFrame:
+    if df.empty or "sample_key" not in df.columns:
+        return df
+    return df.drop_duplicates(subset=["sample_key"], keep="last")
+
+
+def _load_existing_feature_tables(options: FeatureOptions) -> dict[str, pd.DataFrame]:
+    tables: dict[str, pd.DataFrame] = {
+        "core": _read_dataframe(options.resolved_output_core),
+        "acoustic": _read_dataframe(options.resolved_output_acoustic),
+        "multifractal": _read_dataframe(options.resolved_output_multifractal),
+    }
+    if options.include_splits and options.resolved_output_splits.exists():
+        tables["splits"] = _read_dataframe(options.resolved_output_splits)
+    return tables
+
+
+def _same_config_except_max(
+    saved_config: dict[str, Any], requested_config: dict[str, Any]
+) -> bool:
+    left = dict(saved_config)
+    right = dict(requested_config)
+    left.pop("max_samples_per_class", None)
+    right.pop("max_samples_per_class", None)
+    return left == right
+
+
+def _target_sample_key_set(manifest_df: pd.DataFrame) -> set[str]:
+    if "sample_key" not in manifest_df.columns:
+        return set()
+    return set(manifest_df["sample_key"].astype(str))
+
+
+def _existing_sample_key_set(core_df: pd.DataFrame) -> set[str]:
+    if "sample_key" not in core_df.columns:
+        return set()
+    return set(core_df["sample_key"].astype(str))
+
+
+def _filter_table_to_target_keys(
+    df: pd.DataFrame, target_keys: set[str]
+) -> pd.DataFrame:
+    if df.empty or "sample_key" not in df.columns:
+        return df.copy()
+    filtered = df[df["sample_key"].astype(str).isin(target_keys)].copy()
+    return _dedupe_by_sample_key(filtered)
+
+
+def _subset_cached_tables_to_target_keys(
+    cached_tables: dict[str, pd.DataFrame],
+    target_keys: set[str],
+    options: FeatureOptions,
+) -> dict[str, pd.DataFrame]:
+    core = _filter_table_to_target_keys(
+        cached_tables.get("core", pd.DataFrame()), target_keys
+    )
+    acoustic = _filter_table_to_target_keys(
+        cached_tables.get("acoustic", pd.DataFrame()), target_keys
+    )
+    multifractal = _filter_table_to_target_keys(
+        cached_tables.get("multifractal", pd.DataFrame()), target_keys
+    )
+
+    tables: dict[str, pd.DataFrame] = {
+        "core": core,
+        "acoustic": acoustic,
+        "multifractal": multifractal,
+    }
+
+    if options.include_splits:
+        tables["splits"] = _build_random_split_table(
+            sample_keys=core["sample_key"].astype(str).tolist()
+            if "sample_key" in core.columns
+            else [],
+            options=options,
+        )
+
+    return tables
+
+
+def _tables_have_exact_target_keys(
+    tables: dict[str, pd.DataFrame], target_keys: set[str]
+) -> bool:
+    for table_name in ("core", "acoustic", "multifractal"):
+        if (
+            _existing_sample_key_set(tables.get(table_name, pd.DataFrame()))
+            != target_keys
+        ):
+            return False
+    return True
+
+
 def build_feature_tables(options: FeatureOptions) -> dict[str, pd.DataFrame]:
     """Backward-compatible alias for extract_feature_tables."""
     return extract_feature_tables(options)
@@ -686,6 +845,8 @@ def save_feature_tables(
 
     if options.include_splits and "splits" in tables:
         _write_dataframe(tables["splits"], options.resolved_output_splits)
+
+    _save_feature_build_config(options)
 
 
 def summarize_feature_tables(tables: dict[str, pd.DataFrame]) -> dict[str, Any]:
@@ -747,13 +908,127 @@ def load_feature_tables(
     splits_exists = (not effective_options.include_splits) or splits_path.exists()
 
     if core_exists and acoustic_exists and multifractal_exists and splits_exists:
-        tables: dict[str, pd.DataFrame] = {
-            "core": _read_dataframe(core_path),
-            "acoustic": _read_dataframe(acoustic_path),
-            "multifractal": _read_dataframe(multifractal_path),
-        }
-        if effective_options.include_splits:
-            tables["splits"] = _read_dataframe(splits_path)
+        cached_tables = _load_existing_feature_tables(effective_options)
+
+        if not build_if_missing:
+            return cached_tables
+
+        target_manifest = _prepare_target_manifest(effective_options)
+        target_keys = _target_sample_key_set(target_manifest)
+        existing_keys = _existing_sample_key_set(
+            cached_tables.get("core", pd.DataFrame())
+        )
+
+        requested_config = _feature_build_config(effective_options)
+        saved_config = _load_feature_build_config(effective_options)
+        config_matches = saved_config == requested_config if saved_config else False
+
+        # Fast path: cache exactly matches requested build target.
+        if config_matches and existing_keys == target_keys:
+            return cached_tables
+
+        # Cache downscale path: same config except max_samples_per_class,
+        # and requested keys are a strict subset of existing cached keys.
+        can_cache_subset = (
+            saved_config is not None
+            and _same_config_except_max(saved_config, requested_config)
+            and target_keys.issubset(existing_keys)
+            and len(target_keys) < len(existing_keys)
+            and "sample_key" in target_manifest.columns
+        )
+
+        if can_cache_subset:
+            tables = _subset_cached_tables_to_target_keys(
+                cached_tables, target_keys, effective_options
+            )
+
+            if _tables_have_exact_target_keys(tables, target_keys):
+                if save_if_built:
+                    save_feature_tables(tables=tables, options=effective_options)
+                    summary = summarize_feature_tables(tables)
+                    save_feature_summary_json(
+                        summary, effective_options.resolved_output_summary_json
+                    )
+                return tables
+
+        # Incremental expansion path: same config except max_samples_per_class,
+        # and requested target is a strict superset of existing rows.
+        can_incremental_expand = (
+            saved_config is not None
+            and _same_config_except_max(saved_config, requested_config)
+            and existing_keys.issubset(target_keys)
+            and len(target_keys) > len(existing_keys)
+            and "sample_key" in target_manifest.columns
+        )
+
+        if can_incremental_expand:
+            missing_keys = target_keys - existing_keys
+            missing_manifest = target_manifest[
+                target_manifest["sample_key"].astype(str).isin(missing_keys)
+            ].copy()
+
+            new_tables = _extract_feature_tables_from_manifest(
+                missing_manifest, effective_options
+            )
+
+            merged_core = _dedupe_by_sample_key(
+                pd.concat(
+                    [cached_tables.get("core", pd.DataFrame()), new_tables["core"]],
+                    ignore_index=True,
+                )
+            )
+            merged_acoustic = _dedupe_by_sample_key(
+                pd.concat(
+                    [
+                        cached_tables.get("acoustic", pd.DataFrame()),
+                        new_tables["acoustic"],
+                    ],
+                    ignore_index=True,
+                )
+            )
+            merged_multifractal = _dedupe_by_sample_key(
+                pd.concat(
+                    [
+                        cached_tables.get("multifractal", pd.DataFrame()),
+                        new_tables["multifractal"],
+                    ],
+                    ignore_index=True,
+                )
+            )
+
+            tables: dict[str, pd.DataFrame] = {
+                "core": merged_core,
+                "acoustic": merged_acoustic,
+                "multifractal": merged_multifractal,
+            }
+
+            if effective_options.include_splits:
+                tables["splits"] = _build_random_split_table(
+                    sample_keys=merged_core["sample_key"].astype(str).tolist(),
+                    options=effective_options,
+                )
+
+            if _tables_have_exact_target_keys(tables, target_keys):
+                if save_if_built:
+                    save_feature_tables(tables=tables, options=effective_options)
+                    summary = summarize_feature_tables(tables)
+                    save_feature_summary_json(
+                        summary, effective_options.resolved_output_summary_json
+                    )
+
+                return tables
+
+        # Any other mismatch is rebuilt to avoid silent stale-cache reuse.
+        tables = _extract_feature_tables_from_manifest(
+            target_manifest, effective_options
+        )
+        if save_if_built:
+            save_feature_tables(tables=tables, options=effective_options)
+            summary = summarize_feature_tables(tables)
+            save_feature_summary_json(
+                summary, effective_options.resolved_output_summary_json
+            )
+
         return tables
 
     if not build_if_missing:
