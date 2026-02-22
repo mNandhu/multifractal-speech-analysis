@@ -9,6 +9,7 @@ dependencies = [
     "MFDFA>=0.4.3",
     "nspfile>=0.2.0",
     "pandas>=3.0.0",
+    "scikit-learn>=1.8.0",
     "seaborn>=0.13.2",
     "tqdm>=4.67.3",
 ]

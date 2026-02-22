@@ -523,6 +523,7 @@ dependencies = [
     { name = "mfdfa" },
     { name = "nspfile" },
     { name = "pandas" },
+    { name = "scikit-learn" },
     { name = "seaborn" },
     { name = "tqdm" },
 ]
@@ -533,6 +534,7 @@ requires-dist = [
     { name = "mfdfa", specifier = ">=0.4.3" },
     { name = "nspfile", specifier = ">=0.2.0" },
     { name = "pandas", specifier = ">=3.0.0" },
+    { name = "scikit-learn", specifier = ">=1.8.0" },
     { name = "seaborn", specifier = ">=0.13.2" },
     { name = "tqdm", specifier = ">=4.67.3" },
 ]
