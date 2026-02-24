@@ -194,7 +194,9 @@ def preprocess_dataset(options: PipelineOptions) -> pd.DataFrame:
         [p for p in data_root.iterdir() if p.is_dir()], key=lambda p: p.name.lower()
     )
 
-    for pathology_dir in tqdm(pathology_dirs, desc="Pathologies", unit="pathology"):
+    for pathology_dir in tqdm(
+        pathology_dirs, desc="Pathologies", unit="pathology", position=0
+    ):
         pathology_de = pathology_dir.name
         pathology_en = _pathology_to_english(pathology_de)
 
@@ -215,6 +217,7 @@ def preprocess_dataset(options: PipelineOptions) -> pd.DataFrame:
             desc=f"{pathology_de} recordings",
             unit="recording",
             leave=False,
+            position=1,
         ):
             recording_id = recording_dir.name
             remarks_path = recording_dir / "remarks" / f"{recording_id}-remarks.txt"
@@ -276,6 +279,7 @@ def preprocess_dataset(options: PipelineOptions) -> pd.DataFrame:
                 desc=f"{pathology_de}/{recording_id} files",
                 unit="file",
                 leave=False,
+                position=2,
             ):
                 stem = nsp_path.stem
                 token = _parse_sample_token(stem, recording_id=recording_id)

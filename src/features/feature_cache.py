@@ -93,6 +93,7 @@ def _load_existing_feature_tables(options: FeatureOptions) -> dict[str, pd.DataF
         "core": _read_dataframe(options.resolved_output_core),
         "acoustic": _read_dataframe(options.resolved_output_acoustic),
         "multifractal": _read_dataframe(options.resolved_output_multifractal),
+        "opensmile": _read_dataframe(options.resolved_output_opensmile),
     }
     if options.include_splits and options.resolved_output_splits.exists():
         tables["splits"] = _read_dataframe(options.resolved_output_splits)
@@ -144,18 +145,20 @@ def _subset_cached_tables_to_target_keys(
     multifractal = _filter_table_to_target_keys(
         cached_tables.get("multifractal", pd.DataFrame()), target_keys
     )
+    opensmile = _filter_table_to_target_keys(
+        cached_tables.get("opensmile", pd.DataFrame()), target_keys
+    )
 
     tables: dict[str, pd.DataFrame] = {
         "core": core,
         "acoustic": acoustic,
         "multifractal": multifractal,
+        "opensmile": opensmile,
     }
 
     if options.include_splits:
         tables["splits"] = _build_random_split_table(
-            sample_keys=core["sample_key"].astype(str).tolist()
-            if "sample_key" in core.columns
-            else [],
+            core_df=core,
             options=options,
         )
 
@@ -165,7 +168,7 @@ def _subset_cached_tables_to_target_keys(
 def _tables_have_exact_target_keys(
     tables: dict[str, pd.DataFrame], target_keys: set[str]
 ) -> bool:
-    for table_name in ("core", "acoustic", "multifractal"):
+    for table_name in ("core", "acoustic", "multifractal", "opensmile"):
         if (
             _existing_sample_key_set(tables.get(table_name, pd.DataFrame()))
             != target_keys
@@ -180,6 +183,7 @@ def save_feature_tables(
     _write_dataframe(tables["core"], options.resolved_output_core)
     _write_dataframe(tables["acoustic"], options.resolved_output_acoustic)
     _write_dataframe(tables["multifractal"], options.resolved_output_multifractal)
+    _write_dataframe(tables["opensmile"], options.resolved_output_opensmile)
 
     if options.include_splits and "splits" in tables:
         _write_dataframe(tables["splits"], options.resolved_output_splits)
@@ -191,14 +195,17 @@ def summarize_feature_tables(tables: dict[str, pd.DataFrame]) -> dict[str, Any]:
     core_df = tables.get("core", pd.DataFrame())
     acoustic_df = tables.get("acoustic", pd.DataFrame())
     multifractal_df = tables.get("multifractal", pd.DataFrame())
+    opensmile_df = tables.get("opensmile", pd.DataFrame())
 
     summary = {
         "num_samples": int(len(core_df)),
         "num_acoustic_rows": int(len(acoustic_df)),
         "num_multifractal_rows": int(len(multifractal_df)),
+        "num_opensmile_rows": int(len(opensmile_df)),
         "feature_status_counts": {},
         "acoustic_status_counts": {},
         "multifractal_status_counts": {},
+        "opensmile_status_counts": {},
     }
 
     if "feature_status" in core_df.columns:
@@ -214,6 +221,11 @@ def summarize_feature_tables(tables: dict[str, pd.DataFrame]) -> dict[str, Any]:
     if "mf_status" in multifractal_df.columns:
         summary["multifractal_status_counts"] = (
             multifractal_df["mf_status"].value_counts(dropna=False).to_dict()
+        )
+
+    if "opensmile_status" in opensmile_df.columns:
+        summary["opensmile_status_counts"] = (
+            opensmile_df["opensmile_status"].value_counts(dropna=False).to_dict()
         )
 
     if "splits" in tables and not tables["splits"].empty:
@@ -238,14 +250,22 @@ def load_feature_tables(
     core_path = effective_options.resolved_output_core
     acoustic_path = effective_options.resolved_output_acoustic
     multifractal_path = effective_options.resolved_output_multifractal
+    opensmile_path = effective_options.resolved_output_opensmile
     splits_path = effective_options.resolved_output_splits
 
     core_exists = core_path.exists()
     acoustic_exists = acoustic_path.exists()
     multifractal_exists = multifractal_path.exists()
+    opensmile_exists = opensmile_path.exists()
     splits_exists = (not effective_options.include_splits) or splits_path.exists()
 
-    if core_exists and acoustic_exists and multifractal_exists and splits_exists:
+    if (
+        core_exists
+        and acoustic_exists
+        and multifractal_exists
+        and opensmile_exists
+        and splits_exists
+    ):
         cached_tables = _load_existing_feature_tables(effective_options)
 
         if not build_if_missing:
@@ -333,16 +353,26 @@ def load_feature_tables(
                     ignore_index=True,
                 )
             )
+            merged_opensmile = _dedupe_by_sample_key(
+                pd.concat(
+                    [
+                        cached_tables.get("opensmile", pd.DataFrame()),
+                        new_tables["opensmile"],
+                    ],
+                    ignore_index=True,
+                )
+            )
 
             tables: dict[str, pd.DataFrame] = {
                 "core": merged_core,
                 "acoustic": merged_acoustic,
                 "multifractal": merged_multifractal,
+                "opensmile": merged_opensmile,
             }
 
             if effective_options.include_splits:
                 tables["splits"] = _build_random_split_table(
-                    sample_keys=merged_core["sample_key"].astype(str).tolist(),
+                    core_df=merged_core,
                     options=effective_options,
                 )
 
@@ -376,6 +406,7 @@ def load_feature_tables(
                 (core_path, core_exists),
                 (acoustic_path, acoustic_exists),
                 (multifractal_path, multifractal_exists),
+                (opensmile_path, opensmile_exists),
                 (splits_path, splits_exists),
             ]
             if not exists

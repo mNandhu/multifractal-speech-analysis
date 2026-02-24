@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import importlib.util
 from pathlib import Path
 from typing import Any
 
@@ -11,8 +12,24 @@ from tqdm.auto import tqdm
 from src.data.data_pipeline import PipelineOptions, load_dataset_dataframe
 from src.features.feature_options import FeatureOptions
 
+# This block looks complicated, but then we are ust checking if imports are present, and if not
+# we handle it with grace :)
+# Optional heavy dependencies — availability is checked once at import time.
+_MFDFA_AVAILABLE = importlib.util.find_spec("MFDFA") is not None
+_OPENSMILE_AVAILABLE = importlib.util.find_spec("opensmile") is not None
+
+_mfdfa_func: Any = None
+_opensmile_mod: Any = None
+
+if _MFDFA_AVAILABLE:
+    from MFDFA import MFDFA as _mfdfa_func  # type: ignore[import-untyped]
+
+if _OPENSMILE_AVAILABLE:
+    import opensmile as _opensmile_mod  # type: ignore[import-untyped]
+
 
 def _ensure_required_manifest_columns(df: pd.DataFrame) -> None:
+    """Raise ValueError if any required manifest columns are missing."""
     required = ["sample_key", "wav_path", "pathology_de", "pathology_en"]
     missing = [col for col in required if col not in df.columns]
     if missing:
@@ -25,6 +42,11 @@ def _ensure_required_manifest_columns(df: pd.DataFrame) -> None:
 def _limit_samples_per_class(
     manifest_df: pd.DataFrame, *, max_samples_per_class: int | None, random_seed: int
 ) -> pd.DataFrame:
+    """Randomly downsample each pathology class to at most *max_samples_per_class* rows.
+
+    Classes with fewer rows than the limit are kept intact. When
+    *max_samples_per_class* is ``None`` the manifest is returned unchanged.
+    """
     if max_samples_per_class is None:
         return manifest_df
 
@@ -55,6 +77,7 @@ def _limit_samples_per_class(
 
 
 def _to_float_mono(signal: np.ndarray, normalize: bool) -> np.ndarray:
+    """Convert *signal* to a 1-D float32 array, optionally peak-normalising to [-1, 1]."""
     arr = np.asarray(signal, dtype=np.float32)
     if arr.ndim > 1:
         arr = np.mean(arr, axis=1)
@@ -71,6 +94,12 @@ def _to_float_mono(signal: np.ndarray, normalize: bool) -> np.ndarray:
 def _load_audio(
     wav_path: Path, *, target_sample_rate: int | None, normalize: bool
 ) -> dict:
+    """Load a WAV file and return a status dict with the signal and metadata.
+
+    Returns a dict with keys: ``status``, ``error``, ``signal``, ``sample_rate``,
+    ``num_samples``, ``duration_seconds``. On failure ``status`` is ``"failed"``
+    and ``signal`` is an empty array.
+    """
     try:
         signal, sr = librosa.load(
             wav_path,
@@ -99,6 +128,17 @@ def _load_audio(
 
 
 def _resolve_wav_path(wav_path_raw: str, options: FeatureOptions) -> Path:
+    """Resolve a potentially relative WAV path to an absolute Path.
+
+    Tries several candidate locations in order:
+    - absolute as-is
+    - relative to ``options.prefix``
+    - relative to the manifest directory
+    - relative to the current working directory
+    - stripped of leading ``..`` components then relative to ``options.prefix``
+
+    Returns the first candidate that exists, or the first candidate if none do.
+    """
     raw_path = Path(wav_path_raw)
     if raw_path.is_absolute():
         return raw_path
@@ -121,6 +161,11 @@ def _resolve_wav_path(wav_path_raw: str, options: FeatureOptions) -> Path:
 
 
 def _nan_safe_stats(prefix: str, values: np.ndarray) -> dict[str, float]:
+    """Return mean/std/min/max of *values*, ignoring non-finite entries.
+
+    All four keys are prefixed with *prefix* (e.g. ``"ac_rms"`` → ``"ac_rms_mean"``
+    etc.). Returns NaN for all stats when no finite values are present.
+    """
     arr = np.asarray(values, dtype=float)
     finite = arr[np.isfinite(arr)]
     if finite.size == 0:
@@ -140,6 +185,18 @@ def _nan_safe_stats(prefix: str, values: np.ndarray) -> dict[str, float]:
 
 
 def _extract_acoustic_features(signal: np.ndarray, sr: int) -> dict[str, Any]:
+    """Extract Librosa-based acoustic features from a mono float32 signal.
+
+    Computed features (all prefixed ``ac_``):
+    - Time-domain: energy, absolute mean, peak amplitude, crest factor.
+    - Frame-level statistics (mean/std/min/max): RMS, ZCR, spectral centroid,
+      bandwidth, roll-off, flatness.
+    - MFCCs 1-13 plus their first-order deltas (mean & std per coefficient).
+    - Fundamental frequency (F0) via YIN: mean/std/min/max over voiced frames.
+
+    Returns a dict with ``acoustic_status`` (``"ok"`` or error string) and
+    ``acoustic_error`` alongside the feature values.
+    """
     if signal.size == 0:
         return {
             "acoustic_status": "empty_signal",
@@ -217,6 +274,12 @@ def _extract_acoustic_features(signal: np.ndarray, sr: int) -> dict[str, Any]:
 
 
 def _compute_scales(num_samples: int, num_scales: int) -> np.ndarray:
+    """Return a logarithmically spaced array of integer DFA window scales.
+
+    Scales range from 16 samples up to ``num_samples // 4``, with at least 6
+    distinct values. Duplicate values (from int-casting) are removed.
+    Returns an empty array if the signal is too short to form a valid range.
+    """
     min_scale = 16
     max_scale = max(min_scale + 1, num_samples // 4)
     if max_scale <= min_scale:
@@ -233,6 +296,19 @@ def _compute_scales(num_samples: int, num_scales: int) -> np.ndarray:
 
 
 def _estimate_hq(lags: np.ndarray, fq: np.ndarray) -> np.ndarray:
+    """Estimate the generalised Hurst exponent h(q) from MFDFA output.
+
+    For each q-order, fits a straight line through ``log(F_q)`` vs ``log(lag)``
+    and returns the slope as h(q). Requires at least 3 finite points per curve;
+    q-orders that do not meet this threshold contribute NaN.
+
+    Args:
+        lags: 1-D array of window scales (length S).
+        fq:   2-D fluctuation function array, shape (S, Q) or (Q, S).
+
+    Returns:
+        1-D array of h(q) values, length Q.
+    """
     lags = np.asarray(lags, dtype=float)
     fq = np.asarray(fq, dtype=float)
 
@@ -264,18 +340,31 @@ def _estimate_hq(lags: np.ndarray, fq: np.ndarray) -> np.ndarray:
 def _extract_multifractal_features(
     signal: np.ndarray, options: FeatureOptions
 ) -> dict[str, Any]:
+    """Run MFDFA on *signal* and return summary multifractal descriptors.
+
+    Requires the ``MFDFA`` package (``_MFDFA_AVAILABLE`` must be ``True``).
+
+    Computed features (all prefixed ``mf_``):
+    - h(q) statistics: mean, std, min, max.
+    - τ(q) statistics: mean, std.
+    - Singularity spectrum α: mean, std.
+    - Singularity spectrum derived scalars: width (Δα), peak α, peak f(α),
+      and left/right asymmetry.
+    - Metadata: number of scales and q values used.
+
+    Returns a dict with ``mf_status`` (``"ok"`` or error string) and
+    ``mf_error`` alongside the feature values.
+    """
     if signal.size == 0:
         return {
             "mf_status": "empty_signal",
             "mf_error": "Audio signal is empty.",
         }
 
-    try:
-        from MFDFA import MFDFA as mfdfa
-    except Exception as exc:
+    if not _MFDFA_AVAILABLE:
         return {
             "mf_status": "missing_dependency",
-            "mf_error": str(exc),
+            "mf_error": "MFDFA package is not installed. Run: uv add MFDFA",
         }
 
     try:
@@ -301,7 +390,7 @@ def _extract_multifractal_features(
                 "mf_error": "Insufficient samples for robust MFDFA scales.",
             }
 
-        lags, fq = mfdfa(signal, lag=scales, q=q, order=options.mfdfa_order)
+        lags, fq = _mfdfa_func(signal, lag=scales, q=q, order=options.mfdfa_order)
         fq_arr = np.asarray(fq)
         hq = _estimate_hq(np.asarray(lags), fq_arr)
 
@@ -374,10 +463,53 @@ def _extract_multifractal_features(
         }
 
 
+def _extract_opensmile_features(wav_path: Path, smile: Any) -> dict[str, Any]:
+    """Extract eGeMAPSv02 functionals from *wav_path* using an OpenSMILE *smile* instance.
+
+    Feature names from OpenSMILE are prefixed with ``os_`` to avoid column
+    collisions with Librosa/MFDFA features.
+
+    Returns a dict with ``opensmile_status`` (``"ok"`` or error string),
+    ``opensmile_error``, and one ``os_<name>`` float entry per eGeMAPS feature.
+    """
+    try:
+        # OpenSMILE processes the file directly
+        df = smile.process_file(str(wav_path))
+        if df.empty:
+            return {
+                "opensmile_status": "empty_result",
+                "opensmile_error": "OpenSMILE returned empty dataframe.",
+            }
+
+        # The result is a dataframe with one row (since we process one file)
+        # and columns are the feature names.
+        features = df.iloc[0].to_dict()
+
+        # Prefix keys to avoid collisions and ensure clean naming
+        prefixed_features = {f"os_{k}": float(v) for k, v in features.items()}
+
+        return {"opensmile_status": "ok", "opensmile_error": None, **prefixed_features}
+    except Exception as exc:
+        return {
+            "opensmile_status": "failed",
+            "opensmile_error": str(exc),
+        }
+
+
 def _build_random_split_table(
-    sample_keys: list[str], options: FeatureOptions
+    core_df: pd.DataFrame, options: FeatureOptions
 ) -> pd.DataFrame:
-    if not sample_keys:
+    """Build a speaker-disjoint train/val/test split table for *core_df*.
+
+    Uses ``GroupShuffleSplit`` (grouped by ``speaker_id``) to ensure that all
+    recordings from a given speaker land in exactly one split — preventing
+    speaker identity leakage between train and test. Falls back to grouping
+    by ``sample_key`` when ``speaker_id`` is absent.
+
+    The returned DataFrame has columns ``sample_key``, ``split``
+    (``"train"`` / ``"val"`` / ``"test"``), and ``split_seed``.
+    """
+    if core_df.empty or "sample_key" not in core_df.columns:
         return pd.DataFrame(columns=["sample_key", "split", "split_seed"])
 
     total = options.train_ratio + options.val_ratio + options.test_ratio
@@ -386,22 +518,53 @@ def _build_random_split_table(
 
     train_ratio = options.train_ratio / total
     val_ratio = options.val_ratio / total
+    test_ratio = options.test_ratio / total
 
-    rng = np.random.default_rng(options.random_seed)
-    indices = np.arange(len(sample_keys))
-    rng.shuffle(indices)
+    from sklearn.model_selection import GroupShuffleSplit
 
-    n_total = len(sample_keys)
-    n_train = int(np.floor(n_total * train_ratio))
-    n_val = int(np.floor(n_total * val_ratio))
+    # If speaker_id is missing, fallback to sample_key as group
+    groups = (
+        core_df["speaker_id"]
+        if "speaker_id" in core_df.columns
+        else core_df["sample_key"]
+    )
 
-    split_values = np.full(n_total, "test", dtype=object)
-    split_values[indices[:n_train]] = "train"
-    split_values[indices[n_train : n_train + n_val]] = "val"
+    # First split: train_val vs test
+    gss_test = GroupShuffleSplit(
+        n_splits=1, test_size=test_ratio, random_state=options.random_seed
+    )
+    train_val_idx, test_idx = next(gss_test.split(core_df, groups=groups))
+
+    # Second split: train vs val
+    train_val_df = core_df.iloc[train_val_idx]
+    train_val_groups = groups.iloc[train_val_idx]
+
+    # Calculate val_size relative to train_val
+    val_relative_ratio = (
+        val_ratio / (train_ratio + val_ratio) if (train_ratio + val_ratio) > 0 else 0
+    )
+
+    if val_relative_ratio > 0:
+        gss_val = GroupShuffleSplit(
+            n_splits=1, test_size=val_relative_ratio, random_state=options.random_seed
+        )
+        train_idx_rel, val_idx_rel = next(
+            gss_val.split(train_val_df, groups=train_val_groups)
+        )
+        train_idx = train_val_idx[train_idx_rel]
+        val_idx = train_val_idx[val_idx_rel]
+    else:
+        train_idx = train_val_idx
+        val_idx = np.array([], dtype=int)
+
+    split_values = np.full(len(core_df), "test", dtype=object)
+    split_values[train_idx] = "train"
+    if len(val_idx) > 0:
+        split_values[val_idx] = "val"
 
     return pd.DataFrame(
         {
-            "sample_key": sample_keys,
+            "sample_key": core_df["sample_key"].astype(str).tolist(),
             "split": split_values,
             "split_seed": options.random_seed,
         }
@@ -409,6 +572,11 @@ def _build_random_split_table(
 
 
 def _prepare_target_manifest(options: FeatureOptions) -> pd.DataFrame:
+    """Load the dataset manifest and apply per-class sampling limits.
+
+    Builds the manifest from raw data if it is missing, then downsamples
+    each class to ``options.max_samples_per_class`` rows (when set).
+    """
     base_pipeline_options = PipelineOptions(prefix=options.prefix)
     manifest_df = load_dataset_dataframe(
         manifest_path=options.input_manifest,
@@ -427,17 +595,38 @@ def _prepare_target_manifest(options: FeatureOptions) -> pd.DataFrame:
 def _extract_feature_tables_from_manifest(
     manifest_df: pd.DataFrame, options: FeatureOptions
 ) -> dict[str, pd.DataFrame]:
+    """Extract all feature tables for every row in *manifest_df*.
+
+    For each sample the pipeline:
+    1. Resolves and loads the WAV file.
+    2. Extracts Librosa acoustic features.
+    3. Extracts MFDFA multifractal features (skipped if MFDFA unavailable).
+    4. Extracts OpenSMILE eGeMAPSv02 features (skipped if opensmile unavailable).
+    5. Builds speaker-disjoint splits (when ``options.include_splits`` is True).
+
+    Returns a dict with keys ``"core"``, ``"acoustic"``, ``"multifractal"``,
+    ``"opensmile"``, and optionally ``"splits"``.
+    """
     if manifest_df.empty:
         tables: dict[str, pd.DataFrame] = {
             "core": pd.DataFrame(),
             "acoustic": pd.DataFrame(),
             "multifractal": pd.DataFrame(),
+            "opensmile": pd.DataFrame(),
         }
         if options.include_splits:
             tables["splits"] = pd.DataFrame(
                 columns=["sample_key", "split", "split_seed"]
             )
         return tables
+
+    if _OPENSMILE_AVAILABLE:
+        smile = _opensmile_mod.Smile(
+            feature_set=_opensmile_mod.FeatureSet.eGeMAPSv02,
+            feature_level=_opensmile_mod.FeatureLevel.Functionals,
+        )
+    else:
+        smile = None
 
     meta_columns = [
         "sample_key",
@@ -459,6 +648,7 @@ def _extract_feature_tables_from_manifest(
     core_rows: list[dict[str, Any]] = []
     acoustic_rows: list[dict[str, Any]] = []
     multifractal_rows: list[dict[str, Any]] = []
+    opensmile_rows: list[dict[str, Any]] = []
 
     records = manifest_df.to_dict(orient="records")
     for row in tqdm(records, desc="Extracting features", unit="sample"):
@@ -492,6 +682,13 @@ def _extract_feature_tables_from_manifest(
                     "mf_error": "wav_path missing in manifest.",
                 }
             )
+            opensmile_rows.append(
+                {
+                    "sample_key": sample_key,
+                    "opensmile_status": "missing_wav_path",
+                    "opensmile_error": "wav_path missing in manifest.",
+                }
+            )
             continue
 
         wav_path = _resolve_wav_path(wav_path_raw, options=options)
@@ -519,6 +716,13 @@ def _extract_feature_tables_from_manifest(
                     "sample_key": sample_key,
                     "mf_status": "missing_wav_file",
                     "mf_error": f"WAV file not found: {wav_path}",
+                }
+            )
+            opensmile_rows.append(
+                {
+                    "sample_key": sample_key,
+                    "opensmile_status": "missing_wav_file",
+                    "opensmile_error": f"WAV file not found: {wav_path}",
                 }
             )
             continue
@@ -554,6 +758,13 @@ def _extract_feature_tables_from_manifest(
                     "mf_error": audio_info["error"],
                 }
             )
+            opensmile_rows.append(
+                {
+                    "sample_key": sample_key,
+                    "opensmile_status": "audio_load_failed",
+                    "opensmile_error": audio_info["error"],
+                }
+            )
             core_rows.append(core_row)
             continue
 
@@ -563,17 +774,28 @@ def _extract_feature_tables_from_manifest(
         acoustic_features = _extract_acoustic_features(signal, sr=sr)
         mf_features = _extract_multifractal_features(signal, options=options)
 
+        if smile is not None:
+            os_features = _extract_opensmile_features(wav_path, smile)
+        else:
+            os_features = {
+                "opensmile_status": "missing_dependency",
+                "opensmile_error": "opensmile package not installed.",
+            }
+
         acoustic_rows.append({"sample_key": sample_key, **acoustic_features})
         multifractal_rows.append({"sample_key": sample_key, **mf_features})
+        opensmile_rows.append({"sample_key": sample_key, **os_features})
 
         if (
             acoustic_features.get("acoustic_status") != "ok"
             or mf_features.get("mf_status") != "ok"
+            or os_features.get("opensmile_status") != "ok"
         ):
             core_row["feature_status"] = "partial_failure"
             errors = [
                 str(acoustic_features.get("acoustic_error") or ""),
                 str(mf_features.get("mf_error") or ""),
+                str(os_features.get("opensmile_error") or ""),
             ]
             merged_error = " | ".join([e for e in errors if e.strip()])
             core_row["feature_error"] = merged_error or None
@@ -583,16 +805,18 @@ def _extract_feature_tables_from_manifest(
     core_df = pd.DataFrame(core_rows)
     acoustic_df = pd.DataFrame(acoustic_rows)
     multifractal_df = pd.DataFrame(multifractal_rows)
+    opensmile_df = pd.DataFrame(opensmile_rows)
 
     tables: dict[str, pd.DataFrame] = {
         "core": core_df,
         "acoustic": acoustic_df,
         "multifractal": multifractal_df,
+        "opensmile": opensmile_df,
     }
 
     if options.include_splits:
         split_df = _build_random_split_table(
-            sample_keys=core_df["sample_key"].astype(str).tolist(),
+            core_df=core_df,
             options=options,
         )
         tables["splits"] = split_df
@@ -601,5 +825,14 @@ def _extract_feature_tables_from_manifest(
 
 
 def extract_feature_tables(options: FeatureOptions) -> dict[str, pd.DataFrame]:
+    """Build all feature tables from scratch using *options*.
+
+    This is the top-level entry point for a full extraction run. It loads
+    (or builds) the manifest, applies sampling limits, and runs the complete
+    feature extraction pipeline.
+
+    Prefer ``load_feature_tables`` from ``feature_cache`` for incremental /
+    cache-aware loading.
+    """
     manifest_df = _prepare_target_manifest(options)
     return _extract_feature_tables_from_manifest(manifest_df, options)
