@@ -30,8 +30,11 @@ class FeatureOptions:
     test_ratio: float = 0.15
     random_seed: int = 42
     max_samples_per_class: int | None = None
+    balance_healthy_to_pathological: bool = False
+    upsample_healthy_to_pathological: bool = False
     normalize_audio: bool = True
     target_sample_rate: int | None = None
+    selected_token: str | None = None
     mfdfa_order: int = 1
     mfdfa_q_min: float = -5.0
     mfdfa_q_max: float = 5.0

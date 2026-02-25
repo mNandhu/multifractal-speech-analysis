@@ -24,6 +24,13 @@ def _feature_build_config(options: FeatureOptions) -> dict[str, Any]:
         "test_ratio": float(options.test_ratio),
         "random_seed": int(options.random_seed),
         "max_samples_per_class": options.max_samples_per_class,
+        "balance_healthy_to_pathological": bool(
+            options.balance_healthy_to_pathological
+        ),
+        "upsample_healthy_to_pathological": bool(
+            options.upsample_healthy_to_pathological
+        ),
+        "selected_token": options.selected_token,
         "normalize_audio": bool(options.normalize_audio),
         "target_sample_rate": options.target_sample_rate,
         "mfdfa_order": int(options.mfdfa_order),

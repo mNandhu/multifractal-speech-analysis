@@ -40,6 +40,11 @@ PATHOLOGY_DE_TO_EN = {
     "Rekurrensparese": "recurrent laryngeal nerve paralysis",
     "Spasmodische Dysphonie": "spasmodic dysphonia",
     "Stimmlippenpolyp": "vocal fold polyp",
+    "Hyperfunktionelle Dysphonie": "hyperfunctional dysphonia",
+    "Funktionelle Dysphonie": "functional dysphonia",
+    "Psychogene Dysphonie": "psychogenic dysphonia",
+    "Hypotone Dysphonie": "hypotonic dysphonia",
+    "Laryngitis": "laryngitis",
 }
 
 ENCODING_CANDIDATES = ("utf-8", "utf-8-sig", "cp1252", "latin-1")

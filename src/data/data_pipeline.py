@@ -186,6 +186,12 @@ def _pathology_to_english(pathology_de: str) -> str:
 
 
 def preprocess_dataset(options: PipelineOptions) -> pd.DataFrame:
+    return _preprocess_dataset_internal(options=options, include_pathologies=None)
+
+
+def _preprocess_dataset_internal(
+    *, options: PipelineOptions, include_pathologies: set[str] | None
+) -> pd.DataFrame:
     data_root = options.resolved_data_root
     wav_root = options.resolved_wav_root
     rows: list[dict[str, Any]] = []
@@ -193,6 +199,9 @@ def preprocess_dataset(options: PipelineOptions) -> pd.DataFrame:
     pathology_dirs = sorted(
         [p for p in data_root.iterdir() if p.is_dir()], key=lambda p: p.name.lower()
     )
+
+    if include_pathologies is not None:
+        pathology_dirs = [p for p in pathology_dirs if p.name in include_pathologies]
 
     for pathology_dir in tqdm(
         pathology_dirs, desc="Pathologies", unit="pathology", position=0
@@ -380,6 +389,49 @@ def preprocess_dataset(options: PipelineOptions) -> pd.DataFrame:
     return df[available_ordered + remainder]
 
 
+def _raw_pathology_names(options: PipelineOptions) -> set[str]:
+    data_root = options.resolved_data_root
+    if not data_root.exists():
+        return set()
+    return {p.name for p in data_root.iterdir() if p.is_dir()}
+
+
+def _manifest_pathology_names(df: pd.DataFrame) -> set[str]:
+    if df.empty or "pathology_de" not in df.columns:
+        return set()
+    series = df["pathology_de"].astype(str).str.strip()
+    return set(series[series.ne("")].unique())
+
+
+def _append_new_raw_classes_to_manifest(
+    existing_df: pd.DataFrame, *, options: PipelineOptions
+) -> tuple[pd.DataFrame, list[str]]:
+    """Process only new pathology folders and append rows to existing manifest.
+
+    Returns:
+        (updated_df, processed_class_names)
+    """
+    raw_classes = _raw_pathology_names(options)
+    manifest_classes = _manifest_pathology_names(existing_df)
+    missing_classes = sorted(raw_classes - manifest_classes)
+
+    if not missing_classes:
+        return existing_df, []
+
+    new_df = _preprocess_dataset_internal(
+        options=options, include_pathologies=set(missing_classes)
+    )
+
+    if new_df.empty:
+        return existing_df, []
+
+    merged = pd.concat([existing_df, new_df], ignore_index=True)
+    if "sample_key" in merged.columns:
+        merged = merged.drop_duplicates(subset=["sample_key"], keep="last")
+
+    return merged, missing_classes
+
+
 def build_unified_dataframe(options: PipelineOptions) -> pd.DataFrame:
     """Backward-compatible alias for preprocess_dataset."""
     return preprocess_dataset(options)
@@ -415,6 +467,7 @@ def load_dataset_dataframe(
     build_if_missing: bool = True,
     options: PipelineOptions | None = None,
     save_if_built: bool = True,
+    append_new_raw_classes: bool = True,
 ) -> pd.DataFrame:
     """
     Load the preprocessed dataset dataframe on demand.
@@ -432,10 +485,25 @@ def load_dataset_dataframe(
     if target_manifest.exists():
         suffix = target_manifest.suffix.lower()
         if suffix == ".csv":
-            return pd.read_csv(target_manifest)
-        if suffix == ".parquet":
-            return pd.read_parquet(target_manifest)
-        raise ValueError("manifest_path must end with .csv or .parquet")
+            existing_df = pd.read_csv(target_manifest)
+        elif suffix == ".parquet":
+            existing_df = pd.read_parquet(target_manifest)
+        else:
+            raise ValueError("manifest_path must end with .csv or .parquet")
+
+        if build_if_missing and append_new_raw_classes:
+            updated_df, added_classes = _append_new_raw_classes_to_manifest(
+                existing_df, options=effective_options
+            )
+            if added_classes and save_if_built:
+                save_dataset_dataframe(
+                    updated_df,
+                    output_manifest=target_manifest,
+                    export_csv=effective_options.export_csv,
+                )
+            return updated_df
+
+        return existing_df
 
     if not build_if_missing:
         raise FileNotFoundError(

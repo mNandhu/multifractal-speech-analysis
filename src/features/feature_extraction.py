@@ -76,6 +76,76 @@ def _limit_samples_per_class(
     return pd.concat(sampled_groups, ignore_index=True)
 
 
+def _is_healthy_mask(manifest_df: pd.DataFrame, class_col: str) -> pd.Series:
+    """Return a boolean mask that marks healthy rows.
+
+    Prefer ``is_healthy`` when available; otherwise infer from *class_col* by
+    matching case-insensitive "healthy".
+    """
+    if "is_healthy" in manifest_df.columns:
+        return (
+            manifest_df["is_healthy"]
+            .astype(str)
+            .str.strip()
+            .isin({"1", "True", "true"})
+        )
+
+    return manifest_df[class_col].astype(str).str.strip().str.casefold().eq("healthy")
+
+
+def _balance_healthy_to_pathological(
+    manifest_df: pd.DataFrame, *, random_seed: int, upsample_healthy: bool = False
+) -> pd.DataFrame:
+    """Downsample healthy rows to match total non-healthy rows.
+
+    This is intended for grouped-pathology experiments where healthy should be
+    roughly balanced against the combined pathological pool.
+
+        - If healthy rows are fewer than pathological rows, either keep all healthy
+            rows (default) or upsample healthy with replacement when
+            *upsample_healthy=True*.
+    - If healthy rows exceed pathological rows, randomly downsample healthy rows
+      to match pathological count.
+    """
+    if manifest_df.empty:
+        return manifest_df
+
+    if "pathology_de" in manifest_df.columns:
+        class_col = "pathology_de"
+    elif "pathology_en" in manifest_df.columns:
+        class_col = "pathology_en"
+    else:  # pragma: no cover - protected by _ensure_required_manifest_columns
+        return manifest_df
+
+    healthy_mask = _is_healthy_mask(manifest_df, class_col=class_col)
+    healthy_df = manifest_df[healthy_mask].copy()
+    pathological_df = manifest_df[~healthy_mask].copy()
+
+    if healthy_df.empty or pathological_df.empty:
+        return manifest_df
+
+    target_healthy_n = len(pathological_df)
+    if len(healthy_df) > target_healthy_n:
+        healthy_df = healthy_df.sample(n=target_healthy_n, random_state=random_seed)
+    elif (
+        upsample_healthy and len(healthy_df) < target_healthy_n and len(healthy_df) > 0
+    ):
+        needed = target_healthy_n - len(healthy_df)
+        extra = healthy_df.sample(
+            n=needed, replace=True, random_state=random_seed
+        ).copy()
+
+        # Preserve uniqueness for downstream table joins keyed on sample_key.
+        if "sample_key" in extra.columns:
+            extra["sample_key"] = [
+                f"{str(sk)}__ups{i + 1}" for i, sk in enumerate(extra["sample_key"])
+            ]
+
+        healthy_df = pd.concat([healthy_df, extra], ignore_index=True)
+
+    return pd.concat([healthy_df, pathological_df], ignore_index=True)
+
+
 def _to_float_mono(signal: np.ndarray, normalize: bool) -> np.ndarray:
     """Convert *signal* to a 1-D float32 array, optionally peak-normalising to [-1, 1]."""
     arr = np.asarray(signal, dtype=np.float32)
@@ -585,11 +655,25 @@ def _prepare_target_manifest(options: FeatureOptions) -> pd.DataFrame:
         save_if_built=True,
     )
     _ensure_required_manifest_columns(manifest_df)
-    return _limit_samples_per_class(
+
+    # Filter to a single token before sampling (avoids loading all tokens)
+    if options.selected_token is not None and "token" in manifest_df.columns:
+        manifest_df = manifest_df[manifest_df["token"] == options.selected_token].copy()
+
+    manifest_df = _limit_samples_per_class(
         manifest_df,
         max_samples_per_class=options.max_samples_per_class,
         random_seed=options.random_seed,
     )
+
+    if options.balance_healthy_to_pathological:
+        manifest_df = _balance_healthy_to_pathological(
+            manifest_df,
+            random_seed=options.random_seed,
+            upsample_healthy=options.upsample_healthy_to_pathological,
+        )
+
+    return manifest_df
 
 
 def _extract_feature_tables_from_manifest(
