@@ -29,11 +29,11 @@ class FeatureOptions:
     val_ratio: float = 0.15
     test_ratio: float = 0.15
     random_seed: int = 42
+    num_workers: int | None = None
     max_samples_per_class: int | None = None
-    balance_healthy_to_pathological: bool = False
-    upsample_healthy_to_pathological: bool = False
+    balance_healthy: bool = False
     normalize_audio: bool = True
-    target_sample_rate: int | None = None
+    target_sample_rate: int | None = 22050
     selected_token: str | None = None
     mfdfa_order: int = 1
     mfdfa_q_min: float = -5.0

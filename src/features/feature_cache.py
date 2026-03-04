@@ -23,13 +23,9 @@ def _feature_build_config(options: FeatureOptions) -> dict[str, Any]:
         "val_ratio": float(options.val_ratio),
         "test_ratio": float(options.test_ratio),
         "random_seed": int(options.random_seed),
+        "num_workers": options.num_workers,
         "max_samples_per_class": options.max_samples_per_class,
-        "balance_healthy_to_pathological": bool(
-            options.balance_healthy_to_pathological
-        ),
-        "upsample_healthy_to_pathological": bool(
-            options.upsample_healthy_to_pathological
-        ),
+        "balance_healthy": bool(options.balance_healthy),
         "selected_token": options.selected_token,
         "normalize_audio": bool(options.normalize_audio),
         "target_sample_rate": options.target_sample_rate,
@@ -391,6 +387,98 @@ def load_feature_tables(
                         summary, effective_options.resolved_output_summary_json
                     )
 
+                return tables
+
+        # General reconciliation path: same config family but target keys changed
+        # in a non-subset/non-superset way (e.g., sampling semantics update).
+        can_reconcile = (
+            saved_config is not None
+            and _same_config_except_max(saved_config, requested_config)
+            and "sample_key" in target_manifest.columns
+        )
+
+        if can_reconcile:
+            missing_keys = target_keys - existing_keys
+
+            if missing_keys:
+                missing_manifest = target_manifest[
+                    target_manifest["sample_key"].astype(str).isin(missing_keys)
+                ].copy()
+                new_tables = _extract_feature_tables_from_manifest(
+                    missing_manifest, effective_options
+                )
+            else:
+                new_tables = {
+                    "core": pd.DataFrame(),
+                    "acoustic": pd.DataFrame(),
+                    "multifractal": pd.DataFrame(),
+                    "opensmile": pd.DataFrame(),
+                }
+
+            merged_core = _dedupe_by_sample_key(
+                pd.concat(
+                    [cached_tables.get("core", pd.DataFrame()), new_tables["core"]],
+                    ignore_index=True,
+                )
+            )
+            merged_acoustic = _dedupe_by_sample_key(
+                pd.concat(
+                    [
+                        cached_tables.get("acoustic", pd.DataFrame()),
+                        new_tables["acoustic"],
+                    ],
+                    ignore_index=True,
+                )
+            )
+            merged_multifractal = _dedupe_by_sample_key(
+                pd.concat(
+                    [
+                        cached_tables.get("multifractal", pd.DataFrame()),
+                        new_tables["multifractal"],
+                    ],
+                    ignore_index=True,
+                )
+            )
+            merged_opensmile = _dedupe_by_sample_key(
+                pd.concat(
+                    [
+                        cached_tables.get("opensmile", pd.DataFrame()),
+                        new_tables["opensmile"],
+                    ],
+                    ignore_index=True,
+                )
+            )
+
+            # Keep only requested target keys (drops obsolete rows without recompute).
+            merged_core = _filter_table_to_target_keys(merged_core, target_keys)
+            merged_acoustic = _filter_table_to_target_keys(merged_acoustic, target_keys)
+            merged_multifractal = _filter_table_to_target_keys(
+                merged_multifractal, target_keys
+            )
+            merged_opensmile = _filter_table_to_target_keys(
+                merged_opensmile, target_keys
+            )
+
+            tables = {
+                "core": merged_core,
+                "acoustic": merged_acoustic,
+                "multifractal": merged_multifractal,
+                "opensmile": merged_opensmile,
+            }
+
+            if effective_options.include_splits:
+                tables["splits"] = _build_random_split_table(
+                    core_df=merged_core,
+                    options=effective_options,
+                )
+
+            if _tables_have_exact_target_keys(tables, target_keys):
+                if save_if_built:
+                    save_feature_tables(tables=tables, options=effective_options)
+                    summary = summarize_feature_tables(tables)
+                    save_feature_summary_json(
+                        summary, effective_options.resolved_output_summary_json
+                    )
                 return tables
 
         # Any other mismatch is rebuilt to avoid silent stale-cache reuse.

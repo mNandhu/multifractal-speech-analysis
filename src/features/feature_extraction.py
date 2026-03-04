@@ -1,6 +1,8 @@
 from __future__ import annotations
 
 import importlib.util
+import os
+from concurrent.futures import ProcessPoolExecutor, as_completed
 from pathlib import Path
 from typing import Any
 
@@ -20,6 +22,7 @@ _OPENSMILE_AVAILABLE = importlib.util.find_spec("opensmile") is not None
 
 _mfdfa_func: Any = None
 _opensmile_mod: Any = None
+_SMILE_SINGLETON: Any = None
 
 if _MFDFA_AVAILABLE:
     from MFDFA import MFDFA as _mfdfa_func  # type: ignore[import-untyped]
@@ -40,12 +43,19 @@ def _ensure_required_manifest_columns(df: pd.DataFrame) -> None:
 
 
 def _limit_samples_per_class(
-    manifest_df: pd.DataFrame, *, max_samples_per_class: int | None, random_seed: int
+    manifest_df: pd.DataFrame,
+    *,
+    max_samples_per_class: int | None,
+    random_seed: int,
+    skip_healthy: bool = False,
 ) -> pd.DataFrame:
     """Randomly downsample each pathology class to at most *max_samples_per_class* rows.
 
     Classes with fewer rows than the limit are kept intact. When
     *max_samples_per_class* is ``None`` the manifest is returned unchanged.
+
+    When *skip_healthy* is True the healthy class is exempt from the cap
+    (useful when a downstream balancing step will handle its count).
     """
     if max_samples_per_class is None:
         return manifest_df
@@ -60,8 +70,20 @@ def _limit_samples_per_class(
     else:  # pragma: no cover - protected by _ensure_required_manifest_columns
         return manifest_df
 
+    healthy_mask = (
+        _is_healthy_mask(manifest_df, class_col=class_col) if skip_healthy else None
+    )
+
     sampled_groups: list[pd.DataFrame] = []
     for _, group in manifest_df.groupby(class_col, dropna=False, sort=True):
+        if (
+            skip_healthy
+            and healthy_mask is not None
+            and bool(healthy_mask.loc[group.index].all())
+        ):
+            sampled_groups.append(group)
+            continue
+
         if len(group) <= max_samples_per_class:
             sampled_groups.append(group)
             continue
@@ -94,18 +116,13 @@ def _is_healthy_mask(manifest_df: pd.DataFrame, class_col: str) -> pd.Series:
 
 
 def _balance_healthy_to_pathological(
-    manifest_df: pd.DataFrame, *, random_seed: int, upsample_healthy: bool = False
+    manifest_df: pd.DataFrame, *, random_seed: int
 ) -> pd.DataFrame:
-    """Downsample healthy rows to match total non-healthy rows.
+    """Downsample healthy rows so their count matches the total pathological rows.
 
-    This is intended for grouped-pathology experiments where healthy should be
-    roughly balanced against the combined pathological pool.
-
-        - If healthy rows are fewer than pathological rows, either keep all healthy
-            rows (default) or upsample healthy with replacement when
-            *upsample_healthy=True*.
-    - If healthy rows exceed pathological rows, randomly downsample healthy rows
-      to match pathological count.
+    If healthy rows already equal or are fewer than pathological rows, all
+    healthy rows are kept as-is (no upsampling / duplication is ever performed
+    to avoid duplicate sample_key issues in downstream merges).
     """
     if manifest_df.empty:
         return manifest_df
@@ -127,21 +144,6 @@ def _balance_healthy_to_pathological(
     target_healthy_n = len(pathological_df)
     if len(healthy_df) > target_healthy_n:
         healthy_df = healthy_df.sample(n=target_healthy_n, random_state=random_seed)
-    elif (
-        upsample_healthy and len(healthy_df) < target_healthy_n and len(healthy_df) > 0
-    ):
-        needed = target_healthy_n - len(healthy_df)
-        extra = healthy_df.sample(
-            n=needed, replace=True, random_state=random_seed
-        ).copy()
-
-        # Preserve uniqueness for downstream table joins keyed on sample_key.
-        if "sample_key" in extra.columns:
-            extra["sample_key"] = [
-                f"{str(sk)}__ups{i + 1}" for i, sk in enumerate(extra["sample_key"])
-            ]
-
-        healthy_df = pd.concat([healthy_df, extra], ignore_index=True)
 
     return pd.concat([healthy_df, pathological_df], ignore_index=True)
 
@@ -566,6 +568,153 @@ def _extract_opensmile_features(wav_path: Path, smile: Any) -> dict[str, Any]:
         }
 
 
+def _get_smile_instance() -> Any:
+    """Return a per-process cached OpenSMILE instance, or None when unavailable."""
+    if not _OPENSMILE_AVAILABLE:
+        return None
+
+    global _SMILE_SINGLETON
+    if _SMILE_SINGLETON is None:
+        _SMILE_SINGLETON = _opensmile_mod.Smile(
+            feature_set=_opensmile_mod.FeatureSet.eGeMAPSv02,
+            feature_level=_opensmile_mod.FeatureLevel.Functionals,
+        )
+    return _SMILE_SINGLETON
+
+
+def _extract_single_sample_features(
+    row: dict[str, Any], options: FeatureOptions, available_meta: list[str]
+) -> tuple[dict[str, Any], dict[str, Any], dict[str, Any], dict[str, Any]]:
+    """Extract core/acoustic/multifractal/opensmile rows for one manifest record."""
+    sample_key = str(row["sample_key"])
+    wav_path_raw = row.get("wav_path")
+    base_meta = {col: row.get(col) for col in available_meta}
+
+    if not isinstance(wav_path_raw, str) or not wav_path_raw.strip():
+        core_row = {
+            **base_meta,
+            "sample_key": sample_key,
+            "feature_status": "missing_wav_path",
+            "feature_error": "wav_path missing in manifest.",
+            "audio_sample_rate": None,
+            "audio_num_samples": 0,
+            "audio_duration_seconds": 0.0,
+        }
+        acoustic_row = {
+            "sample_key": sample_key,
+            "acoustic_status": "missing_wav_path",
+            "acoustic_error": "wav_path missing in manifest.",
+        }
+        mf_row = {
+            "sample_key": sample_key,
+            "mf_status": "missing_wav_path",
+            "mf_error": "wav_path missing in manifest.",
+        }
+        os_row = {
+            "sample_key": sample_key,
+            "opensmile_status": "missing_wav_path",
+            "opensmile_error": "wav_path missing in manifest.",
+        }
+        return core_row, acoustic_row, mf_row, os_row
+
+    wav_path = _resolve_wav_path(wav_path_raw, options=options)
+    if not wav_path.exists():
+        core_row = {
+            **base_meta,
+            "sample_key": sample_key,
+            "feature_status": "missing_wav_file",
+            "feature_error": f"WAV file not found: {wav_path}",
+            "audio_sample_rate": None,
+            "audio_num_samples": 0,
+            "audio_duration_seconds": 0.0,
+        }
+        acoustic_row = {
+            "sample_key": sample_key,
+            "acoustic_status": "missing_wav_file",
+            "acoustic_error": f"WAV file not found: {wav_path}",
+        }
+        mf_row = {
+            "sample_key": sample_key,
+            "mf_status": "missing_wav_file",
+            "mf_error": f"WAV file not found: {wav_path}",
+        }
+        os_row = {
+            "sample_key": sample_key,
+            "opensmile_status": "missing_wav_file",
+            "opensmile_error": f"WAV file not found: {wav_path}",
+        }
+        return core_row, acoustic_row, mf_row, os_row
+
+    audio_info = _load_audio(
+        wav_path,
+        target_sample_rate=options.target_sample_rate,
+        normalize=options.normalize_audio,
+    )
+
+    core_row = {
+        **base_meta,
+        "sample_key": sample_key,
+        "feature_status": audio_info["status"],
+        "feature_error": audio_info["error"],
+        "audio_sample_rate": audio_info["sample_rate"],
+        "audio_num_samples": audio_info["num_samples"],
+        "audio_duration_seconds": audio_info["duration_seconds"],
+    }
+
+    if audio_info["status"] != "ok":
+        acoustic_row = {
+            "sample_key": sample_key,
+            "acoustic_status": "audio_load_failed",
+            "acoustic_error": audio_info["error"],
+        }
+        mf_row = {
+            "sample_key": sample_key,
+            "mf_status": "audio_load_failed",
+            "mf_error": audio_info["error"],
+        }
+        os_row = {
+            "sample_key": sample_key,
+            "opensmile_status": "audio_load_failed",
+            "opensmile_error": audio_info["error"],
+        }
+        return core_row, acoustic_row, mf_row, os_row
+
+    signal = np.asarray(audio_info["signal"], dtype=np.float32)
+    sr = int(audio_info["sample_rate"])
+
+    acoustic_features = _extract_acoustic_features(signal, sr=sr)
+    mf_features = _extract_multifractal_features(signal, options=options)
+
+    smile = _get_smile_instance()
+    if smile is not None:
+        os_features = _extract_opensmile_features(wav_path, smile)
+    else:
+        os_features = {
+            "opensmile_status": "missing_dependency",
+            "opensmile_error": "opensmile package not installed.",
+        }
+
+    if (
+        acoustic_features.get("acoustic_status") != "ok"
+        or mf_features.get("mf_status") != "ok"
+        or os_features.get("opensmile_status") != "ok"
+    ):
+        core_row["feature_status"] = "partial_failure"
+        errors = [
+            str(acoustic_features.get("acoustic_error") or ""),
+            str(mf_features.get("mf_error") or ""),
+            str(os_features.get("opensmile_error") or ""),
+        ]
+        merged_error = " | ".join([e for e in errors if e.strip()])
+        core_row["feature_error"] = merged_error or None
+
+    acoustic_row = {"sample_key": sample_key, **acoustic_features}
+    mf_row = {"sample_key": sample_key, **mf_features}
+    os_row = {"sample_key": sample_key, **os_features}
+
+    return core_row, acoustic_row, mf_row, os_row
+
+
 def _build_random_split_table(
     core_df: pd.DataFrame, options: FeatureOptions
 ) -> pd.DataFrame:
@@ -664,13 +813,13 @@ def _prepare_target_manifest(options: FeatureOptions) -> pd.DataFrame:
         manifest_df,
         max_samples_per_class=options.max_samples_per_class,
         random_seed=options.random_seed,
+        skip_healthy=options.balance_healthy,
     )
 
-    if options.balance_healthy_to_pathological:
+    if options.balance_healthy:
         manifest_df = _balance_healthy_to_pathological(
             manifest_df,
             random_seed=options.random_seed,
-            upsample_healthy=options.upsample_healthy_to_pathological,
         )
 
     return manifest_df
@@ -704,14 +853,6 @@ def _extract_feature_tables_from_manifest(
             )
         return tables
 
-    if _OPENSMILE_AVAILABLE:
-        smile = _opensmile_mod.Smile(
-            feature_set=_opensmile_mod.FeatureSet.eGeMAPSv02,
-            feature_level=_opensmile_mod.FeatureLevel.Functionals,
-        )
-    else:
-        smile = None
-
     meta_columns = [
         "sample_key",
         "duplicate_class_key",
@@ -734,157 +875,54 @@ def _extract_feature_tables_from_manifest(
     multifractal_rows: list[dict[str, Any]] = []
     opensmile_rows: list[dict[str, Any]] = []
 
-    records = manifest_df.to_dict(orient="records")
-    for row in tqdm(records, desc="Extracting features", unit="sample"):
-        sample_key = str(row["sample_key"])
-        wav_path_raw = row.get("wav_path")
-        base_meta = {col: row.get(col) for col in available_meta}
+    records = [
+        {str(k): v for k, v in row.items()}
+        for row in manifest_df.to_dict(orient="records")
+    ]
+    requested_workers = options.num_workers
+    if requested_workers is None or requested_workers <= 0:
+        requested_workers = max((os.cpu_count() or 2) - 1, 1)
+    requested_workers = min(requested_workers, max(len(records), 1))
 
-        if not isinstance(wav_path_raw, str) or not wav_path_raw.strip():
-            core_rows.append(
-                {
-                    **base_meta,
-                    "sample_key": sample_key,
-                    "feature_status": "missing_wav_path",
-                    "feature_error": "wav_path missing in manifest.",
-                    "audio_sample_rate": None,
-                    "audio_num_samples": 0,
-                    "audio_duration_seconds": 0.0,
-                }
-            )
-            acoustic_rows.append(
-                {
-                    "sample_key": sample_key,
-                    "acoustic_status": "missing_wav_path",
-                    "acoustic_error": "wav_path missing in manifest.",
-                }
-            )
-            multifractal_rows.append(
-                {
-                    "sample_key": sample_key,
-                    "mf_status": "missing_wav_path",
-                    "mf_error": "wav_path missing in manifest.",
-                }
-            )
-            opensmile_rows.append(
-                {
-                    "sample_key": sample_key,
-                    "opensmile_status": "missing_wav_path",
-                    "opensmile_error": "wav_path missing in manifest.",
-                }
-            )
-            continue
+    if requested_workers > 1 and len(records) > 1:
+        results: list[
+            tuple[dict[str, Any], dict[str, Any], dict[str, Any], dict[str, Any]] | None
+        ] = [None] * len(records)
 
-        wav_path = _resolve_wav_path(wav_path_raw, options=options)
-        if not wav_path.exists():
-            core_rows.append(
-                {
-                    **base_meta,
-                    "sample_key": sample_key,
-                    "feature_status": "missing_wav_file",
-                    "feature_error": f"WAV file not found: {wav_path}",
-                    "audio_sample_rate": None,
-                    "audio_num_samples": 0,
-                    "audio_duration_seconds": 0.0,
-                }
-            )
-            acoustic_rows.append(
-                {
-                    "sample_key": sample_key,
-                    "acoustic_status": "missing_wav_file",
-                    "acoustic_error": f"WAV file not found: {wav_path}",
-                }
-            )
-            multifractal_rows.append(
-                {
-                    "sample_key": sample_key,
-                    "mf_status": "missing_wav_file",
-                    "mf_error": f"WAV file not found: {wav_path}",
-                }
-            )
-            opensmile_rows.append(
-                {
-                    "sample_key": sample_key,
-                    "opensmile_status": "missing_wav_file",
-                    "opensmile_error": f"WAV file not found: {wav_path}",
-                }
-            )
-            continue
-
-        audio_info = _load_audio(
-            wav_path,
-            target_sample_rate=options.target_sample_rate,
-            normalize=options.normalize_audio,
-        )
-
-        core_row = {
-            **base_meta,
-            "sample_key": sample_key,
-            "feature_status": audio_info["status"],
-            "feature_error": audio_info["error"],
-            "audio_sample_rate": audio_info["sample_rate"],
-            "audio_num_samples": audio_info["num_samples"],
-            "audio_duration_seconds": audio_info["duration_seconds"],
-        }
-
-        if audio_info["status"] != "ok":
-            acoustic_rows.append(
-                {
-                    "sample_key": sample_key,
-                    "acoustic_status": "audio_load_failed",
-                    "acoustic_error": audio_info["error"],
-                }
-            )
-            multifractal_rows.append(
-                {
-                    "sample_key": sample_key,
-                    "mf_status": "audio_load_failed",
-                    "mf_error": audio_info["error"],
-                }
-            )
-            opensmile_rows.append(
-                {
-                    "sample_key": sample_key,
-                    "opensmile_status": "audio_load_failed",
-                    "opensmile_error": audio_info["error"],
-                }
-            )
-            core_rows.append(core_row)
-            continue
-
-        signal = np.asarray(audio_info["signal"], dtype=np.float32)
-        sr = int(audio_info["sample_rate"])
-
-        acoustic_features = _extract_acoustic_features(signal, sr=sr)
-        mf_features = _extract_multifractal_features(signal, options=options)
-
-        if smile is not None:
-            os_features = _extract_opensmile_features(wav_path, smile)
-        else:
-            os_features = {
-                "opensmile_status": "missing_dependency",
-                "opensmile_error": "opensmile package not installed.",
+        with ProcessPoolExecutor(max_workers=requested_workers) as executor:
+            futures = {
+                executor.submit(
+                    _extract_single_sample_features, row, options, available_meta
+                ): idx
+                for idx, row in enumerate(records)
             }
 
-        acoustic_rows.append({"sample_key": sample_key, **acoustic_features})
-        multifractal_rows.append({"sample_key": sample_key, **mf_features})
-        opensmile_rows.append({"sample_key": sample_key, **os_features})
+            for future in tqdm(
+                as_completed(futures),
+                total=len(futures),
+                desc="Extracting features",
+                unit="sample",
+            ):
+                idx = futures[future]
+                results[idx] = future.result()
 
-        if (
-            acoustic_features.get("acoustic_status") != "ok"
-            or mf_features.get("mf_status") != "ok"
-            or os_features.get("opensmile_status") != "ok"
-        ):
-            core_row["feature_status"] = "partial_failure"
-            errors = [
-                str(acoustic_features.get("acoustic_error") or ""),
-                str(mf_features.get("mf_error") or ""),
-                str(os_features.get("opensmile_error") or ""),
-            ]
-            merged_error = " | ".join([e for e in errors if e.strip()])
-            core_row["feature_error"] = merged_error or None
-
-        core_rows.append(core_row)
+        for result in results:
+            if result is None:  # pragma: no cover - defensive path
+                continue
+            core_row, acoustic_row, mf_row, os_row = result
+            core_rows.append(core_row)
+            acoustic_rows.append(acoustic_row)
+            multifractal_rows.append(mf_row)
+            opensmile_rows.append(os_row)
+    else:
+        for row in tqdm(records, desc="Extracting features", unit="sample"):
+            core_row, acoustic_row, mf_row, os_row = _extract_single_sample_features(
+                row, options, available_meta
+            )
+            core_rows.append(core_row)
+            acoustic_rows.append(acoustic_row)
+            multifractal_rows.append(mf_row)
+            opensmile_rows.append(os_row)
 
     core_df = pd.DataFrame(core_rows)
     acoustic_df = pd.DataFrame(acoustic_rows)

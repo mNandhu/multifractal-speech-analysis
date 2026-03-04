@@ -234,6 +234,28 @@ def _preprocess_dataset_internal(
             overview_row = overview_by_recording.get(recording_id)
             overview_match_status = "matched" if overview_row is not None else "missing"
 
+            # Default values if overview_row is None
+            record_date = None
+            birth_date = None
+            speaker_id = f"missing_{pathology_de}_{recording_id}"  # Give missing speakers a unique deterministic ID
+            sex = None
+            pathology_csv_raw = None
+            overview_path = str(pathology_dir / "overview.csv")
+
+            if overview_row is not None:
+                record_date = overview_row.get("recording_date")
+                birth_date = overview_row.get("birth_date")
+                sex = overview_row.get("sex")
+                pathology_csv_raw = overview_row.get("pathology_csv_raw")
+                overview_path = overview_row.get("overview_path")
+
+                # Check for explicit properly formed speaker_id
+                if (
+                    pd.notna(overview_row.get("speaker_id"))
+                    and str(overview_row.get("speaker_id")).strip() != "nan"
+                ):
+                    speaker_id = str(overview_row.get("speaker_id")).strip()
+
             base_meta = {
                 "recording_id": recording_id,
                 "pathology_de": pathology_de,
@@ -243,36 +265,19 @@ def _preprocess_dataset_internal(
                 "remarks_path": str(remarks_path) if remarks_path.exists() else None,
                 "has_remarks": bool(remarks_path.exists()),
                 "overview_match_status": overview_match_status,
+                "recording_type": overview_row.get("recording_type")
+                if overview_row is not None
+                else None,
+                "recording_date": record_date,
+                "diagnosis_de": overview_row.get("diagnosis_de")
+                if overview_row is not None
+                else None,
+                "speaker_id": speaker_id,
+                "birth_date": birth_date,
+                "sex": sex,
+                "pathology_csv_raw": pathology_csv_raw,
+                "overview_path": overview_path,
             }
-
-            if overview_row is not None:
-                base_meta.update(
-                    {
-                        "recording_type": overview_row.get("recording_type"),
-                        "recording_date": overview_row.get("recording_date"),
-                        "diagnosis_de": overview_row.get("diagnosis_de"),
-                        "speaker_id": str(overview_row.get("speaker_id"))
-                        if pd.notna(overview_row.get("speaker_id"))
-                        else None,
-                        "birth_date": overview_row.get("birth_date"),
-                        "sex": overview_row.get("sex"),
-                        "pathology_csv_raw": overview_row.get("pathology_csv_raw"),
-                        "overview_path": overview_row.get("overview_path"),
-                    }
-                )
-            else:
-                base_meta.update(
-                    {
-                        "recording_type": None,
-                        "recording_date": None,
-                        "diagnosis_de": None,
-                        "speaker_id": None,
-                        "birth_date": None,
-                        "sex": None,
-                        "pathology_csv_raw": None,
-                        "overview_path": str(pathology_dir / "overview.csv"),
-                    }
-                )
 
             nsp_files: list[tuple[str, Path]] = []
             for modality in ("vowels", "sentences"):
