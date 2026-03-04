@@ -1,0 +1,1657 @@
+sample_key,split,split_seed
+healthy::1::vowels::a_n,train,42
+healthy::2::vowels::a_n,train,42
+healthy::3::vowels::a_n,train,42
+healthy::4::vowels::a_n,train,42
+healthy::5::vowels::a_n,train,42
+healthy::6::vowels::a_n,train,42
+healthy::7::vowels::a_n,train,42
+healthy::8::vowels::a_n,train,42
+healthy::9::vowels::a_n,val,42
+healthy::10::vowels::a_n,train,42
+healthy::11::vowels::a_n,train,42
+healthy::12::vowels::a_n,train,42
+healthy::13::vowels::a_n,train,42
+healthy::14::vowels::a_n,train,42
+healthy::15::vowels::a_n,train,42
+healthy::16::vowels::a_n,train,42
+healthy::17::vowels::a_n,train,42
+healthy::18::vowels::a_n,train,42
+healthy::19::vowels::a_n,train,42
+healthy::20::vowels::a_n,train,42
+healthy::21::vowels::a_n,train,42
+healthy::22::vowels::a_n,train,42
+healthy::23::vowels::a_n,test,42
+healthy::24::vowels::a_n,val,42
+healthy::25::vowels::a_n,train,42
+healthy::26::vowels::a_n,train,42
+healthy::27::vowels::a_n,train,42
+healthy::28::vowels::a_n,val,42
+healthy::29::vowels::a_n,train,42
+healthy::30::vowels::a_n,train,42
+healthy::31::vowels::a_n,train,42
+healthy::32::vowels::a_n,train,42
+healthy::33::vowels::a_n,test,42
+healthy::34::vowels::a_n,val,42
+healthy::35::vowels::a_n,train,42
+healthy::36::vowels::a_n,train,42
+healthy::37::vowels::a_n,train,42
+healthy::38::vowels::a_n,train,42
+healthy::39::vowels::a_n,train,42
+healthy::40::vowels::a_n,train,42
+healthy::41::vowels::a_n,train,42
+healthy::42::vowels::a_n,val,42
+healthy::43::vowels::a_n,train,42
+healthy::44::vowels::a_n,test,42
+healthy::45::vowels::a_n,test,42
+healthy::46::vowels::a_n,train,42
+healthy::47::vowels::a_n,train,42
+healthy::48::vowels::a_n,train,42
+healthy::49::vowels::a_n,val,42
+healthy::50::vowels::a_n,test,42
+healthy::52::vowels::a_n,train,42
+healthy::53::vowels::a_n,test,42
+healthy::54::vowels::a_n,train,42
+healthy::55::vowels::a_n,train,42
+healthy::56::vowels::a_n,train,42
+healthy::57::vowels::a_n,val,42
+healthy::58::vowels::a_n,test,42
+healthy::59::vowels::a_n,train,42
+healthy::60::vowels::a_n,test,42
+healthy::61::vowels::a_n,val,42
+healthy::62::vowels::a_n,train,42
+healthy::63::vowels::a_n,train,42
+healthy::64::vowels::a_n,train,42
+healthy::65::vowels::a_n,test,42
+healthy::66::vowels::a_n,train,42
+healthy::67::vowels::a_n,test,42
+healthy::68::vowels::a_n,val,42
+healthy::69::vowels::a_n,test,42
+healthy::70::vowels::a_n,train,42
+healthy::71::vowels::a_n,train,42
+healthy::72::vowels::a_n,val,42
+healthy::74::vowels::a_n,train,42
+healthy::77::vowels::a_n,train,42
+healthy::78::vowels::a_n,train,42
+healthy::79::vowels::a_n,train,42
+healthy::80::vowels::a_n,train,42
+healthy::81::vowels::a_n,test,42
+healthy::82::vowels::a_n,train,42
+healthy::83::vowels::a_n,test,42
+healthy::84::vowels::a_n,train,42
+healthy::85::vowels::a_n,train,42
+healthy::86::vowels::a_n,test,42
+healthy::87::vowels::a_n,train,42
+healthy::88::vowels::a_n,train,42
+healthy::89::vowels::a_n,val,42
+healthy::90::vowels::a_n,train,42
+healthy::91::vowels::a_n,test,42
+healthy::92::vowels::a_n,train,42
+healthy::93::vowels::a_n,train,42
+healthy::94::vowels::a_n,train,42
+healthy::95::vowels::a_n,train,42
+healthy::96::vowels::a_n,val,42
+healthy::97::vowels::a_n,train,42
+healthy::98::vowels::a_n,val,42
+healthy::99::vowels::a_n,train,42
+healthy::100::vowels::a_n,train,42
+healthy::102::vowels::a_n,train,42
+healthy::103::vowels::a_n,train,42
+healthy::104::vowels::a_n,val,42
+healthy::112::vowels::a_n,train,42
+healthy::113::vowels::a_n,train,42
+healthy::114::vowels::a_n,test,42
+healthy::115::vowels::a_n,val,42
+healthy::116::vowels::a_n,train,42
+healthy::117::vowels::a_n,val,42
+healthy::121::vowels::a_n,train,42
+healthy::122::vowels::a_n,train,42
+healthy::123::vowels::a_n,test,42
+healthy::124::vowels::a_n,train,42
+healthy::125::vowels::a_n,train,42
+healthy::126::vowels::a_n,train,42
+healthy::132::vowels::a_n,train,42
+healthy::133::vowels::a_n,train,42
+healthy::134::vowels::a_n,val,42
+healthy::135::vowels::a_n,train,42
+healthy::136::vowels::a_n,test,42
+healthy::137::vowels::a_n,train,42
+healthy::145::vowels::a_n,train,42
+healthy::153::vowels::a_n,train,42
+healthy::156::vowels::a_n,train,42
+healthy::157::vowels::a_n,val,42
+healthy::158::vowels::a_n,train,42
+healthy::675::vowels::a_n,train,42
+healthy::676::vowels::a_n,train,42
+healthy::677::vowels::a_n,test,42
+healthy::678::vowels::a_n,train,42
+healthy::679::vowels::a_n,train,42
+healthy::680::vowels::a_n,val,42
+healthy::681::vowels::a_n,train,42
+healthy::682::vowels::a_n,test,42
+healthy::683::vowels::a_n,val,42
+healthy::684::vowels::a_n,train,42
+healthy::685::vowels::a_n,train,42
+healthy::686::vowels::a_n,train,42
+healthy::687::vowels::a_n,val,42
+healthy::688::vowels::a_n,train,42
+healthy::689::vowels::a_n,train,42
+healthy::690::vowels::a_n,train,42
+healthy::691::vowels::a_n,train,42
+healthy::694::vowels::a_n,train,42
+healthy::695::vowels::a_n,train,42
+healthy::696::vowels::a_n,train,42
+healthy::697::vowels::a_n,train,42
+healthy::698::vowels::a_n,train,42
+healthy::699::vowels::a_n,train,42
+healthy::700::vowels::a_n,train,42
+healthy::701::vowels::a_n,train,42
+healthy::702::vowels::a_n,train,42
+healthy::703::vowels::a_n,train,42
+healthy::704::vowels::a_n,train,42
+healthy::705::vowels::a_n,val,42
+healthy::706::vowels::a_n,train,42
+healthy::707::vowels::a_n,train,42
+healthy::708::vowels::a_n,train,42
+healthy::709::vowels::a_n,train,42
+healthy::710::vowels::a_n,train,42
+healthy::711::vowels::a_n,train,42
+healthy::732::vowels::a_n,train,42
+healthy::733::vowels::a_n,val,42
+healthy::734::vowels::a_n,train,42
+healthy::735::vowels::a_n,val,42
+healthy::736::vowels::a_n,val,42
+healthy::737::vowels::a_n,val,42
+healthy::738::vowels::a_n,val,42
+healthy::739::vowels::a_n,test,42
+healthy::740::vowels::a_n,train,42
+healthy::743::vowels::a_n,train,42
+healthy::744::vowels::a_n,train,42
+healthy::745::vowels::a_n,train,42
+healthy::746::vowels::a_n,test,42
+healthy::747::vowels::a_n,train,42
+healthy::782::vowels::a_n,train,42
+healthy::803::vowels::a_n,train,42
+healthy::804::vowels::a_n,train,42
+healthy::805::vowels::a_n,train,42
+healthy::806::vowels::a_n,train,42
+healthy::807::vowels::a_n,test,42
+healthy::808::vowels::a_n,test,42
+healthy::809::vowels::a_n,train,42
+healthy::810::vowels::a_n,train,42
+healthy::811::vowels::a_n,train,42
+healthy::812::vowels::a_n,val,42
+healthy::813::vowels::a_n,train,42
+healthy::831::vowels::a_n,val,42
+healthy::832::vowels::a_n,train,42
+healthy::833::vowels::a_n,train,42
+healthy::834::vowels::a_n,test,42
+healthy::835::vowels::a_n,train,42
+healthy::836::vowels::a_n,train,42
+healthy::837::vowels::a_n,train,42
+healthy::838::vowels::a_n,train,42
+healthy::839::vowels::a_n,train,42
+healthy::840::vowels::a_n,train,42
+healthy::841::vowels::a_n,test,42
+healthy::842::vowels::a_n,train,42
+healthy::843::vowels::a_n,train,42
+healthy::852::vowels::a_n,train,42
+healthy::860::vowels::a_n,test,42
+healthy::861::vowels::a_n,val,42
+healthy::862::vowels::a_n,train,42
+healthy::865::vowels::a_n,train,42
+healthy::867::vowels::a_n,train,42
+healthy::941::vowels::a_n,train,42
+healthy::942::vowels::a_n,test,42
+healthy::943::vowels::a_n,train,42
+healthy::944::vowels::a_n,train,42
+healthy::945::vowels::a_n,train,42
+healthy::946::vowels::a_n,val,42
+healthy::947::vowels::a_n,train,42
+healthy::948::vowels::a_n,train,42
+healthy::949::vowels::a_n,train,42
+healthy::950::vowels::a_n,train,42
+healthy::951::vowels::a_n,train,42
+healthy::952::vowels::a_n,train,42
+healthy::953::vowels::a_n,test,42
+healthy::954::vowels::a_n,test,42
+healthy::955::vowels::a_n,val,42
+healthy::956::vowels::a_n,train,42
+healthy::957::vowels::a_n,train,42
+healthy::958::vowels::a_n,train,42
+healthy::959::vowels::a_n,val,42
+healthy::960::vowels::a_n,train,42
+healthy::961::vowels::a_n,val,42
+healthy::962::vowels::a_n,train,42
+healthy::963::vowels::a_n,train,42
+healthy::964::vowels::a_n,train,42
+healthy::965::vowels::a_n,train,42
+healthy::967::vowels::a_n,val,42
+healthy::968::vowels::a_n,test,42
+healthy::969::vowels::a_n,test,42
+healthy::970::vowels::a_n,train,42
+healthy::971::vowels::a_n,train,42
+healthy::972::vowels::a_n,train,42
+healthy::973::vowels::a_n,train,42
+healthy::974::vowels::a_n,train,42
+healthy::975::vowels::a_n,test,42
+healthy::976::vowels::a_n,test,42
+healthy::977::vowels::a_n,train,42
+healthy::978::vowels::a_n,train,42
+healthy::979::vowels::a_n,val,42
+healthy::980::vowels::a_n,test,42
+healthy::981::vowels::a_n,train,42
+healthy::982::vowels::a_n,train,42
+healthy::983::vowels::a_n,val,42
+healthy::984::vowels::a_n,train,42
+healthy::985::vowels::a_n,train,42
+healthy::986::vowels::a_n,val,42
+healthy::987::vowels::a_n,val,42
+healthy::988::vowels::a_n,train,42
+healthy::989::vowels::a_n,test,42
+healthy::990::vowels::a_n,train,42
+healthy::991::vowels::a_n,train,42
+healthy::992::vowels::a_n,train,42
+healthy::993::vowels::a_n,train,42
+healthy::994::vowels::a_n,test,42
+healthy::995::vowels::a_n,val,42
+healthy::996::vowels::a_n,train,42
+healthy::997::vowels::a_n,val,42
+healthy::998::vowels::a_n,train,42
+healthy::999::vowels::a_n,train,42
+healthy::1000::vowels::a_n,train,42
+healthy::1002::vowels::a_n,test,42
+healthy::1003::vowels::a_n,test,42
+healthy::1004::vowels::a_n,train,42
+healthy::1005::vowels::a_n,train,42
+healthy::1006::vowels::a_n,train,42
+healthy::1007::vowels::a_n,train,42
+healthy::1008::vowels::a_n,train,42
+healthy::1009::vowels::a_n,train,42
+healthy::1010::vowels::a_n,train,42
+healthy::1011::vowels::a_n,val,42
+healthy::1012::vowels::a_n,train,42
+healthy::1013::vowels::a_n,train,42
+healthy::1014::vowels::a_n,train,42
+healthy::1015::vowels::a_n,test,42
+healthy::1016::vowels::a_n,train,42
+healthy::1017::vowels::a_n,train,42
+healthy::1018::vowels::a_n,train,42
+healthy::1019::vowels::a_n,test,42
+healthy::1020::vowels::a_n,train,42
+healthy::1021::vowels::a_n,train,42
+healthy::1022::vowels::a_n,train,42
+healthy::1023::vowels::a_n,val,42
+healthy::1024::vowels::a_n,train,42
+healthy::1025::vowels::a_n,val,42
+healthy::1026::vowels::a_n,train,42
+healthy::1027::vowels::a_n,val,42
+healthy::1028::vowels::a_n,train,42
+healthy::1029::vowels::a_n,train,42
+healthy::1030::vowels::a_n,val,42
+healthy::1031::vowels::a_n,train,42
+healthy::1032::vowels::a_n,train,42
+healthy::1033::vowels::a_n,train,42
+healthy::1034::vowels::a_n,train,42
+healthy::1035::vowels::a_n,train,42
+healthy::1036::vowels::a_n,train,42
+healthy::1059::vowels::a_n,train,42
+healthy::1060::vowels::a_n,test,42
+healthy::1061::vowels::a_n,test,42
+healthy::1062::vowels::a_n,train,42
+healthy::1063::vowels::a_n,train,42
+healthy::1064::vowels::a_n,train,42
+healthy::1065::vowels::a_n,train,42
+healthy::1066::vowels::a_n,train,42
+healthy::1067::vowels::a_n,test,42
+healthy::1068::vowels::a_n,val,42
+healthy::1069::vowels::a_n,test,42
+healthy::1070::vowels::a_n,train,42
+healthy::1071::vowels::a_n,test,42
+healthy::1072::vowels::a_n,train,42
+healthy::1073::vowels::a_n,test,42
+healthy::1074::vowels::a_n,train,42
+healthy::1075::vowels::a_n,train,42
+healthy::1076::vowels::a_n,train,42
+healthy::1077::vowels::a_n,train,42
+healthy::1078::vowels::a_n,train,42
+healthy::1079::vowels::a_n,train,42
+healthy::1080::vowels::a_n,val,42
+healthy::1081::vowels::a_n,test,42
+healthy::1082::vowels::a_n,val,42
+healthy::1091::vowels::a_n,train,42
+healthy::1092::vowels::a_n,train,42
+healthy::1093::vowels::a_n,val,42
+healthy::1094::vowels::a_n,val,42
+healthy::1095::vowels::a_n,val,42
+healthy::1096::vowels::a_n,train,42
+healthy::1097::vowels::a_n,train,42
+healthy::1098::vowels::a_n,train,42
+healthy::1099::vowels::a_n,train,42
+healthy::1100::vowels::a_n,train,42
+healthy::1101::vowels::a_n,train,42
+healthy::1102::vowels::a_n,train,42
+healthy::1103::vowels::a_n,val,42
+healthy::1104::vowels::a_n,train,42
+healthy::1105::vowels::a_n,val,42
+healthy::1106::vowels::a_n,val,42
+healthy::1107::vowels::a_n,train,42
+healthy::1108::vowels::a_n,train,42
+healthy::1109::vowels::a_n,train,42
+healthy::1110::vowels::a_n,train,42
+healthy::1111::vowels::a_n,train,42
+healthy::1112::vowels::a_n,train,42
+healthy::1121::vowels::a_n,train,42
+healthy::1122::vowels::a_n,train,42
+healthy::1123::vowels::a_n,train,42
+healthy::1124::vowels::a_n,val,42
+healthy::1125::vowels::a_n,train,42
+healthy::1126::vowels::a_n,val,42
+healthy::1127::vowels::a_n,train,42
+healthy::1128::vowels::a_n,train,42
+healthy::1129::vowels::a_n,test,42
+healthy::1130::vowels::a_n,train,42
+healthy::1131::vowels::a_n,train,42
+healthy::1132::vowels::a_n,train,42
+healthy::1133::vowels::a_n,train,42
+healthy::1134::vowels::a_n,val,42
+healthy::1135::vowels::a_n,test,42
+healthy::1136::vowels::a_n,val,42
+healthy::1137::vowels::a_n,val,42
+healthy::1138::vowels::a_n,train,42
+healthy::1139::vowels::a_n,val,42
+healthy::1140::vowels::a_n,train,42
+healthy::1141::vowels::a_n,test,42
+healthy::1142::vowels::a_n,train,42
+healthy::1143::vowels::a_n,train,42
+healthy::1144::vowels::a_n,train,42
+healthy::1145::vowels::a_n,val,42
+healthy::1146::vowels::a_n,train,42
+healthy::1147::vowels::a_n,val,42
+healthy::1148::vowels::a_n,train,42
+healthy::1149::vowels::a_n,test,42
+healthy::1150::vowels::a_n,train,42
+healthy::1151::vowels::a_n,train,42
+healthy::1153::vowels::a_n,train,42
+healthy::1155::vowels::a_n,train,42
+healthy::1167::vowels::a_n,test,42
+healthy::1168::vowels::a_n,train,42
+healthy::1169::vowels::a_n,test,42
+healthy::1170::vowels::a_n,train,42
+healthy::1171::vowels::a_n,train,42
+healthy::1172::vowels::a_n,train,42
+healthy::1173::vowels::a_n,train,42
+healthy::1174::vowels::a_n,train,42
+healthy::1175::vowels::a_n,test,42
+healthy::1176::vowels::a_n,val,42
+healthy::1177::vowels::a_n,train,42
+healthy::1178::vowels::a_n,val,42
+healthy::1179::vowels::a_n,val,42
+healthy::1180::vowels::a_n,train,42
+healthy::1181::vowels::a_n,val,42
+healthy::1182::vowels::a_n,train,42
+healthy::1183::vowels::a_n,train,42
+healthy::1184::vowels::a_n,train,42
+healthy::1185::vowels::a_n,train,42
+healthy::1207::vowels::a_n,train,42
+healthy::1208::vowels::a_n,train,42
+healthy::1209::vowels::a_n,train,42
+healthy::1210::vowels::a_n,train,42
+healthy::1211::vowels::a_n,train,42
+healthy::1212::vowels::a_n,train,42
+healthy::1214::vowels::a_n,train,42
+healthy::1215::vowels::a_n,test,42
+healthy::1216::vowels::a_n,train,42
+healthy::1278::vowels::a_n,train,42
+healthy::1308::vowels::a_n,train,42
+healthy::1320::vowels::a_n,train,42
+healthy::1336::vowels::a_n,train,42
+healthy::1342::vowels::a_n,val,42
+healthy::1343::vowels::a_n,test,42
+healthy::1344::vowels::a_n,train,42
+healthy::1345::vowels::a_n,train,42
+healthy::1346::vowels::a_n,val,42
+healthy::1347::vowels::a_n,val,42
+healthy::1348::vowels::a_n,test,42
+healthy::1349::vowels::a_n,val,42
+healthy::1350::vowels::a_n,train,42
+healthy::1351::vowels::a_n,train,42
+healthy::1352::vowels::a_n,train,42
+healthy::1353::vowels::a_n,train,42
+healthy::1354::vowels::a_n,test,42
+healthy::1355::vowels::a_n,train,42
+healthy::1356::vowels::a_n,test,42
+healthy::1357::vowels::a_n,train,42
+healthy::1358::vowels::a_n,train,42
+healthy::1359::vowels::a_n,train,42
+healthy::1360::vowels::a_n,train,42
+healthy::1361::vowels::a_n,train,42
+healthy::1362::vowels::a_n,test,42
+healthy::1363::vowels::a_n,train,42
+healthy::1364::vowels::a_n,test,42
+healthy::1365::vowels::a_n,train,42
+healthy::1366::vowels::a_n,train,42
+healthy::1367::vowels::a_n,test,42
+healthy::1368::vowels::a_n,train,42
+healthy::1369::vowels::a_n,train,42
+healthy::1370::vowels::a_n,test,42
+healthy::1371::vowels::a_n,train,42
+healthy::1372::vowels::a_n,val,42
+healthy::1373::vowels::a_n,train,42
+healthy::1374::vowels::a_n,test,42
+healthy::1375::vowels::a_n,train,42
+healthy::1377::vowels::a_n,train,42
+healthy::1427::vowels::a_n,train,42
+healthy::1460::vowels::a_n,train,42
+healthy::1504::vowels::a_n,train,42
+healthy::1505::vowels::a_n,train,42
+healthy::1506::vowels::a_n,train,42
+healthy::1507::vowels::a_n,train,42
+healthy::1508::vowels::a_n,val,42
+healthy::1509::vowels::a_n,val,42
+healthy::1510::vowels::a_n,train,42
+healthy::1511::vowels::a_n,train,42
+healthy::1512::vowels::a_n,train,42
+healthy::1513::vowels::a_n,train,42
+healthy::1514::vowels::a_n,train,42
+healthy::1515::vowels::a_n,train,42
+healthy::1516::vowels::a_n,train,42
+healthy::1517::vowels::a_n,train,42
+healthy::1518::vowels::a_n,train,42
+healthy::1519::vowels::a_n,train,42
+healthy::1520::vowels::a_n,train,42
+healthy::1521::vowels::a_n,train,42
+healthy::1522::vowels::a_n,train,42
+healthy::1523::vowels::a_n,val,42
+healthy::1524::vowels::a_n,train,42
+healthy::1526::vowels::a_n,train,42
+healthy::1527::vowels::a_n,train,42
+healthy::1528::vowels::a_n,train,42
+healthy::1529::vowels::a_n,train,42
+healthy::1530::vowels::a_n,train,42
+healthy::1531::vowels::a_n,train,42
+healthy::1532::vowels::a_n,train,42
+healthy::1533::vowels::a_n,train,42
+healthy::1534::vowels::a_n,train,42
+healthy::1535::vowels::a_n,train,42
+healthy::1536::vowels::a_n,val,42
+healthy::1537::vowels::a_n,train,42
+healthy::1538::vowels::a_n,train,42
+healthy::1539::vowels::a_n,train,42
+healthy::1540::vowels::a_n,train,42
+healthy::1541::vowels::a_n,train,42
+healthy::1542::vowels::a_n,train,42
+healthy::1543::vowels::a_n,test,42
+healthy::1544::vowels::a_n,train,42
+healthy::1573::vowels::a_n,test,42
+healthy::1577::vowels::a_n,test,42
+healthy::1579::vowels::a_n,train,42
+healthy::1582::vowels::a_n,train,42
+healthy::1583::vowels::a_n,train,42
+healthy::1584::vowels::a_n,val,42
+healthy::1585::vowels::a_n,train,42
+healthy::1586::vowels::a_n,train,42
+healthy::1587::vowels::a_n,train,42
+healthy::1598::vowels::a_n,test,42
+healthy::1605::vowels::a_n,train,42
+healthy::1612::vowels::a_n,train,42
+healthy::1623::vowels::a_n,train,42
+healthy::1695::vowels::a_n,val,42
+healthy::1696::vowels::a_n,train,42
+healthy::1697::vowels::a_n,train,42
+healthy::1698::vowels::a_n,test,42
+healthy::1699::vowels::a_n,val,42
+healthy::1700::vowels::a_n,test,42
+healthy::1701::vowels::a_n,test,42
+healthy::1702::vowels::a_n,train,42
+healthy::1703::vowels::a_n,train,42
+healthy::1704::vowels::a_n,test,42
+healthy::1705::vowels::a_n,val,42
+healthy::1706::vowels::a_n,train,42
+healthy::1707::vowels::a_n,val,42
+healthy::1708::vowels::a_n,train,42
+healthy::1709::vowels::a_n,train,42
+healthy::1710::vowels::a_n,test,42
+healthy::1711::vowels::a_n,train,42
+healthy::1712::vowels::a_n,train,42
+healthy::1724::vowels::a_n,train,42
+healthy::1725::vowels::a_n,train,42
+healthy::1726::vowels::a_n,train,42
+healthy::1727::vowels::a_n,train,42
+healthy::1728::vowels::a_n,val,42
+healthy::1729::vowels::a_n,train,42
+healthy::1730::vowels::a_n,train,42
+healthy::1731::vowels::a_n,train,42
+healthy::1732::vowels::a_n,train,42
+healthy::1733::vowels::a_n,train,42
+healthy::1734::vowels::a_n,train,42
+healthy::1735::vowels::a_n,val,42
+healthy::1736::vowels::a_n,train,42
+healthy::1737::vowels::a_n,train,42
+healthy::1738::vowels::a_n,train,42
+healthy::1739::vowels::a_n,val,42
+healthy::1740::vowels::a_n,train,42
+healthy::1775::vowels::a_n,train,42
+healthy::1815::vowels::a_n,val,42
+healthy::1837::vowels::a_n,train,42
+healthy::1838::vowels::a_n,train,42
+healthy::1839::vowels::a_n,val,42
+healthy::1840::vowels::a_n,train,42
+healthy::1841::vowels::a_n,val,42
+healthy::1842::vowels::a_n,val,42
+healthy::1843::vowels::a_n,train,42
+healthy::1844::vowels::a_n,train,42
+healthy::1845::vowels::a_n,train,42
+healthy::1846::vowels::a_n,train,42
+healthy::1847::vowels::a_n,train,42
+healthy::1848::vowels::a_n,train,42
+healthy::1849::vowels::a_n,test,42
+healthy::1850::vowels::a_n,train,42
+healthy::1851::vowels::a_n,test,42
+healthy::1852::vowels::a_n,train,42
+healthy::1853::vowels::a_n,val,42
+healthy::1854::vowels::a_n,train,42
+healthy::1855::vowels::a_n,test,42
+healthy::1856::vowels::a_n,train,42
+healthy::1857::vowels::a_n,train,42
+healthy::1858::vowels::a_n,train,42
+healthy::1859::vowels::a_n,val,42
+healthy::1860::vowels::a_n,train,42
+healthy::1865::vowels::a_n,train,42
+healthy::1870::vowels::a_n,train,42
+healthy::1871::vowels::a_n,train,42
+healthy::1872::vowels::a_n,train,42
+healthy::1873::vowels::a_n,train,42
+healthy::1874::vowels::a_n,test,42
+healthy::1875::vowels::a_n,train,42
+healthy::1876::vowels::a_n,train,42
+healthy::1877::vowels::a_n,test,42
+healthy::1878::vowels::a_n,train,42
+healthy::1879::vowels::a_n,train,42
+healthy::1880::vowels::a_n,val,42
+healthy::1881::vowels::a_n,train,42
+healthy::1882::vowels::a_n,train,42
+healthy::1883::vowels::a_n,train,42
+healthy::1884::vowels::a_n,train,42
+healthy::1885::vowels::a_n,test,42
+healthy::1886::vowels::a_n,train,42
+healthy::1915::vowels::a_n,train,42
+healthy::1916::vowels::a_n,val,42
+healthy::1917::vowels::a_n,val,42
+healthy::1918::vowels::a_n,train,42
+healthy::1919::vowels::a_n,train,42
+healthy::1920::vowels::a_n,train,42
+healthy::1921::vowels::a_n,train,42
+healthy::1922::vowels::a_n,train,42
+healthy::1923::vowels::a_n,train,42
+healthy::1924::vowels::a_n,train,42
+healthy::1925::vowels::a_n,test,42
+healthy::1926::vowels::a_n,val,42
+healthy::1947::vowels::a_n,train,42
+healthy::1956::vowels::a_n,train,42
+healthy::1969::vowels::a_n,train,42
+healthy::1974::vowels::a_n,train,42
+healthy::1995::vowels::a_n,train,42
+healthy::1996::vowels::a_n,train,42
+healthy::2018::vowels::a_n,train,42
+healthy::2036::vowels::a_n,test,42
+healthy::2037::vowels::a_n,train,42
+healthy::2038::vowels::a_n,train,42
+healthy::2039::vowels::a_n,test,42
+healthy::2040::vowels::a_n,train,42
+healthy::2041::vowels::a_n,test,42
+healthy::2042::vowels::a_n,test,42
+healthy::2043::vowels::a_n,train,42
+healthy::2044::vowels::a_n,train,42
+healthy::2045::vowels::a_n,train,42
+healthy::2046::vowels::a_n,test,42
+healthy::2047::vowels::a_n,train,42
+healthy::2048::vowels::a_n,test,42
+healthy::2049::vowels::a_n,train,42
+healthy::2050::vowels::a_n,train,42
+healthy::2051::vowels::a_n,train,42
+healthy::2052::vowels::a_n,test,42
+healthy::2053::vowels::a_n,train,42
+healthy::2054::vowels::a_n,train,42
+healthy::2084::vowels::a_n,train,42
+healthy::2108::vowels::a_n,train,42
+healthy::2142::vowels::a_n,train,42
+healthy::2162::vowels::a_n,train,42
+healthy::2163::vowels::a_n,train,42
+healthy::2164::vowels::a_n,test,42
+healthy::2165::vowels::a_n,train,42
+healthy::2166::vowels::a_n,val,42
+healthy::2167::vowels::a_n,train,42
+healthy::2168::vowels::a_n,train,42
+healthy::2169::vowels::a_n,train,42
+healthy::2170::vowels::a_n,train,42
+healthy::2171::vowels::a_n,train,42
+healthy::2172::vowels::a_n,train,42
+healthy::2173::vowels::a_n,train,42
+healthy::2174::vowels::a_n,train,42
+healthy::2175::vowels::a_n,train,42
+healthy::2176::vowels::a_n,train,42
+healthy::2177::vowels::a_n,train,42
+healthy::2178::vowels::a_n,train,42
+healthy::2179::vowels::a_n,train,42
+healthy::2180::vowels::a_n,train,42
+healthy::2181::vowels::a_n,test,42
+healthy::2195::vowels::a_n,val,42
+healthy::2196::vowels::a_n,train,42
+healthy::2197::vowels::a_n,test,42
+healthy::2198::vowels::a_n,train,42
+healthy::2199::vowels::a_n,train,42
+healthy::2200::vowels::a_n,train,42
+healthy::2201::vowels::a_n,train,42
+healthy::2202::vowels::a_n,train,42
+healthy::2203::vowels::a_n,train,42
+healthy::2204::vowels::a_n,train,42
+healthy::2205::vowels::a_n,val,42
+healthy::2206::vowels::a_n,train,42
+healthy::2207::vowels::a_n,val,42
+healthy::2208::vowels::a_n,train,42
+healthy::2209::vowels::a_n,test,42
+healthy::2210::vowels::a_n,test,42
+healthy::2244::vowels::a_n,train,42
+healthy::2248::vowels::a_n,train,42
+healthy::2249::vowels::a_n,train,42
+healthy::2250::vowels::a_n,train,42
+healthy::2251::vowels::a_n,val,42
+healthy::2252::vowels::a_n,train,42
+healthy::2253::vowels::a_n,train,42
+healthy::2254::vowels::a_n,train,42
+healthy::2255::vowels::a_n,train,42
+healthy::2256::vowels::a_n,train,42
+healthy::2257::vowels::a_n,train,42
+healthy::2258::vowels::a_n,train,42
+healthy::2259::vowels::a_n,val,42
+healthy::2260::vowels::a_n,val,42
+healthy::2261::vowels::a_n,val,42
+healthy::2262::vowels::a_n,train,42
+healthy::2263::vowels::a_n,train,42
+healthy::2264::vowels::a_n,train,42
+healthy::2278::vowels::a_n,val,42
+healthy::2279::vowels::a_n,val,42
+healthy::2280::vowels::a_n,train,42
+healthy::2281::vowels::a_n,train,42
+healthy::2282::vowels::a_n,val,42
+healthy::2283::vowels::a_n,train,42
+healthy::2284::vowels::a_n,train,42
+healthy::2285::vowels::a_n,train,42
+healthy::2286::vowels::a_n,train,42
+healthy::2407::vowels::a_n,train,42
+healthy::2462::vowels::a_n,val,42
+healthy::2478::vowels::a_n,train,42
+healthy::2495::vowels::a_n,val,42
+healthy::2532::vowels::a_n,val,42
+healthy::2561::vowels::a_n,train,42
+healthy::2576::vowels::a_n,train,42
+Funktionelle Dysphonie::350::vowels::a_n,train,42
+Funktionelle Dysphonie::351::vowels::a_n,train,42
+Funktionelle Dysphonie::631::vowels::a_n,train,42
+Funktionelle Dysphonie::634::vowels::a_n,test,42
+Funktionelle Dysphonie::718::vowels::a_n,test,42
+Funktionelle Dysphonie::722::vowels::a_n,train,42
+Funktionelle Dysphonie::723::vowels::a_n,train,42
+Funktionelle Dysphonie::727::vowels::a_n,train,42
+Funktionelle Dysphonie::729::vowels::a_n,val,42
+Funktionelle Dysphonie::730::vowels::a_n,train,42
+Funktionelle Dysphonie::851::vowels::a_n,train,42
+Funktionelle Dysphonie::870::vowels::a_n,test,42
+Funktionelle Dysphonie::878::vowels::a_n,val,42
+Funktionelle Dysphonie::913::vowels::a_n,train,42
+Funktionelle Dysphonie::1193::vowels::a_n,val,42
+Funktionelle Dysphonie::1200::vowels::a_n,test,42
+Funktionelle Dysphonie::1230::vowels::a_n,train,42
+Funktionelle Dysphonie::1240::vowels::a_n,train,42
+Funktionelle Dysphonie::1241::vowels::a_n,train,42
+Funktionelle Dysphonie::1244::vowels::a_n,val,42
+Funktionelle Dysphonie::1254::vowels::a_n,val,42
+Funktionelle Dysphonie::1258::vowels::a_n,train,42
+Funktionelle Dysphonie::1281::vowels::a_n,train,42
+Funktionelle Dysphonie::1309::vowels::a_n,train,42
+Funktionelle Dysphonie::1318::vowels::a_n,train,42
+Funktionelle Dysphonie::1322::vowels::a_n,train,42
+Funktionelle Dysphonie::1326::vowels::a_n,val,42
+Funktionelle Dysphonie::1328::vowels::a_n,train,42
+Funktionelle Dysphonie::1400::vowels::a_n,train,42
+Funktionelle Dysphonie::1415::vowels::a_n,train,42
+Funktionelle Dysphonie::1432::vowels::a_n,train,42
+Funktionelle Dysphonie::1435::vowels::a_n,train,42
+Funktionelle Dysphonie::1441::vowels::a_n,train,42
+Funktionelle Dysphonie::1552::vowels::a_n,test,42
+Funktionelle Dysphonie::1589::vowels::a_n,test,42
+Funktionelle Dysphonie::1609::vowels::a_n,train,42
+Funktionelle Dysphonie::1611::vowels::a_n,test,42
+Funktionelle Dysphonie::1627::vowels::a_n,val,42
+Funktionelle Dysphonie::1640::vowels::a_n,val,42
+Funktionelle Dysphonie::1642::vowels::a_n,train,42
+Funktionelle Dysphonie::1645::vowels::a_n,train,42
+Funktionelle Dysphonie::1659::vowels::a_n,test,42
+Funktionelle Dysphonie::1680::vowels::a_n,train,42
+Funktionelle Dysphonie::1681::vowels::a_n,train,42
+Funktionelle Dysphonie::1685::vowels::a_n,train,42
+Funktionelle Dysphonie::1688::vowels::a_n,train,42
+Funktionelle Dysphonie::1694::vowels::a_n,train,42
+Funktionelle Dysphonie::1742::vowels::a_n,val,42
+Funktionelle Dysphonie::1798::vowels::a_n,train,42
+Funktionelle Dysphonie::1801::vowels::a_n,val,42
+Funktionelle Dysphonie::1824::vowels::a_n,train,42
+Funktionelle Dysphonie::1827::vowels::a_n,train,42
+Funktionelle Dysphonie::1862::vowels::a_n,train,42
+Funktionelle Dysphonie::1899::vowels::a_n,val,42
+Funktionelle Dysphonie::1935::vowels::a_n,train,42
+Funktionelle Dysphonie::1936::vowels::a_n,train,42
+Funktionelle Dysphonie::1958::vowels::a_n,train,42
+Funktionelle Dysphonie::1966::vowels::a_n,train,42
+Funktionelle Dysphonie::1977::vowels::a_n,test,42
+Funktionelle Dysphonie::2006::vowels::a_n,train,42
+Funktionelle Dysphonie::2112::vowels::a_n,test,42
+Funktionelle Dysphonie::2123::vowels::a_n,train,42
+Funktionelle Dysphonie::2231::vowels::a_n,train,42
+Funktionelle Dysphonie::2265::vowels::a_n,train,42
+Funktionelle Dysphonie::2267::vowels::a_n,train,42
+Funktionelle Dysphonie::2290::vowels::a_n,val,42
+Funktionelle Dysphonie::2297::vowels::a_n,test,42
+Funktionelle Dysphonie::2302::vowels::a_n,val,42
+Funktionelle Dysphonie::2303::vowels::a_n,train,42
+Funktionelle Dysphonie::2308::vowels::a_n,train,42
+Funktionelle Dysphonie::2310::vowels::a_n,train,42
+Funktionelle Dysphonie::2312::vowels::a_n,train,42
+Funktionelle Dysphonie::2313::vowels::a_n,train,42
+Funktionelle Dysphonie::2314::vowels::a_n,test,42
+Funktionelle Dysphonie::2318::vowels::a_n,train,42
+Funktionelle Dysphonie::2327::vowels::a_n,train,42
+Funktionelle Dysphonie::2336::vowels::a_n,train,42
+Funktionelle Dysphonie::2340::vowels::a_n,train,42
+Funktionelle Dysphonie::2357::vowels::a_n,train,42
+Funktionelle Dysphonie::2359::vowels::a_n,train,42
+Funktionelle Dysphonie::2360::vowels::a_n,train,42
+Funktionelle Dysphonie::2365::vowels::a_n,train,42
+Funktionelle Dysphonie::2367::vowels::a_n,train,42
+Funktionelle Dysphonie::2382::vowels::a_n,val,42
+Funktionelle Dysphonie::2410::vowels::a_n,test,42
+Funktionelle Dysphonie::2413::vowels::a_n,train,42
+Funktionelle Dysphonie::2416::vowels::a_n,val,42
+Funktionelle Dysphonie::2417::vowels::a_n,val,42
+Funktionelle Dysphonie::2419::vowels::a_n,train,42
+Funktionelle Dysphonie::2427::vowels::a_n,test,42
+Funktionelle Dysphonie::2429::vowels::a_n,test,42
+Funktionelle Dysphonie::2431::vowels::a_n,val,42
+Funktionelle Dysphonie::2432::vowels::a_n,train,42
+Funktionelle Dysphonie::2442::vowels::a_n,train,42
+Funktionelle Dysphonie::2444::vowels::a_n,train,42
+Funktionelle Dysphonie::2445::vowels::a_n,train,42
+Funktionelle Dysphonie::2446::vowels::a_n,train,42
+Funktionelle Dysphonie::2448::vowels::a_n,train,42
+Funktionelle Dysphonie::2457::vowels::a_n,train,42
+Funktionelle Dysphonie::2459::vowels::a_n,train,42
+Funktionelle Dysphonie::2477::vowels::a_n,train,42
+Funktionelle Dysphonie::2481::vowels::a_n,test,42
+Funktionelle Dysphonie::2483::vowels::a_n,train,42
+Funktionelle Dysphonie::2497::vowels::a_n,test,42
+Funktionelle Dysphonie::2499::vowels::a_n,train,42
+Funktionelle Dysphonie::2502::vowels::a_n,val,42
+Funktionelle Dysphonie::2504::vowels::a_n,train,42
+Funktionelle Dysphonie::2505::vowels::a_n,train,42
+Funktionelle Dysphonie::2506::vowels::a_n,test,42
+Funktionelle Dysphonie::2524::vowels::a_n,train,42
+Funktionelle Dysphonie::2528::vowels::a_n,val,42
+Funktionelle Dysphonie::2601::vowels::a_n,train,42
+Hyperfunktionelle Dysphonie::106::vowels::a_n,val,42
+Hyperfunktionelle Dysphonie::127::vowels::a_n,train,42
+Hyperfunktionelle Dysphonie::140::vowels::a_n,train,42
+Hyperfunktionelle Dysphonie::144::vowels::a_n,train,42
+Hyperfunktionelle Dysphonie::159::vowels::a_n,train,42
+Hyperfunktionelle Dysphonie::160::vowels::a_n,val,42
+Hyperfunktionelle Dysphonie::348::vowels::a_n,train,42
+Hyperfunktionelle Dysphonie::355::vowels::a_n,val,42
+Hyperfunktionelle Dysphonie::363::vowels::a_n,train,42
+Hyperfunktionelle Dysphonie::499::vowels::a_n,train,42
+Hyperfunktionelle Dysphonie::665::vowels::a_n,train,42
+Hyperfunktionelle Dysphonie::669::vowels::a_n,train,42
+Hyperfunktionelle Dysphonie::692::vowels::a_n,test,42
+Hyperfunktionelle Dysphonie::724::vowels::a_n,test,42
+Hyperfunktionelle Dysphonie::819::vowels::a_n,train,42
+Hyperfunktionelle Dysphonie::827::vowels::a_n,train,42
+Hyperfunktionelle Dysphonie::829::vowels::a_n,train,42
+Hyperfunktionelle Dysphonie::850::vowels::a_n,train,42
+Hyperfunktionelle Dysphonie::854::vowels::a_n,test,42
+Hyperfunktionelle Dysphonie::857::vowels::a_n,train,42
+Hyperfunktionelle Dysphonie::868::vowels::a_n,test,42
+Hyperfunktionelle Dysphonie::881::vowels::a_n,val,42
+Hyperfunktionelle Dysphonie::888::vowels::a_n,test,42
+Hyperfunktionelle Dysphonie::889::vowels::a_n,train,42
+Hyperfunktionelle Dysphonie::890::vowels::a_n,val,42
+Hyperfunktionelle Dysphonie::894::vowels::a_n,test,42
+Hyperfunktionelle Dysphonie::898::vowels::a_n,train,42
+Hyperfunktionelle Dysphonie::909::vowels::a_n,train,42
+Hyperfunktionelle Dysphonie::922::vowels::a_n,train,42
+Hyperfunktionelle Dysphonie::934::vowels::a_n,train,42
+Hyperfunktionelle Dysphonie::1037::vowels::a_n,train,42
+Hyperfunktionelle Dysphonie::1043::vowels::a_n,train,42
+Hyperfunktionelle Dysphonie::1044::vowels::a_n,test,42
+Hyperfunktionelle Dysphonie::1050::vowels::a_n,train,42
+Hyperfunktionelle Dysphonie::1051::vowels::a_n,test,42
+Hyperfunktionelle Dysphonie::1083::vowels::a_n,train,42
+Hyperfunktionelle Dysphonie::1085::vowels::a_n,train,42
+Hyperfunktionelle Dysphonie::1088::vowels::a_n,train,42
+Hyperfunktionelle Dysphonie::1090::vowels::a_n,train,42
+Hyperfunktionelle Dysphonie::1113::vowels::a_n,test,42
+Hyperfunktionelle Dysphonie::1118::vowels::a_n,train,42
+Hyperfunktionelle Dysphonie::1189::vowels::a_n,val,42
+Hyperfunktionelle Dysphonie::1196::vowels::a_n,val,42
+Hyperfunktionelle Dysphonie::1204::vowels::a_n,train,42
+Hyperfunktionelle Dysphonie::1222::vowels::a_n,test,42
+Hyperfunktionelle Dysphonie::1266::vowels::a_n,train,42
+Hyperfunktionelle Dysphonie::1280::vowels::a_n,train,42
+Hyperfunktionelle Dysphonie::1282::vowels::a_n,val,42
+Hyperfunktionelle Dysphonie::1284::vowels::a_n,train,42
+Hyperfunktionelle Dysphonie::1285::vowels::a_n,test,42
+Hyperfunktionelle Dysphonie::1294::vowels::a_n,train,42
+Hyperfunktionelle Dysphonie::1299::vowels::a_n,train,42
+Hyperfunktionelle Dysphonie::1310::vowels::a_n,train,42
+Hyperfunktionelle Dysphonie::1324::vowels::a_n,train,42
+Hyperfunktionelle Dysphonie::1327::vowels::a_n,train,42
+Hyperfunktionelle Dysphonie::1331::vowels::a_n,train,42
+Hyperfunktionelle Dysphonie::1335::vowels::a_n,val,42
+Hyperfunktionelle Dysphonie::1379::vowels::a_n,test,42
+Hyperfunktionelle Dysphonie::1380::vowels::a_n,train,42
+Hyperfunktionelle Dysphonie::1394::vowels::a_n,train,42
+Hyperfunktionelle Dysphonie::1406::vowels::a_n,test,42
+Hyperfunktionelle Dysphonie::1431::vowels::a_n,train,42
+Hyperfunktionelle Dysphonie::1442::vowels::a_n,train,42
+Hyperfunktionelle Dysphonie::1443::vowels::a_n,train,42
+Hyperfunktionelle Dysphonie::1459::vowels::a_n,train,42
+Hyperfunktionelle Dysphonie::1462::vowels::a_n,train,42
+Hyperfunktionelle Dysphonie::1464::vowels::a_n,train,42
+Hyperfunktionelle Dysphonie::1468::vowels::a_n,train,42
+Hyperfunktionelle Dysphonie::1471::vowels::a_n,train,42
+Hyperfunktionelle Dysphonie::1476::vowels::a_n,test,42
+Hyperfunktionelle Dysphonie::1492::vowels::a_n,test,42
+Hyperfunktionelle Dysphonie::1500::vowels::a_n,test,42
+Hyperfunktionelle Dysphonie::1562::vowels::a_n,train,42
+Hyperfunktionelle Dysphonie::1566::vowels::a_n,train,42
+Hyperfunktionelle Dysphonie::1569::vowels::a_n,val,42
+Hyperfunktionelle Dysphonie::1571::vowels::a_n,train,42
+Hyperfunktionelle Dysphonie::1591::vowels::a_n,train,42
+Hyperfunktionelle Dysphonie::1594::vowels::a_n,train,42
+Hyperfunktionelle Dysphonie::1602::vowels::a_n,train,42
+Hyperfunktionelle Dysphonie::1607::vowels::a_n,train,42
+Hyperfunktionelle Dysphonie::1608::vowels::a_n,test,42
+Hyperfunktionelle Dysphonie::1637::vowels::a_n,val,42
+Hyperfunktionelle Dysphonie::1643::vowels::a_n,train,42
+Hyperfunktionelle Dysphonie::1648::vowels::a_n,val,42
+Hyperfunktionelle Dysphonie::1653::vowels::a_n,train,42
+Hyperfunktionelle Dysphonie::1660::vowels::a_n,train,42
+Hyperfunktionelle Dysphonie::1669::vowels::a_n,train,42
+Hyperfunktionelle Dysphonie::1682::vowels::a_n,val,42
+Hyperfunktionelle Dysphonie::1686::vowels::a_n,train,42
+Hyperfunktionelle Dysphonie::1690::vowels::a_n,train,42
+Hyperfunktionelle Dysphonie::1741::vowels::a_n,val,42
+Hyperfunktionelle Dysphonie::1745::vowels::a_n,train,42
+Hyperfunktionelle Dysphonie::1753::vowels::a_n,train,42
+Hyperfunktionelle Dysphonie::1754::vowels::a_n,train,42
+Hyperfunktionelle Dysphonie::1758::vowels::a_n,train,42
+Hyperfunktionelle Dysphonie::1777::vowels::a_n,train,42
+Hyperfunktionelle Dysphonie::1778::vowels::a_n,test,42
+Hyperfunktionelle Dysphonie::1786::vowels::a_n,train,42
+Hyperfunktionelle Dysphonie::1792::vowels::a_n,train,42
+Hyperfunktionelle Dysphonie::1794::vowels::a_n,train,42
+Hyperfunktionelle Dysphonie::1800::vowels::a_n,train,42
+Hyperfunktionelle Dysphonie::1802::vowels::a_n,train,42
+Hyperfunktionelle Dysphonie::1812::vowels::a_n,train,42
+Hyperfunktionelle Dysphonie::1813::vowels::a_n,val,42
+Hyperfunktionelle Dysphonie::1816::vowels::a_n,val,42
+Hyperfunktionelle Dysphonie::1822::vowels::a_n,train,42
+Hyperfunktionelle Dysphonie::1823::vowels::a_n,test,42
+Hyperfunktionelle Dysphonie::1861::vowels::a_n,val,42
+Hyperfunktionelle Dysphonie::1887::vowels::a_n,train,42
+Hyperfunktionelle Dysphonie::1888::vowels::a_n,test,42
+Hyperfunktionelle Dysphonie::1891::vowels::a_n,test,42
+Hyperfunktionelle Dysphonie::1895::vowels::a_n,train,42
+Hyperfunktionelle Dysphonie::1898::vowels::a_n,train,42
+Hyperfunktionelle Dysphonie::1900::vowels::a_n,val,42
+Hyperfunktionelle Dysphonie::1903::vowels::a_n,val,42
+Hyperfunktionelle Dysphonie::1906::vowels::a_n,train,42
+Hyperfunktionelle Dysphonie::1910::vowels::a_n,train,42
+Hyperfunktionelle Dysphonie::1927::vowels::a_n,train,42
+Hyperfunktionelle Dysphonie::1929::vowels::a_n,train,42
+Hyperfunktionelle Dysphonie::1934::vowels::a_n,train,42
+Hyperfunktionelle Dysphonie::1944::vowels::a_n,train,42
+Hyperfunktionelle Dysphonie::1952::vowels::a_n,val,42
+Hyperfunktionelle Dysphonie::1964::vowels::a_n,train,42
+Hyperfunktionelle Dysphonie::1976::vowels::a_n,val,42
+Hyperfunktionelle Dysphonie::1978::vowels::a_n,val,42
+Hyperfunktionelle Dysphonie::1982::vowels::a_n,train,42
+Hyperfunktionelle Dysphonie::1983::vowels::a_n,val,42
+Hyperfunktionelle Dysphonie::1988::vowels::a_n,train,42
+Hyperfunktionelle Dysphonie::1989::vowels::a_n,train,42
+Hyperfunktionelle Dysphonie::1990::vowels::a_n,val,42
+Hyperfunktionelle Dysphonie::1993::vowels::a_n,test,42
+Hyperfunktionelle Dysphonie::2012::vowels::a_n,train,42
+Hyperfunktionelle Dysphonie::2034::vowels::a_n,train,42
+Hyperfunktionelle Dysphonie::2062::vowels::a_n,val,42
+Hyperfunktionelle Dysphonie::2067::vowels::a_n,train,42
+Hyperfunktionelle Dysphonie::2071::vowels::a_n,val,42
+Hyperfunktionelle Dysphonie::2077::vowels::a_n,train,42
+Hyperfunktionelle Dysphonie::2080::vowels::a_n,train,42
+Hyperfunktionelle Dysphonie::2081::vowels::a_n,train,42
+Hyperfunktionelle Dysphonie::2090::vowels::a_n,train,42
+Hyperfunktionelle Dysphonie::2102::vowels::a_n,train,42
+Hyperfunktionelle Dysphonie::2104::vowels::a_n,train,42
+Hyperfunktionelle Dysphonie::2105::vowels::a_n,test,42
+Hyperfunktionelle Dysphonie::2107::vowels::a_n,train,42
+Hyperfunktionelle Dysphonie::2114::vowels::a_n,val,42
+Hyperfunktionelle Dysphonie::2121::vowels::a_n,train,42
+Hyperfunktionelle Dysphonie::2122::vowels::a_n,train,42
+Hyperfunktionelle Dysphonie::2124::vowels::a_n,train,42
+Hyperfunktionelle Dysphonie::2135::vowels::a_n,train,42
+Hyperfunktionelle Dysphonie::2138::vowels::a_n,train,42
+Hyperfunktionelle Dysphonie::2139::vowels::a_n,val,42
+Hyperfunktionelle Dysphonie::2151::vowels::a_n,train,42
+Hyperfunktionelle Dysphonie::2184::vowels::a_n,train,42
+Hyperfunktionelle Dysphonie::2185::vowels::a_n,val,42
+Hyperfunktionelle Dysphonie::2186::vowels::a_n,train,42
+Hyperfunktionelle Dysphonie::2215::vowels::a_n,test,42
+Hyperfunktionelle Dysphonie::2221::vowels::a_n,train,42
+Hyperfunktionelle Dysphonie::2224::vowels::a_n,train,42
+Hyperfunktionelle Dysphonie::2225::vowels::a_n,train,42
+Hyperfunktionelle Dysphonie::2228::vowels::a_n,train,42
+Hyperfunktionelle Dysphonie::2229::vowels::a_n,train,42
+Hyperfunktionelle Dysphonie::2230::vowels::a_n,train,42
+Hyperfunktionelle Dysphonie::2232::vowels::a_n,train,42
+Hyperfunktionelle Dysphonie::2233::vowels::a_n,test,42
+Hyperfunktionelle Dysphonie::2239::vowels::a_n,train,42
+Hyperfunktionelle Dysphonie::2240::vowels::a_n,train,42
+Hyperfunktionelle Dysphonie::2241::vowels::a_n,train,42
+Hyperfunktionelle Dysphonie::2245::vowels::a_n,train,42
+Hyperfunktionelle Dysphonie::2270::vowels::a_n,train,42
+Hyperfunktionelle Dysphonie::2272::vowels::a_n,test,42
+Hyperfunktionelle Dysphonie::2288::vowels::a_n,train,42
+Hyperfunktionelle Dysphonie::2292::vowels::a_n,train,42
+Hyperfunktionelle Dysphonie::2293::vowels::a_n,train,42
+Hyperfunktionelle Dysphonie::2298::vowels::a_n,test,42
+Hyperfunktionelle Dysphonie::2307::vowels::a_n,train,42
+Hyperfunktionelle Dysphonie::2317::vowels::a_n,train,42
+Hyperfunktionelle Dysphonie::2331::vowels::a_n,train,42
+Hyperfunktionelle Dysphonie::2338::vowels::a_n,test,42
+Hyperfunktionelle Dysphonie::2363::vowels::a_n,train,42
+Hyperfunktionelle Dysphonie::2370::vowels::a_n,train,42
+Hyperfunktionelle Dysphonie::2374::vowels::a_n,train,42
+Hyperfunktionelle Dysphonie::2378::vowels::a_n,train,42
+Hyperfunktionelle Dysphonie::2398::vowels::a_n,train,42
+Hyperfunktionelle Dysphonie::2399::vowels::a_n,train,42
+Hyperfunktionelle Dysphonie::2420::vowels::a_n,test,42
+Hyperfunktionelle Dysphonie::2425::vowels::a_n,train,42
+Hyperfunktionelle Dysphonie::2438::vowels::a_n,val,42
+Hyperfunktionelle Dysphonie::2447::vowels::a_n,val,42
+Hyperfunktionelle Dysphonie::2449::vowels::a_n,train,42
+Hyperfunktionelle Dysphonie::2454::vowels::a_n,train,42
+Hyperfunktionelle Dysphonie::2463::vowels::a_n,train,42
+Hyperfunktionelle Dysphonie::2466::vowels::a_n,val,42
+Hyperfunktionelle Dysphonie::2471::vowels::a_n,train,42
+Hyperfunktionelle Dysphonie::2479::vowels::a_n,train,42
+Hyperfunktionelle Dysphonie::2480::vowels::a_n,train,42
+Hyperfunktionelle Dysphonie::2482::vowels::a_n,test,42
+Hyperfunktionelle Dysphonie::2487::vowels::a_n,train,42
+Hyperfunktionelle Dysphonie::2492::vowels::a_n,val,42
+Hyperfunktionelle Dysphonie::2517::vowels::a_n,train,42
+Hyperfunktionelle Dysphonie::2521::vowels::a_n,train,42
+Hyperfunktionelle Dysphonie::2523::vowels::a_n,test,42
+Hyperfunktionelle Dysphonie::2526::vowels::a_n,train,42
+Hyperfunktionelle Dysphonie::2540::vowels::a_n,train,42
+Hyperfunktionelle Dysphonie::2545::vowels::a_n,train,42
+Hyperfunktionelle Dysphonie::2546::vowels::a_n,train,42
+Hyperfunktionelle Dysphonie::2553::vowels::a_n,train,42
+Hyperfunktionelle Dysphonie::2572::vowels::a_n,test,42
+Hyperfunktionelle Dysphonie::2577::vowels::a_n,test,42
+Hyperfunktionelle Dysphonie::2589::vowels::a_n,train,42
+Hyperfunktionelle Dysphonie::2590::vowels::a_n,val,42
+Hyperfunktionelle Dysphonie::2591::vowels::a_n,test,42
+Hyperfunktionelle Dysphonie::2603::vowels::a_n,val,42
+Hyperfunktionelle Dysphonie::2604::vowels::a_n,train,42
+Hypotone Dysphonie::129::vowels::a_n,train,42
+Hypotone Dysphonie::1744::vowels::a_n,train,42
+Hypotone Dysphonie::2013::vowels::a_n,train,42
+Hypotone Dysphonie::2020::vowels::a_n,test,42
+Hypotone Dysphonie::2133::vowels::a_n,test,42
+Laryngitis::107::vowels::a_n,train,42
+Laryngitis::139::vowels::a_n,test,42
+Laryngitis::141::vowels::a_n,test,42
+Laryngitis::493::vowels::a_n,train,42
+Laryngitis::497::vowels::a_n,train,42
+Laryngitis::498::vowels::a_n,train,42
+Laryngitis::563::vowels::a_n,train,42
+Laryngitis::568::vowels::a_n,train,42
+Laryngitis::715::vowels::a_n,test,42
+Laryngitis::818::vowels::a_n,train,42
+Laryngitis::819::vowels::a_n,train,42
+Laryngitis::824::vowels::a_n,train,42
+Laryngitis::828::vowels::a_n,test,42
+Laryngitis::844::vowels::a_n,test,42
+Laryngitis::871::vowels::a_n,train,42
+Laryngitis::884::vowels::a_n,train,42
+Laryngitis::886::vowels::a_n,train,42
+Laryngitis::902::vowels::a_n,train,42
+Laryngitis::904::vowels::a_n,train,42
+Laryngitis::910::vowels::a_n,train,42
+Laryngitis::918::vowels::a_n,train,42
+Laryngitis::919::vowels::a_n,val,42
+Laryngitis::930::vowels::a_n,train,42
+Laryngitis::931::vowels::a_n,test,42
+Laryngitis::935::vowels::a_n,test,42
+Laryngitis::1046::vowels::a_n,train,42
+Laryngitis::1047::vowels::a_n,test,42
+Laryngitis::1119::vowels::a_n,train,42
+Laryngitis::1161::vowels::a_n,train,42
+Laryngitis::1163::vowels::a_n,train,42
+Laryngitis::1188::vowels::a_n,test,42
+Laryngitis::1192::vowels::a_n,train,42
+Laryngitis::1221::vowels::a_n,train,42
+Laryngitis::1228::vowels::a_n,train,42
+Laryngitis::1229::vowels::a_n,train,42
+Laryngitis::1233::vowels::a_n,train,42
+Laryngitis::1235::vowels::a_n,train,42
+Laryngitis::1237::vowels::a_n,train,42
+Laryngitis::1246::vowels::a_n,train,42
+Laryngitis::1248::vowels::a_n,val,42
+Laryngitis::1257::vowels::a_n,train,42
+Laryngitis::1259::vowels::a_n,train,42
+Laryngitis::1260::vowels::a_n,test,42
+Laryngitis::1264::vowels::a_n,test,42
+Laryngitis::1265::vowels::a_n,train,42
+Laryngitis::1269::vowels::a_n,train,42
+Laryngitis::1274::vowels::a_n,train,42
+Laryngitis::1283::vowels::a_n,test,42
+Laryngitis::1295::vowels::a_n,train,42
+Laryngitis::1300::vowels::a_n,test,42
+Laryngitis::1301::vowels::a_n,train,42
+Laryngitis::1307::vowels::a_n,train,42
+Laryngitis::1311::vowels::a_n,train,42
+Laryngitis::1315::vowels::a_n,test,42
+Laryngitis::1388::vowels::a_n,train,42
+Laryngitis::1404::vowels::a_n,train,42
+Laryngitis::1405::vowels::a_n,val,42
+Laryngitis::1414::vowels::a_n,train,42
+Laryngitis::1418::vowels::a_n,val,42
+Laryngitis::1426::vowels::a_n,val,42
+Laryngitis::1436::vowels::a_n,train,42
+Laryngitis::1440::vowels::a_n,val,42
+Laryngitis::1447::vowels::a_n,train,42
+Laryngitis::1456::vowels::a_n,test,42
+Laryngitis::1463::vowels::a_n,test,42
+Laryngitis::1472::vowels::a_n,train,42
+Laryngitis::1554::vowels::a_n,train,42
+Laryngitis::1567::vowels::a_n,val,42
+Laryngitis::1578::vowels::a_n,test,42
+Laryngitis::1591::vowels::a_n,train,42
+Laryngitis::1599::vowels::a_n,test,42
+Laryngitis::1610::vowels::a_n,train,42
+Laryngitis::1613::vowels::a_n,train,42
+Laryngitis::1614::vowels::a_n,train,42
+Laryngitis::1617::vowels::a_n,train,42
+Laryngitis::1629::vowels::a_n,train,42
+Laryngitis::1665::vowels::a_n,train,42
+Laryngitis::1780::vowels::a_n,train,42
+Laryngitis::1783::vowels::a_n,train,42
+Laryngitis::1795::vowels::a_n,train,42
+Laryngitis::1796::vowels::a_n,test,42
+Laryngitis::1806::vowels::a_n,val,42
+Laryngitis::1809::vowels::a_n,train,42
+Laryngitis::1930::vowels::a_n,train,42
+Laryngitis::1940::vowels::a_n,val,42
+Laryngitis::1953::vowels::a_n,test,42
+Laryngitis::1965::vowels::a_n,train,42
+Laryngitis::1973::vowels::a_n,train,42
+Laryngitis::1978::vowels::a_n,val,42
+Laryngitis::1987::vowels::a_n,train,42
+Laryngitis::2003::vowels::a_n,train,42
+Laryngitis::2012::vowels::a_n,train,42
+Laryngitis::2021::vowels::a_n,val,42
+Laryngitis::2028::vowels::a_n,train,42
+Laryngitis::2075::vowels::a_n,train,42
+Laryngitis::2079::vowels::a_n,train,42
+Laryngitis::2097::vowels::a_n,train,42
+Laryngitis::2101::vowels::a_n,train,42
+Laryngitis::2110::vowels::a_n,train,42
+Laryngitis::2120::vowels::a_n,val,42
+Laryngitis::2126::vowels::a_n,train,42
+Laryngitis::2128::vowels::a_n,test,42
+Laryngitis::2156::vowels::a_n,test,42
+Laryngitis::2191::vowels::a_n,train,42
+Laryngitis::2219::vowels::a_n,train,42
+Laryngitis::2242::vowels::a_n,train,42
+Laryngitis::2276::vowels::a_n,train,42
+Laryngitis::2296::vowels::a_n,train,42
+Laryngitis::2301::vowels::a_n,val,42
+Laryngitis::2305::vowels::a_n,val,42
+Laryngitis::2315::vowels::a_n,train,42
+Laryngitis::2321::vowels::a_n,test,42
+Laryngitis::2328::vowels::a_n,train,42
+Laryngitis::2351::vowels::a_n,train,42
+Laryngitis::2370::vowels::a_n,train,42
+Laryngitis::2404::vowels::a_n,train,42
+Laryngitis::2424::vowels::a_n,train,42
+Laryngitis::2435::vowels::a_n,train,42
+Laryngitis::2443::vowels::a_n,test,42
+Laryngitis::2487::vowels::a_n,train,42
+Laryngitis::2510::vowels::a_n,train,42
+Laryngitis::2511::vowels::a_n,train,42
+Laryngitis::2514::vowels::a_n,train,42
+Laryngitis::2516::vowels::a_n,train,42
+Laryngitis::2521::vowels::a_n,train,42
+Laryngitis::2525::vowels::a_n,train,42
+Laryngitis::2541::vowels::a_n,train,42
+Laryngitis::2542::vowels::a_n,train,42
+Laryngitis::2555::vowels::a_n,test,42
+Laryngitis::2556::vowels::a_n,train,42
+Laryngitis::2567::vowels::a_n,train,42
+Laryngitis::2574::vowels::a_n,val,42
+Laryngitis::2578::vowels::a_n,train,42
+Laryngitis::2582::vowels::a_n,test,42
+Laryngitis::2585::vowels::a_n,train,42
+Laryngitis::2588::vowels::a_n,val,42
+Laryngitis::2600::vowels::a_n,train,42
+Laryngitis::2602::vowels::a_n,test,42
+Laryngitis::2605::vowels::a_n,train,42
+Laryngitis::2610::vowels::a_n,train,42
+Morbus Parkinson::1580::vowels::a_n,train,42
+Phonationsknötchen::131::vowels::a_n,train,42
+Phonationsknötchen::870::vowels::a_n,test,42
+Phonationsknötchen::900::vowels::a_n,val,42
+Phonationsknötchen::1044::vowels::a_n,test,42
+Phonationsknötchen::1285::vowels::a_n,test,42
+Phonationsknötchen::1294::vowels::a_n,train,42
+Phonationsknötchen::1395::vowels::a_n,train,42
+Phonationsknötchen::1464::vowels::a_n,train,42
+Phonationsknötchen::1607::vowels::a_n,train,42
+Phonationsknötchen::1616::vowels::a_n,val,42
+Phonationsknötchen::1643::vowels::a_n,train,42
+Phonationsknötchen::1669::vowels::a_n,train,42
+Phonationsknötchen::1745::vowels::a_n,train,42
+Phonationsknötchen::1800::vowels::a_n,train,42
+Phonationsknötchen::1866::vowels::a_n,train,42
+Phonationsknötchen::1927::vowels::a_n,train,42
+Phonationsknötchen::2112::vowels::a_n,test,42
+Psychogene Dysphonie::151::vowels::a_n,train,42
+Psychogene Dysphonie::366::vowels::a_n,train,42
+Psychogene Dysphonie::741::vowels::a_n,train,42
+Psychogene Dysphonie::823::vowels::a_n,train,42
+Psychogene Dysphonie::848::vowels::a_n,train,42
+Psychogene Dysphonie::877::vowels::a_n,train,42
+Psychogene Dysphonie::885::vowels::a_n,train,42
+Psychogene Dysphonie::911::vowels::a_n,train,42
+Psychogene Dysphonie::917::vowels::a_n,train,42
+Psychogene Dysphonie::1042::vowels::a_n,val,42
+Psychogene Dysphonie::1051::vowels::a_n,test,42
+Psychogene Dysphonie::1053::vowels::a_n,train,42
+Psychogene Dysphonie::1058::vowels::a_n,train,42
+Psychogene Dysphonie::1198::vowels::a_n,train,42
+Psychogene Dysphonie::1225::vowels::a_n,train,42
+Psychogene Dysphonie::1230::vowels::a_n,train,42
+Psychogene Dysphonie::1258::vowels::a_n,train,42
+Psychogene Dysphonie::1266::vowels::a_n,train,42
+Psychogene Dysphonie::1306::vowels::a_n,train,42
+Psychogene Dysphonie::1319::vowels::a_n,val,42
+Psychogene Dysphonie::1322::vowels::a_n,train,42
+Psychogene Dysphonie::1329::vowels::a_n,train,42
+Psychogene Dysphonie::1335::vowels::a_n,val,42
+Psychogene Dysphonie::1337::vowels::a_n,train,42
+Psychogene Dysphonie::1340::vowels::a_n,train,42
+Psychogene Dysphonie::1384::vowels::a_n,train,42
+Psychogene Dysphonie::1400::vowels::a_n,train,42
+Psychogene Dysphonie::1408::vowels::a_n,train,42
+Psychogene Dysphonie::1421::vowels::a_n,train,42
+Psychogene Dysphonie::1425::vowels::a_n,train,42
+Psychogene Dysphonie::1432::vowels::a_n,train,42
+Psychogene Dysphonie::1459::vowels::a_n,train,42
+Psychogene Dysphonie::1477::vowels::a_n,train,42
+Psychogene Dysphonie::1479::vowels::a_n,train,42
+Psychogene Dysphonie::1566::vowels::a_n,train,42
+Psychogene Dysphonie::1568::vowels::a_n,val,42
+Psychogene Dysphonie::1593::vowels::a_n,train,42
+Psychogene Dysphonie::1661::vowels::a_n,train,42
+Psychogene Dysphonie::1663::vowels::a_n,train,42
+Psychogene Dysphonie::1673::vowels::a_n,val,42
+Psychogene Dysphonie::1675::vowels::a_n,train,42
+Psychogene Dysphonie::1690::vowels::a_n,train,42
+Psychogene Dysphonie::1744::vowels::a_n,train,42
+Psychogene Dysphonie::1767::vowels::a_n,train,42
+Psychogene Dysphonie::1787::vowels::a_n,test,42
+Psychogene Dysphonie::1868::vowels::a_n,train,42
+Psychogene Dysphonie::1891::vowels::a_n,test,42
+Psychogene Dysphonie::1900::vowels::a_n,val,42
+Psychogene Dysphonie::1904::vowels::a_n,train,42
+Psychogene Dysphonie::1910::vowels::a_n,train,42
+Psychogene Dysphonie::1928::vowels::a_n,train,42
+Psychogene Dysphonie::1931::vowels::a_n,train,42
+Psychogene Dysphonie::1951::vowels::a_n,train,42
+Psychogene Dysphonie::1958::vowels::a_n,train,42
+Psychogene Dysphonie::1959::vowels::a_n,train,42
+Psychogene Dysphonie::1964::vowels::a_n,train,42
+Psychogene Dysphonie::1988::vowels::a_n,train,42
+Psychogene Dysphonie::1989::vowels::a_n,train,42
+Psychogene Dysphonie::2025::vowels::a_n,test,42
+Psychogene Dysphonie::2074::vowels::a_n,val,42
+Psychogene Dysphonie::2085::vowels::a_n,val,42
+Psychogene Dysphonie::2104::vowels::a_n,train,42
+Psychogene Dysphonie::2107::vowels::a_n,train,42
+Psychogene Dysphonie::2112::vowels::a_n,test,42
+Psychogene Dysphonie::2123::vowels::a_n,train,42
+Psychogene Dysphonie::2134::vowels::a_n,train,42
+Psychogene Dysphonie::2213::vowels::a_n,test,42
+Psychogene Dysphonie::2246::vowels::a_n,train,42
+Psychogene Dysphonie::2275::vowels::a_n,train,42
+Psychogene Dysphonie::2302::vowels::a_n,val,42
+Psychogene Dysphonie::2310::vowels::a_n,train,42
+Psychogene Dysphonie::2312::vowels::a_n,train,42
+Psychogene Dysphonie::2316::vowels::a_n,test,42
+Psychogene Dysphonie::2317::vowels::a_n,train,42
+Psychogene Dysphonie::2336::vowels::a_n,train,42
+Psychogene Dysphonie::2337::vowels::a_n,train,42
+Psychogene Dysphonie::2339::vowels::a_n,train,42
+Psychogene Dysphonie::2372::vowels::a_n,test,42
+Psychogene Dysphonie::2431::vowels::a_n,val,42
+Psychogene Dysphonie::2433::vowels::a_n,train,42
+Psychogene Dysphonie::2441::vowels::a_n,train,42
+Psychogene Dysphonie::2452::vowels::a_n,train,42
+Psychogene Dysphonie::2489::vowels::a_n,train,42
+Psychogene Dysphonie::2517::vowels::a_n,train,42
+Psychogene Dysphonie::2520::vowels::a_n,train,42
+Psychogene Dysphonie::2526::vowels::a_n,train,42
+Psychogene Dysphonie::2528::vowels::a_n,val,42
+Psychogene Dysphonie::2533::vowels::a_n,test,42
+Psychogene Dysphonie::2534::vowels::a_n,train,42
+Psychogene Dysphonie::2535::vowels::a_n,train,42
+Psychogene Dysphonie::2577::vowels::a_n,test,42
+Reinke Ödem::495::vowels::a_n,val,42
+Reinke Ödem::564::vowels::a_n,train,42
+Reinke Ödem::627::vowels::a_n,train,42
+Reinke Ödem::630::vowels::a_n,train,42
+Reinke Ödem::632::vowels::a_n,train,42
+Reinke Ödem::720::vowels::a_n,val,42
+Reinke Ödem::821::vowels::a_n,train,42
+Reinke Ödem::886::vowels::a_n,train,42
+Reinke Ödem::889::vowels::a_n,train,42
+Reinke Ödem::901::vowels::a_n,train,42
+Reinke Ödem::1045::vowels::a_n,train,42
+Reinke Ödem::1046::vowels::a_n,train,42
+Reinke Ödem::1056::vowels::a_n,train,42
+Reinke Ödem::1090::vowels::a_n,train,42
+Reinke Ödem::1206::vowels::a_n,train,42
+Reinke Ödem::1221::vowels::a_n,train,42
+Reinke Ödem::1229::vowels::a_n,train,42
+Reinke Ödem::1253::vowels::a_n,train,42
+Reinke Ödem::1274::vowels::a_n,train,42
+Reinke Ödem::1382::vowels::a_n,train,42
+Reinke Ödem::1436::vowels::a_n,train,42
+Reinke Ödem::1447::vowels::a_n,train,42
+Reinke Ödem::1453::vowels::a_n,train,42
+Reinke Ödem::1462::vowels::a_n,train,42
+Reinke Ödem::1500::vowels::a_n,test,42
+Reinke Ödem::1563::vowels::a_n,train,42
+Reinke Ödem::1572::vowels::a_n,train,42
+Reinke Ödem::1610::vowels::a_n,train,42
+Reinke Ödem::1656::vowels::a_n,test,42
+Reinke Ödem::1667::vowels::a_n,test,42
+Reinke Ödem::1717::vowels::a_n,train,42
+Reinke Ödem::1721::vowels::a_n,test,42
+Reinke Ödem::1778::vowels::a_n,test,42
+Reinke Ödem::1811::vowels::a_n,train,42
+Reinke Ödem::1828::vowels::a_n,train,42
+Reinke Ödem::1889::vowels::a_n,train,42
+Reinke Ödem::1890::vowels::a_n,train,42
+Reinke Ödem::1941::vowels::a_n,train,42
+Reinke Ödem::1946::vowels::a_n,train,42
+Reinke Ödem::1963::vowels::a_n,train,42
+Reinke Ödem::2031::vowels::a_n,train,42
+Reinke Ödem::2089::vowels::a_n,train,42
+Reinke Ödem::2098::vowels::a_n,train,42
+Reinke Ödem::2110::vowels::a_n,train,42
+Reinke Ödem::2112::vowels::a_n,test,42
+Reinke Ödem::2118::vowels::a_n,train,42
+Reinke Ödem::2161::vowels::a_n,train,42
+Reinke Ödem::2188::vowels::a_n,train,42
+Reinke Ödem::2193::vowels::a_n,test,42
+Reinke Ödem::2211::vowels::a_n,train,42
+Reinke Ödem::2271::vowels::a_n,train,42
+Reinke Ödem::2305::vowels::a_n,val,42
+Reinke Ödem::2333::vowels::a_n,train,42
+Reinke Ödem::2344::vowels::a_n,train,42
+Reinke Ödem::2345::vowels::a_n,train,42
+Reinke Ödem::2358::vowels::a_n,train,42
+Reinke Ödem::2375::vowels::a_n,train,42
+Reinke Ödem::2381::vowels::a_n,train,42
+Reinke Ödem::2411::vowels::a_n,test,42
+Reinke Ödem::2426::vowels::a_n,train,42
+Reinke Ödem::2449::vowels::a_n,train,42
+Reinke Ödem::2491::vowels::a_n,train,42
+Reinke Ödem::2518::vowels::a_n,train,42
+Reinke Ödem::2573::vowels::a_n,val,42
+Reinke Ödem::2588::vowels::a_n,val,42
+Reinke Ödem::2591::vowels::a_n,test,42
+Reinke Ödem::2594::vowels::a_n,train,42
+Reinke Ödem::2595::vowels::a_n,train,42
+Rekurrensparese::105::vowels::a_n,val,42
+Rekurrensparese::108::vowels::a_n,train,42
+Rekurrensparese::120::vowels::a_n,val,42
+Rekurrensparese::128::vowels::a_n,test,42
+Rekurrensparese::130::vowels::a_n,train,42
+Rekurrensparese::138::vowels::a_n,train,42
+Rekurrensparese::142::vowels::a_n,train,42
+Rekurrensparese::150::vowels::a_n,train,42
+Rekurrensparese::152::vowels::a_n,test,42
+Rekurrensparese::155::vowels::a_n,test,42
+Rekurrensparese::352::vowels::a_n,train,42
+Rekurrensparese::356::vowels::a_n,train,42
+Rekurrensparese::358::vowels::a_n,val,42
+Rekurrensparese::362::vowels::a_n,train,42
+Rekurrensparese::364::vowels::a_n,test,42
+Rekurrensparese::365::vowels::a_n,val,42
+Rekurrensparese::448::vowels::a_n,test,42
+Rekurrensparese::450::vowels::a_n,train,42
+Rekurrensparese::492::vowels::a_n,train,42
+Rekurrensparese::565::vowels::a_n,test,42
+Rekurrensparese::627::vowels::a_n,train,42
+Rekurrensparese::629::vowels::a_n,train,42
+Rekurrensparese::632::vowels::a_n,train,42
+Rekurrensparese::633::vowels::a_n,train,42
+Rekurrensparese::670::vowels::a_n,train,42
+Rekurrensparese::671::vowels::a_n,train,42
+Rekurrensparese::712::vowels::a_n,train,42
+Rekurrensparese::716::vowels::a_n,train,42
+Rekurrensparese::725::vowels::a_n,train,42
+Rekurrensparese::726::vowels::a_n,train,42
+Rekurrensparese::728::vowels::a_n,train,42
+Rekurrensparese::825::vowels::a_n,train,42
+Rekurrensparese::849::vowels::a_n,train,42
+Rekurrensparese::855::vowels::a_n,train,42
+Rekurrensparese::859::vowels::a_n,train,42
+Rekurrensparese::864::vowels::a_n,train,42
+Rekurrensparese::869::vowels::a_n,train,42
+Rekurrensparese::874::vowels::a_n,train,42
+Rekurrensparese::879::vowels::a_n,train,42
+Rekurrensparese::880::vowels::a_n,train,42
+Rekurrensparese::883::vowels::a_n,train,42
+Rekurrensparese::887::vowels::a_n,train,42
+Rekurrensparese::893::vowels::a_n,train,42
+Rekurrensparese::896::vowels::a_n,train,42
+Rekurrensparese::897::vowels::a_n,train,42
+Rekurrensparese::908::vowels::a_n,train,42
+Rekurrensparese::912::vowels::a_n,train,42
+Rekurrensparese::914::vowels::a_n,test,42
+Rekurrensparese::924::vowels::a_n,test,42
+Rekurrensparese::926::vowels::a_n,train,42
+Rekurrensparese::928::vowels::a_n,test,42
+Rekurrensparese::929::vowels::a_n,train,42
+Rekurrensparese::1040::vowels::a_n,train,42
+Rekurrensparese::1049::vowels::a_n,train,42
+Rekurrensparese::1054::vowels::a_n,train,42
+Rekurrensparese::1120::vowels::a_n,val,42
+Rekurrensparese::1166::vowels::a_n,test,42
+Rekurrensparese::1206::vowels::a_n,train,42
+Rekurrensparese::1223::vowels::a_n,train,42
+Rekurrensparese::1249::vowels::a_n,train,42
+Rekurrensparese::1256::vowels::a_n,train,42
+Rekurrensparese::1262::vowels::a_n,train,42
+Rekurrensparese::1263::vowels::a_n,train,42
+Rekurrensparese::1270::vowels::a_n,val,42
+Rekurrensparese::1271::vowels::a_n,train,42
+Rekurrensparese::1272::vowels::a_n,train,42
+Rekurrensparese::1277::vowels::a_n,val,42
+Rekurrensparese::1289::vowels::a_n,val,42
+Rekurrensparese::1292::vowels::a_n,train,42
+Rekurrensparese::1293::vowels::a_n,train,42
+Rekurrensparese::1304::vowels::a_n,val,42
+Rekurrensparese::1314::vowels::a_n,train,42
+Rekurrensparese::1325::vowels::a_n,train,42
+Rekurrensparese::1330::vowels::a_n,train,42
+Rekurrensparese::1382::vowels::a_n,train,42
+Rekurrensparese::1390::vowels::a_n,train,42
+Rekurrensparese::1397::vowels::a_n,val,42
+Rekurrensparese::1399::vowels::a_n,test,42
+Rekurrensparese::1402::vowels::a_n,train,42
+Rekurrensparese::1407::vowels::a_n,val,42
+Rekurrensparese::1418::vowels::a_n,val,42
+Rekurrensparese::1424::vowels::a_n,train,42
+Rekurrensparese::1434::vowels::a_n,val,42
+Rekurrensparese::1437::vowels::a_n,val,42
+Rekurrensparese::1444::vowels::a_n,train,42
+Rekurrensparese::1466::vowels::a_n,val,42
+Rekurrensparese::1470::vowels::a_n,val,42
+Rekurrensparese::1478::vowels::a_n,train,42
+Rekurrensparese::1484::vowels::a_n,test,42
+Rekurrensparese::1489::vowels::a_n,test,42
+Rekurrensparese::1547::vowels::a_n,train,42
+Rekurrensparese::1548::vowels::a_n,train,42
+Rekurrensparese::1549::vowels::a_n,train,42
+Rekurrensparese::1553::vowels::a_n,val,42
+Rekurrensparese::1555::vowels::a_n,test,42
+Rekurrensparese::1564::vowels::a_n,train,42
+Rekurrensparese::1570::vowels::a_n,train,42
+Rekurrensparese::1581::vowels::a_n,test,42
+Rekurrensparese::1601::vowels::a_n,train,42
+Rekurrensparese::1604::vowels::a_n,train,42
+Rekurrensparese::1620::vowels::a_n,train,42
+Rekurrensparese::1624::vowels::a_n,train,42
+Rekurrensparese::1626::vowels::a_n,val,42
+Rekurrensparese::1630::vowels::a_n,train,42
+Rekurrensparese::1631::vowels::a_n,train,42
+Rekurrensparese::1638::vowels::a_n,train,42
+Rekurrensparese::1641::vowels::a_n,train,42
+Rekurrensparese::1644::vowels::a_n,train,42
+Rekurrensparese::1655::vowels::a_n,val,42
+Rekurrensparese::1658::vowels::a_n,train,42
+Rekurrensparese::1662::vowels::a_n,train,42
+Rekurrensparese::1664::vowels::a_n,train,42
+Rekurrensparese::1671::vowels::a_n,train,42
+Rekurrensparese::1676::vowels::a_n,val,42
+Rekurrensparese::1683::vowels::a_n,val,42
+Rekurrensparese::1691::vowels::a_n,train,42
+Rekurrensparese::1713::vowels::a_n,train,42
+Rekurrensparese::1722::vowels::a_n,train,42
+Rekurrensparese::1743::vowels::a_n,train,42
+Rekurrensparese::1748::vowels::a_n,train,42
+Rekurrensparese::1755::vowels::a_n,train,42
+Rekurrensparese::1760::vowels::a_n,train,42
+Rekurrensparese::1776::vowels::a_n,train,42
+Rekurrensparese::1784::vowels::a_n,train,42
+Rekurrensparese::1785::vowels::a_n,val,42
+Rekurrensparese::1788::vowels::a_n,test,42
+Rekurrensparese::1789::vowels::a_n,train,42
+Rekurrensparese::1803::vowels::a_n,val,42
+Rekurrensparese::1818::vowels::a_n,val,42
+Rekurrensparese::1820::vowels::a_n,test,42
+Rekurrensparese::1825::vowels::a_n,train,42
+Rekurrensparese::1826::vowels::a_n,train,42
+Rekurrensparese::1829::vowels::a_n,train,42
+Rekurrensparese::1830::vowels::a_n,train,42
+Rekurrensparese::1831::vowels::a_n,train,42
+Rekurrensparese::1832::vowels::a_n,train,42
+Rekurrensparese::1835::vowels::a_n,train,42
+Rekurrensparese::1836::vowels::a_n,train,42
+Rekurrensparese::1863::vowels::a_n,train,42
+Rekurrensparese::1867::vowels::a_n,val,42
+Rekurrensparese::1892::vowels::a_n,train,42
+Rekurrensparese::1901::vowels::a_n,train,42
+Rekurrensparese::1939::vowels::a_n,test,42
+Rekurrensparese::1955::vowels::a_n,train,42
+Rekurrensparese::1970::vowels::a_n,val,42
+Rekurrensparese::2002::vowels::a_n,train,42
+Rekurrensparese::2007::vowels::a_n,train,42
+Rekurrensparese::2009::vowels::a_n,test,42
+Rekurrensparese::2014::vowels::a_n,train,42
+Rekurrensparese::2024::vowels::a_n,train,42
+Rekurrensparese::2033::vowels::a_n,train,42
+Rekurrensparese::2058::vowels::a_n,train,42
+Rekurrensparese::2072::vowels::a_n,test,42
+Rekurrensparese::2073::vowels::a_n,train,42
+Rekurrensparese::2078::vowels::a_n,train,42
+Rekurrensparese::2083::vowels::a_n,train,42
+Rekurrensparese::2086::vowels::a_n,val,42
+Rekurrensparese::2088::vowels::a_n,train,42
+Rekurrensparese::2100::vowels::a_n,train,42
+Rekurrensparese::2109::vowels::a_n,train,42
+Rekurrensparese::2115::vowels::a_n,train,42
+Rekurrensparese::2148::vowels::a_n,val,42
+Rekurrensparese::2150::vowels::a_n,train,42
+Rekurrensparese::2152::vowels::a_n,val,42
+Rekurrensparese::2153::vowels::a_n,train,42
+Rekurrensparese::2155::vowels::a_n,train,42
+Rekurrensparese::2160::vowels::a_n,test,42
+Rekurrensparese::2182::vowels::a_n,train,42
+Rekurrensparese::2190::vowels::a_n,train,42
+Rekurrensparese::2192::vowels::a_n,test,42
+Rekurrensparese::2216::vowels::a_n,train,42
+Rekurrensparese::2218::vowels::a_n,train,42
+Rekurrensparese::2235::vowels::a_n,val,42
+Rekurrensparese::2237::vowels::a_n,train,42
+Rekurrensparese::2243::vowels::a_n,train,42
+Rekurrensparese::2247::vowels::a_n,train,42
+Rekurrensparese::2274::vowels::a_n,train,42
+Rekurrensparese::2330::vowels::a_n,train,42
+Rekurrensparese::2341::vowels::a_n,train,42
+Rekurrensparese::2342::vowels::a_n,val,42
+Rekurrensparese::2346::vowels::a_n,train,42
+Rekurrensparese::2378::vowels::a_n,train,42
+Rekurrensparese::2393::vowels::a_n,train,42
+Rekurrensparese::2394::vowels::a_n,train,42
+Rekurrensparese::2395::vowels::a_n,train,42
+Rekurrensparese::2408::vowels::a_n,train,42
+Rekurrensparese::2414::vowels::a_n,train,42
+Rekurrensparese::2418::vowels::a_n,train,42
+Rekurrensparese::2430::vowels::a_n,test,42
+Rekurrensparese::2450::vowels::a_n,test,42
+Rekurrensparese::2455::vowels::a_n,train,42
+Rekurrensparese::2460::vowels::a_n,train,42
+Rekurrensparese::2464::vowels::a_n,train,42
+Rekurrensparese::2465::vowels::a_n,train,42
+Rekurrensparese::2469::vowels::a_n,train,42
+Rekurrensparese::2476::vowels::a_n,train,42
+Rekurrensparese::2491::vowels::a_n,train,42
+Rekurrensparese::2493::vowels::a_n,train,42
+Rekurrensparese::2496::vowels::a_n,train,42
+Rekurrensparese::2501::vowels::a_n,test,42
+Rekurrensparese::2507::vowels::a_n,train,42
+Rekurrensparese::2508::vowels::a_n,train,42
+Rekurrensparese::2512::vowels::a_n,test,42
+Rekurrensparese::2527::vowels::a_n,test,42
+Rekurrensparese::2536::vowels::a_n,val,42
+Rekurrensparese::2538::vowels::a_n,train,42
+Rekurrensparese::2539::vowels::a_n,train,42
+Rekurrensparese::2562::vowels::a_n,test,42
+Rekurrensparese::2563::vowels::a_n,train,42
+Rekurrensparese::2564::vowels::a_n,train,42
+Rekurrensparese::2565::vowels::a_n,train,42
+Rekurrensparese::2570::vowels::a_n,train,42
+Rekurrensparese::2581::vowels::a_n,train,42
+Spasmodische Dysphonie::143::vowels::a_n,train,42
+Spasmodische Dysphonie::665::vowels::a_n,train,42
+Spasmodische Dysphonie::901::vowels::a_n,train,42
+Spasmodische Dysphonie::1438::vowels::a_n,train,42
+Spasmodische Dysphonie::1482::vowels::a_n,train,42
+Spasmodische Dysphonie::1565::vowels::a_n,train,42
+Spasmodische Dysphonie::1652::vowels::a_n,train,42
+Spasmodische Dysphonie::1666::vowels::a_n,train,42
+Spasmodische Dysphonie::1672::vowels::a_n,train,42
+Spasmodische Dysphonie::1677::vowels::a_n,train,42
+Spasmodische Dysphonie::1679::vowels::a_n,train,42
+Spasmodische Dysphonie::1689::vowels::a_n,train,42
+Spasmodische Dysphonie::1723::vowels::a_n,train,42
+Spasmodische Dysphonie::1752::vowels::a_n,train,42
+Spasmodische Dysphonie::1757::vowels::a_n,train,42
+Spasmodische Dysphonie::1762::vowels::a_n,train,42
+Spasmodische Dysphonie::1763::vowels::a_n,train,42
+Spasmodische Dysphonie::1769::vowels::a_n,train,42
+Spasmodische Dysphonie::1770::vowels::a_n,train,42
+Spasmodische Dysphonie::1782::vowels::a_n,train,42
+Spasmodische Dysphonie::1790::vowels::a_n,train,42
+Spasmodische Dysphonie::1797::vowels::a_n,train,42
+Spasmodische Dysphonie::1804::vowels::a_n,train,42
+Spasmodische Dysphonie::1807::vowels::a_n,train,42
+Spasmodische Dysphonie::1817::vowels::a_n,train,42
+Spasmodische Dysphonie::1821::vowels::a_n,train,42
+Spasmodische Dysphonie::1834::vowels::a_n,train,42
+Spasmodische Dysphonie::1869::vowels::a_n,train,42
+Spasmodische Dysphonie::1902::vowels::a_n,train,42
+Spasmodische Dysphonie::1908::vowels::a_n,train,42
+Spasmodische Dysphonie::1909::vowels::a_n,train,42
+Spasmodische Dysphonie::1914::vowels::a_n,train,42
+Spasmodische Dysphonie::1937::vowels::a_n,train,42
+Spasmodische Dysphonie::1938::vowels::a_n,train,42
+Spasmodische Dysphonie::1945::vowels::a_n,train,42
+Spasmodische Dysphonie::1950::vowels::a_n,train,42
+Spasmodische Dysphonie::1960::vowels::a_n,train,42
+Spasmodische Dysphonie::1961::vowels::a_n,train,42
+Spasmodische Dysphonie::1972::vowels::a_n,train,42
+Spasmodische Dysphonie::1992::vowels::a_n,train,42
+Spasmodische Dysphonie::1994::vowels::a_n,train,42
+Spasmodische Dysphonie::1998::vowels::a_n,train,42
+Spasmodische Dysphonie::2008::vowels::a_n,train,42
+Spasmodische Dysphonie::2010::vowels::a_n,train,42
+Spasmodische Dysphonie::2022::vowels::a_n,train,42
+Spasmodische Dysphonie::2023::vowels::a_n,train,42
+Spasmodische Dysphonie::2030::vowels::a_n,train,42
+Spasmodische Dysphonie::2082::vowels::a_n,train,42
+Spasmodische Dysphonie::2141::vowels::a_n,train,42
+Spasmodische Dysphonie::2158::vowels::a_n,train,42
+Spasmodische Dysphonie::2159::vowels::a_n,train,42
+Spasmodische Dysphonie::2194::vowels::a_n,train,42
+Spasmodische Dysphonie::2227::vowels::a_n,train,42
+Spasmodische Dysphonie::2234::vowels::a_n,train,42
+Spasmodische Dysphonie::2273::vowels::a_n,test,42
+Spasmodische Dysphonie::2304::vowels::a_n,train,42
+Spasmodische Dysphonie::2320::vowels::a_n,train,42
+Spasmodische Dysphonie::2352::vowels::a_n,train,42
+Spasmodische Dysphonie::2361::vowels::a_n,train,42
+Spasmodische Dysphonie::2396::vowels::a_n,train,42
+Spasmodische Dysphonie::2397::vowels::a_n,train,42
+Spasmodische Dysphonie::2440::vowels::a_n,train,42
+Spasmodische Dysphonie::2485::vowels::a_n,train,42
+Spasmodische Dysphonie::2560::vowels::a_n,train,42
+Stimmlippenpolyp::109::vowels::a_n,test,42
+Stimmlippenpolyp::131::vowels::a_n,train,42
+Stimmlippenpolyp::491::vowels::a_n,train,42
+Stimmlippenpolyp::501::vowels::a_n,train,42
+Stimmlippenpolyp::504::vowels::a_n,train,42
+Stimmlippenpolyp::562::vowels::a_n,train,42
+Stimmlippenpolyp::720::vowels::a_n,val,42
+Stimmlippenpolyp::859::vowels::a_n,train,42
+Stimmlippenpolyp::895::vowels::a_n,train,42
+Stimmlippenpolyp::932::vowels::a_n,train,42
+Stimmlippenpolyp::1052::vowels::a_n,train,42
+Stimmlippenpolyp::1157::vowels::a_n,val,42
+Stimmlippenpolyp::1164::vowels::a_n,train,42
+Stimmlippenpolyp::1188::vowels::a_n,test,42
+Stimmlippenpolyp::1317::vowels::a_n,train,42
+Stimmlippenpolyp::1334::vowels::a_n,train,42
+Stimmlippenpolyp::1386::vowels::a_n,train,42
+Stimmlippenpolyp::1389::vowels::a_n,train,42
+Stimmlippenpolyp::1433::vowels::a_n,train,42
+Stimmlippenpolyp::1525::vowels::a_n,val,42
+Stimmlippenpolyp::1576::vowels::a_n,train,42
+Stimmlippenpolyp::1621::vowels::a_n,train,42
+Stimmlippenpolyp::1622::vowels::a_n,train,42
+Stimmlippenpolyp::1639::vowels::a_n,train,42
+Stimmlippenpolyp::1719::vowels::a_n,val,42
+Stimmlippenpolyp::1722::vowels::a_n,train,42
+Stimmlippenpolyp::1749::vowels::a_n,val,42
+Stimmlippenpolyp::1764::vowels::a_n,train,42
+Stimmlippenpolyp::1779::vowels::a_n,val,42
+Stimmlippenpolyp::1890::vowels::a_n,train,42
+Stimmlippenpolyp::1957::vowels::a_n,val,42
+Stimmlippenpolyp::2005::vowels::a_n,train,42
+Stimmlippenpolyp::2056::vowels::a_n,train,42
+Stimmlippenpolyp::2090::vowels::a_n,train,42
+Stimmlippenpolyp::2099::vowels::a_n,train,42
+Stimmlippenpolyp::2157::vowels::a_n,val,42
+Stimmlippenpolyp::2300::vowels::a_n,train,42
+Stimmlippenpolyp::2303::vowels::a_n,train,42
+Stimmlippenpolyp::2466::vowels::a_n,val,42
+Stimmlippenpolyp::2518::vowels::a_n,train,42
+Stimmlippenpolyp::2525::vowels::a_n,train,42
+Stimmlippenpolyp::2557::vowels::a_n,train,42
+Stimmlippenpolyp::2572::vowels::a_n,test,42
+Stimmlippenpolyp::2587::vowels::a_n,train,42
+Stimmlippenpolyp::2592::vowels::a_n,train,42

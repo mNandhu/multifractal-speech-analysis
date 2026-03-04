@@ -1,0 +1,19 @@
+{
+  "input_manifest": "..\\data\\processed\\manifests\\dataset_manifest.csv",
+  "include_splits": true,
+  "train_ratio": 0.7,
+  "val_ratio": 0.15,
+  "test_ratio": 0.15,
+  "random_seed": 42,
+  "num_workers": null,
+  "max_samples_per_class": 500,
+  "balance_healthy": true,
+  "selected_token": "a_n",
+  "normalize_audio": true,
+  "target_sample_rate": 50000,
+  "mfdfa_order": 1,
+  "mfdfa_q_min": -5.0,
+  "mfdfa_q_max": 5.0,
+  "mfdfa_q_step": 0.5,
+  "mfdfa_num_scales": 40
+}

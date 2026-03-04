@@ -1,0 +1,23 @@
+{
+  "num_samples": 1656,
+  "num_acoustic_rows": 1656,
+  "num_multifractal_rows": 1656,
+  "num_opensmile_rows": 1656,
+  "feature_status_counts": {
+    "ok": 1656
+  },
+  "acoustic_status_counts": {
+    "ok": 1656
+  },
+  "multifractal_status_counts": {
+    "ok": 1656
+  },
+  "opensmile_status_counts": {
+    "ok": 1656
+  },
+  "split_counts": {
+    "train": 1190,
+    "val": 237,
+    "test": 229
+  }
+}
