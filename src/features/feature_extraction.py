@@ -19,9 +19,11 @@ from src.features.feature_options import FeatureOptions
 # Optional heavy dependencies — availability is checked once at import time.
 _MFDFA_AVAILABLE = importlib.util.find_spec("MFDFA") is not None
 _OPENSMILE_AVAILABLE = importlib.util.find_spec("opensmile") is not None
+_NEUROKIT2_AVAILABLE = importlib.util.find_spec("neurokit2") is not None
 
 _mfdfa_func: Any = None
 _opensmile_mod: Any = None
+_neurokit2_mod: Any = None
 _SMILE_SINGLETON: Any = None
 
 if _MFDFA_AVAILABLE:
@@ -29,6 +31,16 @@ if _MFDFA_AVAILABLE:
 
 if _OPENSMILE_AVAILABLE:
     import opensmile as _opensmile_mod  # type: ignore[import-untyped]
+
+if _NEUROKIT2_AVAILABLE:
+    import neurokit2 as _neurokit2_mod  # type: ignore[import-untyped]
+    from scipy.stats import skew as _scipy_skew, kurtosis as _scipy_kurtosis
+
+# Target sample rate for neurokit2 entropy/fractal features.
+# ApEn and SampEn are O(N²) — 50 kHz signals (~64 K samples) take ~12 s each.
+# Downsampling to 8 kHz (~10 K samples) is sufficient for speech complexity
+# and reduces entropy computation time by ~40×.
+_NK_DOWNSAMPLE_RATE = 8000
 
 
 def _ensure_required_manifest_columns(df: pd.DataFrame) -> None:
@@ -582,10 +594,100 @@ def _get_smile_instance() -> Any:
     return _SMILE_SINGLETON
 
 
+def _extract_neurokit2_features(signal: np.ndarray, sr: int) -> dict[str, Any]:
+    """Extract complexity, fractal dimension, and statistical features via neurokit2.
+
+    Computed features (all prefixed ``nk_``):
+    - Entropy: Shannon, Approximate, Sample.
+    - Fractal dimension: Petrosian, Sevcik.
+    - Statistics: Skewness, Kurtosis of the raw signal.
+
+    The signal is downsampled to ``_NK_DOWNSAMPLE_RATE`` Hz before entropy and
+    fractal computation to keep the O(N²) ApEn/SampEn tractable. Skewness and
+    kurtosis are computed on the original signal.
+
+    Returns a dict with ``nk_status`` (``"ok"`` or error string) and
+    ``nk_error`` alongside the feature values.
+    """
+    if signal.size == 0:
+        return {
+            "nk_status": "empty_signal",
+            "nk_error": "Audio signal is empty.",
+        }
+
+    if not _NEUROKIT2_AVAILABLE:
+        return {
+            "nk_status": "missing_dependency",
+            "nk_error": "neurokit2 package is not installed. Run: uv add neurokit2",
+        }
+
+    try:
+        sig = np.asarray(signal, dtype=np.float64)
+
+        # Downsample for O(N²) entropy algorithms
+        if sr > _NK_DOWNSAMPLE_RATE:
+            step = max(1, sr // _NK_DOWNSAMPLE_RATE)
+            sig_ds = sig[::step]
+        else:
+            sig_ds = sig
+
+        features: dict[str, Any] = {"nk_status": "ok", "nk_error": None}
+
+        # --- Entropy features (on downsampled signal) ---
+        features["nk_entropy_shannon"] = float(
+            _neurokit2_mod.entropy_shannon(sig_ds, base=2)[0]
+        )
+
+        try:
+            val = _neurokit2_mod.entropy_approximate(
+                sig_ds, dimension=2, tolerance="sd"
+            )
+            features["nk_entropy_approximate"] = float(val[0])
+        except Exception:
+            features["nk_entropy_approximate"] = np.nan
+
+        try:
+            val = _neurokit2_mod.entropy_sample(sig_ds, dimension=2, tolerance="sd")
+            features["nk_entropy_sample"] = float(val[0])
+        except Exception:
+            features["nk_entropy_sample"] = np.nan
+
+        # --- Fractal dimension features (on downsampled signal) ---
+        try:
+            val = _neurokit2_mod.fractal_petrosian(sig_ds)
+            features["nk_fractal_petrosian"] = float(val[0])
+        except Exception:
+            features["nk_fractal_petrosian"] = np.nan
+
+        try:
+            val = _neurokit2_mod.fractal_sevcik(sig_ds)
+            features["nk_fractal_sevcik"] = float(val[0])
+        except Exception:
+            features["nk_fractal_sevcik"] = np.nan
+
+        # --- Statistical features (on full-resolution signal) ---
+        finite = sig[np.isfinite(sig)]
+        if finite.size > 1:
+            features["nk_skewness"] = float(_scipy_skew(finite, bias=False))
+            features["nk_kurtosis"] = float(_scipy_kurtosis(finite, bias=False))
+        else:
+            features["nk_skewness"] = np.nan
+            features["nk_kurtosis"] = np.nan
+
+        return features
+    except Exception as exc:  # pragma: no cover - defensive path
+        return {
+            "nk_status": "failed",
+            "nk_error": str(exc),
+        }
+
+
 def _extract_single_sample_features(
     row: dict[str, Any], options: FeatureOptions, available_meta: list[str]
-) -> tuple[dict[str, Any], dict[str, Any], dict[str, Any], dict[str, Any]]:
-    """Extract core/acoustic/multifractal/opensmile rows for one manifest record."""
+) -> tuple[
+    dict[str, Any], dict[str, Any], dict[str, Any], dict[str, Any], dict[str, Any]
+]:
+    """Extract core/acoustic/multifractal/opensmile/neurokit2 rows for one manifest record."""
     sample_key = str(row["sample_key"])
     wav_path_raw = row.get("wav_path")
     base_meta = {col: row.get(col) for col in available_meta}
@@ -615,7 +717,12 @@ def _extract_single_sample_features(
             "opensmile_status": "missing_wav_path",
             "opensmile_error": "wav_path missing in manifest.",
         }
-        return core_row, acoustic_row, mf_row, os_row
+        nk_row = {
+            "sample_key": sample_key,
+            "nk_status": "missing_wav_path",
+            "nk_error": "wav_path missing in manifest.",
+        }
+        return core_row, acoustic_row, mf_row, os_row, nk_row
 
     wav_path = _resolve_wav_path(wav_path_raw, options=options)
     if not wav_path.exists():
@@ -643,7 +750,12 @@ def _extract_single_sample_features(
             "opensmile_status": "missing_wav_file",
             "opensmile_error": f"WAV file not found: {wav_path}",
         }
-        return core_row, acoustic_row, mf_row, os_row
+        nk_row = {
+            "sample_key": sample_key,
+            "nk_status": "missing_wav_file",
+            "nk_error": f"WAV file not found: {wav_path}",
+        }
+        return core_row, acoustic_row, mf_row, os_row, nk_row
 
     audio_info = _load_audio(
         wav_path,
@@ -677,13 +789,19 @@ def _extract_single_sample_features(
             "opensmile_status": "audio_load_failed",
             "opensmile_error": audio_info["error"],
         }
-        return core_row, acoustic_row, mf_row, os_row
+        nk_row = {
+            "sample_key": sample_key,
+            "nk_status": "audio_load_failed",
+            "nk_error": audio_info["error"],
+        }
+        return core_row, acoustic_row, mf_row, os_row, nk_row
 
     signal = np.asarray(audio_info["signal"], dtype=np.float32)
     sr = int(audio_info["sample_rate"])
 
     acoustic_features = _extract_acoustic_features(signal, sr=sr)
     mf_features = _extract_multifractal_features(signal, options=options)
+    nk_features = _extract_neurokit2_features(signal, sr=sr)
 
     smile = _get_smile_instance()
     if smile is not None:
@@ -698,12 +816,14 @@ def _extract_single_sample_features(
         acoustic_features.get("acoustic_status") != "ok"
         or mf_features.get("mf_status") != "ok"
         or os_features.get("opensmile_status") != "ok"
+        or nk_features.get("nk_status") != "ok"
     ):
         core_row["feature_status"] = "partial_failure"
         errors = [
             str(acoustic_features.get("acoustic_error") or ""),
             str(mf_features.get("mf_error") or ""),
             str(os_features.get("opensmile_error") or ""),
+            str(nk_features.get("nk_error") or ""),
         ]
         merged_error = " | ".join([e for e in errors if e.strip()])
         core_row["feature_error"] = merged_error or None
@@ -711,8 +831,9 @@ def _extract_single_sample_features(
     acoustic_row = {"sample_key": sample_key, **acoustic_features}
     mf_row = {"sample_key": sample_key, **mf_features}
     os_row = {"sample_key": sample_key, **os_features}
+    nk_row = {"sample_key": sample_key, **nk_features}
 
-    return core_row, acoustic_row, mf_row, os_row
+    return core_row, acoustic_row, mf_row, os_row, nk_row
 
 
 def _build_random_split_table(
@@ -835,10 +956,11 @@ def _extract_feature_tables_from_manifest(
     2. Extracts Librosa acoustic features.
     3. Extracts MFDFA multifractal features (skipped if MFDFA unavailable).
     4. Extracts OpenSMILE eGeMAPSv02 features (skipped if opensmile unavailable).
-    5. Builds speaker-disjoint splits (when ``options.include_splits`` is True).
+    5. Extracts neurokit2 complexity/fractal/statistical features.
+    6. Builds speaker-disjoint splits (when ``options.include_splits`` is True).
 
     Returns a dict with keys ``"core"``, ``"acoustic"``, ``"multifractal"``,
-    ``"opensmile"``, and optionally ``"splits"``.
+    ``"opensmile"``, ``"neurokit2"``, and optionally ``"splits"``.
     """
     if manifest_df.empty:
         tables: dict[str, pd.DataFrame] = {
@@ -846,6 +968,7 @@ def _extract_feature_tables_from_manifest(
             "acoustic": pd.DataFrame(),
             "multifractal": pd.DataFrame(),
             "opensmile": pd.DataFrame(),
+            "neurokit2": pd.DataFrame(),
         }
         if options.include_splits:
             tables["splits"] = pd.DataFrame(
@@ -874,6 +997,7 @@ def _extract_feature_tables_from_manifest(
     acoustic_rows: list[dict[str, Any]] = []
     multifractal_rows: list[dict[str, Any]] = []
     opensmile_rows: list[dict[str, Any]] = []
+    neurokit2_rows: list[dict[str, Any]] = []
 
     records = [
         {str(k): v for k, v in row.items()}
@@ -886,7 +1010,14 @@ def _extract_feature_tables_from_manifest(
 
     if requested_workers > 1 and len(records) > 1:
         results: list[
-            tuple[dict[str, Any], dict[str, Any], dict[str, Any], dict[str, Any]] | None
+            tuple[
+                dict[str, Any],
+                dict[str, Any],
+                dict[str, Any],
+                dict[str, Any],
+                dict[str, Any],
+            ]
+            | None
         ] = [None] * len(records)
 
         with ProcessPoolExecutor(max_workers=requested_workers) as executor:
@@ -909,31 +1040,35 @@ def _extract_feature_tables_from_manifest(
         for result in results:
             if result is None:  # pragma: no cover - defensive path
                 continue
-            core_row, acoustic_row, mf_row, os_row = result
+            core_row, acoustic_row, mf_row, os_row, nk_row = result
             core_rows.append(core_row)
             acoustic_rows.append(acoustic_row)
             multifractal_rows.append(mf_row)
             opensmile_rows.append(os_row)
+            neurokit2_rows.append(nk_row)
     else:
         for row in tqdm(records, desc="Extracting features", unit="sample"):
-            core_row, acoustic_row, mf_row, os_row = _extract_single_sample_features(
-                row, options, available_meta
+            core_row, acoustic_row, mf_row, os_row, nk_row = (
+                _extract_single_sample_features(row, options, available_meta)
             )
             core_rows.append(core_row)
             acoustic_rows.append(acoustic_row)
             multifractal_rows.append(mf_row)
             opensmile_rows.append(os_row)
+            neurokit2_rows.append(nk_row)
 
     core_df = pd.DataFrame(core_rows)
     acoustic_df = pd.DataFrame(acoustic_rows)
     multifractal_df = pd.DataFrame(multifractal_rows)
     opensmile_df = pd.DataFrame(opensmile_rows)
+    neurokit2_df = pd.DataFrame(neurokit2_rows)
 
     tables: dict[str, pd.DataFrame] = {
         "core": core_df,
         "acoustic": acoustic_df,
         "multifractal": multifractal_df,
         "opensmile": opensmile_df,
+        "neurokit2": neurokit2_df,
     }
 
     if options.include_splits:

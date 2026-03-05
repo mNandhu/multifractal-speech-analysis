@@ -97,6 +97,9 @@ def _load_existing_feature_tables(options: FeatureOptions) -> dict[str, pd.DataF
         "acoustic": _read_dataframe(options.resolved_output_acoustic),
         "multifractal": _read_dataframe(options.resolved_output_multifractal),
         "opensmile": _read_dataframe(options.resolved_output_opensmile),
+        "neurokit2": _read_dataframe(options.resolved_output_neurokit2)
+        if options.resolved_output_neurokit2.exists()
+        else pd.DataFrame(),
     }
     if options.include_splits and options.resolved_output_splits.exists():
         tables["splits"] = _read_dataframe(options.resolved_output_splits)
@@ -151,12 +154,16 @@ def _subset_cached_tables_to_target_keys(
     opensmile = _filter_table_to_target_keys(
         cached_tables.get("opensmile", pd.DataFrame()), target_keys
     )
+    neurokit2 = _filter_table_to_target_keys(
+        cached_tables.get("neurokit2", pd.DataFrame()), target_keys
+    )
 
     tables: dict[str, pd.DataFrame] = {
         "core": core,
         "acoustic": acoustic,
         "multifractal": multifractal,
         "opensmile": opensmile,
+        "neurokit2": neurokit2,
     }
 
     if options.include_splits:
@@ -171,7 +178,7 @@ def _subset_cached_tables_to_target_keys(
 def _tables_have_exact_target_keys(
     tables: dict[str, pd.DataFrame], target_keys: set[str]
 ) -> bool:
-    for table_name in ("core", "acoustic", "multifractal", "opensmile"):
+    for table_name in ("core", "acoustic", "multifractal", "opensmile", "neurokit2"):
         if (
             _existing_sample_key_set(tables.get(table_name, pd.DataFrame()))
             != target_keys
@@ -187,6 +194,8 @@ def save_feature_tables(
     _write_dataframe(tables["acoustic"], options.resolved_output_acoustic)
     _write_dataframe(tables["multifractal"], options.resolved_output_multifractal)
     _write_dataframe(tables["opensmile"], options.resolved_output_opensmile)
+    if "neurokit2" in tables:
+        _write_dataframe(tables["neurokit2"], options.resolved_output_neurokit2)
 
     if options.include_splits and "splits" in tables:
         _write_dataframe(tables["splits"], options.resolved_output_splits)
@@ -199,16 +208,19 @@ def summarize_feature_tables(tables: dict[str, pd.DataFrame]) -> dict[str, Any]:
     acoustic_df = tables.get("acoustic", pd.DataFrame())
     multifractal_df = tables.get("multifractal", pd.DataFrame())
     opensmile_df = tables.get("opensmile", pd.DataFrame())
+    neurokit2_df = tables.get("neurokit2", pd.DataFrame())
 
     summary = {
         "num_samples": int(len(core_df)),
         "num_acoustic_rows": int(len(acoustic_df)),
         "num_multifractal_rows": int(len(multifractal_df)),
         "num_opensmile_rows": int(len(opensmile_df)),
+        "num_neurokit2_rows": int(len(neurokit2_df)),
         "feature_status_counts": {},
         "acoustic_status_counts": {},
         "multifractal_status_counts": {},
         "opensmile_status_counts": {},
+        "neurokit2_status_counts": {},
     }
 
     if "feature_status" in core_df.columns:
@@ -229,6 +241,11 @@ def summarize_feature_tables(tables: dict[str, pd.DataFrame]) -> dict[str, Any]:
     if "opensmile_status" in opensmile_df.columns:
         summary["opensmile_status_counts"] = (
             opensmile_df["opensmile_status"].value_counts(dropna=False).to_dict()
+        )
+
+    if "nk_status" in neurokit2_df.columns:
+        summary["neurokit2_status_counts"] = (
+            neurokit2_df["nk_status"].value_counts(dropna=False).to_dict()
         )
 
     if "splits" in tables and not tables["splits"].empty:
@@ -254,12 +271,14 @@ def load_feature_tables(
     acoustic_path = effective_options.resolved_output_acoustic
     multifractal_path = effective_options.resolved_output_multifractal
     opensmile_path = effective_options.resolved_output_opensmile
+    neurokit2_path = effective_options.resolved_output_neurokit2
     splits_path = effective_options.resolved_output_splits
 
     core_exists = core_path.exists()
     acoustic_exists = acoustic_path.exists()
     multifractal_exists = multifractal_path.exists()
     opensmile_exists = opensmile_path.exists()
+    neurokit2_exists = neurokit2_path.exists()
     splits_exists = (not effective_options.include_splits) or splits_path.exists()
 
     if (
@@ -267,6 +286,7 @@ def load_feature_tables(
         and acoustic_exists
         and multifractal_exists
         and opensmile_exists
+        and neurokit2_exists
         and splits_exists
     ):
         cached_tables = _load_existing_feature_tables(effective_options)
@@ -365,12 +385,22 @@ def load_feature_tables(
                     ignore_index=True,
                 )
             )
+            merged_neurokit2 = _dedupe_by_sample_key(
+                pd.concat(
+                    [
+                        cached_tables.get("neurokit2", pd.DataFrame()),
+                        new_tables["neurokit2"],
+                    ],
+                    ignore_index=True,
+                )
+            )
 
             tables: dict[str, pd.DataFrame] = {
                 "core": merged_core,
                 "acoustic": merged_acoustic,
                 "multifractal": merged_multifractal,
                 "opensmile": merged_opensmile,
+                "neurokit2": merged_neurokit2,
             }
 
             if effective_options.include_splits:
@@ -413,6 +443,7 @@ def load_feature_tables(
                     "acoustic": pd.DataFrame(),
                     "multifractal": pd.DataFrame(),
                     "opensmile": pd.DataFrame(),
+                    "neurokit2": pd.DataFrame(),
                 }
 
             merged_core = _dedupe_by_sample_key(
@@ -448,6 +479,15 @@ def load_feature_tables(
                     ignore_index=True,
                 )
             )
+            merged_neurokit2 = _dedupe_by_sample_key(
+                pd.concat(
+                    [
+                        cached_tables.get("neurokit2", pd.DataFrame()),
+                        new_tables["neurokit2"],
+                    ],
+                    ignore_index=True,
+                )
+            )
 
             # Keep only requested target keys (drops obsolete rows without recompute).
             merged_core = _filter_table_to_target_keys(merged_core, target_keys)
@@ -458,12 +498,16 @@ def load_feature_tables(
             merged_opensmile = _filter_table_to_target_keys(
                 merged_opensmile, target_keys
             )
+            merged_neurokit2 = _filter_table_to_target_keys(
+                merged_neurokit2, target_keys
+            )
 
             tables = {
                 "core": merged_core,
                 "acoustic": merged_acoustic,
                 "multifractal": merged_multifractal,
                 "opensmile": merged_opensmile,
+                "neurokit2": merged_neurokit2,
             }
 
             if effective_options.include_splits:
@@ -502,6 +546,7 @@ def load_feature_tables(
                 (acoustic_path, acoustic_exists),
                 (multifractal_path, multifractal_exists),
                 (opensmile_path, opensmile_exists),
+                (neurokit2_path, neurokit2_exists),
                 (splits_path, splits_exists),
             ]
             if not exists

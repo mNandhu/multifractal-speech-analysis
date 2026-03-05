@@ -9,6 +9,7 @@ dependencies = [
     "librosa>=0.11.0",
     "lightgbm>=4.6.0",
     "MFDFA>=0.4.3",
+    "neurokit2>=0.2.12",
     "nspfile>=0.2.0",
     "opensmile>=2.6.0",
     "pandas>=3.0.0",
