@@ -55,7 +55,7 @@ def display_data_overview(
         _section("Class Distribution")
         counts = df[target_col].value_counts()
         for cls, n in counts.items():
-            print(f"  {cls:30s}  {_pct(n, len(df))}")
+            print(f"  {str(cls):30s}  {_pct(n, len(df))}")
 
     if "is_healthy" in df.columns:
         n_h = int(df["is_healthy"].astype(int).sum())
