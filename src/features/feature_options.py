@@ -7,6 +7,7 @@ from src.config import (
     DEFAULT_FEATURE_ACOUSTIC_PATH,
     DEFAULT_FEATURE_CORE_PATH,
     DEFAULT_FEATURE_MULTIFRACTAL_PATH,
+    DEFAULT_FEATURE_NEUROKIT2_PATH,
     DEFAULT_FEATURE_OPENSMILE_PATH,
     DEFAULT_FEATURE_SPLITS_PATH,
     DEFAULT_FEATURE_SUMMARY_JSON_PATH,
@@ -22,6 +23,7 @@ class FeatureOptions:
     output_acoustic: Path = DEFAULT_FEATURE_ACOUSTIC_PATH
     output_multifractal: Path = DEFAULT_FEATURE_MULTIFRACTAL_PATH
     output_opensmile: Path = DEFAULT_FEATURE_OPENSMILE_PATH
+    output_neurokit2: Path = DEFAULT_FEATURE_NEUROKIT2_PATH
     output_splits: Path = DEFAULT_FEATURE_SPLITS_PATH
     output_summary_json: Path = DEFAULT_FEATURE_SUMMARY_JSON_PATH
     include_splits: bool = True
@@ -70,6 +72,10 @@ class FeatureOptions:
     @property
     def resolved_output_opensmile(self) -> Path:
         return self.resolve_path(self.output_opensmile)
+
+    @property
+    def resolved_output_neurokit2(self) -> Path:
+        return self.resolve_path(self.output_neurokit2)
 
     @property
     def resolved_output_splits(self) -> Path:

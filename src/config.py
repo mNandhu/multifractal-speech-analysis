@@ -14,6 +14,7 @@ DEFAULT_FEATURE_CORE_PATH = DEFAULT_FEATURES_ROOT / "sample_core.csv"
 DEFAULT_FEATURE_ACOUSTIC_PATH = DEFAULT_FEATURES_ROOT / "acoustic_features.csv"
 DEFAULT_FEATURE_MULTIFRACTAL_PATH = DEFAULT_FEATURES_ROOT / "multifractal_features.csv"
 DEFAULT_FEATURE_OPENSMILE_PATH = DEFAULT_FEATURES_ROOT / "opensmile_features.csv"
+DEFAULT_FEATURE_NEUROKIT2_PATH = DEFAULT_FEATURES_ROOT / "neurokit2_features.csv"
 DEFAULT_FEATURE_SPLITS_PATH = DEFAULT_FEATURES_ROOT / "sample_splits.csv"
 DEFAULT_FEATURE_SUMMARY_JSON_PATH = DEFAULT_FEATURES_ROOT / "feature_summary.json"
 
@@ -34,9 +35,9 @@ PATHOLOGY_DE_TO_EN = {
     "healthy": "healthy",
     "Morbus Parkinson": "parkinson's disease",
     "Phonationsknötchen": "vocal fold nodules",
-    "Phonationsknötchen": "vocal fold nodules", # Handle both "ö" and "ö" variants.
+    "Phonationsknötchen": "vocal fold nodules",  # Handle both "ö" and "ö" variants.
     "Reinke Ödem": "reinke's edema",
-    "Reinke Ödem": "reinke's edema", # Handle both "ö" and "ö" variants.
+    "Reinke Ödem": "reinke's edema",  # Handle both "ö" and "ö" variants.
     "Rekurrensparese": "recurrent laryngeal nerve paralysis",
     "Spasmodische Dysphonie": "spasmodic dysphonia",
     "Stimmlippenpolyp": "vocal fold polyp",

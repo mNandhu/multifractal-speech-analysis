@@ -3,6 +3,7 @@
   "num_acoustic_rows": 1656,
   "num_multifractal_rows": 1656,
   "num_opensmile_rows": 1656,
+  "num_neurokit2_rows": 1656,
   "feature_status_counts": {
     "ok": 1656
   },
@@ -13,6 +14,9 @@
     "ok": 1656
   },
   "opensmile_status_counts": {
+    "ok": 1656
+  },
+  "neurokit2_status_counts": {
     "ok": 1656
   },
   "split_counts": {
