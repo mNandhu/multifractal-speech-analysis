@@ -4,6 +4,35 @@
 
 ---
 
+## Table of Contents
+
+| #   | Slide Title                                                                                                   | Section      |
+| --- | ------------------------------------------------------------------------------------------------------------- | ------------ |
+| 1   | [Title Slide](#slide-1--title-slide)                                                                          | —            |
+| 2   | [Introduction & Motivation](#slide-2--introduction--motivation)                                               | Introduction |
+| 3   | [What is Multifractal Analysis?](#slide-3--what-is-multifractal-analysis)                                     | Introduction |
+| 4   | [Illustrating Multifractality in Speech](#slide-4--illustrating-multifractality-in-speech)                    | Introduction |
+| 5   | [Problem Definition](#slide-5--problem-definition)                                                            | Problem      |
+| 6   | [Gaps Identified](#slide-6--gaps-identified)                                                                  | Problem      |
+| 7   | [Objectives](#slide-7--objectives)                                                                            | Problem      |
+| 8   | [Dataset Description](#slide-8--dataset-description)                                                          | Data         |
+| 9   | [Dataset: Class Distribution](#slide-9--dataset-class-distribution)                                           | Data         |
+| 10  | [Dataset: Disease Grouping](#slide-10--dataset-disease-grouping)                                              | Data         |
+| 11  | [Methodology: Feature Extraction](#slide-11--methodology-feature-extraction)                                  | Methodology  |
+| 12  | [Methodology: Pipeline](#slide-12--methodology-pipeline)                                                      | Methodology  |
+| 13  | [Methodology: Data Splitting & Leakage Prevention](#slide-13--methodology-data-splitting--leakage-prevention) | Methodology  |
+| 14  | [Methodology: Models](#slide-14--methodology-models)                                                          | Methodology  |
+| 15  | [Results: Binary Classification](#slide-15--results-binary-classification-healthy-vs-pathological)            | Results      |
+| 16  | [Results: Disease Group Classification](#slide-16--results-disease-group-classification)                      | Results      |
+| 17  | [Results: Per-Disease Detection](#slide-17--results-per-disease-detection)                                    | Results      |
+| 18  | [Results: Feature Ablation (MFDFA-centric)](#slide-18--results-feature-ablation-mfdfa-centric)                | Results      |
+| 19  | [Results: Age Impact Analysis](#slide-19--results-age-impact-analysis)                                        | Results      |
+| 20  | [Analysis: Impact of Proper Evaluation](#slide-20--analysis-impact-of-proper-evaluation)                      | Analysis     |
+| 21  | [Conclusion](#slide-21--conclusion)                                                                           | Conclusion   |
+| 22  | [Future Work](#slide-22--future-work)                                                                         | Conclusion   |
+
+---
+
 ## Slide 1 — Title Slide
 
 - **Title:** Multifractal Speech Analysis for Voice Pathology Detection
@@ -67,7 +96,6 @@
 
 ## Slide 6 — Gaps Identified
 
-- Most existing voice pathology detection studies use **only spectral/acoustic features** (MFCCs, jitter, shimmer)
 - **Temporal complexity** of the speech signal is underexplored as a diagnostic feature
 - Many studies have **data leakage** — same speaker's recordings appear in both train and test sets, inflating results
   - We confirmed this: naïve random splitting gave 100% accuracy; proper speaker-grouped splitting dropped it to ~77–89%
@@ -276,7 +304,15 @@
 
 ## Slide 16 — Results: Disease Group Classification
 
-**Neurological vs Structural — Best: 64.6% F1 Macro** (Random Forest)
+**3 groups (Neurological / Structural / Functional) — v6, 5-fold speaker-grouped CV:**
+
+| Model         | Accuracy  | Balanced Acc. | F1 Macro  |
+| ------------- | --------- | ------------- | --------- |
+| **XGBoost**   | **0.542** | **0.521**     | **0.522** |
+| LightGBM      | 0.524     | 0.500         | 0.502     |
+| Random Forest | 0.502     | 0.475         | 0.473     |
+
+**2 groups (Neurological vs Structural only) — v7, 5-fold speaker-grouped CV:**
 
 | Model             | Accuracy  | Balanced Acc. | F1 Macro  |
 | ----------------- | --------- | ------------- | --------- |
@@ -284,11 +320,11 @@
 | LightGBM          | 0.642     | 0.639         | 0.637     |
 | XGBoost           | 0.611     | 0.604         | 0.603     |
 
-- Disease group classification is significantly harder than binary detection
-- Structural and neurological groups have distinct but overlapping feature signatures
-- Results are substantially above random (50% for 2 classes)
+- 3-group task (random baseline ~33%) → best 52.2% F1 — harder due to Functional group ambiguity
+- Dropping Functional group and focusing on N vs S raises F1 to **63%** (random baseline 50%)
+- Functional dysphonias are acoustically closest to healthy voices — they confuse the classifier
 
-> _[Insert multi-class confusion matrix from `model_training_v7.ipynb`]_
+> _[Insert multi-class confusion matrices from `model_training_v6.ipynb` (3-group) and `model_training_v7.ipynb` (2-group)]_
 
 ---
 
@@ -341,12 +377,22 @@
 - Age was consistently the **top feature** in importance rankings
 - Removing age from the best config (MFDFA + OpenSMILE):
 
+**Binary model results (Healthy vs Pathological):**
+
 | Model        | F1 With Age | F1 Without Age | Drop       |
 | ------------ | ----------- | -------------- | ---------- |
 | LightGBM     | 87.8%       | 74.9%          | **−12.9%** |
 | XGBoost      | 87.7%       | 74.4%          | −13.3%     |
 | LogReg       | 86.7%       | 72.9%          | −13.8%     |
 | RandomForest | 85.8%       | 73.9%          | −11.8%     |
+
+**Multi-class model results (Neurological vs Structural):**
+
+| Model        | F1 With Age | F1 Without Age | Drop  |
+| ------------ | ----------- | -------------- | ----- |
+| RandomForest | 62.7%       | 61.9%          | −0.8% |
+| LightGBM     | 62.0%       | 60.1%          | −1.9% |
+| XGBoost      | 61.9%       | 60.4%          | −1.5% |
 
 - Age impact on multi-class is much smaller (~1–2% drop)
 - **Implication:** Age is a strong predictor for healthy vs pathological, but the models still achieve ~75% F1 using only voice signal features
