@@ -291,6 +291,8 @@ The results reveal several interesting observations. First, multifractal feature
 
 In contrast, adding NeuroKit2 features yields only marginal improvement, suggesting that most of the useful complexity-related information is already captured by the multifractal descriptors.
 
+An additional observation concerns the role of age metadata. When age is removed from the MFDFA+OpenSMILE configuration, macro F1 drops from 0.878 to 0.749, indicating that age is a strongly correlated variable in this dataset and should be interpreted carefully when assessing pathology-detection performance.
+
 The comparative results across configurations are illustrated in Figure~\ref{fig:ablation_results}.
 
 \begin{figure*}[htbp]
