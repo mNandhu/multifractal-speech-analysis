@@ -228,6 +228,13 @@ The confusion matrices aggregated across the cross-validation folds are shown in
 \label{fig:binary_confmat_models}
 \end{figure*}
 
+\begin{figure*}[htbp]
+\centering
+\includegraphics[width=0.8\textwidth]{figures/multiclass_confusion.png}
+\caption{Cross-validation aggregated confusion matrices for multi-class classification across different models.}
+\label{fig:multiclass_confusion}
+\end{figure*}
+
 %--------------------------------------------------------------
 \subsection{Disease Group Classification}
 %--------------------------------------------------------------
@@ -256,13 +263,6 @@ XGBoost & 0.611 & 0.604 & 0.603 \\
 The results indicate that disease-group classification is substantially more difficult than binary pathology detection. Even the best-performing model achieves an F1 score of approximately 0.63, reflecting the subtler acoustic differences between neurological and structural disorders.
 
 Figure~\ref{fig:multiclass_confusion} illustrates the confusion matrices for this task.
-
-\begin{figure}[htbp]
-\centering
-\includegraphics[width=\columnwidth]{figures/multiclass_confusion.png}
-\caption{Confusion matrices for disease-group classification.}
-\label{fig:multiclass_confusion}
-\end{figure}
 
 %--------------------------------------------------------------
 \subsection{Feature Ablation Analysis}
