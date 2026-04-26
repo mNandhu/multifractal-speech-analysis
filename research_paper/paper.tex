@@ -83,15 +83,15 @@
   \label{sec:introduction}
   %--------------------------------------------------------------
 
-  Voice disorders are prevalent among the population and can occur because of structural problems in the vocal folds, neurological problems that affect muscle coordination, and various functional and psychogenic factors. The proper diagnosis usually requires a laryngoscopy procedure together with a perceptual assessment of voice disorders conducted by physicians. Even though these techniques are quite accurate, they can be subjective, time-consuming, and necessitate expert knowledge in medicine.
+Voice disorders have high prevalence in the population because of the structural pathology of the vocal folds, neurogenic disorders in motor coordination, and multiple functional and psychogenic causes. Proper diagnosis of these disorders requires not only instrumental procedures like laryngoscopy but also perceptual evaluation of voice disorders by clinicians. Such methods are extremely precise; however, subjectivity and medical expertise might complicate the procedure.
 
-  Recently, there has been a considerable interest in the application of computational algorithms for voice disorder detection and screening as an alternative to traditional clinical diagnosis. Currently available computational techniques for identifying pathological speech mostly employ conventional acoustic features such as MFCCs, fundamental frequency ($F_0$), and other spectral-based descriptors. Such techniques have proven to be rather successful for capturing the spectral properties of speech but fail to adequately describe the temporal and nonlinear dynamics associated with pathological voices.
+Recently, much attention is paid to computerized procedures used for detecting and diagnosing voice disorders in order to eliminate subjectivity. Computer algorithms for recognizing pathological voices mostly use standard spectrographic parameters of the signal such as MFCCs, F0, and others. Even though these methods successfully describe spectral properties of speech, they are inefficient for characterization of temporal and nonlinear dynamics typical for pathological voices.
 
-  Speech production can be considered as a nonlinear phenomenon governed by a wide range of processes involving airflow, vocal fold vibration, and vocal tract movements. In some cases, these processes may become irregular leading to changes in the dynamics. For a comprehensive analysis of such dynamics, the fractal and multifractal theory can be used as they offer a possibility of studying complex signals in terms of their scaling characteristics.
+It is evident that speech generation can be considered as a nonlinear process that occurs due to many phenomena that affect it, such as airstream initiation, vocal fold vibrations, and articulation. Sometimes these dynamics turn out to be unstable, which leads to changes in these dynamics. Therefore, fractal and multifractal theory should be used in the analysis of pathological voices to estimate their dynamics.
 
-  In this paper, we propose the use of \textbf{multifractal detrended fluctuation analysis} technique for assessing speech recordings in the presence of pathologies. Multifractal analysis of time series represents a mathematical methodology aimed at quantifying heterogeneity of dynamics using the concept of scaling behaviour at multiple time scales. Unlike monofractals which quantify signals by means of one scaling exponent, multifractality offers more flexible representation of signal complexity by providing a multifractal spectrum which includes local scaling exponents for various $q$-orders.
+For the purpose of this work, \textbf{multifractal detrended fluctuation analysis} will be used in the analysis of speech recordings affected by certain diseases. The theory of multifractality of time series is a set of methods which describe dynamics of the studied object in terms of its scaling properties over various time scales. Monofractals describe an object with one scaling exponent. Multifractal description allows for describing a more complex signal with the help of multifractal spectrum composed of different local scaling exponents depending on q-order of the analysis.
 
-  The main purpose of the study is to test whether multifractal descriptors obtained via MFDFA can help detect pathological speech, and whether such descriptors can complement conventional acoustic features.
+The main focus of the research is whether multifractal characteristics obtained through MFDFA could be helpful in detecting speech pathology, and if they could serve as additional indicators of pathology along with standard acoustic parameters.
 
   Three aspects distinguish this work from prior fractal-based voice pathology studies. First, we employ the full multifractal spectrum from MFDFA rather than a scalar fractal dimension estimate, providing richer scaling information across multiple moment orders. Second, we address both \textbf{binary} (healthy vs.\ pathological) and \textbf{multi-class} (neurological vs.\ structural) classification within a single unified pipeline, whereas most prior studies focus exclusively on binary detection. Third, we enforce strict speaker-independent cross-validation using \texttt{StratifiedGroupKFold}, ensuring recordings from the same speaker never span training and test splits — a safeguard that prevents the data leakage shown to produce overly optimistic performance in many prior works \cite{saenzlechon2006}. A feature ablation study further quantifies MFDFA's standalone and combined contribution to each classification task.
 
@@ -227,9 +227,9 @@
   \subsection{Disease Group Classification}
   %--------------------------------------------------------------
 
-  Beyond simple pathology detection, a more challenging task involves distinguishing between different types of voice disorders based on their clinical origin. In this work, individual pathologies are grouped into two clinically meaningful categories: neurological disorders and structural disorders.
+While detecting pathology is one thing, another goal that poses greater challenges involves the classification of various types of voice disorders depending on their clinical causes. In this paper, pathologies have been classified into two groups from a clinical perspective: neurologic diseases and structural diseases.
 
-  Neurological disorders typically arise from impairments in neural control of the vocal folds, whereas structural disorders involve physical abnormalities in the vocal fold tissue. Distinguishing between these categories from speech signals alone is therefore a more difficult problem.
+Neurological diseases are caused by abnormalities in the neural regulation of the vocal folds, while structural diseases refer to abnormalities of the tissues that make up the vocal folds. Therefore, classifying these two groups solely through speech signals is a difficult task.
 
   Table~\ref{tab:multiclass_results} summarises the performance of the evaluated models for disease-group classification.
 
@@ -282,13 +282,13 @@
   \end{tabular}
   \end{table}
 
-  The results reveal several interesting observations. First, multifractal features alone achieve an F1 score of 0.866, demonstrating that multifractal characteristics of the speech signal carry substantial information about vocal health. When combined with OpenSMILE descriptors, performance improves slightly, indicating that these features provide complementary information.
+The results reveal several key insights. First, the multifractal features alone can produce an F1 score of 0.866, meaning that the multifractal properties of the speech signal contain enough information about the state of the vocal tract. Using the OpenSMILE features along with the multifractal ones shows some minor improvements, which means that both types of features complement each other.
 
-  In contrast, adding NeuroKit2 features yields only marginal improvement, suggesting that most of the useful complexity-related information is already captured by the multifractal descriptors.
+At the same time, using the NeuroKit2 features leads to almost no improvement, meaning that the majority of information on complexity can be found in the multifractal features.
 
-  An additional observation concerns the role of age metadata. When age is removed from the MFDFA+OpenSMILE configuration, macro F1 drops from 0.878 to 0.749, indicating that age is a strongly correlated variable in this dataset and should be interpreted carefully when assessing pathology-detection performance.
+Another important insight relates to the effect of the age metadata feature. Removing age from the model based on MFDFA+OpenSMILE features reduces the macro F1 from 0.878 to 0.749, which means that age is a highly correlated variable in this dataset and must be considered carefully.
 
-  The comparative results across configurations are illustrated in Figure~\ref{fig:ablation_results}.
+  The comparative results in all configurations are illustrated in Figure~\ref{fig:ablation_results}.
 
   \begin{figure*}[htbp]
   \centering
