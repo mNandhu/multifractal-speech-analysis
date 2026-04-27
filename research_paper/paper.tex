@@ -138,16 +138,20 @@ The main focus of the research is whether multifractal characteristics obtained 
   \end{table}
 
   The \texttt{a\_n} subset is class-imbalanced, which is typical for clinical speech datasets. Pathology classes with insufficient speaker representation for reliable speaker-independent cross-validation are excluded. The nine voice disorders retained span neurological, structural, and functional aetiologies: \textbf{Parkinson's Disease} (hypokinetic dysarthria from impaired laryngeal motor control); \textbf{Recurrent Laryngeal Nerve Paralysis} (breathiness from vocal fold immobility); \textbf{Spasmodic Dysphonia} (involuntary voice breaks from laryngeal dystonia); \textbf{Vocal Fold Nodules} (hoarseness from bilateral overuse lesions); \textbf{Vocal Fold Polyp} (breathiness from asymmetric fold vibration); \textbf{Laryngitis} (hoarseness from laryngeal mucosal inflammation); \textbf{Hyperfunctional Dysphonia} (strained voice from excessive laryngeal tension); \textbf{Psychogenic Dysphonia} (voice disorder of psychological aetiology without organic pathology); and \textbf{Functional Dysphonia} (dysphonia from maladaptive laryngeal behaviour without identifiable organic cause).
+
+  \begin{figure*}[t!]
+  \centering
+  \includegraphics[width=\textwidth]{figures/data_pipeline.png}
+  \caption{Overview of the preprocessing and feature extraction pipeline. Raw NSP recordings are converted to WAV format, metadata manifests are generated, and sustained vowel tokens are selected. Multiple feature families are then extracted and merged before training classification models using speaker-grouped cross-validation.}
+  \label{fig:data_pipeline}
+  \end{figure*}
+
   %--------------------------------------------------------------
   \section{Feature Extraction}
   \label{sec:features}
   %--------------------------------------------------------------
 
-  Multiple feature families totalling approximately \textbf{191 features} are extracted from each audio sample, spanning traditional spectral descriptors, multifractal characteristics, standardised paralinguistic features, and nonlinear complexity measures.
-
-  \subsection{Acoustic Features}
-
-  Conventional acoustic features are extracted using the \textit{Librosa} library. The feature set contains \textbf{84 descriptors}, including time-domain statistics, spectral moments, zero-crossing measures, MFCC summaries, and fundamental frequency estimates. These features serve as the baseline representation of spectral and phonatory structure.
+  Four complementary feature families totalling \textbf{107 features} are extracted from each audio sample, spanning multifractal characteristics, standardised paralinguistic features, nonlinear complexity measures, and speaker metadata.
 
   \subsection{Multifractal Features}
 
@@ -155,7 +159,7 @@ The main focus of the research is whether multifractal characteristics obtained 
 
   \subsection{OpenSMILE Features}
 
-  In addition to the Librosa-based descriptors, features from the \textbf{extended Geneva Minimalistic Acoustic Parameter Set (eGeMAPSv02)} are extracted using the OpenSMILE toolkit. This standardised feature set contributes \textbf{88 parameters} capturing prosodic, spectral-shape, voice-quality, and temporal characteristics relevant to clinical speech analysis.
+  Standardised acoustic features are extracted using the OpenSMILE toolkit with the \textbf{extended Geneva Minimalistic Acoustic Parameter Set (eGeMAPSv02)}, contributing \textbf{88 parameters} capturing prosodic, spectral-shape, voice-quality, and temporal characteristics.
 
   \subsection{NeuroKit2 Features}
 
@@ -171,12 +175,6 @@ The main focus of the research is whether multifractal characteristics obtained 
   %--------------------------------------------------------------
 
   The overall preprocessing workflow is illustrated in Figure~\ref{fig:data_pipeline}.
-  \begin{figure*}[htbp]
-  \centering
-  \includegraphics[width=\textwidth]{figures/data_pipeline.png}
-  \caption{Overview of the preprocessing and feature extraction pipeline. Raw NSP recordings are converted to WAV format, metadata manifests are generated, and sustained vowel tokens are selected. Multiple feature families are then extracted and merged before training classification models using speaker-grouped cross-validation.}
-  \label{fig:data_pipeline}
-  \end{figure*}
   The raw \texttt{.nsp} recordings are converted to \texttt{.wav}, indexed through a metadata manifest, normalised, and then processed by the four feature-extraction modules before the resulting feature tables are merged into a unified machine learning dataset. To minimise variability and within-speaker duplication, most experiments use only the sustained vowel \texttt{a\_n}.
 
   A critical concern in clinical voice datasets is \textbf{speaker-level leakage}. We therefore use \texttt{StratifiedGroupKFold} with speaker identity as the grouping variable so that all recordings from a speaker remain in the same fold. Rare classes are removed when necessary for stable training, and class imbalance is handled through filtering or downsampling of dominant groups. Final performance is reported as the average over five speaker-grouped folds.
@@ -215,7 +213,7 @@ The main focus of the research is whether multifractal characteristics obtained 
 
   The confusion matrices aggregated across the cross-validation folds are shown in Figure~\ref{fig:binary_confmat_models}. These results indicate that the models achieve high recall for pathological voices while maintaining strong precision for the healthy class.
 
-  \begin{figure*}[htbp]
+  \begin{figure*}[t!]
   \centering
   \includegraphics[width=\textwidth]{figures/binary_confusion_models.png}
   \caption{Cross-validation aggregated confusion matrices for binary classification across different models.}
@@ -252,7 +250,7 @@ Neurological diseases are caused by abnormalities in the neural regulation of th
 
   Figure~\ref{fig:multiclass_confusion} illustrates the confusion matrices for this task.
 
-  \begin{figure*}[htbp]
+  \begin{figure*}[t!]
   \centering
   \includegraphics[width=0.8\textwidth]{figures/multiclass_confusion.png}
   \caption{Cross-validation aggregated confusion matrices for multi-class classification across different models.}
@@ -282,20 +280,18 @@ Neurological diseases are caused by abnormalities in the neural regulation of th
   \end{tabular}
   \end{table}
 
-The results reveal several key insights. First, the multifractal features alone can produce an F1 score of 0.866, meaning that the multifractal properties of the speech signal contain enough information about the state of the vocal tract. Using the OpenSMILE features along with the multifractal ones shows some minor improvements, which means that both types of features complement each other.
-
-At the same time, using the NeuroKit2 features leads to almost no improvement, meaning that the majority of information on complexity can be found in the multifractal features.
-
-Another important insight relates to the effect of the age metadata feature. Removing age from the model based on MFDFA+OpenSMILE features reduces the macro F1 from 0.878 to 0.749, which means that age is a highly correlated variable in this dataset and must be considered carefully.
-
-  The comparative results in all configurations are illustrated in Figure~\ref{fig:ablation_results}.
-
-  \begin{figure*}[htbp]
+  \begin{figure*}[t!]
   \centering
   \includegraphics[width=\textwidth]{figures/feature_ablation.png}
   \caption{Feature ablation results for binary and multi-class classification.}
   \label{fig:ablation_results}
   \end{figure*}
+
+The results reveal several key insights. First, the multifractal features alone can produce an F1 score of 0.866, meaning that the multifractal properties of the speech signal contain enough information about the state of the vocal tract. Using the OpenSMILE features along with the multifractal ones shows some minor improvements, which means that both types of features complement each other.
+
+At the same time, using the NeuroKit2 features leads to almost no improvement, meaning that the majority of information on complexity can be found in the multifractal features.
+
+Another important insight relates to the effect of the age metadata feature. Removing age from the model based on MFDFA+OpenSMILE features reduces the macro F1 from 0.878 to 0.749, which means that age is a highly correlated variable in this dataset and must be considered carefully. The comparative results across all configurations are illustrated in Figure~\ref{fig:ablation_results}.
 
   %--------------------------------------------------------------
   \subsection{Per-Disease Binary Detection}
