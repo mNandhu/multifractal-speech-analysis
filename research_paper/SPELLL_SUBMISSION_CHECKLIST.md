@@ -56,9 +56,12 @@ Overleaf alternative: https://www.overleaf.com/latex/templates/springer-lecture-
   why disease-group classification is harder, and explicit limitations.
 - Related Work split into five labelled subsections.
 - Added a paper-organisation paragraph at the end of the Introduction.
-- Added the four previously unused figures: `pathology_distribution.png`,
-  `waveform_spectrogram_examples.png`, `multifractal_feature_distributions.png`,
-  `age_impact.png`.
+- ~~Added the four previously unused figures~~ — **reverted.** These were added to reach
+  the 12-page minimum and pushed the draft to 20 pages. The figure set is back to the
+  original four: `data_pipeline`, `binary_confusion_models`, `multiclass_confusion`,
+  `feature_ablation`. `pathology_distribution.png`,
+  `waveform_spectrogram_examples.png`, `multifractal_feature_distributions.png`, and
+  `age_impact.png` remain unused in `figures/`.
 - Named the four classifiers and stated the fold-wise standardisation protocol
   (previously unstated — a reviewer would have asked).
 - Expanded the per-disease failure analysis for vocal fold nodules and spasmodic

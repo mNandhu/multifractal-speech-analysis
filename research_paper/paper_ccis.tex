@@ -45,7 +45,7 @@ Voice pathology classification is inherently difficult due to the nonlinearity a
 multi-scale nature of the underlying pathological speech signals, which cannot be
 completely described through traditional acoustic metrics. In this paper, we present a
 methodology that addresses both binary (healthy/pathological) and three-class
-(healthy/neurological/structural) classification of vocal pathology. The system employs a fusion of
+(healthy/neurological/ structural) classification of vocal pathology. The system employs a fusion of
 multifractal features extracted via Multifractal Detrended Fluctuation Analysis (MFDFA),
 alongside a set of standardised acoustic features from the extended Geneva Minimalistic
 Acoustic Parameter Set (eGeMAPS). Experiments carried out on the Saarbr\"ucken Voice
@@ -117,21 +117,16 @@ optimistic performance in many prior works~\cite{saenzlechon2006}. A feature abl
 study further quantifies the standalone and combined contribution of MFDFA to each
 classification task, and isolates the effect of speaker age as a potential confound.
 
-The remainder of the paper is organised as follows. Section~\ref{sec:related_work} reviews
-prior work in acoustic, nonlinear, and multifractal analysis of pathological voice.
-Section~\ref{sec:mfdfa} formalises the MFDFA procedure and the descriptors derived from it.
-Section~\ref{sec:dataset} describes the dataset. Section~\ref{sec:features} details the four
-feature families. Section~\ref{sec:pipeline} describes the data pipeline and splitting
-strategy. Section~\ref{sec:experiments} presents the experimental results.
-Section~\ref{sec:discussion} discusses the findings and their limitations, and
-Section~\ref{sec:conclusion} concludes.
+The remainder of the paper reviews prior work (Section~\ref{sec:related_work}), formalises
+the MFDFA procedure (Section~\ref{sec:mfdfa}), describes the dataset, features, and
+splitting strategy (Sections~\ref{sec:dataset}--\ref{sec:pipeline}), presents results
+(Section~\ref{sec:experiments}), and discusses findings and limitations
+(Section~\ref{sec:discussion}).
 
 %--------------------------------------------------------------
 \section{Related Work}
 \label{sec:related_work}
 %--------------------------------------------------------------
-
-\subsection{Acoustic and Perturbation-Based Approaches}
 
 Automatic detection of voice pathologies has traditionally relied on acoustic features such
 as MFCCs, perturbation measures, and spectral statistics combined with statistical or
@@ -147,8 +142,6 @@ measures in particular presuppose a reliably extractable fundamental period, an 
 that breaks down precisely in the severely dysphonic cases where automated screening would
 be most valuable.
 
-\subsection{Nonlinear Dynamical Approaches}
-
 Nonlinear analysis methods have therefore been explored for pathological speech. Little et
 al.\ demonstrated that recurrence quantification analysis and fractal scaling properties
 extracted from sustained phonations can complement conventional acoustic measures for voice
@@ -162,16 +155,12 @@ characterisation has also been applied to specific vocal fold pathologies includ
 hyperfunctional dysphonia, laryngitis, and vocal fold polyp, achieving classification
 accuracy above 90\% on the Saarbr\"ucken Voice Database~\cite{krishnan2026}.
 
-\subsection{Multi-Class and Disease-Group Classification}
-
 Beyond binary detection, recent work has addressed multi-class voice disorder
 classification. Orozco-Arroyave et al.\ found that different feature families are required
 to capture the distinct acoustic signatures of neurological, functional, and laryngeal
 disorders~\cite{orozco2015}. Fractal dimension in multiresolution frameworks has also
 achieved detection rates above 90\% via per-subband power-spectrum
 analysis~\cite{ali2016,kumar2014}.
-
-\subsection{Multifractal Methods}
 
 Multifractal detrended fluctuation analysis extends scalar fractal characterisation by
 modelling scaling behaviour across multiple moments and time scales~\cite{mfdfa}.
@@ -190,8 +179,6 @@ extracted from sustained vowels can effectively detect Parkinson's disease from 
 alone~\cite{jahnavi2020}. Despite these advances, MFDFA applied to voice pathology
 detection --- particularly for multi-class classification --- remains relatively
 underexplored.
-
-\subsection{Methodological Concerns}
 
 A critical methodological concern is \textbf{speaker-level data leakage}. S\'aenz-Lech\'on
 et al.\ identified that systems evaluated without controlling for speaker identity yield
@@ -233,22 +220,15 @@ the profile would otherwise be discarded; the procedure is therefore repeated st
 the opposite end of the series, yielding $2N_s$ segments in total.
 
 \paragraph{Step 3: Local detrending.}
-Within each segment $v$ a least-squares polynomial fit $y_v(i)$ of order $m$ is subtracted,
-and the residual variance is computed. For $v = 1,\dots,N_s$,
+Within each segment $v$ a least-squares polynomial fit $y_v(i)$ of order $m$ is subtracted
+and the residual variance computed, with the segment offset $o(v) = (v-1)s$ for the forward
+pass and $o(v) = N - (v - N_s)s$ for the reverse pass:
 \begin{equation}
 F^2(s,v) \;=\; \frac{1}{s}\sum_{i=1}^{s}
-\bigl\{ Y\bigl[(v-1)s + i\bigr] - y_v(i) \bigr\}^2 ,
+\bigl\{ Y\bigl[o(v) + i\bigr] - y_v(i) \bigr\}^2 .
 \label{eq:var1}
 \end{equation}
-and for $v = N_s+1,\dots,2N_s$,
-\begin{equation}
-F^2(s,v) \;=\; \frac{1}{s}\sum_{i=1}^{s}
-\bigl\{ Y\bigl[N - (v - N_s)s + i\bigr] - y_v(i) \bigr\}^2 .
-\label{eq:var2}
-\end{equation}
-Detrending of order $m$ removes polynomial trends of order $m-1$ from the original series;
-this work uses $m = 1$ (linear detrending), which is standard for signals without strong
-low-order nonstationarity.
+Detrending of order $m$ removes polynomial trends of order $m-1$; this work uses $m = 1$.
 
 \paragraph{Step 4: $q$-order fluctuation function.}
 The segment variances are averaged with a moment order $q$, which controls the relative
@@ -313,42 +293,20 @@ A \;=\; \frac{\alpha_0 - \alpha_{\min}}{\alpha_{\max} - \alpha_0} ,
 with $A > 1$ indicating a left-skewed spectrum dominated by large fluctuations and $A < 1$
 indicating a right-skewed spectrum dominated by small ones.
 
-\subsection{Derived Descriptors}
+\subsection{Derived Descriptors and Parameter Selection}
 
-From the curves $h(q)$, $\tau(q)$, $\alpha(q)$ and $f(\alpha)$, twelve scalar descriptors
-are computed per recording, listed in Table~\ref{tab:mf_descriptors}. These form the
-multifractal feature block used in all subsequent experiments.
+Twelve scalar descriptors are computed per recording from the curves $h(q)$, $\tau(q)$,
+$\alpha(q)$ and $f(\alpha)$: the mean, standard deviation, minimum and maximum of $h(q)$;
+the mean and standard deviation of $\tau(q)$; the mean and standard deviation of $\alpha$;
+and the four spectrum scalars $\Delta\alpha$, $\alpha_0$, $f(\alpha_0)$ and $A$ defined
+above. These form the multifractal feature block used in all subsequent experiments.
 
-\begin{table}[htbp]
-\centering
-\caption{Multifractal descriptors extracted per recording (12 features).}
-\label{tab:mf_descriptors}
-\begin{tabular}{p{4.2cm} p{7.2cm}}
-\toprule
-\textbf{Descriptor} & \textbf{Definition} \\
-\midrule
-$\overline{h}$, $\sigma_h$ & Mean and standard deviation of $h(q)$ over all $q$ \\
-$h_{\min}$, $h_{\max}$ & Extremes of $h(q)$; $h_{\max}-h_{\min}$ indexes multifractal strength \\
-$\overline{\tau}$, $\sigma_\tau$ & Mean and standard deviation of the R\'enyi exponent $\tau(q)$ \\
-$\overline{\alpha}$, $\sigma_\alpha$ & Mean and standard deviation of the singularity strength $\alpha$ \\
-$\Delta\alpha$ & Spectrum width, Eq.~(\ref{eq:width}) \\
-$\alpha_0$ & Singularity strength at the spectrum peak \\
-$f(\alpha_0)$ & Height of the spectrum at its peak \\
-$A$ & Spectrum asymmetry, Eq.~(\ref{eq:asym}) \\
-\bottomrule
-\end{tabular}
-\end{table}
-
-\subsection{Parameter Selection}
-
-The moment orders span $q \in [-5, 5]$ in steps of $0.5$, giving 21 values. This range is
-wide enough to resolve $q$-dependence without entering the numerically unstable regime at
-large $|q|$, where the moment average in Eq.~(\ref{eq:fq}) becomes dominated by a handful
-of extreme segments. Forty analysis scales are used, spaced logarithmically between a
-minimum of 16 samples and $N/4$; the lower bound avoids the regime in which the polynomial
-fit has too few points to be meaningful, and the upper bound guarantees at least four
-segments per scale so that the average in Eq.~(\ref{eq:fq}) is not dominated by a single
-segment. Detrending order is fixed at $m = 1$.
+The moment orders span $q \in [-5, 5]$ in steps of $0.5$, giving 21 values --- wide enough
+to resolve $q$-dependence without entering the numerically unstable regime at large $|q|$,
+where the moment average in Eq.~(\ref{eq:fq}) becomes dominated by a handful of extreme
+segments. Forty analysis scales are used, spaced logarithmically between 16 samples and
+$N/4$; the lower bound keeps enough points for a meaningful polynomial fit, and the upper
+bound guarantees at least four segments per scale. Detrending order is fixed at $m = 1$.
 
 %--------------------------------------------------------------
 \section{Dataset}
@@ -397,28 +355,9 @@ fold vibration); \textbf{Laryngitis} (hoarseness from laryngeal mucosal inflamma
 pathology); and \textbf{Functional Dysphonia} (dysphonia from maladaptive laryngeal
 behaviour without identifiable organic cause).
 
-Figure~\ref{fig:pathology_distribution} shows the distribution of retained pathology
-classes, and Figure~\ref{fig:waveform_examples} illustrates representative waveforms and
-spectrograms for healthy and pathological phonation.
-
 \begin{figure}[htbp]
 \centering
-\includegraphics[width=0.85\textwidth]{figures/pathology_distribution.png}
-\caption{Distribution of retained pathology classes in the \texttt{a\_n} subset.}
-\label{fig:pathology_distribution}
-\end{figure}
-
-\begin{figure}[htbp]
-\centering
-\includegraphics[width=\textwidth]{figures/waveform_spectrogram_examples.png}
-\caption{Representative waveforms and spectrograms for healthy and pathological sustained
-phonation of the vowel /a/.}
-\label{fig:waveform_examples}
-\end{figure}
-
-\begin{figure}[htbp]
-\centering
-\includegraphics[width=\textwidth]{figures/data_pipeline.png}
+\includegraphics[width=0.85\textwidth]{figures/data_pipeline.png}
 \caption{Overview of the preprocessing and feature extraction pipeline. Raw NSP recordings
 are converted to WAV format, metadata manifests are generated, and sustained vowel tokens
 are selected. Multiple feature families are then extracted and merged before training
@@ -445,17 +384,6 @@ and the singularity spectrum (Table~\ref{tab:mf_descriptors}). The final MFDFA
 configuration uses first-order detrending, a $q$ range of $[-5,5]$ with step $0.5$, and 40
 analysis scales.
 
-Figure~\ref{fig:mf_distributions} shows the marginal distributions of selected multifractal
-descriptors for healthy and pathological groups.
-
-\begin{figure}[htbp]
-\centering
-\includegraphics[width=\textwidth]{figures/multifractal_feature_distributions.png}
-\caption{Distributions of selected multifractal descriptors for healthy and pathological
-recordings.}
-\label{fig:mf_distributions}
-\end{figure}
-
 \subsection{OpenSMILE Features}
 
 Standardised acoustic features are extracted using the OpenSMILE toolkit with the
@@ -479,18 +407,9 @@ spectrum adds information beyond single-valued complexity estimates.
 
 Speaker metadata from the SVD --- \textbf{age} (derived from recording and birth dates) and
 \textbf{biological sex} --- are incorporated as \textbf{2 auxiliary features} and retained
-by default across all configurations. Their individual contribution is examined in the
-ablation study (Section~\ref{sec:experiments}). Figure~\ref{fig:age_impact} shows the age
-distribution across healthy and pathological groups, which is markedly non-overlapping and
-motivates the dedicated ablation.
-
-\begin{figure}[htbp]
-\centering
-\includegraphics[width=0.9\textwidth]{figures/age_impact.png}
-\caption{Age distribution across healthy and pathological groups, and the effect of
-removing age from the feature set.}
-\label{fig:age_impact}
-\end{figure}
+by default across all configurations. Because age covaries with pathology status in this
+corpus, its individual contribution is isolated in the ablation study
+(Section~\ref{sec:experiments}) and discussed in Section~\ref{sec:discussion}.
 
 %--------------------------------------------------------------
 \section{Data Pipeline and Splitting Strategy}
@@ -584,7 +503,7 @@ recall for pathological voices while maintaining strong precision for the health
 
 \begin{figure}[htbp]
 \centering
-\includegraphics[width=\textwidth]{figures/binary_confusion_models.png}
+\includegraphics[width=1\textwidth]{figures/binary_confusion_models.png}
 \caption{Cross-validation aggregated confusion matrices for binary classification across
 different models.}
 \label{fig:binary_confmat_models}
@@ -634,7 +553,7 @@ matrices for this task.
 
 \begin{figure}[htbp]
 \centering
-\includegraphics[width=\textwidth]{figures/multiclass_confusion.png}
+\includegraphics[width=0.8\textwidth]{figures/multiclass_confusion.png}
 \caption{Cross-validation aggregated confusion matrices for disease-group classification
 across different models.}
 \label{fig:multiclass_confusion}
@@ -670,7 +589,7 @@ MFDFA + OpenSMILE $-$ Age & LightGBM & 0.752 & 0.749 \\
 
 \begin{figure}[htbp]
 \centering
-\includegraphics[width=\textwidth]{figures/feature_ablation.png}
+\includegraphics[width=0.85\textwidth]{figures/feature_ablation.png}
 \caption{Feature ablation results for binary and disease-group classification.}
 \label{fig:ablation_results}
 \end{figure}
@@ -750,34 +669,28 @@ problem requiring larger and more specialised datasets.
 
 \subsection{Multifractal Features as a Standalone Representation}
 
-The single clearest result of the ablation is that the twelve multifractal descriptors,
-together with the two speaker-metadata features retained across all configurations, reach a
-macro F1 of 0.866 --- within 1.2 points of the best configuration, which adds 88 eGeMAPS
-parameters on top. This is a favourable ratio of representational compactness to
-performance, and it supports the premise that pathological phonation alters the scaling
-structure of the speech signal in a way that a linear spectral description does not fully
-capture. The caveat of the following subsection applies here too: because speaker metadata
-is present in this configuration, the 0.866 figure is not attributable to the multifractal
-descriptors in isolation. Identifying which individual descriptors drive the performance
-would require a dedicated feature-importance analysis, which is left to future work.
-
-That the best standalone MFDFA classifier is logistic regression rather than a gradient
-boosting model is worth noting. It indicates that the multifractal descriptors are
-individually informative and close to linearly separable, rather than requiring the
-classifier to discover high-order interactions --- a property that favours interpretability
-in a clinical setting.
+The clearest result of the ablation is that the twelve multifractal descriptors, together
+with the two speaker-metadata features retained across all configurations, reach a macro F1
+of 0.866 --- within 1.2 points of the best configuration, which adds 88 eGeMAPS parameters
+on top. Two caveats apply: speaker metadata is present here, so 0.866 is not attributable
+to the multifractal descriptors in isolation, and identifying which descriptors drive the
+performance would require a feature-importance analysis left to future work. The drop to
+0.637 on the three-class task reflects both a harder decision and the grouping itself ---
+neurological and structural disorders converge on a small set of perceptual outcomes
+through different physiological routes, so the acoustic evidence for the route is weaker
+than the evidence for the outcome, consistent with the finding that distinct feature
+families are required for distinct disorder classes~\cite{orozco2015}.
 
 \subsection{The Age Confound}
 
 The 13-point drop in macro F1 when age is removed is the most important caveat in this
-work, and we treat it as a finding rather than an inconvenience. Two readings are possible.
-
-Under the benign reading, age is a legitimate clinical covariate: voice disorders genuinely
-become more prevalent with age, and a screening system deployed in practice would have
-access to patient age, so including it is neither cheating nor unrealistic. Under the
-sceptical reading, the SVD pathological cohort is simply older than its healthy control
-cohort as an artefact of recruitment, and a large part of the reported 0.878 reflects the
-model learning that demographic gap rather than the pathology.
+work, and we treat it as a finding rather than an inconvenience. Under a benign reading,
+age is a legitimate clinical covariate: voice disorders become more prevalent with age, and
+a screening system deployed in practice would have access to patient age, so including it
+is neither cheating nor unrealistic. Under a sceptical reading, the SVD pathological cohort
+is simply older than its healthy control cohort as an artefact of recruitment, and a large
+part of the reported 0.878 reflects the model learning that demographic gap rather than the
+pathology.
 
 The evidence does not cleanly separate these. What can be said is that the 0.749 figure
 obtained without age is the more defensible estimate of what the acoustic and multifractal
@@ -792,49 +705,21 @@ on SVD without stating whether demographic metadata was included, the reported f
 difficult to interpret, in much the same way that accuracy reported without a stated
 speaker-partitioning protocol is difficult to interpret~\cite{saenzlechon2006}.
 
-\subsection{Why Disease-Group Classification Is Harder}
-
-The drop from 0.882 to 0.637 in moving from binary detection to the three-class task is
-large. Part of it is simply the harder decision: the classifier must now separate two
-pathological groups from each other as well as from healthy phonation. The grouping itself
-is the rest of the explanation: both pathological categories converge
-on a small set of perceptual outcomes --- breathiness, hoarseness, strain --- through
-different physiological routes, so the acoustic evidence for the route is weaker than the
-evidence for the outcome. Recurrent laryngeal nerve paralysis (neurological) and vocal fold
-polyp (structural) both produce breathiness from incomplete glottal closure, and a
-sustained vowel offers limited evidence to distinguish the cause. This is consistent with
-the finding that distinct feature families are required for distinct disorder
-classes~\cite{orozco2015}, and suggests that aetiological classification may require
-elicitation tasks beyond sustained phonation.
-
 \subsection{Limitations}
 
-Several limitations bound the scope of these conclusions.
-
-\emph{Single corpus.} All results are obtained on SVD. Recording conditions, microphone
-characteristics, and the German-language speaker population are constant throughout, so
-generalisation to other corpora and languages is untested. Cross-corpus validation is the
-most important outstanding experiment.
-
-\emph{Single elicitation token.} Restricting analysis to the sustained vowel \texttt{a\_n}
-buys cross-speaker comparability at the cost of discarding connected speech, where
-intermittent disorders such as spasmodic dysphonia are most apparent. The poor per-disease
-result for spasmodic dysphonia is likely attributable to this choice.
-
-\emph{Demographic confounding.} As discussed above, age covaries with pathology status in
-this corpus, and the study does not disentangle the two.
-
-\emph{No severity labels.} SVD provides diagnostic categories but not graded severity, so
-the analysis cannot distinguish a model that detects severe cases reliably and mild cases
-poorly from one that performs uniformly. Given the near-chance result on vocal fold
-nodules, this distinction likely matters.
-
-\emph{Class imbalance handling.} Downsampling of dominant classes reduces the effective
-training set size, and the resulting variance across folds is not negligible for the
-smaller per-disease experiments: five of the nine conditions in
-Table~\ref{tab:per_disease} contribute fewer than one hundred samples per class, and vocal
-fold nodules only 17. Those rows are reported for completeness but should not be treated
-as reliable point estimates.
+Several limitations bound these conclusions. All results come from a single corpus, with
+recording conditions and a German-language speaker population held constant throughout, so
+generalisation to other corpora and languages is untested; cross-corpus validation is the
+most important outstanding experiment. Restricting analysis to the sustained vowel
+\texttt{a\_n} buys cross-speaker comparability at the cost of discarding connected speech,
+where intermittent disorders such as spasmodic dysphonia are most apparent. Age covaries
+with pathology status in this corpus, and the study does not disentangle the two. SVD
+provides diagnostic categories but not graded severity, so the analysis cannot distinguish
+a model that detects severe cases reliably and mild cases poorly from one that performs
+uniformly. Finally, downsampling of dominant classes reduces the effective training set
+size: five of the nine conditions in Table~\ref{tab:per_disease} contribute fewer than one
+hundred samples per class, and vocal fold nodules only 17, so those rows should not be
+treated as reliable point estimates.
 
 %--------------------------------------------------------------
 \section{Conclusion}
