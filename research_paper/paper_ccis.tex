@@ -94,7 +94,7 @@ The main focus of the research is whether multifractal characteristics obtained 
   \label{sec:dataset}
   %--------------------------------------------------------------
 
-  The experiments in this study use recordings from the \textbf{Saarbrücken Voice Database (SVD)}, a widely used clinical corpus containing healthy and pathological voices. The original audio is stored in proprietary \texttt{.nsp} format and is converted to standard \texttt{.wav} for preprocessing and feature extraction. Although SVD contains multiple vowels and connected-speech recordings, this work focuses on the sustained vowel \textit{/a/} at normal pitch (\texttt{a\_n}) because it provides a stable phonation condition for cross-speaker comparison.
+  The experiments in this study use recordings from the \textbf{Saarbrücken Voice Database (SVD)}~\cite{svd}, a widely used clinical corpus containing healthy and pathological voices. The original audio is stored in proprietary \texttt{.nsp} format and is converted to standard \texttt{.wav} for preprocessing and feature extraction. Although SVD contains multiple vowels and connected-speech recordings, this work focuses on the sustained vowel \textit{/a/} at normal pitch (\texttt{a\_n}) because it provides a stable phonation condition for cross-speaker comparison.
 
   Table~\ref{tab:dataset_stats} summarises the dataset used in the experiments.
 
@@ -137,7 +137,7 @@ The main focus of the research is whether multifractal characteristics obtained 
 
   \subsection{OpenSMILE Features}
 
-  Standardised acoustic features are extracted using the OpenSMILE toolkit with the \textbf{extended Geneva Minimalistic Acoustic Parameter Set (eGeMAPSv02)}, contributing \textbf{88 parameters} capturing prosodic, spectral-shape, voice-quality, and temporal characteristics.
+  Standardised acoustic features are extracted using the OpenSMILE toolkit~\cite{opensmile} with the \textbf{extended Geneva Minimalistic Acoustic Parameter Set (eGeMAPSv02)}, contributing \textbf{88 parameters} capturing prosodic, spectral-shape, voice-quality, and temporal characteristics.
 
   \subsection{NeuroKit2 Features}
 
@@ -317,7 +317,7 @@ Another important insight relates to the effect of the age metadata feature. Rem
 
   This paper investigates multifractal descriptors obtained via MFDFA for automated voice pathology detection on the Saarbrücken Voice Database. MFDFA features are combined with conventional acoustic (OpenSMILE) and complexity-based (NeuroKit2) descriptors, and evaluated under strict speaker-independent cross-validation to ensure generalisability to unseen speakers.
 
-  The approach achieves a macro F1 of \textbf{0.89} for binary pathology detection, with the ablation study confirming that MFDFA descriptors alone (F1\,=\,0.866) carry substantial discriminative information independent of conventional features.
+  The approach achieves a macro F1 of \textbf{0.882} for binary pathology detection, with the ablation study confirming that MFDFA descriptors alone (F1\,=\,0.866) carry substantial discriminative information independent of conventional features.
 
   Overall, this study demonstrates that multifractal descriptors are a promising complement to traditional spectral features for automated voice-pathology screening, particularly in binary detection tasks.
 
@@ -371,13 +371,7 @@ Nature \textbf{399}, 461--465 (1999)
 Kumar, R., Mullik, P.: Fractal dimension based voice pathology detection.
 Applied Acoustics \textbf{76}, 248--252 (2014)
 
-\bibitem{ververidis2006}
-Ververidis, D., Kotropoulos, C.: Emotional speech recognition: Resources,
-features, and methods. Speech Communication \textbf{48}(9), 1162--1181 (2006)
 
-\bibitem{alhanai2018}
-Alhanai, T., Auon, M., Glass, J.: Detecting depression with audio/text
-sequence modeling of interviews. In: Proceedings of Interspeech 2018 (2018)
 
 \bibitem{lal2020multifractal}
 Lal, G.J., Gopalakrishnan, E.A., Govind, D.: Glottal Activity Detection from
