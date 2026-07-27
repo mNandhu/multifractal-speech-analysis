@@ -40,12 +40,21 @@ specs — no sentence was touched.
 - LNCS is single-column, so `figure*` is invalid: all four starred floats →
   plain `figure`.
 - Four figures were drawn for a two-column span and became illegible at
-  12.2 cm. Wide multi-panel images are now split with `trim`/`clip` (absolute
-  bp offsets computed from each file's natural size):
+  12.2 cm. Wide multi-panel images are now split with `trim`/`clip`:
   - `binary_confusion_models` (4 panels in a row) → 2×2 grid.
   - `multiclass_confusion` (3 panels) → 2 + 1.
   - `feature_ablation` (2 panels) → stacked, full width each.
   - `data_pipeline` is a single linear flow diagram; left at `\textwidth`.
+- Crop offsets are the **detected subplot gutters**, not `width/N`. Matplotlib
+  leaves asymmetric outer margins, so equal-fraction cuts drift a few pixels
+  per panel and the grid rows visibly stagger. Gutters were found by scanning
+  for all-white columns; the resulting panel content widths are exactly equal
+  (388 / 433 / 923 px), so the rows line up. Re-derive these numbers if any
+  figure is regenerated.
+- `\topfraction` 0.7 → 0.9 (plus `bottomfraction`, `textfraction`,
+  `floatpagefraction`) and `[tb]` → `[htbp]`. The taller split figures exceed
+  the default top-of-page allowance and were otherwise stranded *after* the
+  bibliography.
 - Table captions were already above the tabular, which matches LNCS.
 - `p{3.2cm} p{2cm}` → `L{5.4cm} L{2.4cm}` in Tables 4 and 5, using the
   `L` raggedright column already defined (and previously unused) in the

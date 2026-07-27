@@ -30,6 +30,13 @@
 % the line breaker extra slack rather than leaving overfull boxes.
 \emergencystretch=2em
 
+% The split-panel figures are taller than LaTeX's default \topfraction (0.7)
+% allows, which strands them past the bibliography. Loosen the float rules.
+\renewcommand{\topfraction}{0.9}
+\renewcommand{\bottomfraction}{0.8}
+\renewcommand{\textfraction}{0.07}
+\renewcommand{\floatpagefraction}{0.75}
+
 \begin{document}
 %
 \title{Robust Speaker-Independent Vocal Pathology Detection through Integrated Acoustic and Nonlinear Dynamics}
@@ -44,7 +51,7 @@
 %
 \institute{Affiliation withheld for double-blind review}
 %
-\maketitle              @ typeset the header of the contribution
+\maketitle              % typeset the header of the contribution
 %
 \begin{abstract}
 Voice pathology classification is inherently difficult due to the nonlinearity and multi-scale nature of the underlying pathological speech signals, which cannot be completely described through traditional acoustic metrics. In this paper, we present a novel methodology that can effectively identify binary (healthy/pathological) and multi-class (neurological/structural disease group) cases of vocal pathology. The system employs a fusion of multifractal features extracted via Multifractal Detrended Fluctuation Analysis (MFDFA), alongside a set of standardized acoustic features from the extended Geneva Minimalistic Acoustic Parameter Set (eGeMAPS). Experiments carried out on the Saarbrücken Voice Database include strict speaker-independent cross-validation as a means of eliminating data leakage, a technique seldom employed in previous works. The results show that our system obtains a macro F1 score of \textbf{0.882} and balanced accuracy of 0.875 in binary pathology classification and a macro F1 score of \textbf{0.637} in multi-class disease group classification, all under five-fold speaker-independent cross-validation. Feature ablation analysis demonstrates that the use of MFDFA-based features alone can produce an F1 score of \textbf{0.866}, highlighting its high discriminatory power when used alone.
@@ -117,7 +124,7 @@ The main focus of the research is whether multifractal characteristics obtained 
 
   The \texttt{a\_n} subset is class-imbalanced, which is typical for clinical speech datasets. Pathology classes with insufficient speaker representation for reliable speaker-independent cross-validation are excluded. The nine voice disorders retained span neurological, structural, and functional aetiologies: \textbf{Parkinson's Disease} (hypokinetic dysarthria from impaired laryngeal motor control); \textbf{Recurrent Laryngeal Nerve Paralysis} (breathiness from vocal fold immobility); \textbf{Spasmodic Dysphonia} (involuntary voice breaks from laryngeal dystonia); \textbf{Vocal Fold Nodules} (hoarseness from bilateral overuse lesions); \textbf{Vocal Fold Polyp} (breathiness from asymmetric fold vibration); \textbf{Laryngitis} (hoarseness from laryngeal mucosal inflammation); \textbf{Hyperfunctional Dysphonia} (strained voice from excessive laryngeal tension); \textbf{Psychogenic Dysphonia} (voice disorder of psychological aetiology without organic pathology); and \textbf{Functional Dysphonia} (dysphonia from maladaptive laryngeal behaviour without identifiable organic cause).
 
-  \begin{figure}[tb]
+  \begin{figure}[htbp]
   \centering
   \includegraphics[width=\textwidth]{figures/data_pipeline.png}
   \caption{Overview of the preprocessing and feature extraction pipeline. Raw NSP recordings are converted to WAV format, metadata manifests are generated, and sustained vowel tokens are selected. Multiple feature families are then extracted and merged before training classification models using speaker-grouped cross-validation.}
@@ -191,14 +198,14 @@ The main focus of the research is whether multifractal characteristics obtained 
 
   The confusion matrices aggregated across the cross-validation folds are shown in Figure~\ref{fig:binary_confmat_models}. These results indicate that the models achieve high recall for pathological voices while maintaining strong precision for the healthy class.
 
-  \begin{figure}[tb]
+  \begin{figure}[htbp]
   \centering
-  \includegraphics[width=0.49\textwidth,trim={0 0 1016.28 0},clip]{figures/binary_confusion_models.png}
+  \includegraphics[width=0.49\textwidth,trim={6.48 0 1069.2 0},clip]{figures/binary_confusion_models.png}
   \hfill
-  \includegraphics[width=0.49\textwidth,trim={338.76 0 677.52 0},clip]{figures/binary_confusion_models.png}\\[1.5ex]
-  \includegraphics[width=0.49\textwidth,trim={677.52 0 338.76 0},clip]{figures/binary_confusion_models.png}
+  \includegraphics[width=0.49\textwidth,trim={361.44 0 714.24 0},clip]{figures/binary_confusion_models.png}\\[1.5ex]
+  \includegraphics[width=0.49\textwidth,trim={715.68 0 360 0},clip]{figures/binary_confusion_models.png}
   \hfill
-  \includegraphics[width=0.49\textwidth,trim={1016.28 0 0 0},clip]{figures/binary_confusion_models.png}
+  \includegraphics[width=0.49\textwidth,trim={1070.64 0 5.04 0},clip]{figures/binary_confusion_models.png}
   \caption{Cross-validation aggregated confusion matrices for binary classification across different models.}
   \label{fig:binary_confmat_models}
   \end{figure}
@@ -233,12 +240,12 @@ Neurological diseases are caused by abnormalities in the neural regulation of th
 
   Figure~\ref{fig:multiclass_confusion} illustrates the confusion matrices for this task.
 
-  \begin{figure}[tb]
+  \begin{figure}[htbp]
   \centering
-  \includegraphics[width=0.49\textwidth,trim={0 0 815.50 0},clip]{figures/multiclass_confusion.png}
+  \includegraphics[width=0.49\textwidth,trim={6.75 0 891.75 0},clip]{figures/multiclass_confusion.png}
   \hfill
-  \includegraphics[width=0.49\textwidth,trim={407.75 0 407.75 0},clip]{figures/multiclass_confusion.png}\\[1.5ex]
-  \includegraphics[width=0.49\textwidth,trim={815.50 0 0 0},clip]{figures/multiclass_confusion.png}
+  \includegraphics[width=0.49\textwidth,trim={450 0 448.5 0},clip]{figures/multiclass_confusion.png}\\[1.5ex]
+  \includegraphics[width=0.49\textwidth,trim={893.25 0 5.25 0},clip]{figures/multiclass_confusion.png}
   \caption{Cross-validation aggregated confusion matrices for multi-class classification across different models.}
   \label{fig:multiclass_confusion}
   \end{figure}
@@ -266,10 +273,10 @@ Neurological diseases are caused by abnormalities in the neural regulation of th
   \end{tabular}
   \end{table}
 
-  \begin{figure}[tb]
+  \begin{figure}[htbp]
   \centering
-  \includegraphics[width=\textwidth,trim={0 0 563.10 0},clip]{figures/feature_ablation.png}\\[1.5ex]
-  \includegraphics[width=\textwidth,trim={563.10 0 0 0},clip]{figures/feature_ablation.png}
+  \includegraphics[width=\textwidth,trim={1.8 0 570.6 0},clip]{figures/feature_ablation.png}\\[1.5ex]
+  \includegraphics[width=\textwidth,trim={571.2 0 1.2 0},clip]{figures/feature_ablation.png}
   \caption{Feature ablation results for binary and multi-class classification.}
   \label{fig:ablation_results}
   \end{figure}
