@@ -54,7 +54,7 @@
 \maketitle              % typeset the header of the contribution
 %
 \begin{abstract}
-Voice pathology classification is inherently difficult due to the nonlinearity and multi-scale nature of the underlying pathological speech signals, which cannot be completely described through traditional acoustic metrics. In this paper, we present a novel methodology that can effectively identify binary (healthy/pathological) and multi-class (neurological/structural disease group) cases of vocal pathology. The system employs a fusion of multifractal features extracted via Multifractal Detrended Fluctuation Analysis (MFDFA), alongside a set of standardized acoustic features from the extended Geneva Minimalistic Acoustic Parameter Set (eGeMAPS). Experiments carried out on the Saarbrücken Voice Database include strict speaker-independent cross-validation as a means of eliminating data leakage, a technique seldom employed in previous works. The results show that our system obtains a macro F1 score of \textbf{0.882} and balanced accuracy of 0.875 in binary pathology classification and a macro F1 score of \textbf{0.637} in multi-class disease group classification, all under five-fold speaker-independent cross-validation. Feature ablation analysis demonstrates that the use of MFDFA-based features alone can produce an F1 score of \textbf{0.866}, highlighting its high discriminatory power when used alone.
+Voice pathology classification is difficult because pathological speech is nonlinear and varies across time scales, and traditional acoustic metrics describe only part of that behaviour. This paper presents a method for both binary (healthy/pathological) and multi-class (neurological/structural disease group) classification of vocal pathology. It combines multifractal features extracted with Multifractal Detrended Fluctuation Analysis (MFDFA) and standardised acoustic features from the extended Geneva Minimalistic Acoustic Parameter Set (eGeMAPS). Experiments on the Saarbrücken Voice Database use strict speaker-independent cross-validation to rule out speaker-level leakage, a control that much of the earlier literature omits. The method reaches a macro F1 of 0.882 and a balanced accuracy of 0.875 on binary pathology classification, and a macro F1 of 0.637 on disease-group classification, both under five-fold speaker-independent cross-validation. In a feature ablation, the MFDFA features on their own reach an F1 of 0.866.
 
 \keywords{Voice Pathology Detection \and Multifractal Analysis \and Fractal
 Dimension \and MF-DFA \and Saarbr\"ucken Voice Database \and Nonlinear Speech
@@ -68,17 +68,17 @@ Analysis.}
   \label{sec:introduction}
   %--------------------------------------------------------------
 
-Voice disorders have high prevalence in the population because of the structural pathology of the vocal folds, neurogenic disorders in motor coordination, and multiple functional and psychogenic causes. Proper diagnosis of these disorders requires not only instrumental procedures like laryngoscopy but also perceptual evaluation of voice disorders by clinicians. Such methods are extremely precise; however, subjectivity and medical expertise might complicate the procedure.
+Voice disorders are common. They arise from structural pathology of the vocal folds, from neurogenic disorders of motor coordination, and from functional or psychogenic causes. Diagnosis normally combines instrumental procedures such as laryngoscopy with perceptual evaluation by a clinician. That combination is accurate, but perceptual judgement is subjective and demands considerable clinical expertise.
 
-Recently, much attention is paid to computerized procedures used for detecting and diagnosing voice disorders in order to eliminate subjectivity. Computer algorithms for recognizing pathological voices mostly use standard spectrographic parameters of the signal such as MFCCs, F0, and others. Even though these methods successfully describe spectral properties of speech, they are inefficient for characterization of temporal and nonlinear dynamics typical for pathological voices.
+Automatic detection is attractive precisely because it removes that subjectivity. Most systems for recognising pathological voices rely on standard spectral parameters such as MFCCs and F0. These describe the spectral properties of speech well, but they capture little of the temporal and nonlinear behaviour typical of pathological voices.
 
-It is evident that speech generation can be considered as a nonlinear process that occurs due to many phenomena that affect it, such as airstream initiation, vocal fold vibrations, and articulation. Sometimes these dynamics turn out to be unstable, which leads to changes in these dynamics. Therefore, fractal and multifractal theory should be used in the analysis of pathological voices to estimate their dynamics.
+Speech production is a nonlinear process in which airstream initiation, vocal fold vibration, and articulation all interact. In pathological voices these dynamics can become unstable. Fractal and multifractal theory offers a way to quantify that instability.
 
-For the purpose of this work, \textbf{multifractal detrended fluctuation analysis} will be used in the analysis of speech recordings affected by certain diseases. The theory of multifractality of time series is a set of methods which describe dynamics of the studied object in terms of its scaling properties over various time scales. Monofractals describe an object with one scaling exponent. Multifractal description allows for describing a more complex signal with the help of multifractal spectrum composed of different local scaling exponents depending on q-order of the analysis.
+This work applies multifractal detrended fluctuation analysis to speech recordings from speakers with diagnosed disorders. Multifractal analysis describes a time series through its scaling properties across time scales. A monofractal signal is characterised by a single scaling exponent; a multifractal one needs a spectrum of local exponents, obtained by varying the moment order $q$ of the analysis.
 
-The main focus of the research is whether multifractal characteristics obtained through MFDFA could be helpful in detecting speech pathology, and if they could serve as additional indicators of pathology along with standard acoustic parameters.
+The question addressed here is whether the multifractal descriptors obtained through MFDFA help detect voice pathology, either on their own or alongside standard acoustic parameters.
 
-  Three aspects distinguish this work from prior fractal-based voice pathology studies. First, we employ the full multifractal spectrum from MFDFA rather than a scalar fractal dimension estimate, providing richer scaling information across multiple moment orders. Second, we address both \textbf{binary} (healthy vs.\ pathological) and \textbf{multi-class} (neurological vs.\ structural) classification within a single unified pipeline, whereas most prior studies focus exclusively on binary detection. Third, we enforce strict speaker-independent cross-validation using \texttt{StratifiedGroupKFold}, ensuring recordings from the same speaker never span training and test splits — a safeguard that prevents the data leakage shown to produce overly optimistic performance in many prior works \cite{saenzlechon2006}. A feature ablation study further quantifies MFDFA's standalone and combined contribution to each classification task.
+  This work differs from earlier fractal-based voice pathology studies in three ways. First, we use the full multifractal spectrum from MFDFA rather than a single scalar fractal dimension, which gives scaling information across several moment orders. Second, one pipeline handles both binary (healthy vs.\ pathological) and multi-class (neurological vs.\ structural) classification, where most earlier studies treat only binary detection. Third, cross-validation is strictly speaker-independent (\texttt{StratifiedGroupKFold}), so recordings from one speaker never appear in both the training and the test split. This guards against the data leakage known to produce optimistic results in much of the earlier literature \cite{saenzlechon2006}. A feature ablation study then quantifies what MFDFA contributes alone and in combination for each classification task.
 
   %--------------------------------------------------------------
   \section{Related Work}
@@ -87,13 +87,13 @@ The main focus of the research is whether multifractal characteristics obtained 
 
   Automatic detection of voice pathologies has traditionally relied on acoustic features such as MFCCs, perturbation measures, and spectral statistics combined with statistical or machine learning classifiers \cite{godino2006,alnasheri2017,rai2025}. Standardised clinical frameworks have further formalised multi-parameter acoustic assessment: the Dysphonia Severity Index (DSI) combines jitter, phonation time, and intensity into a perceptually anchored score \cite{wuyts2000}, while standardised assessment protocols specify perturbation and noise measures as a clinical evaluation battery \cite{dejonckere2001}. Although these spectral and perturbation-based descriptors capture important phonatory characteristics, they are inherently linear and cannot represent the nonlinear or multi-scale temporal irregularities often present in pathological voices.
 
-  Nonlinear analysis methods have therefore also been explored for pathological speech. Little et al.\ demonstrated that recurrence quantification analysis and fractal scaling properties extracted from sustained phonations can complement conventional acoustic measures for voice disorder detection, achieving correct classification performance above 91\% \cite{little2007b}. Nonlinear dynamical measures — correlation dimension, Lyapunov exponents, and entropy statistics — have further been applied to distinguish healthy and pathological voices with high accuracy on clinical voice databases \cite{henriquez2009,little2007}, reinforcing that temporal complexity measures provide information not captured by standard spectral descriptors. Recurrence plot-based characterisation has also been applied to specific vocal fold pathologies including hyperfunctional dysphonia, laryngitis, and vocal fold polyp, achieving classification accuracy above 90\% on the Saarbrücken Voice Database \cite{krishnan2026}.
+  Nonlinear analysis methods have therefore also been explored for pathological speech. Little et al.\ demonstrated that recurrence quantification analysis and fractal scaling properties extracted from sustained phonations can complement conventional acoustic measures for voice disorder detection, achieving correct classification performance above 91\% \cite{little2007b}. Nonlinear dynamical measures such as correlation dimension, Lyapunov exponents, and entropy statistics have been applied to separate healthy from pathological voices with high accuracy on clinical voice databases \cite{henriquez2009,little2007}. Temporal complexity measures therefore carry information that standard spectral descriptors miss. Recurrence plot-based characterisation has also been applied to specific vocal fold pathologies including hyperfunctional dysphonia, laryngitis, and vocal fold polyp, achieving classification accuracy above 90\% on the Saarbrücken Voice Database \cite{krishnan2026}.
 
   Beyond binary detection, recent work has addressed multi-class voice disorder classification. Orozco-Arroyave et al.\ found that different feature families are required to capture the distinct acoustic signatures of neurological, functional, and laryngeal disorders \cite{orozco2015}. Fractal dimension in multiresolution frameworks has also achieved detection rates above 90\% via per-subband power-spectrum analysis \cite{ali2016,kumar2014}.
 
-  Multifractal detrended fluctuation analysis (MFDFA) extends scalar fractal characterisation by modelling scaling behaviour across multiple moments and time scales \cite{mfdfa}. Multifractal methods have proven effective in other biomedical domains, most notably in demonstrating the multifractal structure of healthy versus diseased heartbeat dynamics \cite{ivanov1999}. Closer to the present work, multifractal analysis has been applied directly to speech signals for glottal activity detection, demonstrating the method's suitability for capturing nonlinear phonatory dynamics \cite{lal2020multifractal}. Speech-based disease detection has also benefited from principled acoustic feature design: Tsanas et al.\ developed 132 dysphonia measures from sustained vowels for high-accuracy Parkinson's disease classification, demonstrating that carefully engineered descriptors can match or exceed purely data-driven methods in clinical tasks \cite{tsanas2012}; similarly, Sai Jahnavi et al.\ showed that excitation source, voice quality, and prosodic features extracted from sustained vowels can effectively detect Parkinson's disease from speech alone \cite{jahnavi2020}. Despite these advances, MFDFA applied to voice pathology detection — particularly for multi-class classification — remains relatively underexplored.
+  Multifractal detrended fluctuation analysis (MFDFA) extends scalar fractal characterisation by modelling scaling behaviour across multiple moments and time scales \cite{mfdfa}. Multifractal methods have proven effective in other biomedical domains, most notably in demonstrating the multifractal structure of healthy versus diseased heartbeat dynamics \cite{ivanov1999}. Closer to the present work, multifractal analysis has been applied directly to speech signals for glottal activity detection, which shows that the method can capture nonlinear phonatory dynamics \cite{lal2020multifractal}. Speech-based disease detection has also benefited from careful acoustic feature design: Tsanas et al.\ developed 132 dysphonia measures from sustained vowels for high-accuracy Parkinson's disease classification, and showed that engineered descriptors can match or exceed purely data-driven methods in clinical tasks \cite{tsanas2012}. Sai Jahnavi et al.\ likewise detected Parkinson's disease from speech alone using excitation source, voice quality, and prosodic features from sustained vowels \cite{jahnavi2020}. MFDFA applied to voice pathology detection, and particularly to multi-class classification, remains comparatively underexplored.
 
-  A critical methodological concern is \textbf{speaker-level data leakage}. Sáenz-Lechón et al.\ identified that systems evaluated without controlling for speaker identity yield optimistic estimates that fail to generalise to unseen speakers, and recommended speaker-independent cross-validation as standard practice \cite{saenzlechon2006}.
+  One methodological concern cuts across all of this work: speaker-level data leakage. Sáenz-Lechón et al.\ found that systems evaluated without controlling for speaker identity yield optimistic estimates that fail to generalise to unseen speakers, and recommended speaker-independent cross-validation as standard practice \cite{saenzlechon2006}.
 
 
   %--------------------------------------------------------------
@@ -101,7 +101,7 @@ The main focus of the research is whether multifractal characteristics obtained 
   \label{sec:dataset}
   %--------------------------------------------------------------
 
-  The experiments in this study use recordings from the \textbf{Saarbrücken Voice Database (SVD)}~\cite{svd}, a widely used clinical corpus containing healthy and pathological voices. The original audio is stored in proprietary \texttt{.nsp} format and is converted to standard \texttt{.wav} for preprocessing and feature extraction. Although SVD contains multiple vowels and connected-speech recordings, this work focuses on the sustained vowel \textit{/a/} at normal pitch (\texttt{a\_n}) because it provides a stable phonation condition for cross-speaker comparison.
+  The experiments in this study use recordings from the Saarbrücken Voice Database (SVD)~\cite{svd}, a widely used clinical corpus of healthy and pathological voices. The original audio is stored in the proprietary \texttt{.nsp} format and is converted to standard \texttt{.wav} for preprocessing and feature extraction. SVD contains several vowels and connected-speech recordings, but this work uses only the sustained vowel \textit{/a/} at normal pitch (\texttt{a\_n}), which gives a stable phonation condition for cross-speaker comparison.
 
   Table~\ref{tab:dataset_stats} summarises the dataset used in the experiments.
 
@@ -122,7 +122,7 @@ The main focus of the research is whether multifractal characteristics obtained 
   \end{tabular}
   \end{table}
 
-  The \texttt{a\_n} subset is class-imbalanced, which is typical for clinical speech datasets. Pathology classes with insufficient speaker representation for reliable speaker-independent cross-validation are excluded. The nine voice disorders retained span neurological, structural, and functional aetiologies: \textbf{Parkinson's Disease} (hypokinetic dysarthria from impaired laryngeal motor control); \textbf{Recurrent Laryngeal Nerve Paralysis} (breathiness from vocal fold immobility); \textbf{Spasmodic Dysphonia} (involuntary voice breaks from laryngeal dystonia); \textbf{Vocal Fold Nodules} (hoarseness from bilateral overuse lesions); \textbf{Vocal Fold Polyp} (breathiness from asymmetric fold vibration); \textbf{Laryngitis} (hoarseness from laryngeal mucosal inflammation); \textbf{Hyperfunctional Dysphonia} (strained voice from excessive laryngeal tension); \textbf{Psychogenic Dysphonia} (voice disorder of psychological aetiology without organic pathology); and \textbf{Functional Dysphonia} (dysphonia from maladaptive laryngeal behaviour without identifiable organic cause).
+  The \texttt{a\_n} subset is class-imbalanced, as clinical speech datasets usually are. Pathology classes with too few speakers for reliable speaker-independent cross-validation are excluded. The nine disorders retained span neurological, structural, and functional aetiologies: Parkinson's disease (hypokinetic dysarthria from impaired laryngeal motor control); recurrent laryngeal nerve paralysis (breathiness from vocal fold immobility); spasmodic dysphonia (involuntary voice breaks from laryngeal dystonia); vocal fold nodules (hoarseness from bilateral overuse lesions); vocal fold polyp (breathiness from asymmetric fold vibration); laryngitis (hoarseness from laryngeal mucosal inflammation); hyperfunctional dysphonia (strained voice from excessive laryngeal tension); psychogenic dysphonia (voice disorder of psychological aetiology without organic pathology); and functional dysphonia (dysphonia from maladaptive laryngeal behaviour without an identifiable organic cause).
 
   \begin{figure}[htbp]
   \centering
@@ -136,23 +136,23 @@ The main focus of the research is whether multifractal characteristics obtained 
   \label{sec:features}
   %--------------------------------------------------------------
 
-  Four complementary feature families totalling \textbf{107 features} are extracted from each audio sample, spanning multifractal characteristics, standardised paralinguistic features, nonlinear complexity measures, and speaker metadata.
+  Four complementary feature families totalling 107 features are extracted from each audio sample: multifractal characteristics, standardised paralinguistic features, nonlinear complexity measures, and speaker metadata.
 
   \subsection{Multifractal Features}
 
-  To capture nonlinear and multiscale dynamics present in pathological speech signals, multifractal descriptors are extracted using \textbf{Multifractal Detrended Fluctuation Analysis (MFDFA)}. From the multifractal spectrum, \textbf{12 statistical descriptors} are derived from the generalised Hurst exponent, scaling exponent, and singularity spectrum. The final MFDFA configuration uses first-order detrending, a $q$ range of $[-5,5]$ with step 0.5, and 40 analysis scales.
+  Multifractal descriptors capture the nonlinear and multiscale dynamics of pathological speech signals and are extracted with Multifractal Detrended Fluctuation Analysis (MFDFA). Twelve statistical descriptors are derived from the multifractal spectrum, covering the generalised Hurst exponent, the scaling exponent, and the singularity spectrum. The final MFDFA configuration uses first-order detrending, a $q$ range of $[-5,5]$ with step 0.5, and 40 analysis scales.
 
   \subsection{OpenSMILE Features}
 
-  Standardised acoustic features are extracted using the OpenSMILE toolkit~\cite{opensmile} with the \textbf{extended Geneva Minimalistic Acoustic Parameter Set (eGeMAPSv02)}, contributing \textbf{88 parameters} capturing prosodic, spectral-shape, voice-quality, and temporal characteristics.
+  Standardised acoustic features are extracted with the OpenSMILE toolkit~\cite{opensmile} using the extended Geneva Minimalistic Acoustic Parameter Set (eGeMAPSv02), which contributes 88 parameters covering prosodic, spectral-shape, voice-quality, and temporal characteristics.
 
   \subsection{NeuroKit2 Features}
 
-  To further characterise nonlinear signal dynamics, \textbf{seven additional features} are extracted using the NeuroKit2 library, including entropy, fractal-dimension, skewness, and kurtosis measures.
+  Seven further features are extracted with the NeuroKit2 library to characterise nonlinear signal dynamics, including entropy, fractal-dimension, skewness, and kurtosis measures.
 
   \subsection{Speaker Metadata}
 
-  Speaker metadata from the SVD — \textbf{age} (derived from recording and birth dates) and \textbf{biological sex} — are incorporated as \textbf{2 auxiliary features} and retained by default across all configurations. Their individual contribution is examined in the ablation study (Section~\ref{sec:experiments}).
+  Two auxiliary features come from the SVD speaker metadata: age (derived from the recording and birth dates) and biological sex. Both are retained by default across all configurations, and their contribution is examined in the ablation study (Section~\ref{sec:experiments}).
 
   %--------------------------------------------------------------
   \section{Data Pipeline and Splitting Strategy}
@@ -162,13 +162,13 @@ The main focus of the research is whether multifractal characteristics obtained 
   The overall preprocessing workflow is illustrated in Figure~\ref{fig:data_pipeline}.
   The raw \texttt{.nsp} recordings are converted to \texttt{.wav}, indexed through a metadata manifest, normalised, and then processed by the four feature-extraction modules before the resulting feature tables are merged into a unified machine learning dataset. To minimise variability and within-speaker duplication, most experiments use only the sustained vowel \texttt{a\_n}.
 
-  A critical concern in clinical voice datasets is \textbf{speaker-level leakage}. We therefore use \texttt{StratifiedGroupKFold} with speaker identity as the grouping variable so that all recordings from a speaker remain in the same fold. Rare classes are removed when necessary for stable training, and class imbalance is handled through filtering or downsampling of dominant groups. Final performance is reported as the average over five speaker-grouped folds.
+  Speaker-level leakage is the main risk in clinical voice datasets. We therefore use \texttt{StratifiedGroupKFold} with speaker identity as the grouping variable, so all recordings from a speaker stay in the same fold. Rare classes are removed where necessary for stable training, and class imbalance is handled by filtering or downsampling the dominant groups. Final performance is reported as the average over five speaker-grouped folds.
   %--------------------------------------------------------------
   \section{Experimental Setup and Results}
   \label{sec:experiments}
   %--------------------------------------------------------------
 
-  This section evaluates the proposed framework, assessing multifractal feature discriminability and its contribution when combined with conventional acoustic descriptors. All experiments employ five-fold speaker-independent cross-validation (\texttt{StratifiedGroupKFold}), ensuring no speaker appears in both training and test splits. Performance is reported using accuracy, balanced accuracy, and macro-averaged F1 score; balanced accuracy and macro F1 are emphasised due to class imbalance. Naive random splits produced unrealistically high scores in preliminary experiments, confirming the necessity of speaker-independent evaluation.
+  This section evaluates how well the multifractal features discriminate on their own and what they add to conventional acoustic descriptors. All experiments use five-fold speaker-independent cross-validation (\texttt{StratifiedGroupKFold}), so no speaker appears in both the training and the test split. Performance is reported as accuracy, balanced accuracy, and macro-averaged F1; the latter two carry more weight here because of the class imbalance. In preliminary experiments, naive random splits produced far higher scores, which is why every result below uses speaker-independent splits.
 
   %--------------------------------------------------------------
   \subsection{Speaker-Independent Evaluation}
@@ -176,7 +176,7 @@ The main focus of the research is whether multifractal characteristics obtained 
 
   Only the sustained vowel token \texttt{a\_n} is used to ensure consistency across speakers. Two classification tasks are considered: (1)~binary classification of healthy vs.\ pathological speakers, and (2)~disease-group classification of neurological vs.\ structural disorders.
 
-  The binary classification task serves as a screening scenario where the goal is to detect the presence of a voice disorder. Table~\ref{tab:binary_results} summarises the results obtained using five-fold speaker-grouped cross-validation.
+  The binary task is a screening scenario: decide whether a voice disorder is present. Table~\ref{tab:binary_results} summarises the results under five-fold speaker-grouped cross-validation.
 
   \begin{table}[htbp]
   \centering
@@ -194,9 +194,9 @@ The main focus of the research is whether multifractal characteristics obtained 
   \end{tabular}
   \end{table}
 
-  Compared with the baseline experiment, the performance values decrease substantially, reflecting the more realistic evaluation setting. Gradient boosting models (LightGBM and XGBoost) achieve the highest performance, indicating that nonlinear feature interactions play an important role in distinguishing pathological speech.
+  These numbers sit well below those from the random-split runs, which is the expected cost of a more realistic protocol. The gradient boosting models, LightGBM and XGBoost, come out ahead, which suggests that nonlinear interactions between features matter for separating pathological from healthy speech.
 
-  The confusion matrices aggregated across the cross-validation folds are shown in Figure~\ref{fig:binary_confmat_models}. These results indicate that the models achieve high recall for pathological voices while maintaining strong precision for the healthy class.
+  Figure~\ref{fig:binary_confmat_models} shows the confusion matrices aggregated across folds. Recall on pathological voices is high, and precision on the healthy class holds up.
 
   \begin{figure}[htbp]
   \centering
@@ -215,9 +215,9 @@ The main focus of the research is whether multifractal characteristics obtained 
   \subsection{Disease Group Classification}
   %--------------------------------------------------------------
 
-While detecting pathology is one thing, another goal that poses greater challenges involves the classification of various types of voice disorders depending on their clinical causes. In this paper, pathologies have been classified into two groups from a clinical perspective: neurologic diseases and structural diseases.
+Detecting pathology is one task. Sorting disorders by clinical cause is a harder one. The pathologies here are split into two clinical categories: neurological and structural.
 
-Neurological diseases are caused by abnormalities in the neural regulation of the vocal folds, while structural diseases refer to abnormalities of the tissues that make up the vocal folds. Therefore, classifying these two groups solely through speech signals is a difficult task.
+Neurological disorders come from abnormal neural control of the vocal folds, structural disorders from abnormalities in the tissue of the folds themselves. Separating the two groups from the speech signal alone is difficult.
 
   Table~\ref{tab:multiclass_results} summarises the performance of the evaluated models for disease-group classification.
 
@@ -236,7 +236,7 @@ Neurological diseases are caused by abnormalities in the neural regulation of th
   \end{tabular}
   \end{table}
 
-  The results indicate that disease-group classification is substantially more difficult than binary pathology detection. Even the best-performing model achieves an F1 score of approximately 0.63, reflecting the subtler acoustic differences between neurological and structural disorders.
+  Disease-group classification is much harder than binary pathology detection. The best model reaches an F1 of about 0.63, so the acoustic differences between neurological and structural disorders are far less clear-cut than those between healthy and pathological voices.
 
   Figure~\ref{fig:multiclass_confusion} illustrates the confusion matrices for this task.
 
@@ -254,7 +254,7 @@ Neurological diseases are caused by abnormalities in the neural regulation of th
   \subsection{Feature Ablation Analysis}
   %--------------------------------------------------------------
 
-  To better understand the contribution of different feature families, a feature ablation study was conducted. Various combinations of multifractal features, OpenSMILE descriptors, and NeuroKit2 features were evaluated using the same speaker-grouped cross-validation protocol. Unless explicitly indicated, all configurations include speaker metadata (age and biological sex) as auxiliary features. The final row of Table~\ref{tab:ablation_binary} isolates the effect of removing age from the best-performing configuration.
+  A feature ablation study measures what each feature family contributes. Combinations of multifractal features, OpenSMILE descriptors, and NeuroKit2 features were evaluated under the same speaker-grouped cross-validation protocol. All configurations include the speaker metadata (age and biological sex) unless stated otherwise. The final row of Table~\ref{tab:ablation_binary} isolates the effect of removing age from the best configuration.
 
   \begin{table}[htbp]
   \centering
@@ -281,17 +281,17 @@ Neurological diseases are caused by abnormalities in the neural regulation of th
   \label{fig:ablation_results}
   \end{figure}
 
-The results reveal several key insights. First, the multifractal features alone can produce an F1 score of 0.866, meaning that the multifractal properties of the speech signal contain enough information about the state of the vocal tract. Using the OpenSMILE features along with the multifractal ones shows some minor improvements, which means that both types of features complement each other.
+The multifractal features on their own reach an F1 of 0.866, so much of what separates healthy from pathological phonation is already present in the scaling behaviour of the signal. Adding the OpenSMILE features lifts this to 0.878, a small gain that suggests the two families are partly complementary.
 
-At the same time, using the NeuroKit2 features leads to almost no improvement, meaning that the majority of information on complexity can be found in the multifractal features.
+Adding NeuroKit2 changes almost nothing, so the complexity information it measures is largely already captured by the multifractal descriptors.
 
-Another important insight relates to the effect of the age metadata feature. Removing age from the model based on MFDFA+OpenSMILE features reduces the macro F1 from 0.878 to 0.749, which means that age is a highly correlated variable in this dataset and must be considered carefully. The comparative results across all configurations are illustrated in Figure~\ref{fig:ablation_results}.
+Age has a much larger effect than any of that. Dropping it from the MFDFA+OpenSMILE model costs 0.129 macro F1, from 0.878 down to 0.749. Age is therefore strongly associated with the labels in this dataset, and any interpretation of the acoustic results has to account for it. Figure~\ref{fig:ablation_results} compares all configurations.
 
   %--------------------------------------------------------------
   \subsection{Per-Disease Binary Detection}
   %--------------------------------------------------------------
 
-  Finally, additional experiments were conducted to evaluate the detectability of individual pathologies. In this setting, a separate binary classifier was trained for each disease against the healthy class.
+  A separate binary classifier was trained for each disease against the healthy class to see which pathologies are individually detectable.
 
   \begin{table}[htbp]
   \centering
@@ -314,7 +314,7 @@ Another important insight relates to the effect of the age metadata feature. Rem
   \end{tabular}
   \end{table}
 
-  Disorders such as recurrent laryngeal nerve paralysis and Reinke's edema are more acoustically distinct, while vocal fold nodules and spasmodic dysphonia remain challenging due to subtle manifestations and limited sample sizes. These results confirm that while binary pathology screening is reliable, fine-grained disease identification remains an open problem requiring larger, more specialised datasets.
+  Recurrent laryngeal nerve paralysis and Reinke's edema are the most acoustically distinct. Vocal fold nodules and spasmodic dysphonia are the hardest, at 0.531 and 0.617 balanced accuracy, which we attribute to their subtle acoustic manifestation and to small sample sizes. Screening for pathology in general is reliable; identifying which pathology is not, and closing that gap will likely need larger and more specialised datasets.
 
 
   %--------------------------------------------------------------
@@ -322,13 +322,11 @@ Another important insight relates to the effect of the age metadata feature. Rem
   \label{sec:conclusion}
   %--------------------------------------------------------------
 
-  This paper investigates multifractal descriptors obtained via MFDFA for automated voice pathology detection on the Saarbrücken Voice Database. MFDFA features are combined with conventional acoustic (OpenSMILE) and complexity-based (NeuroKit2) descriptors, and evaluated under strict speaker-independent cross-validation to ensure generalisability to unseen speakers.
+  This paper investigates multifractal descriptors obtained via MFDFA for automated voice pathology detection on the Saarbrücken Voice Database. MFDFA features are combined with conventional acoustic (OpenSMILE) and complexity-based (NeuroKit2) descriptors and evaluated under strict speaker-independent cross-validation, so the reported scores apply to unseen speakers.
 
-  The approach achieves a macro F1 of \textbf{0.882} for binary pathology detection, with the ablation study confirming that MFDFA descriptors alone (F1\,=\,0.866) carry substantial discriminative information independent of conventional features.
+  Binary pathology detection reaches a macro F1 of 0.882, and the ablation shows that the MFDFA descriptors alone reach 0.866 without any conventional acoustic features. Disease-group classification is considerably weaker at 0.637 macro F1, and per-disease detection ranges from 0.865 down to 0.485 F1. For now the method suits screening better than differential diagnosis.
 
-  Overall, this study demonstrates that multifractal descriptors are a promising complement to traditional spectral features for automated voice-pathology screening, particularly in binary detection tasks.
-
-  Future work should validate the approach on larger independent cohorts, explore multi-token and end-to-end models, and investigate which components of the multifractal spectrum carry the most clinically informative signal.
+  Next steps are validation on larger independent cohorts, extension to multiple tokens and to end-to-end models, and an analysis of which parts of the multifractal spectrum carry the clinically useful signal.
 
 %--------------------------------------------------------------
 % References -- Springer 'splncs04' reference style
