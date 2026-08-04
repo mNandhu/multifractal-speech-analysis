@@ -61,10 +61,25 @@ specs — no sentence was touched.
   preamble. Removes cell wrapping and the underfull boxes it caused.
 
 ### Bibliography
-- All 22 entries reformatted from IEEE style to Springer `splncs04` style
-  (`Surname, F.M.: Title. Journal 12(3), 45--67 (2020)`). Titles, volumes,
-  issues, pages and years are unchanged from `paper.tex`; nothing was added.
-- `\doi{}` used for the one DOI-bearing entry.
+- The hand-written `thebibliography` block is **gone**. All 20 entries now live
+  in `refs.bib`; `paper_ccis.tex` ends with `\bibliographystyle{splncs04}` +
+  `\bibliography{refs}`, which is the path `ccis_template.tex:147` prescribes.
+  Build: `pdflatex` → `bibtex` → `pdflatex` ×2. BibTeX exits with 0 warnings.
+- Overleaf builds this as-is: `splncs04.bst` is already in its TeX Live, so
+  only `paper_ccis.tex`, `refs.bib`, `llncs.cls` and `figures/` need uploading,
+  and latexmk runs BibTeX for you. Confirmed working.
+- `.bbl`/`.pdf` are build output and are **not** committed. For the Springer
+  camera-ready source package, regenerate `paper_ccis.bbl` and include it —
+  without it a single `pdflatex` pass yields an empty reference list.
+- `splncs04.bst` sorts alphabetically by first author and lowercases titles to
+  sentence case. Numbers therefore do **not** follow order of first citation
+  (the first citation in the text is `[17]`, Sáenz-Lechón) — correct for
+  LNCS/CCIS, unlike IEEE, where `IEEEtran.bst` numbers by order of appearance.
+- Two `.bib` details that exist only to satisfy the sort/case rules:
+  `svd` carries `key = {Saarbrucken}` (an author-less entry otherwise has no
+  sort key and BibTeX dumps it at position 1 with a warning), and proper nouns
+  are brace-protected (`{GeMAPS}`, `{Parkinson's}`, `{Dysphonia Severity Index}`)
+  so `change.case$` does not lowercase them.
 
 ### Anonymization (double-blind)
 - All five author names, the Amrita affiliation, the city, and all five e-mail
@@ -89,8 +104,8 @@ specs — no sentence was touched.
       forward-dated volume.
 - [ ] **Conclusion says "macro F1 of 0.89"; Table 2 says 0.882.** Inherited
       from `paper.tex`; not touched because you asked for format-only changes.
-- [ ] **`svd`, `opensmile`, `ververidis2006`, `alhanai2018` are in the
-      reference list but never cited.** Also inherited. Cite or delete.
+- [x] **Uncited references.** Resolved: `ververidis2006` and `alhanai2018` were
+      dropped; `svd` and `opensmile` are cited. All 20 entries are now cited.
 - [ ] **AI disclosure.** SPELLL follows Springer's AI policy. Put the statement
       in the camera-ready, not the blind submission.
 - [ ] **Track.** Track 3 (Speech Technologies) — "Speech, voice, and hearing
@@ -99,7 +114,7 @@ specs — no sentence was touched.
 
 ## If you need to move the page count
 
-Currently 13. Levers that do not touch prose:
+Currently 12 (verified from the build log). Levers that do not touch prose:
 
 - Down: revert the three figure splits to single `\includegraphics` at
   `\textwidth` → 11 pages (but the panels become unreadable, and 11 is below
