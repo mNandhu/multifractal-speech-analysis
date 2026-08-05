@@ -11,7 +11,7 @@ Source file: `paper_ccis.tex` (converted from `paper.tex`, IEEEtran).
 pdflatex -interaction=nonstopmode -output-directory=tmp_latexv2_out paper_ccis.tex   # run twice
 ```
 
-Current build: **13 pages**, 0 errors, 0 overfull boxes. Regular-paper band is 12–16.
+Current build: **14 pages**, 0 errors, 0 overfull boxes. Regular-paper band is 12–16.
 
 ---
 

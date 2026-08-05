@@ -54,7 +54,7 @@
 \maketitle              % typeset the header of the contribution
 %
 \begin{abstract}
-Voice pathology classification is difficult because pathological speech is nonlinear and varies across time scales, and traditional acoustic metrics describe only part of that behaviour. This paper presents a method for both binary (healthy/pathological) and multi-class (neurological/structural disease group) classification of vocal pathology. It combines multifractal features extracted with Multifractal Detrended Fluctuation Analysis (MFDFA) and standardised acoustic features from the extended Geneva Minimalistic Acoustic Parameter Set (eGeMAPS). Experiments on the Saarbrücken Voice Database use strict speaker-independent cross-validation to rule out speaker-level leakage, a control that much of the earlier literature omits. The method reaches a macro F1 of 0.882 and a balanced accuracy of 0.875 on binary pathology classification, and a macro F1 of 0.637 on disease-group classification, both under five-fold speaker-independent cross-validation. In a feature ablation, the MFDFA features on their own reach an F1 of 0.866.
+Voice pathology classification is difficult because pathological speech is nonlinear and varies across time scales, and traditional acoustic metrics describe only part of that behaviour. This paper presents a method for both binary (healthy/pathological) and multi-class (neurological/structural disease group) classification of vocal pathology. It combines multifractal features extracted with Multifractal Detrended Fluctuation Analysis (MFDFA) and standardised acoustic features from the extended Geneva Minimalistic Acoustic Parameter Set (eGeMAPS). Experiments on the Saarbrücken Voice Database use strict speaker-independent cross-validation to rule out speaker-level leakage, a control that much of the earlier literature omits. The method reaches a macro F1 of 0.882 and a balanced accuracy of 0.875 on binary pathology classification, and a macro F1 of 0.637 on disease-group classification, both under five-fold speaker-independent cross-validation. A feature ablation run under the same protocol puts the MFDFA descriptors alone at a macro F1 of 0.866, against 0.878 when they are combined with eGeMAPS, so most of the information separating the two classes already lies in the scaling behaviour of the signal.
 
 \keywords{Voice Pathology Detection \and Multifractal Analysis \and Fractal
 Dimension \and MF-DFA \and Saarbr\"ucken Voice Database \and Nonlinear Speech
@@ -136,23 +136,75 @@ The question addressed here is whether the multifractal descriptors obtained thr
   \label{sec:features}
   %--------------------------------------------------------------
 
-  Four complementary feature families totalling 107 features are extracted from each audio sample: multifractal characteristics, standardised paralinguistic features, nonlinear complexity measures, and speaker metadata.
+  Each recording is decoded to mono at its native 50\,kHz sampling rate and amplitude-normalised before any feature is computed. Three signal-derived families are then extracted, giving 107 features in total: 12 multifractal descriptors, 88 standardised paralinguistic parameters, and 7 nonlinear complexity measures. Two speaker metadata variables are appended to these.
 
   \subsection{Multifractal Features}
 
-  Multifractal descriptors capture the nonlinear and multiscale dynamics of pathological speech signals and are extracted with Multifractal Detrended Fluctuation Analysis (MFDFA). Twelve statistical descriptors are derived from the multifractal spectrum, covering the generalised Hurst exponent, the scaling exponent, and the singularity spectrum. The final MFDFA configuration uses first-order detrending, a $q$ range of $[-5,5]$ with step 0.5, and 40 analysis scales.
+  Multifractal detrended fluctuation analysis quantifies how the fluctuations of a signal scale with the size of the window over which they are measured, and how that scaling changes when large and small fluctuations are weighted differently~\cite{mfdfa}. For a recording $x(k)$ of length $N$, the analysis starts from the cumulative profile
+  \begin{equation}
+  Y(i) = \sum_{k=1}^{i} \left[ x(k) - \bar{x} \right], \qquad i = 1,\dots,N ,
+  \end{equation}
+  which is divided into non-overlapping windows of length $s$ from both ends of the series. A polynomial of order $m$ is fitted within each window $v$ and removed, leaving the local variance $F^2(v,s)$. Averaging these variances with moment order $q$ gives the fluctuation function
+  \begin{equation}
+  F_q(s) = \left\{ \frac{1}{2N_s} \sum_{v=1}^{2N_s} \left[ F^2(v,s) \right]^{q/2} \right\}^{1/q},
+  \label{eq:fq}
+  \end{equation}
+  where $N_s = \lfloor N/s \rfloor$. Positive $q$ emphasises windows with large fluctuations, negative $q$ those with small ones. The case $q = 0$ requires a separate logarithmic form and is excluded here. When the signal is self-similar, $F_q(s)$ follows a power law $F_q(s) \sim s^{h(q)}$, and the generalised Hurst exponent $h(q)$ is obtained as the slope of a least-squares fit of $\log F_q(s)$ against $\log s$. A signal is monofractal when $h(q)$ is constant and multifractal when it varies with $q$.
+
+  The exponent is converted to the classical Rényi exponent and then, by Legendre transform, to the singularity spectrum:
+  \begin{equation}
+  \tau(q) = q\,h(q) - 1, \qquad
+  \alpha = \frac{\mathrm{d}\tau(q)}{\mathrm{d}q}, \qquad
+  f(\alpha) = q\,\alpha - \tau(q) ,
+  \end{equation}
+  with the derivative evaluated numerically over the $q$ grid. The spectrum $f(\alpha)$ describes the fractal dimension of the subset of the signal that carries local exponent $\alpha$. Its width
+  \begin{equation}
+  \Delta\alpha = \alpha_{\max} - \alpha_{\min}
+  \end{equation}
+  measures the strength of the multifractality: a monofractal signal collapses to a point, while a signal whose local regularity varies from instant to instant produces a broad spectrum. The balance between its two arms is summarised by
+  \begin{equation}
+  A = \frac{\alpha_{\mathrm{peak}} - \alpha_{\min}}{\alpha_{\max} - \alpha_{\mathrm{peak}}} ,
+  \end{equation}
+  where $\alpha_{\mathrm{peak}}$ is the exponent at which $f(\alpha)$ is maximal. Values above one indicate a longer left arm, so the scaling is governed mainly by the large-amplitude fluctuations; values below one point to the small-amplitude ones. Both quantities are relevant to pathological phonation, where irregular vocal fold vibration may broaden the spectrum and shift the weight between the two arms relative to healthy speech, in the same way that multifractal structure separates healthy from diseased dynamics in other physiological signals~\cite{ivanov1999}.
+
+  Twelve descriptors summarise this analysis for each recording; Table~\ref{tab:mfdfa_features} lists them.
+
+  \begin{table}[htbp]
+  \centering
+  \caption{MFDFA Descriptors Extracted per Recording}
+  \label{tab:mfdfa_features}
+  \begin{tabular}{L{4.2cm} L{6.6cm}}
+  \toprule
+  \textbf{Descriptor} & \textbf{Interpretation} \\
+  \midrule
+  $h(q)$ mean, std & Average scaling exponent and its variation across moment orders; the spread is a first indicator of multifractality \\
+  $h(q)$ min, max & Scaling of the smallest and largest fluctuations \\
+  $\tau(q)$ mean, std & Location and curvature of the Rényi exponent; a strictly linear $\tau(q)$ implies monofractal scaling \\
+  $\alpha$ mean, std & Centre and spread of the local H\"older exponents \\
+  $\Delta\alpha$ & Spectrum width, i.e.\ the strength of the multifractality \\
+  $\alpha_{\mathrm{peak}}$, $f(\alpha_{\mathrm{peak}})$ & Position and height of the spectrum maximum, i.e.\ the dominant scaling regime \\
+  $A$ & Left/right asymmetry of the spectrum \\
+  \bottomrule
+  \end{tabular}
+  \end{table}
+
+  The configuration used for all reported experiments applies first-order detrending ($m = 1$), which removes a linear trend from each window and leaves the fluctuations around it. The moment orders run from $-5$ to $5$ in steps of $0.5$, so 21 values are requested and 20 remain after $q = 0$ is dropped. Window sizes are 40 logarithmically spaced integer scales between 16 samples (0.32\,ms at 50\,kHz) and $N/4$, which for the median token length of 1.27\,s corresponds to roughly 320\,ms. The lower bound keeps enough points per window for the local fit, and the upper bound keeps enough windows per scale for the average in Eq.~\eqref{eq:fq} to be stable. A recording is only accepted when at least six distinct scales are available and each $h(q)$ fit has at least three finite points; all 1,656 \texttt{a\_n} recordings met these conditions.
 
   \subsection{OpenSMILE Features}
 
-  Standardised acoustic features are extracted with the OpenSMILE toolkit~\cite{opensmile} using the extended Geneva Minimalistic Acoustic Parameter Set (eGeMAPSv02), which contributes 88 parameters covering prosodic, spectral-shape, voice-quality, and temporal characteristics.
+  Standardised acoustic features are extracted with the OpenSMILE toolkit~\cite{opensmile} using the extended Geneva Minimalistic Acoustic Parameter Set (eGeMAPSv02), a set designed for reproducible comparison across paralinguistic studies. It applies functionals to 25 low-level descriptors and yields 88 parameters. The frequency-related descriptors cover fundamental frequency in the semitone scale, local jitter, and the frequency, bandwidth, and relative amplitude of the first three formants. The energy and amplitude group covers loudness, local shimmer, and the harmonics-to-noise ratio. The spectral group covers the alpha ratio, the Hammarberg index, spectral slopes in the 0--500\,Hz and 500--1500\,Hz bands, the relative energies H1--H2 and H1--A3, spectral flux, and the first four MFCCs. Temporal descriptors cover the rate of loudness peaks and the length and rate of voiced and unvoiced segments. The functionals are the arithmetic mean and the normalised standard deviation over the relevant frames, with percentiles, ranges, and rising and falling slopes added for pitch and loudness.
+
+  The set includes the perturbation measures used in clinical practice, namely jitter, shimmer, and the harmonics-to-noise ratio, so the ablation in Section~\ref{sec:experiments} measures the multifractal descriptors against an established acoustic baseline. It also covers properties such as formant structure and spectral tilt, which scaling analysis does not represent.
 
   \subsection{NeuroKit2 Features}
 
-  Seven further features are extracted with the NeuroKit2 library to characterise nonlinear signal dynamics, including entropy, fractal-dimension, skewness, and kurtosis measures.
+  Seven further features characterise the nonlinear dynamics of the waveform from a different direction than MFDFA. Three are entropy measures: Shannon entropy in bits, approximate entropy, and sample entropy, the latter two with embedding dimension 2 and a tolerance of 0.2 times the standard deviation of the signal. Two are single-valued fractal dimensions computed directly from the waveform, the Petrosian and Sevcik estimators. The remaining two are the skewness and kurtosis of the amplitude distribution. Because approximate and sample entropy are quadratic in the number of samples, the entropy and fractal-dimension measures are computed on the signal decimated to 8\,kHz, which keeps the extraction tractable over the full corpus; skewness and kurtosis are computed at full resolution.
+
+  These descriptors overlap with the multifractal ones, since both quantify signal irregularity, but they do so with single-scale statistics rather than across a range of window sizes. The ablation in Section~\ref{sec:experiments} shows how much they add once MFDFA is already present.
 
   \subsection{Speaker Metadata}
 
-  Two auxiliary features come from the SVD speaker metadata: age (derived from the recording and birth dates) and biological sex. Both are retained by default across all configurations, and their contribution is examined in the ablation study (Section~\ref{sec:experiments}).
+  Two auxiliary features come from the SVD speaker metadata: age, computed from the interval between the birth date and the recording date, and biological sex. Both are retained by default across all configurations, and their contribution is examined in the ablation study (Section~\ref{sec:experiments}).
 
   %--------------------------------------------------------------
   \section{Data Pipeline and Splitting Strategy}
