@@ -44,7 +44,15 @@ specs — no sentence was touched.
   - `binary_confusion_models` (4 panels in a row) → 2×2 grid.
   - `multiclass_confusion` (3 panels) → 2 + 1.
   - `feature_ablation` (2 panels) → stacked, full width each.
-  - `data_pipeline` is a single linear flow diagram; left at `\textwidth`.
+  - `data_pipeline` is no longer an image. It was redrawn as inline TikZ so its
+    labels are typeset in the body font instead of Eraser's sans. Kept the
+    original left-to-right flow; it fits the 122 mm LNCS measure only at
+    `\scriptsize` with ~16 mm boxes, so check the width if you edit any label.
+    `figures/data_pipeline.png` is kept as the historical source but unused.
+- `lmodern` is loaded so T1 encoding resolves to vector Latin Modern rather
+  than the EC bitmap (Type 3) fonts. Those bitmaps rendered heavy at the
+  diagram's 7 pt labels, and Springer wants vector fonts. `pdffonts` should
+  report zero Type 3 entries.
 - Crop offsets are the **detected subplot gutters**, not `width/N`. Matplotlib
   leaves asymmetric outer margins, so equal-fraction cuts drift a few pixels
   per panel and the grid rows visibly stagger. Gutters were found by scanning

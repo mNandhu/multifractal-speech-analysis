@@ -3,6 +3,11 @@
 \documentclass[runningheads]{llncs}
 %
 \usepackage[T1]{fontenc}
+% Without this, T1 encoding falls back to the EC bitmap (Type 3) fonts, which
+% render heavy and smeared at small sizes and which Springer does not want.
+% Latin Modern is a vector redrawing of Computer Modern, so the look is
+% unchanged.
+\usepackage{lmodern}
 % T1 fonts will be used to generate the final print and online PDFs,
 % so please use T1 fonts in your manuscript whenever possible.
 %
@@ -13,7 +18,27 @@
 \usepackage{booktabs}
 \usepackage{multirow}
 \usepackage{array}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,positioning}
 \usepackage{hyperref}
+
+% Pipeline-diagram palette, matching the pastel fills of the original figure.
+\definecolor{pipegreen}{rgb}{0.78,0.94,0.80}
+\definecolor{pipeblue}{rgb}{0.80,0.87,0.97}
+\definecolor{pipepink}{rgb}{0.95,0.81,0.95}
+\definecolor{pipeyellow}{rgb}{0.98,0.96,0.76}
+\definecolor{pipeorange}{rgb}{0.99,0.85,0.73}
+\definecolor{pipegray}{rgb}{0.90,0.90,0.90}
+
+% Diagram labels are typeset by LaTeX so they carry the body text font.
+\tikzset{
+  blk/.style={
+    rounded corners=2pt, draw=black!45, line width=0.3pt,
+    align=center, inner sep=2pt, minimum height=6.5mm, font=\scriptsize
+  },
+  flow/.style={draw=black!55, line width=0.3pt},
+  arw/.style={flow, -{Stealth[length=1.2mm,width=1mm]}}
+}
 \renewcommand\UrlFont{\color{blue}\rmfamily}
 \urlstyle{rm}
 \hypersetup{
@@ -126,7 +151,55 @@ The question addressed here is whether the multifractal descriptors obtained thr
 
   \begin{figure}[htbp]
   \centering
-  \includegraphics[width=\textwidth]{figures/data_pipeline.png}
+  \begin{tikzpicture}
+    % Preprocessing chain, left to right.
+    \node[blk, fill=pipegreen, text width=15mm] (raw) {\texttt{.nsp} Files\\(Raw Data)};
+    \node[blk, fill=pipeblue, text width=16mm, right=2.5mm of raw] (wav)
+      {WAV Conversion\\(50\,kHz)};
+    \node[blk, fill=pipeblue, text width=16mm, right=2.5mm of wav] (tok)
+      {Token Filter\\(\textit{/a/} only)};
+
+    % Feature families, stacked in a single column.
+    \node[blk, fill=pipeyellow, text width=16mm, right=2.5mm of tok] (os)
+      {OpenSMILE\\(88 features)};
+    \node[blk, fill=pipepink, text width=16mm, above=2mm of os] (mf)
+      {MFDFA\\(12 features)};
+    \node[blk, fill=pipeorange, text width=16mm, below=2mm of os] (nk)
+      {NeuroKit2\\(7 features)};
+
+    % Speaker-grouped cross-validation.
+    \node[blk, fill=pipegray, text width=16mm, right=2.5mm of os] (cv)
+      {Speaker-Grouped\\5-Fold CV};
+
+    % The two classification tasks.
+    \node[blk, fill=pipegreen, text width=21mm, right=2.5mm of cv, yshift=7mm]
+      (bin) {Binary Model\\(Healthy vs.\\Pathological)};
+    \node[blk, fill=pipegreen, text width=21mm, right=2.5mm of cv, yshift=-7mm]
+      (mc) {Multi-class Model\\(Disease Group)};
+
+    \draw[arw] (raw) -- (wav);
+    \draw[arw] (wav) -- (tok);
+
+    % Fan out to the feature extractors.
+    \coordinate (fanout) at ([xshift=1.5mm]tok.east);
+    \draw[flow] (tok.east) -- (fanout);
+    \draw[arw] (fanout) |- (mf.west);
+    \draw[arw] (fanout) -- (os.west);
+    \draw[arw] (fanout) |- (nk.west);
+
+    % Merge the feature tables.
+    \coordinate (fanin) at ([xshift=1.5mm]os.east);
+    \draw[flow] (mf.east) -| (fanin);
+    \draw[flow] (nk.east) -| (fanin);
+    \draw[flow] (os.east) -- (fanin);
+    \draw[arw] (fanin) -- (cv.west);
+
+    % Fan out to the two tasks.
+    \coordinate (split) at ([xshift=1.5mm]cv.east);
+    \draw[flow] (cv.east) -- (split);
+    \draw[arw] (split) |- (bin.west);
+    \draw[arw] (split) |- (mc.west);
+  \end{tikzpicture}
   \caption{Overview of the preprocessing and feature extraction pipeline. Raw NSP recordings are converted to WAV format, metadata manifests are generated, and sustained vowel tokens are selected. Multiple feature families are then extracted and merged before training classification models using speaker-grouped cross-validation.}
   \label{fig:data_pipeline}
   \end{figure}
