@@ -1,0 +1,71 @@
+task,setting,seed,model,f1
+binary,random size-matched,0,LogReg,0.6780070316048112
+binary,random size-matched,0,RandomForest,0.7246183319189617
+binary,random size-matched,0,LightGBM,0.7038191463036719
+binary,random size-matched,0,XGBoost,0.7281346755963535
+disease group,random size-matched,0,RandomForest,0.6722665447529867
+disease group,random size-matched,0,LightGBM,0.628777469843387
+disease group,random size-matched,0,XGBoost,0.6436442988784046
+binary,random size-matched,1,LogReg,0.6923080160841609
+binary,random size-matched,1,RandomForest,0.7270235475029638
+binary,random size-matched,1,LightGBM,0.7258112056830714
+binary,random size-matched,1,XGBoost,0.7371134155323733
+disease group,random size-matched,1,RandomForest,0.606201553748634
+disease group,random size-matched,1,LightGBM,0.6058892049662036
+disease group,random size-matched,1,XGBoost,0.6030422450644424
+binary,random size-matched,2,LogReg,0.7270507785225526
+binary,random size-matched,2,RandomForest,0.7074616885385807
+binary,random size-matched,2,LightGBM,0.6988676130836635
+binary,random size-matched,2,XGBoost,0.7145887013791326
+disease group,random size-matched,2,RandomForest,0.6242907393927304
+disease group,random size-matched,2,LightGBM,0.5831072804952456
+disease group,random size-matched,2,XGBoost,0.5984351938384197
+binary,random size-matched,3,LogReg,0.7114198060459499
+binary,random size-matched,3,RandomForest,0.7612308743287397
+binary,random size-matched,3,LightGBM,0.73814440189171
+binary,random size-matched,3,XGBoost,0.7432422080666361
+disease group,random size-matched,3,RandomForest,0.6700531374241578
+disease group,random size-matched,3,LightGBM,0.6091587013345421
+disease group,random size-matched,3,XGBoost,0.6096058327637275
+binary,random size-matched,4,LogReg,0.681414241759224
+binary,random size-matched,4,RandomForest,0.6966377609712336
+binary,random size-matched,4,LightGBM,0.710830596703339
+binary,random size-matched,4,XGBoost,0.7035298707644887
+disease group,random size-matched,4,RandomForest,0.6506614067062763
+disease group,random size-matched,4,LightGBM,0.5779685495885056
+disease group,random size-matched,4,XGBoost,0.6082481237297991
+binary,random size-matched,5,LogReg,0.6788382455786003
+binary,random size-matched,5,RandomForest,0.7371804142592704
+binary,random size-matched,5,LightGBM,0.7355608574463952
+binary,random size-matched,5,XGBoost,0.7497681962320526
+disease group,random size-matched,5,RandomForest,0.6625691594774845
+disease group,random size-matched,5,LightGBM,0.634239015756962
+disease group,random size-matched,5,XGBoost,0.6388870706884088
+binary,random size-matched,6,LogReg,0.7168894539301054
+binary,random size-matched,6,RandomForest,0.7612751281117495
+binary,random size-matched,6,LightGBM,0.7542342098910592
+binary,random size-matched,6,XGBoost,0.7785328504343038
+disease group,random size-matched,6,RandomForest,0.6286198502716374
+disease group,random size-matched,6,LightGBM,0.6087060855123914
+disease group,random size-matched,6,XGBoost,0.6263865480042162
+binary,random size-matched,7,LogReg,0.7014061956225401
+binary,random size-matched,7,RandomForest,0.7398074428556117
+binary,random size-matched,7,LightGBM,0.7195108719214646
+binary,random size-matched,7,XGBoost,0.7540184814685658
+disease group,random size-matched,7,RandomForest,0.627282931388594
+disease group,random size-matched,7,LightGBM,0.6492647158562148
+disease group,random size-matched,7,XGBoost,0.6354107322355727
+binary,random size-matched,8,LogReg,0.7005860250754594
+binary,random size-matched,8,RandomForest,0.7232244260009738
+binary,random size-matched,8,LightGBM,0.7196413312297226
+binary,random size-matched,8,XGBoost,0.7236699175082512
+disease group,random size-matched,8,RandomForest,0.634230215705684
+disease group,random size-matched,8,LightGBM,0.6437599326359642
+disease group,random size-matched,8,XGBoost,0.6606381903897415
+binary,random size-matched,9,LogReg,0.7240803883970566
+binary,random size-matched,9,RandomForest,0.7316545266732725
+binary,random size-matched,9,LightGBM,0.7039279123193589
+binary,random size-matched,9,XGBoost,0.7104609055772956
+disease group,random size-matched,9,RandomForest,0.6488780745061715
+disease group,random size-matched,9,LightGBM,0.616249260739109
+disease group,random size-matched,9,XGBoost,0.6121253955124922

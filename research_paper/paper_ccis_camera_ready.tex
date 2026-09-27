@@ -1,4 +1,4 @@
-% Springer CCIS / LNCS format -- SPELLL 2026 double-blind submission.
+% Springer CCIS / LNCS format -- SPELLL 2026 camera-ready version.
 % Derived from ccis_template.tex (LLNCS macro package, v2.21 of 2022/01/12).
 \documentclass[runningheads]{llncs}
 %
@@ -64,26 +64,29 @@
 
 \begin{document}
 %
-\title{Robust Speaker-Independent Vocal Pathology Detection through Integrated Acoustic and Nonlinear Dynamics on the German Saarbr\"ucken Voice Database}
+\title{Age-Controlled, Speaker-Independent Voice Pathology Screening with Multifractal and Acoustic Features on the German Saarbr\"ucken Voice Database}
 %
-\titlerunning{Robust Speaker-Independent Vocal Pathology Detection}
+\titlerunning{Age-Controlled Voice Pathology Screening}
 %
-% Double-blind submission: author names, affiliations and e-mail addresses are
-% withheld in accordance with the SPELLL 2026 review policy.
-\author{Anonymous Author(s)}
+\author{Aksaya Kanthan K S\inst{1} \and
+Kiruthik Nandhan Murthi\inst{1} \and
+Manasa V\inst{1} \and
+Rithvik Rajesh\inst{1} \and
+Jyothish Lal G\inst{1}\orcidID{0000-0001-8925-4776}}
 %
-\authorrunning{Anonymous Author(s)}
+\authorrunning{A. K. K S et al.}
 %
-\institute{Affiliation withheld for double-blind review}
+\institute{Amrita School of Artificial Intelligence, Coimbatore, Amrita Vishwa Vidyapeetham, India.\\
+\email{cb.ai.u4aid23003@cb.students.amrita.edu, cb.ai.u4aid23018@cb.students.amrita.edu, cb.ai.u4aid23022@cb.students.amrita.edu, cb.ai.u4aid23032@cb.students.amrita.edu, g\_jyothishlal@cb.amrita.edu}}
 %
 \maketitle              % typeset the header of the contribution
 %
 \begin{abstract}
-Voice pathology classification is difficult because pathological speech is nonlinear and varies across time scales, and traditional acoustic metrics describe only part of that behaviour. This paper presents a method for both binary (healthy/pathological) and multi-class (neurological/structural disease group) classification of vocal pathology. It combines multifractal features extracted with Multifractal Detrended Fluctuation Analysis (MFDFA) and standardised acoustic features from the extended Geneva Minimalistic Acoustic Parameter Set (eGeMAPS). Experiments on the Saarbrücken Voice Database use strict speaker-independent cross-validation to rule out speaker-level leakage, a control that much of the earlier literature omits. Healthy speakers in this corpus are much younger than pathological ones (mean age 27.1 vs.\ 54.0 years), so every result is reported with and without age and sex as inputs, next to age-only and sex-only baselines and an evaluation on age- and sex-matched subsets. Under five-fold speaker-independent cross-validation, binary pathology detection reaches a macro F1 of 0.882 with age and sex included, but age alone reaches 0.830. Without demographic inputs the acoustic and nonlinear features reach 0.760, and 0.679 on the matched subset. Disease-group classification reaches 0.635 without demographic inputs and 0.575 on matched data. The MFDFA descriptors alone reach 0.644 on the binary task but add no measurable gain over eGeMAPS.
+Automatic voice pathology detection can be evaluated in ways that let a classifier succeed without detecting pathology. Recordings from the same speaker can fall on both sides of a train/test split, and healthy and pathological groups can differ in age and sex. On the German Saarbr\"ucken Voice Database, healthy speakers are much younger than pathological ones (mean age 27.1 vs.\ 54.0 years). We evaluate binary (healthy vs.\ pathological) and disease-group (neurological vs.\ structural) classification with speaker-independent five-fold cross-validation, and report every result with and without age and sex as inputs, next to age-only and sex-only baselines and on age- and sex-matched subsets. Three feature families are compared: multifractal descriptors from Multifractal Detrended Fluctuation Analysis (MFDFA), the extended Geneva Minimalistic Acoustic Parameter Set (eGeMAPS), and nonlinear complexity measures. With age and sex included, binary detection reaches a macro F1 of 0.882, but age alone reaches 0.830. The voice features alone reach 0.760, and 0.679 on the matched subset; disease-group classification reaches 0.635 and 0.575. The MFDFA descriptors carry pathology information on their own (0.644) but add nothing measurable over eGeMAPS. Results on this corpus that do not control for age are likely to overstate what the voice reveals.
 
-\keywords{Voice Pathology Detection \and Multifractal Analysis \and Fractal
-Dimension \and MF-DFA \and Saarbr\"ucken Voice Database \and Nonlinear Speech
-Analysis.}
+\keywords{Voice Pathology Detection \and Speaker-Independent Evaluation
+\and Age Confound \and Multifractal Analysis \and MF-DFA \and eGeMAPS \and
+Saarbr\"ucken Voice Database.}
 \end{abstract}
 %
 %
@@ -101,9 +104,15 @@ Speech production is a nonlinear process in which airstream initiation, vocal fo
 
 This work applies multifractal detrended fluctuation analysis to speech recordings from speakers with diagnosed disorders. Multifractal analysis describes a time series through its scaling properties across time scales. A monofractal signal is characterised by a single scaling exponent; a multifractal one needs a spectrum of local exponents, obtained by varying the moment order $q$ of the analysis.
 
-The question addressed here is whether the multifractal descriptors obtained through MFDFA help detect voice pathology, either on their own or alongside standard acoustic parameters.
+Any such feature is only useful if it detects pathology rather than something that happens to travel with it. Two confounds matter in clinical voice corpora. The first is the speaker: when recordings of one person appear in both training and test data, a classifier can recognise the voice instead of the disorder, and scores rise \cite{saenzlechon2006}. The second is demographics. In the Saarbr\"ucken Voice Database (SVD) the healthy speakers are mostly young adults and the patients mostly middle-aged or older, so a classifier can separate the groups by age alone.
 
-  This work differs from earlier fractal-based voice pathology studies in four ways. First, we use the full multifractal spectrum from MFDFA rather than a single scalar fractal dimension, which gives scaling information across several moment orders. Second, one pipeline handles both binary (healthy vs.\ pathological) and multi-class (neurological vs.\ structural) classification, where most earlier studies treat only binary detection. Third, cross-validation is strictly speaker-independent (\texttt{StratifiedGroupKFold}), so recordings from one speaker never appear in both the training and the test split. This guards against the data leakage known to produce optimistic results in much of the earlier literature \cite{saenzlechon2006}. Fourth, because age alone separates healthy from pathological speakers in this corpus, every result is reported with and without age and sex, and on age- and sex-matched subsets. A feature ablation study then quantifies what MFDFA contributes alone and in combination for each classification task.
+The question addressed here is what voice features can detect once both confounds are controlled, and how multifractal descriptors compare with standard acoustic and nonlinear measures under those conditions. The contributions are:
+\begin{enumerate}
+  \item We show that age alone separates healthy from pathological SVD recordings with a macro F1 of 0.830, and report every result with and without age and sex, next to age-only and sex-only baselines.
+  \item We evaluate on age- and sex-matched subsets, which measures what the voice features detect when demographics carry no information.
+  \item We compare the full MFDFA spectrum, eGeMAPS parameters, and nonlinear complexity measures, alone and in combination, under strictly speaker-independent cross-validation (\texttt{StratifiedGroupKFold}).
+  \item We apply the same protocol to binary detection, to neurological vs.\ structural disease groups, and to individual disorders.
+\end{enumerate}
 
   %--------------------------------------------------------------
   \section{Related Work}
@@ -118,7 +127,9 @@ The question addressed here is whether the multifractal descriptors obtained thr
 
   Multifractal detrended fluctuation analysis (MFDFA) extends scalar fractal characterisation by modelling scaling behaviour across multiple moments and time scales \cite{mfdfa}. Multifractal methods have proven effective in other biomedical domains, most notably in demonstrating the multifractal structure of healthy versus diseased heartbeat dynamics \cite{ivanov1999}. Closer to the present work, multifractal analysis has been applied directly to speech signals for glottal activity detection, which shows that the method can capture nonlinear phonatory dynamics \cite{lal2020multifractal}. Speech-based disease detection has also benefited from careful acoustic feature design: Tsanas et al.\ developed 132 dysphonia measures from sustained vowels for high-accuracy Parkinson's disease classification, and showed that engineered descriptors can match or exceed purely data-driven methods in clinical tasks \cite{tsanas2012}. Sai Jahnavi et al.\ likewise detected Parkinson's disease from speech alone using excitation source, voice quality, and prosodic features from sustained vowels \cite{jahnavi2020}. MFDFA applied to voice pathology detection, and particularly to multi-class classification, remains comparatively underexplored.
 
-  One methodological concern cuts across all of this work: speaker-level data leakage. Sáenz-Lechón et al.\ found that systems evaluated without controlling for speaker identity yield optimistic estimates that fail to generalise to unseen speakers, and recommended speaker-independent cross-validation as standard practice \cite{saenzlechon2006}.
+  One methodological concern cuts across all of this work: speaker-level data leakage. Sáenz-Lechón et al.\ found that systems evaluated without controlling for speaker identity yield optimistic estimates that fail to generalise to unseen speakers, and recommended speaker-independent cross-validation as standard practice \cite{saenzlechon2006}. Speaker identity is not the only variable correlated with the diagnosis. When healthy and pathological groups differ in age or sex, a classifier can separate them on demographics, and because age also changes the voice, this can happen even when age is not an input. Demographic baselines, reported next to the main results, show how much of a score demographics alone can explain.
+
+  The review points to three gaps. First, fractal work on voice pathology mostly relies on single scalar dimensions rather than the full multifractal spectrum, and focuses on binary detection. Second, speaker-independent evaluation, although recommended, is omitted in much of the earlier work. Third, demographic confounding is seldom reported as a baseline, although it can inflate results in the same way as speaker leakage. This work evaluates the full MFDFA spectrum against standard acoustic and nonlinear features on both tasks, under speaker-independent cross-validation and with explicit demographic baselines and matching.
 
 
   %--------------------------------------------------------------
@@ -126,9 +137,7 @@ The question addressed here is whether the multifractal descriptors obtained thr
   \label{sec:dataset}
   %--------------------------------------------------------------
 
-  The experiments in this study use recordings from the Saarbrücken Voice Database (SVD)~\cite{svd}, a widely used clinical corpus of healthy and pathological voices. The original audio is stored in the proprietary \texttt{.nsp} format and is converted to standard \texttt{.wav} for preprocessing and feature extraction. SVD contains several vowels and connected-speech recordings, but this work uses only the sustained vowel \textit{/a/} at normal pitch (\texttt{a\_n}), which gives a stable phonation condition for cross-speaker comparison.
-
-  Table~\ref{tab:dataset_stats} summarises the dataset used in the experiments.
+  The experiments in this study use recordings from the Saarbrücken Voice Database (SVD)~\cite{svd}, a widely used clinical corpus of healthy and pathological voices. The original audio is stored in the proprietary \texttt{.nsp} format and is converted to standard \texttt{.wav} for preprocessing and feature extraction. SVD contains several vowels and connected-speech recordings, but this work uses only the sustained vowel \textit{/a/} at normal pitch (\texttt{a\_n}), which gives a stable phonation condition for cross-speaker comparison. Table~\ref{tab:dataset_stats} summarises the dataset used in the experiments.
 
   \begin{table}[htbp]
   \centering
@@ -242,9 +251,7 @@ The question addressed here is whether the multifractal descriptors obtained thr
   \begin{equation}
   A = \frac{\alpha_{\mathrm{peak}} - \alpha_{\min}}{\alpha_{\max} - \alpha_{\mathrm{peak}}} ,
   \end{equation}
-  where $\alpha_{\mathrm{peak}}$ is the exponent at which $f(\alpha)$ is maximal. Values above one indicate a longer left arm, so the scaling is governed mainly by the large-amplitude fluctuations; values below one point to the small-amplitude ones. Both quantities are relevant to pathological phonation, where irregular vocal fold vibration may broaden the spectrum and shift the weight between the two arms relative to healthy speech, in the same way that multifractal structure separates healthy from diseased dynamics in other physiological signals~\cite{ivanov1999}.
-
-  Twelve descriptors summarise this analysis for each recording; Table~\ref{tab:mfdfa_features} lists them.
+  where $\alpha_{\mathrm{peak}}$ is the exponent at which $f(\alpha)$ is maximal. Values above one indicate a longer left arm, so the scaling is governed mainly by the large-amplitude fluctuations; values below one point to the small-amplitude ones. Both quantities are relevant to pathological phonation, where irregular vocal fold vibration may broaden the spectrum and shift the weight between the two arms relative to healthy speech, in the same way that multifractal structure separates healthy from diseased dynamics in other physiological signals~\cite{ivanov1999}. Twelve descriptors summarise this analysis for each recording; Table~\ref{tab:mfdfa_features} lists them.
 
   \begin{table}[htbp]
   \centering
@@ -269,15 +276,11 @@ The question addressed here is whether the multifractal descriptors obtained thr
 
   \subsection{OpenSMILE Features}
 
-  Standardised acoustic features are extracted with the OpenSMILE toolkit~\cite{opensmile} using the extended Geneva Minimalistic Acoustic Parameter Set (eGeMAPSv02), a set designed for reproducible comparison across paralinguistic studies. It applies functionals to 25 low-level descriptors and yields 88 parameters. The frequency-related descriptors cover fundamental frequency in the semitone scale, local jitter, and the frequency, bandwidth, and relative amplitude of the first three formants. The energy and amplitude group covers loudness, local shimmer, and the harmonics-to-noise ratio. The spectral group covers the alpha ratio, the Hammarberg index, spectral slopes in the 0--500\,Hz and 500--1500\,Hz bands, the relative energies H1--H2 and H1--A3, spectral flux, and the first four MFCCs. Temporal descriptors cover the rate of loudness peaks and the length and rate of voiced and unvoiced segments. The functionals are the arithmetic mean and the normalised standard deviation over the relevant frames, with percentiles, ranges, and rising and falling slopes added for pitch and loudness.
-
-  The set includes the perturbation measures used in clinical practice, namely jitter, shimmer, and the harmonics-to-noise ratio, so the ablation in Section~\ref{sec:experiments} measures the multifractal descriptors against an established acoustic baseline. It also covers properties such as formant structure and spectral tilt, which scaling analysis does not represent.
+  Standardised acoustic features are extracted with the OpenSMILE toolkit~\cite{opensmile} using the extended Geneva Minimalistic Acoustic Parameter Set (eGeMAPSv02), a set designed for reproducible comparison across paralinguistic studies. It applies functionals to 25 low-level descriptors and yields 88 parameters. The frequency-related descriptors cover fundamental frequency in the semitone scale, local jitter, and the frequency, bandwidth, and relative amplitude of the first three formants. The energy and amplitude group covers loudness, local shimmer, and the harmonics-to-noise ratio. The spectral group covers the alpha ratio, the Hammarberg index, spectral slopes in the 0--500\,Hz and 500--1500\,Hz bands, the relative energies H1--H2 and H1--A3, spectral flux, and the first four MFCCs. Temporal descriptors cover the rate of loudness peaks and the length and rate of voiced and unvoiced segments. The functionals are the arithmetic mean and the normalised standard deviation over the relevant frames, with percentiles, ranges, and rising and falling slopes added for pitch and loudness. The set includes the perturbation measures used in clinical practice, namely jitter, shimmer, and the harmonics-to-noise ratio, so the ablation in Section~\ref{sec:experiments} measures the multifractal descriptors against an established acoustic baseline. It also covers properties such as formant structure and spectral tilt, which scaling analysis does not represent.
 
   \subsection{NeuroKit2 Features}
 
-  Seven further features characterise the nonlinear dynamics of the waveform from a different direction than MFDFA. Three are entropy measures: Shannon entropy in bits, approximate entropy, and sample entropy, the latter two with embedding dimension 2 and a tolerance of 0.2 times the standard deviation of the signal. Two are single-valued fractal dimensions computed directly from the waveform, the Petrosian and Sevcik estimators. The remaining two are the skewness and kurtosis of the amplitude distribution. Because approximate and sample entropy are quadratic in the number of samples, the entropy and fractal-dimension measures are computed on the signal decimated to 8\,kHz, which keeps the extraction tractable over the full corpus; skewness and kurtosis are computed at full resolution.
-
-  These descriptors overlap with the multifractal ones, since both quantify signal irregularity, but they do so with single-scale statistics rather than across a range of window sizes. The ablation in Section~\ref{sec:experiments} shows how much they add once MFDFA is already present.
+  Seven further features characterise the nonlinear dynamics of the waveform from a different direction than MFDFA. Three are entropy measures: Shannon entropy in bits, approximate entropy, and sample entropy, the latter two with embedding dimension 2 and a tolerance of 0.2 times the standard deviation of the signal. Two are single-valued fractal dimensions computed directly from the waveform, the Petrosian and Sevcik estimators. The remaining two are the skewness and kurtosis of the amplitude distribution. Because approximate and sample entropy are quadratic in the number of samples, the entropy and fractal-dimension measures are computed on the signal decimated to 8\,kHz, which keeps the extraction tractable over the full corpus; skewness and kurtosis are computed at full resolution. These descriptors overlap with the multifractal ones, since both quantify signal irregularity, but they do so with single-scale statistics rather than across a range of window sizes. The ablation in Section~\ref{sec:experiments} shows how much they add once MFDFA is already present.
 
   \subsection{Speaker Metadata}
 
@@ -295,21 +298,19 @@ The question addressed here is whether the multifractal descriptors obtained thr
 
   To control for demographics, we also build age- and sex-matched subsets. Each pathological recording is paired with the healthy recording of the same sex that is closest in age, within two years, drawn without replacement from all healthy recordings; recordings without a match are dropped. This gives 158 pairs (316 recordings). A second binary subset matches all pathologies in the corpus rather than only the six grouped disorders (230 pairs). For the disease-group task, structural recordings are matched to neurological ones in the same way (139 pairs). SVD has few healthy speakers over 60, so the matched subsets cover ages of roughly 15 to 75.
 
-  All models use the full set of 107 features without feature selection. Logistic regression, random forest, LightGBM and XGBoost are trained for the binary task, and the last three for the disease-group task; the binary decision threshold is tuned on each training fold. We report the mean and standard deviation over the five speaker-grouped folds for the best classifier of each configuration. The spread between classifiers was at most 0.05 macro F1 in every setting.
+  All models use the full set of 107 features without feature selection. Logistic regression, random forest, LightGBM and XGBoost are trained for the binary task, and the last three for the disease-group task; the binary decision threshold is tuned on each training fold. We report the mean and standard deviation over the five speaker-grouped folds for the best classifier of each configuration. Differences between classifiers were mostly below 0.05 macro F1, and at most 0.09 (for the sex-only baseline).
   %--------------------------------------------------------------
   \section{Experimental Setup and Results}
   \label{sec:experiments}
   %--------------------------------------------------------------
 
-  This section evaluates how well the multifractal features discriminate on their own and what they add to conventional acoustic descriptors. All experiments use five-fold speaker-independent cross-validation (\texttt{StratifiedGroupKFold}), so no speaker appears in both the training and the test split. Performance is reported as accuracy, balanced accuracy, and macro-averaged F1; the latter two carry more weight here because of the class imbalance. In preliminary experiments, naive random splits produced far higher scores, which is why every result below uses speaker-independent splits.
+  This section first establishes what age and sex alone achieve, then evaluates the signal features with and without them and on matched data, and finally compares the feature families and individual disorders. All experiments use five-fold speaker-independent cross-validation (\texttt{StratifiedGroupKFold}), so no speaker appears in both the training and the test split. Performance is reported as accuracy, balanced accuracy, and macro-averaged F1; the latter two carry more weight here because of the class imbalance. In preliminary experiments, naive random splits produced far higher scores, which is why every result below uses speaker-independent splits.
 
   %--------------------------------------------------------------
   \subsection{Speaker-Independent Evaluation}
   %--------------------------------------------------------------
 
-  Only the sustained vowel token \texttt{a\_n} is used to ensure consistency across speakers. Two classification tasks are considered: (1)~binary classification of healthy vs.\ pathological speakers, and (2)~disease-group classification of neurological vs.\ structural disorders.
-
-  The binary task is a screening scenario: decide whether a voice disorder is present. Table~\ref{tab:binary_results} gives the results for all 107 signal features with and without age and sex, for the demographic variables alone, and on the matched subset.
+  Only the sustained vowel token \texttt{a\_n} is used to ensure consistency across speakers. Two classification tasks are considered: (1)~binary classification of healthy vs.\ pathological speakers, and (2)~disease-group classification of neurological vs.\ structural disorders. The binary task is a screening scenario: decide whether a voice disorder is present. Table~\ref{tab:binary_results} gives the results for all 107 signal features with and without age and sex, for the demographic variables alone, and on the matched subset.
 
   \begin{table}[htbp]
   \centering
@@ -331,15 +332,14 @@ The question addressed here is whether the multifractal descriptors obtained thr
   \end{tabular}
   \end{table}
 
-  With age and sex among the inputs, the best model reaches a macro F1 of 0.882. Most of this comes from age: age alone reaches 0.830, and age with sex 0.846, while the 107 signal features without demographic inputs reach 0.760. In the gradient-boosting model trained on all inputs, age is the most important single feature. On the matched subset, age and sex carry no information and their baseline falls below chance, as expected once both classes share the same age and sex distribution. The signal features still reach 0.679 there, and 0.626 on the subset matched across all pathologies, which is the detection performance the voice supports once demographics are removed.
-
-  Figure~\ref{fig:binary_confmat_models} shows the confusion matrices of the models trained on signal features alone.
+  With age and sex among the inputs, the best model reaches a macro F1 of 0.882. Most of this comes from age: age alone reaches 0.830, and age with sex 0.846, while the 107 signal features without demographic inputs reach 0.760. In the gradient-boosting model trained on all inputs, age is the most important single feature. On the matched subset, age and sex carry no information and their baseline falls below chance, as expected once both classes share the same age and sex distribution. The signal features still reach 0.679 there, and 0.626 on the subset matched across all pathologies, which is the detection performance the voice supports once demographics are removed. The matched subset is also smaller than the main set, so we drew ten random subsets of the main set with the same size (316 recordings, balanced classes). These reach $0.734 \pm 0.023$, so roughly a third of the drop from 0.760 to 0.679 comes from the smaller training set and the rest from removing the age difference. Figure~\ref{fig:confusion} (top) shows the confusion matrices of the models trained on signal features alone.
 
   \begin{figure}[htbp]
   \centering
-  \includegraphics[width=\textwidth]{figures/binary_confusion_v8.png}
-  \caption{Confusion matrices for binary classification with signal features only (main set, aggregated over the five folds), one panel per classifier.}
-  \label{fig:binary_confmat_models}
+  \includegraphics[width=\textwidth]{figures/binary_confusion_v8.png}\\[1ex]
+  \includegraphics[width=0.74\textwidth]{figures/multiclass_confusion_v8.png}
+  \caption{Confusion matrices with signal features only, aggregated over the five folds, one panel per classifier. Top: binary classification (main set). Bottom: disease-group classification.}
+  \label{fig:confusion}
   \end{figure}
 
 
@@ -347,11 +347,7 @@ The question addressed here is whether the multifractal descriptors obtained thr
   \subsection{Disease Group Classification}
   %--------------------------------------------------------------
 
-Detecting pathology is one task. Sorting disorders by clinical cause is a harder one. The pathologies here are split into two clinical categories: neurological and structural.
-
-Neurological disorders come from abnormal neural control of the vocal folds, structural disorders from abnormalities in the tissue of the folds themselves. Separating the two groups from the speech signal alone is difficult.
-
-  Table~\ref{tab:multiclass_results} summarises the performance of the evaluated models for disease-group classification.
+Detecting pathology is one task. Sorting disorders by clinical cause is a harder one. The pathologies here are split into two clinical categories. The neurological group contains recurrent laryngeal nerve paralysis (212 recordings), spasmodic dysphonia (64) and the single Parkinson's disease recording; the structural group contains laryngitis (140), vocal fold polyp (44) and vocal fold nodules (17). Neurological disorders come from abnormal neural control of the vocal folds, structural disorders from abnormalities in the tissue of the folds themselves. Separating the two groups from the speech signal alone is difficult. Table~\ref{tab:multiclass_results} summarises the performance of the evaluated models for disease-group classification.
 
   \begin{table}[htbp]
   \centering
@@ -373,16 +369,8 @@ Neurological disorders come from abnormal neural control of the vocal folds, str
   \end{tabular}
   \end{table}
 
-  Disease-group classification is much harder than binary pathology detection. Without demographic inputs the best model reaches 0.635 macro F1, and adding age and sex raises this only to 0.649, so age plays a smaller part here than in the binary task; the two groups differ by seven years on average (57.0 vs.\ 49.9). On the matched subset the score falls to 0.575, although this subset is also 42\% smaller than the full one. The acoustic differences between neurological and structural disorders are far less clear-cut than those between healthy and pathological voices.
+  Disease-group classification is much harder than binary pathology detection. Without demographic inputs the best model reaches 0.635 macro F1, and adding age and sex raises this only to 0.649, so age plays a smaller part here than in the binary task; the two groups differ by seven years on average (57.0 vs.\ 49.9). On the matched subset the score falls to 0.575. Ten random subsets of the same size (278 recordings) reach $0.643 \pm 0.022$, so the drop does not come from the smaller sample. The acoustic differences between neurological and structural disorders are far less clear-cut than those between healthy and pathological voices. Figure~\ref{fig:confusion} (bottom) shows the confusion matrices for this task.
 
-  Figure~\ref{fig:multiclass_confusion} shows the confusion matrices for this task.
-
-  \begin{figure}[htbp]
-  \centering
-  \includegraphics[width=0.8\textwidth]{figures/multiclass_confusion_v8.png}
-  \caption{Confusion matrices for disease-group classification with signal features only (aggregated over the five folds), one panel per classifier.}
-  \label{fig:multiclass_confusion}
-  \end{figure}
 
   %--------------------------------------------------------------
   \subsection{Feature Ablation Analysis}
@@ -419,9 +407,8 @@ Neurological disorders come from abnormal neural control of the vocal folds, str
 
   \begin{figure}[htbp]
   \centering
-  \includegraphics[width=0.68\textwidth,trim={0 0 533.8 0},clip]{figures/feature_ablation_v2.png}\\[1.5ex]
-  \includegraphics[width=0.68\textwidth,trim={533.8 0 0 0},clip]{figures/feature_ablation_v2.png}
-  \caption{Feature ablation on the main set with 95\% confidence intervals over the five folds. Bar colour marks the demographic inputs used.}
+  \includegraphics[width=\textwidth]{figures/feature_ablation_v2_compact.png}
+  \caption{Feature ablation on the main set with 95\% confidence intervals over the five folds. Left: binary classification. Right: disease-group classification. OS: OpenSMILE, NK: NeuroKit2. Bar colour marks the inputs: signal features only (blue), with age and sex (purple), age or sex alone (red, orange).}
   \label{fig:ablation_results}
   \end{figure}
 
@@ -466,13 +453,9 @@ Age dominates every configuration that includes it. Adding age and sex to any se
   \label{sec:conclusion}
   %--------------------------------------------------------------
 
-  This paper investigates multifractal descriptors obtained via MFDFA for automated voice pathology detection on the Saarbrücken Voice Database. MFDFA features are combined with conventional acoustic (OpenSMILE) and complexity-based (NeuroKit2) descriptors and evaluated under strict speaker-independent cross-validation, so the reported scores apply to unseen speakers.
+  This paper evaluates automated voice pathology detection on the Saarbrücken Voice Database with both speaker identity and demographics controlled. Multifractal descriptors from MFDFA, eGeMAPS parameters (OpenSMILE), and nonlinear complexity measures (NeuroKit2) were compared under speaker-independent cross-validation, with and without age and sex as inputs, and on age- and sex-matched subsets. With age and sex among the inputs, binary pathology detection reaches a macro F1 of 0.882, but most of this reflects the age gap between healthy and pathological speakers in the Saarbr\"ucken Voice Database: age alone reaches 0.830. With age and sex controlled by matching, the signal features still detect pathology at 0.679, and disease-group classification reaches 0.575. The MFDFA descriptors carry information on their own (0.644 on the binary task) but add nothing measurable once the OpenSMILE parameters are present. Per-disease detection drops for almost every disorder after matching. For now the method suits screening better than differential diagnosis. More generally, the age imbalance in SVD means that results reported on this corpus without an age baseline or matching are likely to overstate what the voice features detect.
 
-  With age and sex among the inputs, binary pathology detection reaches a macro F1 of 0.882, but most of this reflects the age gap between healthy and pathological speakers in the Saarbr\"ucken Voice Database: age alone reaches 0.830. With age and sex controlled by matching, the signal features still detect pathology at 0.679, and disease-group classification reaches 0.575. The MFDFA descriptors carry information on their own (0.644 on the binary task) but add nothing measurable once the OpenSMILE parameters are present. Per-disease detection drops for almost every disorder after matching. For now the method suits screening better than differential diagnosis, and results on this corpus should be read with its age imbalance in mind.
-
-  The study has limitations. It uses a single sustained vowel, and the matched evaluation covers speakers of roughly 15 to 75 years, with few healthy speakers over 60.
-
-  Next steps are validation on larger independent cohorts with age-balanced controls, extension to multiple tokens and to end-to-end models, and an analysis of which parts of the multifractal spectrum carry the clinically useful signal.
+  The study has limitations. It uses a single sustained vowel, and the matched evaluation covers speakers of roughly 15 to 75 years, with few healthy speakers over 60. Matching also shifts the pathological recordings towards younger patients (42.7 instead of 54.0 years on average) and towards structural disorders. If severity increases with age, part of the lower matched score may reflect milder cases rather than the removal of age alone. Next steps are validation on larger independent cohorts with age-balanced controls, extension to multiple tokens and to end-to-end models, and an analysis of which parts of the multifractal spectrum carry the clinically useful signal.
 
 %--------------------------------------------------------------
 % References -- Springer 'splncs04' style, generated by BibTeX from refs.bib.
