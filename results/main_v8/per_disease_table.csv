@@ -1,0 +1,10 @@
+disease,age x sex matched | features only,unmatched | features + age + sex,unmatched | features only,n_disease,matched_pairs
+Functional dysphonia,0.562 ± 0.087 (LogReg),0.766 ± 0.044 (LightGBM),0.610 ± 0.052 (LogReg),107,85.0
+Hyperfunctional dysphonia,0.602 ± 0.080 (LightGBM),0.753 ± 0.067 (LightGBM),0.657 ± 0.030 (LogReg),205,132.0
+Laryngitis,0.601 ± 0.119 (RandomForest),0.772 ± 0.040 (XGBoost),0.683 ± 0.065 (XGBoost),140,99.0
+Psychogenic dysphonia,0.633 ± 0.116 (LogReg),0.806 ± 0.072 (XGBoost),0.714 ± 0.140 (XGBoost),88,59.0
+Recurrent laryngeal nerve paralysis,0.696 ± 0.085 (LightGBM),0.882 ± 0.028 (XGBoost),0.786 ± 0.032 (LightGBM),212,85.0
+Reinke's edema,0.742 ± 0.051 (RandomForest),0.828 ± 0.062 (LightGBM),0.777 ± 0.056 (RandomForest),67,45.0
+Spasmodic dysphonia,0.713 ± 0.227 (RandomForest),0.699 ± 0.184 (LightGBM),0.663 ± 0.226 (LogReg),64,25.0
+Vocal fold nodules,,0.683 ± 0.169 (XGBoost),0.683 ± 0.169 (XGBoost),17,16.0
+Vocal fold polyp,0.544 ± 0.164 (LightGBM),0.754 ± 0.141 (LightGBM),0.683 ± 0.068 (RandomForest),44,36.0

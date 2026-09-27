@@ -1,0 +1,521 @@
+disease,setting,features,model,n_samples,fold,threshold,n_test,accuracy,balanced_accuracy,f1_macro
+Recurrent laryngeal nerve paralysis,unmatched,features + age + sex,LogReg,424,1,0.41,85,0.8588235294117647,0.8576965669988925,0.8572228443449048
+Recurrent laryngeal nerve paralysis,unmatched,features + age + sex,LogReg,424,2,0.41,85,0.8117647058823529,0.8109080841638981,0.810479375696767
+Recurrent laryngeal nerve paralysis,unmatched,features + age + sex,LogReg,424,3,0.47,85,0.8588235294117647,0.8599114064230343,0.8578595317725752
+Recurrent laryngeal nerve paralysis,unmatched,features + age + sex,LogReg,424,4,0.47,85,0.8352941176470589,0.834717607973422,0.8347222222222221
+Recurrent laryngeal nerve paralysis,unmatched,features + age + sex,LogReg,424,5,0.38,84,0.8095238095238095,0.8095238095238095,0.8077803203661327
+Recurrent laryngeal nerve paralysis,unmatched,features + age + sex,RandomForest,424,1,0.47,85,0.8941176470588236,0.8942414174972315,0.8941176470588236
+Recurrent laryngeal nerve paralysis,unmatched,features + age + sex,RandomForest,424,2,0.44,85,0.7647058823529411,0.762735326688815,0.7571428571428571
+Recurrent laryngeal nerve paralysis,unmatched,features + age + sex,RandomForest,424,3,0.5,85,0.8470588235294118,0.8480066445182725,0.8462929475587704
+Recurrent laryngeal nerve paralysis,unmatched,features + age + sex,RandomForest,424,4,0.47,85,0.788235294117647,0.7887596899224807,0.7879711751662971
+Recurrent laryngeal nerve paralysis,unmatched,features + age + sex,RandomForest,424,5,0.47,84,0.8809523809523809,0.8809523809523809,0.8808848553601816
+Recurrent laryngeal nerve paralysis,unmatched,features + age + sex,LightGBM,424,1,0.35,85,0.8941176470588236,0.8939645625692136,0.894058994599086
+Recurrent laryngeal nerve paralysis,unmatched,features + age + sex,LightGBM,424,2,0.35,85,0.8823529411764706,0.8817829457364341,0.8819444444444444
+Recurrent laryngeal nerve paralysis,unmatched,features + age + sex,LightGBM,424,3,0.35,85,0.8823529411764706,0.882890365448505,0.8822062084257206
+Recurrent laryngeal nerve paralysis,unmatched,features + age + sex,LightGBM,424,4,0.35,85,0.8588235294117647,0.8579734219269103,0.8578595317725752
+Recurrent laryngeal nerve paralysis,unmatched,features + age + sex,LightGBM,424,5,0.35,84,0.8571428571428571,0.8571428571428571,0.8571428571428571
+Recurrent laryngeal nerve paralysis,unmatched,features + age + sex,XGBoost,424,1,0.35,85,0.8941176470588236,0.8942414174972315,0.8941176470588236
+Recurrent laryngeal nerve paralysis,unmatched,features + age + sex,XGBoost,424,2,0.44,85,0.9058823529411765,0.9055924695459578,0.9057649667405765
+Recurrent laryngeal nerve paralysis,unmatched,features + age + sex,XGBoost,424,3,0.44,85,0.8941176470588236,0.8950719822812846,0.8935874252329948
+Recurrent laryngeal nerve paralysis,unmatched,features + age + sex,XGBoost,424,4,0.5,85,0.8352941176470589,0.834717607973422,0.8347222222222221
+Recurrent laryngeal nerve paralysis,unmatched,features + age + sex,XGBoost,424,5,0.47,84,0.8809523809523809,0.8809523809523809,0.8808848553601816
+Recurrent laryngeal nerve paralysis,unmatched,features only,LogReg,424,1,0.6200000000000001,85,0.7764705882352941,0.7763012181616833,0.7763467663758483
+Recurrent laryngeal nerve paralysis,unmatched,features only,LogReg,424,2,0.53,85,0.7294117647058823,0.7281284606866003,0.7256140350877194
+Recurrent laryngeal nerve paralysis,unmatched,features only,LogReg,424,3,0.47,85,0.7529411764705882,0.7544296788482835,0.7494736842105263
+Recurrent laryngeal nerve paralysis,unmatched,features only,LogReg,424,4,0.56,85,0.8117647058823529,0.8111849390919158,0.8111111111111111
+Recurrent laryngeal nerve paralysis,unmatched,features only,LogReg,424,5,0.47,84,0.7857142857142857,0.7857142857142857,0.7855927396483267
+Recurrent laryngeal nerve paralysis,unmatched,features only,RandomForest,424,1,0.5,85,0.788235294117647,0.7884828349944629,0.7882059800664452
+Recurrent laryngeal nerve paralysis,unmatched,features only,RandomForest,424,2,0.47,85,0.7411764705882353,0.7389258028792913,0.7303921568627452
+Recurrent laryngeal nerve paralysis,unmatched,features only,RandomForest,424,3,0.47,85,0.8,0.8014950166112957,0.7971929824561403
+Recurrent laryngeal nerve paralysis,unmatched,features only,RandomForest,424,4,0.53,85,0.7294117647058823,0.7289590254706534,0.7288112082119573
+Recurrent laryngeal nerve paralysis,unmatched,features only,RandomForest,424,5,0.5,84,0.8452380952380952,0.8452380952380952,0.8452161587526577
+Recurrent laryngeal nerve paralysis,unmatched,features only,LightGBM,424,1,0.35,85,0.8,0.7995570321151717,0.7995561104175336
+Recurrent laryngeal nerve paralysis,unmatched,features only,LightGBM,424,2,0.35,85,0.7647058823529411,0.7630121816168327,0.7590702947845804
+Recurrent laryngeal nerve paralysis,unmatched,features only,LightGBM,424,3,0.35,85,0.788235294117647,0.7890365448504983,0.7875000000000001
+Recurrent laryngeal nerve paralysis,unmatched,features only,LightGBM,424,4,0.35,85,0.7529411764705882,0.7530454042081949,0.7529411764705882
+Recurrent laryngeal nerve paralysis,unmatched,features only,LightGBM,424,5,0.35,84,0.8333333333333334,0.8333333333333333,0.8324786324786324
+Recurrent laryngeal nerve paralysis,unmatched,features only,XGBoost,424,1,0.35,85,0.8235294117647058,0.82281284606866,0.8226457087216581
+Recurrent laryngeal nerve paralysis,unmatched,features only,XGBoost,424,2,0.35,85,0.7411764705882353,0.739202657807309,0.7328571428571429
+Recurrent laryngeal nerve paralysis,unmatched,features only,XGBoost,424,3,0.35,85,0.788235294117647,0.7895902547065338,0.7858342665173572
+Recurrent laryngeal nerve paralysis,unmatched,features only,XGBoost,424,4,0.38,85,0.7647058823529411,0.7652270210409745,0.7644124168514412
+Recurrent laryngeal nerve paralysis,unmatched,features only,XGBoost,424,5,0.35,84,0.7976190476190477,0.7976190476190477,0.7973605789697744
+Recurrent laryngeal nerve paralysis,age x sex matched,features only,LogReg,170,1,0.47,34,0.7058823529411765,0.7058823529411764,0.6964285714285714
+Recurrent laryngeal nerve paralysis,age x sex matched,features only,LogReg,170,2,0.5900000000000001,34,0.5588235294117647,0.5588235294117647,0.5490716180371353
+Recurrent laryngeal nerve paralysis,age x sex matched,features only,LogReg,170,3,0.56,34,0.7941176470588235,0.7941176470588235,0.793939393939394
+Recurrent laryngeal nerve paralysis,age x sex matched,features only,LogReg,170,4,0.53,34,0.5294117647058824,0.5294117647058824,0.5228070175438597
+Recurrent laryngeal nerve paralysis,age x sex matched,features only,LogReg,170,5,0.5,34,0.7647058823529411,0.7647058823529411,0.7647058823529411
+Recurrent laryngeal nerve paralysis,age x sex matched,features only,RandomForest,170,1,0.38,34,0.6764705882352942,0.6764705882352942,0.652093023255814
+Recurrent laryngeal nerve paralysis,age x sex matched,features only,RandomForest,170,2,0.44,34,0.6764705882352942,0.6764705882352942,0.6621499548328816
+Recurrent laryngeal nerve paralysis,age x sex matched,features only,RandomForest,170,3,0.41,34,0.7352941176470589,0.7352941176470589,0.7294429708222812
+Recurrent laryngeal nerve paralysis,age x sex matched,features only,RandomForest,170,4,0.41,34,0.5882352941176471,0.5882352941176471,0.5492424242424242
+Recurrent laryngeal nerve paralysis,age x sex matched,features only,RandomForest,170,5,0.38,34,0.7647058823529411,0.7647058823529411,0.7614035087719297
+Recurrent laryngeal nerve paralysis,age x sex matched,features only,LightGBM,170,1,0.35,34,0.7058823529411765,0.7058823529411764,0.7048611111111112
+Recurrent laryngeal nerve paralysis,age x sex matched,features only,LightGBM,170,2,0.35,34,0.6176470588235294,0.6176470588235294,0.6091954022988506
+Recurrent laryngeal nerve paralysis,age x sex matched,features only,LightGBM,170,3,0.35,34,0.7941176470588235,0.7941176470588236,0.7925021795989537
+Recurrent laryngeal nerve paralysis,age x sex matched,features only,LightGBM,170,4,0.35,34,0.6176470588235294,0.6176470588235294,0.6091954022988506
+Recurrent laryngeal nerve paralysis,age x sex matched,features only,LightGBM,170,5,0.35,34,0.7647058823529411,0.7647058823529411,0.7638888888888888
+Recurrent laryngeal nerve paralysis,age x sex matched,features only,XGBoost,170,1,0.35,34,0.7352941176470589,0.7352941176470589,0.7294429708222812
+Recurrent laryngeal nerve paralysis,age x sex matched,features only,XGBoost,170,2,0.38,34,0.6470588235294118,0.6470588235294117,0.6263736263736264
+Recurrent laryngeal nerve paralysis,age x sex matched,features only,XGBoost,170,3,0.35,34,0.7941176470588235,0.7941176470588236,0.7895667550839964
+Recurrent laryngeal nerve paralysis,age x sex matched,features only,XGBoost,170,4,0.41,34,0.5882352941176471,0.5882352941176471,0.5824561403508772
+Recurrent laryngeal nerve paralysis,age x sex matched,features only,XGBoost,170,5,0.35,34,0.7058823529411765,0.7058823529411764,0.7017543859649122
+Hyperfunctional dysphonia,unmatched,features + age + sex,LogReg,410,1,0.47,82,0.7195121951219512,0.7195121951219512,0.7143722550355899
+Hyperfunctional dysphonia,unmatched,features + age + sex,LogReg,410,2,0.53,82,0.7804878048780488,0.7804878048780488,0.7803571428571429
+Hyperfunctional dysphonia,unmatched,features + age + sex,LogReg,410,3,0.44,82,0.7439024390243902,0.7439024390243902,0.7438643462739848
+Hyperfunctional dysphonia,unmatched,features + age + sex,LogReg,410,4,0.47,82,0.6585365853658537,0.6585365853658537,0.6585365853658537
+Hyperfunctional dysphonia,unmatched,features + age + sex,LogReg,410,5,0.47,82,0.8292682926829268,0.8292682926829269,0.8291666666666666
+Hyperfunctional dysphonia,unmatched,features + age + sex,RandomForest,410,1,0.44,82,0.7682926829268293,0.7682926829268293,0.7654674093030257
+Hyperfunctional dysphonia,unmatched,features + age + sex,RandomForest,410,2,0.44,82,0.6951219512195121,0.6951219512195121,0.6914044859250339
+Hyperfunctional dysphonia,unmatched,features + age + sex,RandomForest,410,3,0.41,82,0.7804878048780488,0.7804878048780488,0.7771739130434783
+Hyperfunctional dysphonia,unmatched,features + age + sex,RandomForest,410,4,0.44,82,0.7195121951219512,0.7195121951219512,0.7184654426033736
+Hyperfunctional dysphonia,unmatched,features + age + sex,RandomForest,410,5,0.44,82,0.7317073170731707,0.7317073170731707,0.7258358662613982
+Hyperfunctional dysphonia,unmatched,features + age + sex,LightGBM,410,1,0.35,82,0.8414634146341463,0.8414634146341463,0.8414398334077049
+Hyperfunctional dysphonia,unmatched,features + age + sex,LightGBM,410,2,0.35,82,0.7073170731707317,0.7073170731707317,0.7066189624329159
+Hyperfunctional dysphonia,unmatched,features + age + sex,LightGBM,410,3,0.35,82,0.7804878048780488,0.7804878048780488,0.7799642218246869
+Hyperfunctional dysphonia,unmatched,features + age + sex,LightGBM,410,4,0.35,82,0.6707317073170732,0.6707317073170731,0.6702903946388682
+Hyperfunctional dysphonia,unmatched,features + age + sex,LightGBM,410,5,0.35,82,0.7682926829268293,0.7682926829268293,0.7682582180574149
+Hyperfunctional dysphonia,unmatched,features + age + sex,XGBoost,410,1,0.35,82,0.8048780487804879,0.8048780487804879,0.8038277511961722
+Hyperfunctional dysphonia,unmatched,features + age + sex,XGBoost,410,2,0.35,82,0.6707317073170732,0.6707317073170731,0.6683146067415731
+Hyperfunctional dysphonia,unmatched,features + age + sex,XGBoost,410,3,0.35,82,0.7682926829268293,0.7682926829268293,0.767982129560685
+Hyperfunctional dysphonia,unmatched,features + age + sex,XGBoost,410,4,0.35,82,0.6707317073170732,0.6707317073170732,0.6706827309236947
+Hyperfunctional dysphonia,unmatched,features + age + sex,XGBoost,410,5,0.35,82,0.7682926829268293,0.7682926829268293,0.767982129560685
+Hyperfunctional dysphonia,unmatched,features only,LogReg,410,1,0.44,82,0.6341463414634146,0.6341463414634146,0.632177033492823
+Hyperfunctional dysphonia,unmatched,features only,LogReg,410,2,0.41,82,0.6585365853658537,0.6585365853658536,0.6566985645933014
+Hyperfunctional dysphonia,unmatched,features only,LogReg,410,3,0.47,82,0.6585365853658537,0.6585365853658536,0.6577221228384019
+Hyperfunctional dysphonia,unmatched,features only,LogReg,410,4,0.53,82,0.6341463414634146,0.6341463414634146,0.632177033492823
+Hyperfunctional dysphonia,unmatched,features only,LogReg,410,5,0.56,82,0.7073170731707317,0.7073170731707317,0.7057416267942584
+Hyperfunctional dysphonia,unmatched,features only,RandomForest,410,1,0.44,82,0.5975609756097561,0.5975609756097562,0.5946067415730337
+Hyperfunctional dysphonia,unmatched,features only,RandomForest,410,2,0.44,82,0.6463414634146342,0.6463414634146342,0.6340975534697646
+Hyperfunctional dysphonia,unmatched,features only,RandomForest,410,3,0.38,82,0.6829268292682927,0.6829268292682927,0.666875
+Hyperfunctional dysphonia,unmatched,features only,RandomForest,410,4,0.38,82,0.6097560975609756,0.6097560975609756,0.5582491582491582
+Hyperfunctional dysphonia,unmatched,features only,RandomForest,410,5,0.41,82,0.6829268292682927,0.6829268292682926,0.653220559531555
+Hyperfunctional dysphonia,unmatched,features only,LightGBM,410,1,0.35,82,0.6341463414634146,0.6341463414634146,0.6339285714285714
+Hyperfunctional dysphonia,unmatched,features only,LightGBM,410,2,0.35,82,0.6341463414634146,0.6341463414634146,0.6332737030411449
+Hyperfunctional dysphonia,unmatched,features only,LightGBM,410,3,0.35,82,0.6585365853658537,0.6585365853658536,0.6577221228384019
+Hyperfunctional dysphonia,unmatched,features only,LightGBM,410,4,0.35,82,0.6463414634146342,0.6463414634146342,0.6437453183520598
+Hyperfunctional dysphonia,unmatched,features only,LightGBM,410,5,0.35,82,0.6951219512195121,0.6951219512195121,0.6928838951310861
+Hyperfunctional dysphonia,unmatched,features only,XGBoost,410,1,0.35,82,0.6463414634146342,0.6463414634146342,0.6437453183520598
+Hyperfunctional dysphonia,unmatched,features only,XGBoost,410,2,0.35,82,0.6219512195121951,0.6219512195121951,0.6088629019849208
+Hyperfunctional dysphonia,unmatched,features only,XGBoost,410,3,0.35,82,0.6829268292682927,0.6829268292682927,0.6781400966183575
+Hyperfunctional dysphonia,unmatched,features only,XGBoost,410,4,0.35,82,0.5853658536585366,0.5853658536585366,0.5762917933130699
+Hyperfunctional dysphonia,unmatched,features only,XGBoost,410,5,0.35,82,0.6829268292682927,0.6829268292682927,0.666875
+Hyperfunctional dysphonia,age x sex matched,features only,LogReg,264,1,0.56,53,0.6415094339622641,0.6417378917378918,0.6415094339622641
+Hyperfunctional dysphonia,age x sex matched,features only,LogReg,264,2,0.41,53,0.5471698113207547,0.5462962962962963,0.5457142857142857
+Hyperfunctional dysphonia,age x sex matched,features only,LogReg,264,3,0.41,53,0.5283018867924528,0.5256410256410257,0.517304189435337
+Hyperfunctional dysphonia,age x sex matched,features only,LogReg,264,4,0.56,53,0.5849056603773585,0.5833333333333333,0.5811781609195402
+Hyperfunctional dysphonia,age x sex matched,features only,LogReg,264,5,0.5,52,0.5384615384615384,0.5384615384615384,0.5322338830584707
+Hyperfunctional dysphonia,age x sex matched,features only,RandomForest,264,1,0.38,53,0.5660377358490566,0.5598290598290598,0.509456740442656
+Hyperfunctional dysphonia,age x sex matched,features only,RandomForest,264,2,0.38,53,0.5849056603773585,0.5797720797720798,0.5487616099071208
+Hyperfunctional dysphonia,age x sex matched,features only,RandomForest,264,3,0.41,53,0.4716981132075472,0.4736467236467236,0.46695402298850575
+Hyperfunctional dysphonia,age x sex matched,features only,RandomForest,264,4,0.38,53,0.5849056603773585,0.5918803418803419,0.5236928104575164
+Hyperfunctional dysphonia,age x sex matched,features only,RandomForest,264,5,0.35,52,0.5576923076923077,0.5576923076923077,0.47149801148917364
+Hyperfunctional dysphonia,age x sex matched,features only,LightGBM,264,1,0.35,53,0.5849056603773585,0.5811965811965812,0.5662202380952381
+Hyperfunctional dysphonia,age x sex matched,features only,LightGBM,264,2,0.35,53,0.5660377358490566,0.5648148148148149,0.5635517364840673
+Hyperfunctional dysphonia,age x sex matched,features only,LightGBM,264,3,0.35,53,0.5094339622641509,0.5085470085470085,0.5078571428571428
+Hyperfunctional dysphonia,age x sex matched,features only,LightGBM,264,4,0.35,53,0.6981132075471698,0.6987179487179487,0.698005698005698
+Hyperfunctional dysphonia,age x sex matched,features only,LightGBM,264,5,0.35,52,0.6730769230769231,0.6730769230769231,0.6729559748427673
+Hyperfunctional dysphonia,age x sex matched,features only,XGBoost,264,1,0.35,53,0.5849056603773585,0.5804843304843305,0.5583333333333333
+Hyperfunctional dysphonia,age x sex matched,features only,XGBoost,264,2,0.35,53,0.5660377358490566,0.5641025641025641,0.5604038946988821
+Hyperfunctional dysphonia,age x sex matched,features only,XGBoost,264,3,0.35,53,0.49056603773584906,0.49145299145299143,0.48983957219251334
+Hyperfunctional dysphonia,age x sex matched,features only,XGBoost,264,4,0.35,53,0.5849056603773585,0.5897435897435898,0.5583333333333333
+Hyperfunctional dysphonia,age x sex matched,features only,XGBoost,264,5,0.35,52,0.6730769230769231,0.6730769230769231,0.6577622919086333
+Laryngitis,unmatched,features + age + sex,LogReg,280,1,0.44,56,0.8214285714285714,0.8214285714285714,0.8205128205128205
+Laryngitis,unmatched,features + age + sex,LogReg,280,2,0.5,56,0.625,0.625,0.6248803827751196
+Laryngitis,unmatched,features + age + sex,LogReg,280,3,0.5,56,0.6964285714285714,0.6964285714285714,0.688379705400982
+Laryngitis,unmatched,features + age + sex,LogReg,280,4,0.56,56,0.7857142857142857,0.7857142857142857,0.7857142857142857
+Laryngitis,unmatched,features + age + sex,LogReg,280,5,0.47,56,0.7321428571428571,0.7321428571428572,0.7320574162679425
+Laryngitis,unmatched,features + age + sex,RandomForest,280,1,0.44,56,0.7857142857142857,0.7857142857142858,0.78125
+Laryngitis,unmatched,features + age + sex,RandomForest,280,2,0.38,56,0.6785714285714286,0.6785714285714286,0.6631016042780749
+Laryngitis,unmatched,features + age + sex,RandomForest,280,3,0.5,56,0.6607142857142857,0.6607142857142857,0.6517184942716858
+Laryngitis,unmatched,features + age + sex,RandomForest,280,4,0.41,56,0.7678571428571429,0.7678571428571428,0.7617021276595746
+Laryngitis,unmatched,features + age + sex,RandomForest,280,5,0.44,56,0.8214285714285714,0.8214285714285714,0.8212005108556832
+Laryngitis,unmatched,features + age + sex,LightGBM,280,1,0.35,56,0.8392857142857143,0.8392857142857143,0.8388231531819635
+Laryngitis,unmatched,features + age + sex,LightGBM,280,2,0.35,56,0.7321428571428571,0.7321428571428572,0.7313719219699393
+Laryngitis,unmatched,features + age + sex,LightGBM,280,3,0.35,56,0.6964285714285714,0.6964285714285714,0.6939890710382514
+Laryngitis,unmatched,features + age + sex,LightGBM,280,4,0.35,56,0.8214285714285714,0.8214285714285714,0.8205128205128205
+Laryngitis,unmatched,features + age + sex,LightGBM,280,5,0.35,56,0.75,0.75,0.75
+Laryngitis,unmatched,features + age + sex,XGBoost,280,1,0.35,56,0.8392857142857143,0.8392857142857143,0.8367346938775511
+Laryngitis,unmatched,features + age + sex,XGBoost,280,2,0.35,56,0.7321428571428571,0.7321428571428571,0.727891156462585
+Laryngitis,unmatched,features + age + sex,XGBoost,280,3,0.41,56,0.7678571428571429,0.7678571428571428,0.7659916425586628
+Laryngitis,unmatched,features + age + sex,XGBoost,280,4,0.35,56,0.7678571428571429,0.7678571428571428,0.7617021276595746
+Laryngitis,unmatched,features + age + sex,XGBoost,280,5,0.35,56,0.7678571428571429,0.7678571428571428,0.767188999040614
+Laryngitis,unmatched,features only,LogReg,280,1,0.47,56,0.6607142857142857,0.6607142857142858,0.6606060606060606
+Laryngitis,unmatched,features only,LogReg,280,2,0.56,56,0.5714285714285714,0.5714285714285714,0.5708812260536398
+Laryngitis,unmatched,features only,LogReg,280,3,0.44,56,0.6428571428571429,0.6428571428571428,0.641025641025641
+Laryngitis,unmatched,features only,LogReg,280,4,0.5,56,0.6607142857142857,0.6607142857142857,0.6597377678285896
+Laryngitis,unmatched,features only,LogReg,280,5,0.5,56,0.6607142857142857,0.6607142857142857,0.6597377678285896
+Laryngitis,unmatched,features only,RandomForest,280,1,0.44,56,0.6607142857142857,0.6607142857142857,0.655328798185941
+Laryngitis,unmatched,features only,RandomForest,280,2,0.44,56,0.6607142857142857,0.6607142857142857,0.6470978441127695
+Laryngitis,unmatched,features only,RandomForest,280,3,0.44,56,0.5535714285714286,0.5535714285714286,0.5522865366165655
+Laryngitis,unmatched,features only,RandomForest,280,4,0.41,56,0.7321428571428571,0.7321428571428572,0.7250409165302782
+Laryngitis,unmatched,features only,RandomForest,280,5,0.38,56,0.7321428571428571,0.7321428571428572,0.7213930348258706
+Laryngitis,unmatched,features only,LightGBM,280,1,0.35,56,0.6785714285714286,0.6785714285714286,0.6748387096774193
+Laryngitis,unmatched,features only,LightGBM,280,2,0.35,56,0.625,0.625,0.609950248756219
+Laryngitis,unmatched,features only,LightGBM,280,3,0.35,56,0.625,0.625,0.6248803827751196
+Laryngitis,unmatched,features only,LightGBM,280,4,0.35,56,0.6607142857142857,0.6607142857142857,0.6597377678285896
+Laryngitis,unmatched,features only,LightGBM,280,5,0.35,56,0.7678571428571429,0.7678571428571428,0.7659916425586628
+Laryngitis,unmatched,features only,XGBoost,280,1,0.35,56,0.6785714285714286,0.6785714285714286,0.6679841897233202
+Laryngitis,unmatched,features only,XGBoost,280,2,0.35,56,0.6428571428571429,0.6428571428571428,0.6310935441370225
+Laryngitis,unmatched,features only,XGBoost,280,3,0.35,56,0.625,0.625,0.6190476190476191
+Laryngitis,unmatched,features only,XGBoost,280,4,0.35,56,0.7857142857142857,0.7857142857142857,0.7754010695187166
+Laryngitis,unmatched,features only,XGBoost,280,5,0.35,56,0.7321428571428571,0.7321428571428572,0.7213930348258706
+Laryngitis,age x sex matched,features only,LogReg,198,1,0.44,40,0.575,0.575,0.5747342088805503
+Laryngitis,age x sex matched,features only,LogReg,198,2,0.44,40,0.725,0.725,0.7248280175109443
+Laryngitis,age x sex matched,features only,LogReg,198,3,0.5,40,0.525,0.525,0.5223130106851037
+Laryngitis,age x sex matched,features only,LogReg,198,4,0.44,39,0.6666666666666666,0.6644736842105263,0.6631229235880398
+Laryngitis,age x sex matched,features only,LogReg,198,5,0.5,39,0.46153846153846156,0.4618421052631579,0.46153846153846156
+Laryngitis,age x sex matched,features only,RandomForest,198,1,0.44,40,0.55,0.55,0.5396419437340154
+Laryngitis,age x sex matched,features only,RandomForest,198,2,0.41,40,0.75,0.75,0.7333333333333334
+Laryngitis,age x sex matched,features only,RandomForest,198,3,0.38,40,0.6,0.6,0.5604395604395604
+Laryngitis,age x sex matched,features only,RandomForest,198,4,0.38,39,0.717948717948718,0.7157894736842105,0.7149501661129568
+Laryngitis,age x sex matched,features only,RandomForest,198,5,0.41,39,0.48717948717948717,0.4934210526315789,0.45833333333333337
+Laryngitis,age x sex matched,features only,LightGBM,198,1,0.35,40,0.475,0.475,0.474671669793621
+Laryngitis,age x sex matched,features only,LightGBM,198,2,0.35,40,0.775,0.7749999999999999,0.7737272155876807
+Laryngitis,age x sex matched,features only,LightGBM,198,3,0.35,40,0.4,0.4,0.4
+Laryngitis,age x sex matched,features only,LightGBM,198,4,0.35,39,0.6153846153846154,0.618421052631579,0.6112956810631229
+Laryngitis,age x sex matched,features only,LightGBM,198,5,0.35,39,0.5384615384615384,0.5407894736842105,0.5357142857142857
+Laryngitis,age x sex matched,features only,XGBoost,198,1,0.38,40,0.55,0.55,0.5396419437340154
+Laryngitis,age x sex matched,features only,XGBoost,198,2,0.35,40,0.75,0.75,0.7442455242966752
+Laryngitis,age x sex matched,features only,XGBoost,198,3,0.35,40,0.55,0.55,0.53125
+Laryngitis,age x sex matched,features only,XGBoost,198,4,0.35,39,0.717948717948718,0.7157894736842105,0.7149501661129568
+Laryngitis,age x sex matched,features only,XGBoost,198,5,0.38,39,0.48717948717948717,0.4934210526315789,0.45833333333333337
+Functional dysphonia,unmatched,features + age + sex,LogReg,214,1,0.5,43,0.7209302325581395,0.7218614718614718,0.7207792207792207
+Functional dysphonia,unmatched,features + age + sex,LogReg,214,2,0.47,43,0.7674418604651163,0.7694805194805194,0.7663043478260869
+Functional dysphonia,unmatched,features + age + sex,LogReg,214,3,0.35,43,0.7906976744186046,0.7911255411255411,0.7906976744186046
+Functional dysphonia,unmatched,features + age + sex,LogReg,214,4,0.5,43,0.6511627906976745,0.6515151515151515,0.6511627906976745
+Functional dysphonia,unmatched,features + age + sex,LogReg,214,5,0.41,42,0.7142857142857143,0.7142857142857142,0.7083333333333333
+Functional dysphonia,unmatched,features + age + sex,RandomForest,214,1,0.35,43,0.6976744186046512,0.6926406926406926,0.6803887935963409
+Functional dysphonia,unmatched,features + age + sex,RandomForest,214,2,0.41,43,0.7441860465116279,0.7467532467532467,0.7419530823786142
+Functional dysphonia,unmatched,features + age + sex,RandomForest,214,3,0.38,43,0.6744186046511628,0.6699134199134199,0.6595022624434389
+Functional dysphonia,unmatched,features + age + sex,RandomForest,214,4,0.47,43,0.7209302325581395,0.724025974025974,0.7171052631578947
+Functional dysphonia,unmatched,features + age + sex,RandomForest,214,5,0.41,42,0.6428571428571429,0.6428571428571428,0.616555082166768
+Functional dysphonia,unmatched,features + age + sex,LightGBM,214,1,0.35,43,0.7674418604651163,0.7694805194805194,0.7663043478260869
+Functional dysphonia,unmatched,features + age + sex,LightGBM,214,2,0.35,43,0.8372093023255814,0.8365800865800865,0.8368563685636856
+Functional dysphonia,unmatched,features + age + sex,LightGBM,214,3,0.35,43,0.7441860465116279,0.7456709956709957,0.7436314363143631
+Functional dysphonia,unmatched,features + age + sex,LightGBM,214,4,0.35,43,0.7209302325581395,0.722943722943723,0.7195652173913043
+Functional dysphonia,unmatched,features + age + sex,LightGBM,214,5,0.35,42,0.7619047619047619,0.7619047619047619,0.7613636363636364
+Functional dysphonia,unmatched,features + age + sex,XGBoost,214,1,0.35,43,0.7674418604651163,0.7683982683982684,0.7673160173160173
+Functional dysphonia,unmatched,features + age + sex,XGBoost,214,2,0.35,43,0.7906976744186046,0.7922077922077921,0.7902439024390244
+Functional dysphonia,unmatched,features + age + sex,XGBoost,214,3,0.35,43,0.7209302325581395,0.7207792207792207,0.7207792207792207
+Functional dysphonia,unmatched,features + age + sex,XGBoost,214,4,0.35,43,0.7441860465116279,0.7478354978354979,0.7391064533921676
+Functional dysphonia,unmatched,features + age + sex,XGBoost,214,5,0.38,42,0.8095238095238095,0.8095238095238095,0.8090909090909091
+Functional dysphonia,unmatched,features only,LogReg,214,1,0.47,43,0.6511627906976745,0.6525974025974026,0.6504065040650406
+Functional dysphonia,unmatched,features only,LogReg,214,2,0.44,43,0.6744186046511628,0.6764069264069263,0.6728260869565217
+Functional dysphonia,unmatched,features only,LogReg,214,3,0.47,43,0.6046511627906976,0.604978354978355,0.6046511627906976
+Functional dysphonia,unmatched,features only,LogReg,214,4,0.41,43,0.5581395348837209,0.5595238095238095,0.5571815718157181
+Functional dysphonia,unmatched,features only,LogReg,214,5,0.44,42,0.5714285714285714,0.5714285714285714,0.5625
+Functional dysphonia,unmatched,features only,RandomForest,214,1,0.38,43,0.6046511627906976,0.6006493506493507,0.5904761904761904
+Functional dysphonia,unmatched,features only,RandomForest,214,2,0.41,43,0.6046511627906976,0.6114718614718615,0.5712609970674487
+Functional dysphonia,unmatched,features only,RandomForest,214,3,0.44,43,0.5581395348837209,0.553030303030303,0.5328759291023442
+Functional dysphonia,unmatched,features only,RandomForest,214,4,0.5,43,0.5116279069767442,0.5108225108225108,0.5105691056910568
+Functional dysphonia,unmatched,features only,RandomForest,214,5,0.44,42,0.6190476190476191,0.6190476190476191,0.5851851851851853
+Functional dysphonia,unmatched,features only,LightGBM,214,1,0.35,43,0.627906976744186,0.6266233766233766,0.6260869565217391
+Functional dysphonia,unmatched,features only,LightGBM,214,2,0.35,43,0.6744186046511628,0.672077922077922,0.6699561403508771
+Functional dysphonia,unmatched,features only,LightGBM,214,3,0.35,43,0.5813953488372093,0.579004329004329,0.575657894736842
+Functional dysphonia,unmatched,features only,LightGBM,214,4,0.35,43,0.4883720930232558,0.487012987012987,0.48586956521739133
+Functional dysphonia,unmatched,features only,LightGBM,214,5,0.35,42,0.5714285714285714,0.5714285714285714,0.5675057208237986
+Functional dysphonia,unmatched,features only,XGBoost,214,1,0.38,43,0.6046511627906976,0.6028138528138528,0.6012002182214948
+Functional dysphonia,unmatched,features only,XGBoost,214,2,0.35,43,0.6046511627906976,0.6093073593073594,0.5904761904761904
+Functional dysphonia,unmatched,features only,XGBoost,214,3,0.35,43,0.5813953488372093,0.5768398268398268,0.5622171945701357
+Functional dysphonia,unmatched,features only,XGBoost,214,4,0.44,43,0.5581395348837209,0.5584415584415584,0.5581395348837209
+Functional dysphonia,unmatched,features only,XGBoost,214,5,0.35,42,0.5714285714285714,0.5714285714285714,0.5456730769230769
+Functional dysphonia,age x sex matched,features only,LogReg,170,1,0.35,34,0.47058823529411764,0.47058823529411764,0.43956043956043955
+Functional dysphonia,age x sex matched,features only,LogReg,170,2,0.47,34,0.5882352941176471,0.5882352941176471,0.5868055555555556
+Functional dysphonia,age x sex matched,features only,LogReg,170,3,0.44,34,0.5294117647058824,0.5294117647058824,0.5228070175438597
+Functional dysphonia,age x sex matched,features only,LogReg,170,4,0.35,34,0.6764705882352942,0.6764705882352942,0.6739319965126417
+Functional dysphonia,age x sex matched,features only,LogReg,170,5,0.5,34,0.5882352941176471,0.5882352941176471,0.5868055555555556
+Functional dysphonia,age x sex matched,features only,RandomForest,170,1,0.38,34,0.6470588235294118,0.6470588235294118,0.6136363636363636
+Functional dysphonia,age x sex matched,features only,RandomForest,170,2,0.44,34,0.5882352941176471,0.5882352941176471,0.5641025641025641
+Functional dysphonia,age x sex matched,features only,RandomForest,170,3,0.44,34,0.47058823529411764,0.47058823529411764,0.43956043956043955
+Functional dysphonia,age x sex matched,features only,RandomForest,170,4,0.41,34,0.5,0.5,0.4415458937198068
+Functional dysphonia,age x sex matched,features only,RandomForest,170,5,0.41,34,0.5882352941176471,0.588235294117647,0.575
+Functional dysphonia,age x sex matched,features only,LightGBM,170,1,0.35,34,0.5882352941176471,0.5882352941176471,0.5824561403508772
+Functional dysphonia,age x sex matched,features only,LightGBM,170,2,0.35,34,0.47058823529411764,0.47058823529411764,0.4535714285714286
+Functional dysphonia,age x sex matched,features only,LightGBM,170,3,0.35,34,0.5588235294117647,0.5588235294117647,0.5490716180371353
+Functional dysphonia,age x sex matched,features only,LightGBM,170,4,0.35,34,0.5882352941176471,0.5882352941176471,0.5868055555555556
+Functional dysphonia,age x sex matched,features only,LightGBM,170,5,0.35,34,0.5588235294117647,0.5588235294117647,0.5584415584415584
+Functional dysphonia,age x sex matched,features only,XGBoost,170,1,0.35,34,0.6764705882352942,0.6764705882352942,0.6693191865605659
+Functional dysphonia,age x sex matched,features only,XGBoost,170,2,0.35,34,0.47058823529411764,0.47058823529411764,0.4535714285714286
+Functional dysphonia,age x sex matched,features only,XGBoost,170,3,0.35,34,0.5294117647058824,0.5294117647058824,0.48484848484848486
+Functional dysphonia,age x sex matched,features only,XGBoost,170,4,0.35,34,0.6176470588235294,0.6176470588235294,0.6091954022988506
+Functional dysphonia,age x sex matched,features only,XGBoost,170,5,0.38,34,0.47058823529411764,0.47058823529411764,0.46875
+Psychogenic dysphonia,unmatched,features + age + sex,LogReg,176,1,0.47,36,0.7222222222222222,0.7222222222222222,0.7213622291021672
+Psychogenic dysphonia,unmatched,features + age + sex,LogReg,176,2,0.41,35,0.7714285714285715,0.7712418300653594,0.7712418300653594
+Psychogenic dysphonia,unmatched,features + age + sex,LogReg,176,3,0.35,35,0.6857142857142857,0.6862745098039216,0.6857142857142857
+Psychogenic dysphonia,unmatched,features + age + sex,LogReg,176,4,0.47,35,0.6285714285714286,0.6290849673202614,0.6285714285714286
+Psychogenic dysphonia,unmatched,features + age + sex,LogReg,176,5,0.44,35,0.6571428571428571,0.6584967320261439,0.6568627450980392
+Psychogenic dysphonia,unmatched,features + age + sex,RandomForest,176,1,0.38,36,0.9166666666666666,0.9166666666666666,0.9166023166023166
+Psychogenic dysphonia,unmatched,features + age + sex,RandomForest,176,2,0.44,35,0.7714285714285715,0.7663398692810457,0.7619047619047619
+Psychogenic dysphonia,unmatched,features + age + sex,RandomForest,176,3,0.41,35,0.7142857142857143,0.7156862745098038,0.7140522875816994
+Psychogenic dysphonia,unmatched,features + age + sex,RandomForest,176,4,0.41,35,0.8,0.7941176470588236,0.788975021533161
+Psychogenic dysphonia,unmatched,features + age + sex,RandomForest,176,5,0.41,35,0.7142857142857143,0.7189542483660131,0.7083333333333333
+Psychogenic dysphonia,unmatched,features + age + sex,LightGBM,176,1,0.35,36,0.9166666666666666,0.9166666666666667,0.916083916083916
+Psychogenic dysphonia,unmatched,features + age + sex,LightGBM,176,2,0.35,35,0.8,0.8006535947712419,0.8
+Psychogenic dysphonia,unmatched,features + age + sex,LightGBM,176,3,0.35,35,0.8,0.7941176470588236,0.788975021533161
+Psychogenic dysphonia,unmatched,features + age + sex,LightGBM,176,4,0.35,35,0.8285714285714286,0.826797385620915,0.8273026315789473
+Psychogenic dysphonia,unmatched,features + age + sex,LightGBM,176,5,0.35,35,0.6857142857142857,0.6879084967320261,0.6846846846846847
+Psychogenic dysphonia,unmatched,features + age + sex,XGBoost,176,1,0.41,36,0.9166666666666666,0.9166666666666666,0.9166023166023166
+Psychogenic dysphonia,unmatched,features + age + sex,XGBoost,176,2,0.47,35,0.8,0.7990196078431373,0.7993447993447993
+Psychogenic dysphonia,unmatched,features + age + sex,XGBoost,176,3,0.35,35,0.7428571428571429,0.7418300653594772,0.742014742014742
+Psychogenic dysphonia,unmatched,features + age + sex,XGBoost,176,4,0.41,35,0.8285714285714286,0.826797385620915,0.8273026315789473
+Psychogenic dysphonia,unmatched,features + age + sex,XGBoost,176,5,0.47,35,0.7428571428571429,0.7434640522875817,0.7428571428571429
+Psychogenic dysphonia,unmatched,features only,LogReg,176,1,0.56,36,0.8333333333333334,0.8333333333333334,0.8333333333333334
+Psychogenic dysphonia,unmatched,features only,LogReg,176,2,0.53,35,0.6285714285714286,0.6323529411764706,0.6236559139784946
+Psychogenic dysphonia,unmatched,features only,LogReg,176,3,0.47,35,0.6571428571428571,0.6617647058823529,0.6499999999999999
+Psychogenic dysphonia,unmatched,features only,LogReg,176,4,0.41,35,0.6,0.6013071895424837,0.5996732026143792
+Psychogenic dysphonia,unmatched,features only,LogReg,176,5,0.5900000000000001,35,0.5714285714285714,0.5735294117647058,0.5700245700245701
+Psychogenic dysphonia,unmatched,features only,RandomForest,176,1,0.38,36,0.8333333333333334,0.8333333333333333,0.83125
+Psychogenic dysphonia,unmatched,features only,RandomForest,176,2,0.41,35,0.6571428571428571,0.6519607843137255,0.6428571428571428
+Psychogenic dysphonia,unmatched,features only,RandomForest,176,3,0.41,35,0.6571428571428571,0.6617647058823529,0.6499999999999999
+Psychogenic dysphonia,unmatched,features only,RandomForest,176,4,0.41,35,0.7142857142857143,0.7091503267973855,0.7023809523809523
+Psychogenic dysphonia,unmatched,features only,RandomForest,176,5,0.38,35,0.6,0.6094771241830066,0.5561594202898551
+Psychogenic dysphonia,unmatched,features only,LightGBM,176,1,0.35,36,0.8611111111111112,0.8611111111111112,0.8610038610038611
+Psychogenic dysphonia,unmatched,features only,LightGBM,176,2,0.35,35,0.6857142857142857,0.684640522875817,0.6846846846846847
+Psychogenic dysphonia,unmatched,features only,LightGBM,176,3,0.35,35,0.6571428571428571,0.6584967320261439,0.6568627450980392
+Psychogenic dysphonia,unmatched,features only,LightGBM,176,4,0.35,35,0.7142857142857143,0.7091503267973855,0.7023809523809523
+Psychogenic dysphonia,unmatched,features only,LightGBM,176,5,0.35,35,0.6,0.6062091503267973,0.5833333333333333
+Psychogenic dysphonia,unmatched,features only,XGBoost,176,1,0.35,36,0.8888888888888888,0.8888888888888888,0.8885448916408669
+Psychogenic dysphonia,unmatched,features only,XGBoost,176,2,0.41,35,0.6857142857142857,0.6830065359477124,0.6815550041356493
+Psychogenic dysphonia,unmatched,features only,XGBoost,176,3,0.41,35,0.6285714285714286,0.6290849673202614,0.6285714285714286
+Psychogenic dysphonia,unmatched,features only,XGBoost,176,4,0.35,35,0.8285714285714286,0.8251633986928104,0.825
+Psychogenic dysphonia,unmatched,features only,XGBoost,176,5,0.35,35,0.5714285714285714,0.5784313725490196,0.5478036175710594
+Psychogenic dysphonia,age x sex matched,features only,LogReg,118,1,0.53,24,0.625,0.625,0.6243478260869566
+Psychogenic dysphonia,age x sex matched,features only,LogReg,118,2,0.41,24,0.7083333333333334,0.7083333333333333,0.7078260869565217
+Psychogenic dysphonia,age x sex matched,features only,LogReg,118,3,0.47,23,0.6956521739130435,0.7007575757575758,0.6933333333333334
+Psychogenic dysphonia,age x sex matched,features only,LogReg,118,4,0.47,24,0.7083333333333334,0.7083333333333334,0.7037037037037037
+Psychogenic dysphonia,age x sex matched,features only,LogReg,118,5,0.47,23,0.43478260869565216,0.4356060606060606,0.43478260869565216
+Psychogenic dysphonia,age x sex matched,features only,RandomForest,118,1,0.35,24,0.5416666666666666,0.5416666666666666,0.4666666666666667
+Psychogenic dysphonia,age x sex matched,features only,RandomForest,118,2,0.35,24,0.5833333333333334,0.5833333333333334,0.4957983193277311
+Psychogenic dysphonia,age x sex matched,features only,RandomForest,118,3,0.38,23,0.5652173913043478,0.5795454545454546,0.5208333333333333
+Psychogenic dysphonia,age x sex matched,features only,RandomForest,118,4,0.38,24,0.5416666666666666,0.5416666666666666,0.5208711433756805
+Psychogenic dysphonia,age x sex matched,features only,RandomForest,118,5,0.41,23,0.391304347826087,0.38257575757575757,0.3611111111111111
+Psychogenic dysphonia,age x sex matched,features only,LightGBM,118,1,0.35,24,0.625,0.625,0.6243478260869566
+Psychogenic dysphonia,age x sex matched,features only,LightGBM,118,2,0.35,24,0.625,0.625,0.6243478260869566
+Psychogenic dysphonia,age x sex matched,features only,LightGBM,118,3,0.35,23,0.5652173913043478,0.5643939393939394,0.5643939393939394
+Psychogenic dysphonia,age x sex matched,features only,LightGBM,118,4,0.35,24,0.625,0.625,0.6243478260869566
+Psychogenic dysphonia,age x sex matched,features only,LightGBM,118,5,0.35,23,0.4782608695652174,0.4734848484848485,0.46923076923076923
+Psychogenic dysphonia,age x sex matched,features only,XGBoost,118,1,0.35,24,0.6666666666666666,0.6666666666666666,0.6444444444444444
+Psychogenic dysphonia,age x sex matched,features only,XGBoost,118,2,0.35,24,0.6666666666666666,0.6666666666666667,0.6571428571428571
+Psychogenic dysphonia,age x sex matched,features only,XGBoost,118,3,0.35,23,0.5217391304347826,0.5340909090909092,0.486815415821501
+Psychogenic dysphonia,age x sex matched,features only,XGBoost,118,4,0.38,24,0.5833333333333334,0.5833333333333333,0.5804195804195804
+Psychogenic dysphonia,age x sex matched,features only,XGBoost,118,5,0.38,23,0.5217391304347826,0.5113636363636364,0.486815415821501
+Reinke's edema,unmatched,features + age + sex,LogReg,134,1,0.41,27,0.7407407407407407,0.7417582417582418,0.7407407407407407
+Reinke's edema,unmatched,features + age + sex,LogReg,134,2,0.38,27,0.8148148148148148,0.8131868131868132,0.8137931034482759
+Reinke's edema,unmatched,features + age + sex,LogReg,134,3,0.35,27,0.7037037037037037,0.7060439560439561,0.7032967032967032
+Reinke's edema,unmatched,features + age + sex,LogReg,134,4,0.35,26,0.7692307692307693,0.7692307692307693,0.7692307692307693
+Reinke's edema,unmatched,features + age + sex,LogReg,134,5,0.35,27,0.8148148148148148,0.8214285714285714,0.8106591865357644
+Reinke's edema,unmatched,features + age + sex,RandomForest,134,1,0.44,27,0.8518518518518519,0.8516483516483516,0.8516483516483516
+Reinke's edema,unmatched,features + age + sex,RandomForest,134,2,0.44,27,0.8888888888888888,0.8846153846153846,0.8863955119214586
+Reinke's edema,unmatched,features + age + sex,RandomForest,134,3,0.44,27,0.7777777777777778,0.7802197802197802,0.7774725274725275
+Reinke's edema,unmatched,features + age + sex,RandomForest,134,4,0.44,26,0.8076923076923077,0.8076923076923077,0.8074074074074074
+Reinke's edema,unmatched,features + age + sex,RandomForest,134,5,0.35,27,0.7037037037037037,0.7142857142857143,0.6823529411764706
+Reinke's edema,unmatched,features + age + sex,LightGBM,134,1,0.35,27,0.8148148148148148,0.8159340659340659,0.8148148148148148
+Reinke's edema,unmatched,features + age + sex,LightGBM,134,2,0.35,27,0.9259259259259259,0.9285714285714286,0.9258241758241759
+Reinke's edema,unmatched,features + age + sex,LightGBM,134,3,0.35,27,0.7777777777777778,0.7829670329670331,0.775
+Reinke's edema,unmatched,features + age + sex,LightGBM,134,4,0.35,26,0.8461538461538461,0.8461538461538463,0.8452380952380952
+Reinke's edema,unmatched,features + age + sex,LightGBM,134,5,0.35,27,0.7777777777777778,0.7802197802197802,0.7774725274725275
+Reinke's edema,unmatched,features + age + sex,XGBoost,134,1,0.38,27,0.8518518518518519,0.8516483516483516,0.8516483516483516
+Reinke's edema,unmatched,features + age + sex,XGBoost,134,2,0.47,27,0.8518518518518519,0.8516483516483516,0.8516483516483516
+Reinke's edema,unmatched,features + age + sex,XGBoost,134,3,0.38,27,0.7407407407407407,0.7445054945054945,0.7393103448275862
+Reinke's edema,unmatched,features + age + sex,XGBoost,134,4,0.44,26,0.8461538461538461,0.8461538461538461,0.8461538461538461
+Reinke's edema,unmatched,features + age + sex,XGBoost,134,5,0.35,27,0.7407407407407407,0.7445054945054945,0.7393103448275862
+Reinke's edema,unmatched,features only,LogReg,134,1,0.5,27,0.6666666666666666,0.6675824175824177,0.6666666666666666
+Reinke's edema,unmatched,features only,LogReg,134,2,0.47,27,0.7777777777777778,0.7774725274725275,0.7774725274725275
+Reinke's edema,unmatched,features only,LogReg,134,3,0.44,27,0.7407407407407407,0.7417582417582418,0.7407407407407407
+Reinke's edema,unmatched,features only,LogReg,134,4,0.53,26,0.6538461538461539,0.6538461538461539,0.6533333333333333
+Reinke's edema,unmatched,features only,LogReg,134,5,0.38,27,0.7037037037037037,0.7087912087912087,0.7
+Reinke's edema,unmatched,features only,RandomForest,134,1,0.47,27,0.8148148148148148,0.8159340659340659,0.8148148148148148
+Reinke's edema,unmatched,features only,RandomForest,134,2,0.47,27,0.7777777777777778,0.771978021978022,0.7698863636363636
+Reinke's edema,unmatched,features only,RandomForest,134,3,0.47,27,0.8148148148148148,0.8131868131868132,0.8137931034482759
+Reinke's edema,unmatched,features only,RandomForest,134,4,0.47,26,0.8076923076923077,0.8076923076923077,0.8050974512743628
+Reinke's edema,unmatched,features only,RandomForest,134,5,0.41,27,0.7037037037037037,0.7142857142857143,0.6823529411764706
+Reinke's edema,unmatched,features only,LightGBM,134,1,0.35,27,0.7037037037037037,0.7032967032967032,0.7032967032967032
+Reinke's edema,unmatched,features only,LightGBM,134,2,0.35,27,0.8518518518518519,0.8461538461538461,0.8465909090909092
+Reinke's edema,unmatched,features only,LightGBM,134,3,0.35,27,0.7777777777777778,0.7774725274725275,0.7774725274725275
+Reinke's edema,unmatched,features only,LightGBM,134,4,0.35,26,0.7307692307692307,0.7307692307692308,0.7204301075268817
+Reinke's edema,unmatched,features only,LightGBM,134,5,0.35,27,0.7407407407407407,0.7472527472527473,0.7349228611500701
+Reinke's edema,unmatched,features only,XGBoost,134,1,0.44,27,0.6666666666666666,0.6620879120879121,0.6591865357643759
+Reinke's edema,unmatched,features only,XGBoost,134,2,0.38,27,0.8888888888888888,0.8846153846153846,0.8863955119214586
+Reinke's edema,unmatched,features only,XGBoost,134,3,0.44,27,0.8148148148148148,0.8131868131868132,0.8137931034482759
+Reinke's edema,unmatched,features only,XGBoost,134,4,0.47,26,0.7692307692307693,0.7692307692307692,0.7678571428571428
+Reinke's edema,unmatched,features only,XGBoost,134,5,0.35,27,0.7037037037037037,0.7142857142857143,0.6823529411764706
+Reinke's edema,age x sex matched,features only,LogReg,90,1,0.53,18,0.6666666666666666,0.6666666666666667,0.6625
+Reinke's edema,age x sex matched,features only,LogReg,90,2,0.5,18,0.7777777777777778,0.7777777777777777,0.775
+Reinke's edema,age x sex matched,features only,LogReg,90,3,0.35,18,0.6111111111111112,0.6111111111111112,0.6
+Reinke's edema,age x sex matched,features only,LogReg,90,4,0.41,18,0.6666666666666666,0.6666666666666667,0.6625
+Reinke's edema,age x sex matched,features only,LogReg,90,5,0.5900000000000001,18,0.6666666666666666,0.6666666666666666,0.6666666666666666
+Reinke's edema,age x sex matched,features only,RandomForest,90,1,0.47,18,0.7777777777777778,0.7777777777777777,0.775
+Reinke's edema,age x sex matched,features only,RandomForest,90,2,0.47,18,0.7777777777777778,0.7777777777777777,0.775
+Reinke's edema,age x sex matched,features only,RandomForest,90,3,0.47,18,0.7777777777777778,0.7777777777777778,0.7777777777777778
+Reinke's edema,age x sex matched,features only,RandomForest,90,4,0.47,18,0.7222222222222222,0.7222222222222222,0.7213622291021672
+Reinke's edema,age x sex matched,features only,RandomForest,90,5,0.5,18,0.6666666666666666,0.6666666666666667,0.6625
+Reinke's edema,age x sex matched,features only,LightGBM,90,1,0.35,18,0.7222222222222222,0.7222222222222222,0.7213622291021672
+Reinke's edema,age x sex matched,features only,LightGBM,90,2,0.35,18,0.7222222222222222,0.7222222222222222,0.7213622291021672
+Reinke's edema,age x sex matched,features only,LightGBM,90,3,0.35,18,0.8333333333333334,0.8333333333333333,0.8328173374613003
+Reinke's edema,age x sex matched,features only,LightGBM,90,4,0.35,18,0.5555555555555556,0.5555555555555556,0.55
+Reinke's edema,age x sex matched,features only,LightGBM,90,5,0.35,18,0.6666666666666666,0.6666666666666667,0.6625
+Reinke's edema,age x sex matched,features only,XGBoost,90,1,0.47,18,0.7222222222222222,0.7222222222222222,0.7213622291021672
+Reinke's edema,age x sex matched,features only,XGBoost,90,2,0.38,18,0.6666666666666666,0.6666666666666667,0.6625
+Reinke's edema,age x sex matched,features only,XGBoost,90,3,0.44,18,0.8333333333333334,0.8333333333333333,0.8328173374613003
+Reinke's edema,age x sex matched,features only,XGBoost,90,4,0.5,18,0.6111111111111112,0.6111111111111112,0.609907120743034
+Reinke's edema,age x sex matched,features only,XGBoost,90,5,0.56,18,0.6111111111111112,0.6111111111111112,0.6
+Spasmodic dysphonia,unmatched,features + age + sex,LogReg,128,1,0.38,32,0.65625,0.6862348178137652,0.6559139784946236
+Spasmodic dysphonia,unmatched,features + age + sex,LogReg,128,2,0.5,24,0.9166666666666666,0.916083916083916,0.916083916083916
+Spasmodic dysphonia,unmatched,features + age + sex,LogReg,128,3,0.35,36,0.3888888888888889,0.4791666666666667,0.38125
+Spasmodic dysphonia,unmatched,features + age + sex,LogReg,128,4,0.56,18,0.7777777777777778,0.8461538461538461,0.7662337662337663
+Spasmodic dysphonia,unmatched,features + age + sex,LogReg,128,5,0.35,18,0.8333333333333334,0.7615384615384615,0.7777777777777777
+Spasmodic dysphonia,unmatched,features + age + sex,RandomForest,128,1,0.47,32,0.65625,0.7105263157894737,0.6476476476476476
+Spasmodic dysphonia,unmatched,features + age + sex,RandomForest,128,2,0.41,24,0.6666666666666666,0.6363636363636364,0.5966386554621849
+Spasmodic dysphonia,unmatched,features + age + sex,RandomForest,128,3,0.44,36,0.3611111111111111,0.4791666666666667,0.3360064153969527
+Spasmodic dysphonia,unmatched,features + age + sex,RandomForest,128,4,0.41,18,0.8888888888888888,0.8615384615384616,0.8615384615384616
+Spasmodic dysphonia,unmatched,features + age + sex,RandomForest,128,5,0.35,18,0.8888888888888888,0.8,0.8392857142857143
+Spasmodic dysphonia,unmatched,features + age + sex,LightGBM,128,1,0.35,32,0.78125,0.8036437246963564,0.7810361681329423
+Spasmodic dysphonia,unmatched,features + age + sex,LightGBM,128,2,0.35,24,0.7916666666666666,0.7867132867132867,0.7883597883597884
+Spasmodic dysphonia,unmatched,features + age + sex,LightGBM,128,3,0.35,36,0.4166666666666667,0.5416666666666666,0.3937449879711307
+Spasmodic dysphonia,unmatched,features + age + sex,LightGBM,128,4,0.35,18,0.8888888888888888,0.8615384615384616,0.8615384615384616
+Spasmodic dysphonia,unmatched,features + age + sex,LightGBM,128,5,0.35,18,0.7222222222222222,0.6846153846153846,0.6727272727272727
+Spasmodic dysphonia,unmatched,features + age + sex,XGBoost,128,1,0.5,32,0.8125,0.8178137651821862,0.8095238095238095
+Spasmodic dysphonia,unmatched,features + age + sex,XGBoost,128,2,0.35,24,0.8333333333333334,0.8321678321678322,0.8321678321678322
+Spasmodic dysphonia,unmatched,features + age + sex,XGBoost,128,3,0.35,36,0.3055555555555556,0.4583333333333333,0.23404255319148937
+Spasmodic dysphonia,unmatched,features + age + sex,XGBoost,128,4,0.38,18,0.8888888888888888,0.8615384615384616,0.8615384615384616
+Spasmodic dysphonia,unmatched,features + age + sex,XGBoost,128,5,0.41,18,0.7777777777777778,0.7230769230769231,0.7230769230769231
+Spasmodic dysphonia,unmatched,features only,LogReg,128,1,0.56,32,0.53125,0.5566801619433198,0.530791788856305
+Spasmodic dysphonia,unmatched,features only,LogReg,128,2,0.47,24,0.875,0.8706293706293706,0.873015873015873
+Spasmodic dysphonia,unmatched,features only,LogReg,128,3,0.35,36,0.3333333333333333,0.39583333333333337,0.33126934984520123
+Spasmodic dysphonia,unmatched,features only,LogReg,128,4,0.38,18,0.8333333333333334,0.823076923076923,0.8036363636363637
+Spasmodic dysphonia,unmatched,features only,LogReg,128,5,0.44,18,0.8333333333333334,0.7615384615384615,0.7777777777777777
+Spasmodic dysphonia,unmatched,features only,RandomForest,128,1,0.47,32,0.65625,0.7105263157894737,0.6476476476476476
+Spasmodic dysphonia,unmatched,features only,RandomForest,128,2,0.41,24,0.5833333333333334,0.5454545454545454,0.4444444444444444
+Spasmodic dysphonia,unmatched,features only,RandomForest,128,3,0.44,36,0.3888888888888889,0.5,0.37142857142857144
+Spasmodic dysphonia,unmatched,features only,RandomForest,128,4,0.41,18,0.8888888888888888,0.8615384615384616,0.8615384615384616
+Spasmodic dysphonia,unmatched,features only,RandomForest,128,5,0.35,18,0.8888888888888888,0.8,0.8392857142857143
+Spasmodic dysphonia,unmatched,features only,LightGBM,128,1,0.35,32,0.59375,0.6214574898785425,0.5933528836754643
+Spasmodic dysphonia,unmatched,features only,LightGBM,128,2,0.35,24,0.7083333333333334,0.6888111888111889,0.6812144212523719
+Spasmodic dysphonia,unmatched,features only,LightGBM,128,3,0.35,36,0.3333333333333333,0.41666666666666663,0.325
+Spasmodic dysphonia,unmatched,features only,LightGBM,128,4,0.35,18,0.8333333333333334,0.823076923076923,0.8036363636363637
+Spasmodic dysphonia,unmatched,features only,LightGBM,128,5,0.35,18,0.8333333333333334,0.7615384615384615,0.7777777777777777
+Spasmodic dysphonia,unmatched,features only,XGBoost,128,1,0.44,32,0.53125,0.5445344129554656,0.530791788856305
+Spasmodic dysphonia,unmatched,features only,XGBoost,128,2,0.41,24,0.7916666666666666,0.7797202797202798,0.7822141560798548
+Spasmodic dysphonia,unmatched,features only,XGBoost,128,3,0.5,36,0.4166666666666667,0.47916666666666663,0.41621621621621624
+Spasmodic dysphonia,unmatched,features only,XGBoost,128,4,0.44,18,0.7777777777777778,0.7846153846153847,0.75
+Spasmodic dysphonia,unmatched,features only,XGBoost,128,5,0.47,18,0.7222222222222222,0.6846153846153846,0.6727272727272727
+Spasmodic dysphonia,age x sex matched,features only,LogReg,50,1,0.35,16,0.3125,0.5,0.23809523809523808
+Spasmodic dysphonia,age x sex matched,features only,LogReg,50,2,0.35,10,0.9,0.9,0.898989898989899
+Spasmodic dysphonia,age x sex matched,features only,LogReg,50,3,0.35,8,0.75,0.7333333333333334,0.7333333333333334
+Spasmodic dysphonia,age x sex matched,features only,LogReg,50,4,0.35,8,0.75,0.8,0.75
+Spasmodic dysphonia,age x sex matched,features only,LogReg,50,5,0.35,8,0.5,0.4666666666666667,0.4666666666666667
+Spasmodic dysphonia,age x sex matched,features only,RandomForest,50,1,0.38,16,0.375,0.5454545454545454,0.3333333333333333
+Spasmodic dysphonia,age x sex matched,features only,RandomForest,50,2,0.35,10,0.7,0.7,0.6703296703296704
+Spasmodic dysphonia,age x sex matched,features only,RandomForest,50,3,0.38,8,0.875,0.8333333333333333,0.8545454545454545
+Spasmodic dysphonia,age x sex matched,features only,RandomForest,50,4,0.35,8,0.875,0.8333333333333333,0.8545454545454545
+Spasmodic dysphonia,age x sex matched,features only,RandomForest,50,5,0.35,8,0.875,0.8333333333333333,0.8545454545454545
+Spasmodic dysphonia,age x sex matched,features only,LightGBM,50,1,0.35,16,0.5,0.6363636363636364,0.4920634920634921
+Spasmodic dysphonia,age x sex matched,features only,LightGBM,50,2,0.35,10,0.6,0.6000000000000001,0.5833333333333333
+Spasmodic dysphonia,age x sex matched,features only,LightGBM,50,3,0.35,8,0.875,0.9,0.873015873015873
+Spasmodic dysphonia,age x sex matched,features only,LightGBM,50,4,0.35,8,0.75,0.8,0.75
+Spasmodic dysphonia,age x sex matched,features only,LightGBM,50,5,0.35,8,0.875,0.8333333333333333,0.8545454545454545
+Spasmodic dysphonia,age x sex matched,features only,XGBoost,50,1,0.41,16,0.4375,0.5909090909090909,0.41700404858299595
+Spasmodic dysphonia,age x sex matched,features only,XGBoost,50,2,0.35,10,0.7,0.7,0.696969696969697
+Spasmodic dysphonia,age x sex matched,features only,XGBoost,50,3,0.44,8,0.875,0.8333333333333333,0.8545454545454545
+Spasmodic dysphonia,age x sex matched,features only,XGBoost,50,4,0.44,8,0.75,0.8,0.75
+Spasmodic dysphonia,age x sex matched,features only,XGBoost,50,5,0.44,8,0.75,0.7333333333333334,0.7333333333333334
+Vocal fold polyp,unmatched,features + age + sex,LogReg,88,1,0.35,18,0.6666666666666666,0.6666666666666666,0.6666666666666666
+Vocal fold polyp,unmatched,features + age + sex,LogReg,88,2,0.35,18,0.7222222222222222,0.7222222222222222,0.7213622291021672
+Vocal fold polyp,unmatched,features + age + sex,LogReg,88,3,0.35,18,0.7777777777777778,0.7777777777777778,0.7777777777777778
+Vocal fold polyp,unmatched,features + age + sex,LogReg,88,4,0.35,17,0.7647058823529411,0.7708333333333333,0.7638888888888888
+Vocal fold polyp,unmatched,features + age + sex,LogReg,88,5,0.35,17,0.7058823529411765,0.6944444444444444,0.6886446886446886
+Vocal fold polyp,unmatched,features + age + sex,RandomForest,88,1,0.38,18,0.6666666666666666,0.6666666666666666,0.6493506493506493
+Vocal fold polyp,unmatched,features + age + sex,RandomForest,88,2,0.41,18,0.7222222222222222,0.7222222222222222,0.7142857142857142
+Vocal fold polyp,unmatched,features + age + sex,RandomForest,88,3,0.44,18,0.7777777777777778,0.7777777777777777,0.775
+Vocal fold polyp,unmatched,features + age + sex,RandomForest,88,4,0.41,17,0.7647058823529411,0.7777777777777778,0.7571428571428571
+Vocal fold polyp,unmatched,features + age + sex,RandomForest,88,5,0.41,17,0.7058823529411765,0.6944444444444444,0.6886446886446886
+Vocal fold polyp,unmatched,features + age + sex,LightGBM,88,1,0.35,18,0.8888888888888888,0.8888888888888888,0.8888888888888888
+Vocal fold polyp,unmatched,features + age + sex,LightGBM,88,2,0.35,18,0.5555555555555556,0.5555555555555556,0.5324675324675324
+Vocal fold polyp,unmatched,features + age + sex,LightGBM,88,3,0.35,18,0.8333333333333334,0.8333333333333333,0.8328173374613003
+Vocal fold polyp,unmatched,features + age + sex,LightGBM,88,4,0.35,17,0.8235294117647058,0.8125,0.8131868131868132
+Vocal fold polyp,unmatched,features + age + sex,LightGBM,88,5,0.35,17,0.7058823529411765,0.7013888888888888,0.7017543859649122
+Vocal fold polyp,unmatched,features + age + sex,XGBoost,88,1,0.53,18,0.7777777777777778,0.7777777777777778,0.7777777777777778
+Vocal fold polyp,unmatched,features + age + sex,XGBoost,88,2,0.35,18,0.6111111111111112,0.6111111111111112,0.6
+Vocal fold polyp,unmatched,features + age + sex,XGBoost,88,3,0.44,18,0.7777777777777778,0.7777777777777778,0.7777777777777778
+Vocal fold polyp,unmatched,features + age + sex,XGBoost,88,4,0.53,17,0.8235294117647058,0.8125,0.8131868131868132
+Vocal fold polyp,unmatched,features + age + sex,XGBoost,88,5,0.5,17,0.7647058823529411,0.7638888888888888,0.7638888888888888
+Vocal fold polyp,unmatched,features only,LogReg,88,1,0.35,18,0.6111111111111112,0.6111111111111112,0.609907120743034
+Vocal fold polyp,unmatched,features only,LogReg,88,2,0.44,18,0.6666666666666666,0.6666666666666666,0.6666666666666666
+Vocal fold polyp,unmatched,features only,LogReg,88,3,0.35,18,0.7222222222222222,0.7222222222222222,0.7142857142857142
+Vocal fold polyp,unmatched,features only,LogReg,88,4,0.35,17,0.6470588235294118,0.6527777777777778,0.6458333333333333
+Vocal fold polyp,unmatched,features only,LogReg,88,5,0.35,17,0.6470588235294118,0.6319444444444444,0.6136363636363636
+Vocal fold polyp,unmatched,features only,RandomForest,88,1,0.41,18,0.6111111111111112,0.6111111111111112,0.6
+Vocal fold polyp,unmatched,features only,RandomForest,88,2,0.38,18,0.7222222222222222,0.7222222222222222,0.7142857142857142
+Vocal fold polyp,unmatched,features only,RandomForest,88,3,0.44,18,0.7777777777777778,0.7777777777777777,0.775
+Vocal fold polyp,unmatched,features only,RandomForest,88,4,0.41,17,0.7058823529411765,0.7222222222222222,0.6886446886446886
+Vocal fold polyp,unmatched,features only,RandomForest,88,5,0.44,17,0.6470588235294118,0.6388888888888888,0.6357142857142857
+Vocal fold polyp,unmatched,features only,LightGBM,88,1,0.35,18,0.6111111111111112,0.6111111111111112,0.609907120743034
+Vocal fold polyp,unmatched,features only,LightGBM,88,2,0.35,18,0.5,0.5,0.4984520123839009
+Vocal fold polyp,unmatched,features only,LightGBM,88,3,0.35,18,0.8888888888888888,0.8888888888888888,0.8875
+Vocal fold polyp,unmatched,features only,LightGBM,88,4,0.35,17,0.6470588235294118,0.6527777777777778,0.6458333333333333
+Vocal fold polyp,unmatched,features only,LightGBM,88,5,0.35,17,0.6470588235294118,0.6458333333333333,0.6458333333333333
+Vocal fold polyp,unmatched,features only,XGBoost,88,1,0.47,18,0.6111111111111112,0.6111111111111112,0.609907120743034
+Vocal fold polyp,unmatched,features only,XGBoost,88,2,0.44,18,0.5555555555555556,0.5555555555555556,0.55
+Vocal fold polyp,unmatched,features only,XGBoost,88,3,0.56,18,0.8333333333333334,0.8333333333333333,0.8328173374613003
+Vocal fold polyp,unmatched,features only,XGBoost,88,4,0.44,17,0.7058823529411765,0.7152777777777778,0.7017543859649122
+Vocal fold polyp,unmatched,features only,XGBoost,88,5,0.53,17,0.5882352941176471,0.5833333333333333,0.5824561403508772
+Vocal fold polyp,age x sex matched,features only,LogReg,72,1,0.35,15,0.5333333333333333,0.5267857142857143,0.5248868778280543
+Vocal fold polyp,age x sex matched,features only,LogReg,72,2,0.35,15,0.5333333333333333,0.5446428571428572,0.5248868778280543
+Vocal fold polyp,age x sex matched,features only,LogReg,72,3,0.35,14,0.5714285714285714,0.5714285714285714,0.5625
+Vocal fold polyp,age x sex matched,features only,LogReg,72,4,0.38,14,0.6428571428571429,0.6428571428571428,0.625668449197861
+Vocal fold polyp,age x sex matched,features only,LogReg,72,5,0.35,14,0.5,0.5,0.47593582887700536
+Vocal fold polyp,age x sex matched,features only,RandomForest,72,1,0.38,15,0.6,0.6160714285714286,0.5833333333333333
+Vocal fold polyp,age x sex matched,features only,RandomForest,72,2,0.41,15,0.4666666666666667,0.45535714285714285,0.4444444444444444
+Vocal fold polyp,age x sex matched,features only,RandomForest,72,3,0.38,14,0.6428571428571429,0.6428571428571428,0.5906432748538011
+Vocal fold polyp,age x sex matched,features only,RandomForest,72,4,0.35,14,0.5714285714285714,0.5714285714285714,0.475
+Vocal fold polyp,age x sex matched,features only,RandomForest,72,5,0.41,14,0.42857142857142855,0.42857142857142855,0.3
+Vocal fold polyp,age x sex matched,features only,LightGBM,72,1,0.35,15,0.6666666666666666,0.6607142857142857,0.660633484162896
+Vocal fold polyp,age x sex matched,features only,LightGBM,72,2,0.35,15,0.6666666666666666,0.6607142857142857,0.660633484162896
+Vocal fold polyp,age x sex matched,features only,LightGBM,72,3,0.35,14,0.5714285714285714,0.5714285714285714,0.5625
+Vocal fold polyp,age x sex matched,features only,LightGBM,72,4,0.35,14,0.5714285714285714,0.5714285714285714,0.5714285714285714
+Vocal fold polyp,age x sex matched,features only,LightGBM,72,5,0.35,14,0.35714285714285715,0.35714285714285715,0.2631578947368421
+Vocal fold polyp,age x sex matched,features only,XGBoost,72,1,0.47,15,0.4666666666666667,0.4642857142857143,0.4642857142857143
+Vocal fold polyp,age x sex matched,features only,XGBoost,72,2,0.47,15,0.4666666666666667,0.4642857142857143,0.4642857142857143
+Vocal fold polyp,age x sex matched,features only,XGBoost,72,3,0.41,14,0.7142857142857143,0.7142857142857142,0.7083333333333333
+Vocal fold polyp,age x sex matched,features only,XGBoost,72,4,0.44,14,0.6428571428571429,0.6428571428571428,0.641025641025641
+Vocal fold polyp,age x sex matched,features only,XGBoost,72,5,0.44,14,0.42857142857142855,0.42857142857142855,0.41666666666666663
+Vocal fold nodules,unmatched,features + age + sex,LogReg,34,1,0.35,7,0.42857142857142855,0.4583333333333333,0.41666666666666663
+Vocal fold nodules,unmatched,features + age + sex,LogReg,34,2,0.35,7,0.7142857142857143,0.7083333333333333,0.7083333333333333
+Vocal fold nodules,unmatched,features + age + sex,LogReg,34,3,0.35,7,0.5714285714285714,0.5833333333333333,0.5714285714285714
+Vocal fold nodules,unmatched,features + age + sex,LogReg,34,4,0.35,7,0.42857142857142855,0.41666666666666663,0.41666666666666663
+Vocal fold nodules,unmatched,features + age + sex,LogReg,34,5,0.35,6,0.0,0.0,0.0
+Vocal fold nodules,unmatched,features + age + sex,RandomForest,34,1,0.38,7,0.5714285714285714,0.625,0.5333333333333333
+Vocal fold nodules,unmatched,features + age + sex,RandomForest,34,2,0.38,7,0.5714285714285714,0.5833333333333333,0.5714285714285714
+Vocal fold nodules,unmatched,features + age + sex,RandomForest,34,3,0.41,7,0.7142857142857143,0.75,0.7083333333333333
+Vocal fold nodules,unmatched,features + age + sex,RandomForest,34,4,0.44,7,0.5714285714285714,0.5416666666666666,0.5333333333333333
+Vocal fold nodules,unmatched,features + age + sex,RandomForest,34,5,0.41,6,0.5,0.5,0.3333333333333333
+Vocal fold nodules,unmatched,features + age + sex,LightGBM,34,1,0.35,7,0.42857142857142855,0.5,0.3
+Vocal fold nodules,unmatched,features + age + sex,LightGBM,34,2,0.35,7,0.42857142857142855,0.5,0.3
+Vocal fold nodules,unmatched,features + age + sex,LightGBM,34,3,0.53,7,0.42857142857142855,0.5,0.3
+Vocal fold nodules,unmatched,features + age + sex,LightGBM,34,4,0.53,7,0.42857142857142855,0.5,0.3
+Vocal fold nodules,unmatched,features + age + sex,LightGBM,34,5,0.35,6,0.5,0.5,0.3333333333333333
+Vocal fold nodules,unmatched,features + age + sex,XGBoost,34,1,0.53,7,0.8571428571428571,0.8333333333333333,0.8444444444444444
+Vocal fold nodules,unmatched,features + age + sex,XGBoost,34,2,0.5,7,0.8571428571428571,0.8333333333333333,0.8444444444444444
+Vocal fold nodules,unmatched,features + age + sex,XGBoost,34,3,0.41,7,0.5714285714285714,0.5416666666666666,0.5333333333333333
+Vocal fold nodules,unmatched,features + age + sex,XGBoost,34,4,0.5,7,0.7142857142857143,0.7083333333333333,0.7083333333333333
+Vocal fold nodules,unmatched,features + age + sex,XGBoost,34,5,0.47,6,0.5,0.5,0.4857142857142857
+Vocal fold nodules,unmatched,features only,LogReg,34,1,0.35,7,0.42857142857142855,0.4583333333333333,0.41666666666666663
+Vocal fold nodules,unmatched,features only,LogReg,34,2,0.35,7,0.7142857142857143,0.7083333333333333,0.7083333333333333
+Vocal fold nodules,unmatched,features only,LogReg,34,3,0.35,7,0.5714285714285714,0.5833333333333333,0.5714285714285714
+Vocal fold nodules,unmatched,features only,LogReg,34,4,0.35,7,0.42857142857142855,0.41666666666666663,0.41666666666666663
+Vocal fold nodules,unmatched,features only,LogReg,34,5,0.35,6,0.16666666666666666,0.16666666666666666,0.14285714285714285
+Vocal fold nodules,unmatched,features only,RandomForest,34,1,0.41,7,0.5714285714285714,0.625,0.5333333333333333
+Vocal fold nodules,unmatched,features only,RandomForest,34,2,0.35,7,0.2857142857142857,0.3333333333333333,0.2222222222222222
+Vocal fold nodules,unmatched,features only,RandomForest,34,3,0.38,7,0.5714285714285714,0.5833333333333333,0.5714285714285714
+Vocal fold nodules,unmatched,features only,RandomForest,34,4,0.47,7,0.7142857142857143,0.7083333333333333,0.7083333333333333
+Vocal fold nodules,unmatched,features only,RandomForest,34,5,0.44,6,0.6666666666666666,0.6666666666666666,0.625
+Vocal fold nodules,unmatched,features only,LightGBM,34,1,0.35,7,0.42857142857142855,0.5,0.3
+Vocal fold nodules,unmatched,features only,LightGBM,34,2,0.35,7,0.42857142857142855,0.5,0.3
+Vocal fold nodules,unmatched,features only,LightGBM,34,3,0.53,7,0.42857142857142855,0.5,0.3
+Vocal fold nodules,unmatched,features only,LightGBM,34,4,0.53,7,0.42857142857142855,0.5,0.3
+Vocal fold nodules,unmatched,features only,LightGBM,34,5,0.35,6,0.5,0.5,0.3333333333333333
+Vocal fold nodules,unmatched,features only,XGBoost,34,1,0.53,7,0.8571428571428571,0.8333333333333333,0.8444444444444444
+Vocal fold nodules,unmatched,features only,XGBoost,34,2,0.5,7,0.8571428571428571,0.8333333333333333,0.8444444444444444
+Vocal fold nodules,unmatched,features only,XGBoost,34,3,0.41,7,0.5714285714285714,0.5416666666666666,0.5333333333333333
+Vocal fold nodules,unmatched,features only,XGBoost,34,4,0.47,7,0.7142857142857143,0.7083333333333333,0.7083333333333333
+Vocal fold nodules,unmatched,features only,XGBoost,34,5,0.41,6,0.5,0.5,0.4857142857142857

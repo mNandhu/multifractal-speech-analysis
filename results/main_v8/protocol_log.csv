@@ -1,0 +1,6 @@
+step,samples_before,samples_after,detail
+Start: a_n recordings with all feature families extracted,1656,1656,
+Drop pathologies outside the two disease groups,1656,1167,"{'Hyperfunktionelle Dysphonie': 213, 'Funktionelle Dysphonie': 112, 'Psychogene Dysphonie': 91, 'Reinke Ödem': 68, 'Hypotone Dysphonie': 5}"
+Drop speakers with both healthy and pathological recordings,1167,1163,2 speakers
+Drop classes with < 50 samples,1163,1163,none
+Randomly downsample healthy to the pathological count (seed 42),1163,956,

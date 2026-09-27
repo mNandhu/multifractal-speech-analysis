@@ -1,0 +1,461 @@
+sample_key,speaker_id,pathology_de,target_label,age,sex
+Funktionelle Dysphonie::2497::vowels::a_n,2631,Funktionelle Dysphonie,Other,28.5,m
+Funktionelle Dysphonie::1936::vowels::a_n,2147,Funktionelle Dysphonie,Other,61.6,w
+Stimmlippenpolyp::2157::vowels::a_n,2354,Stimmlippenpolyp,Structural,58.0,m
+Stimmlippenpolyp::2099::vowels::a_n,2288,Stimmlippenpolyp,Structural,36.2,m
+Hyperfunktionelle Dysphonie::2102::vowels::a_n,2291,Hyperfunktionelle Dysphonie,Other,54.3,w
+Stimmlippenpolyp::1525::vowels::a_n,1850,Stimmlippenpolyp,Structural,48.2,m
+Rekurrensparese::1691::vowels::a_n,1990,Rekurrensparese,Neurological,57.5,w
+Laryngitis::2305::vowels::a_n,2439,Laryngitis,Structural,66.9,m
+Rekurrensparese::1555::vowels::a_n,1865,Rekurrensparese,Neurological,62.3,m
+Funktionelle Dysphonie::1322::vowels::a_n,1699,Funktionelle Dysphonie,Other,51.1,w
+Laryngitis::497::vowels::a_n,1368,Laryngitis,Structural,39.5,m
+Stimmlippenpolyp::1622::vowels::a_n,1882,Stimmlippenpolyp,Structural,57.3,m
+Reinke Ödem::2375::vowels::a_n,2509,Reinke Ödem,Other,52.2,w
+Hyperfunktionelle Dysphonie::1982::vowels::a_n,2192,Hyperfunktionelle Dysphonie,Other,36.0,w
+Rekurrensparese::1722::vowels::a_n,1819,Rekurrensparese,Neurological,74.5,w
+Reinke Ödem::886::vowels::a_n,1480,Reinke Ödem,Other,50.5,w
+Funktionelle Dysphonie::631::vowels::a_n,1388,Funktionelle Dysphonie,Other,62.7,m
+Laryngitis::2021::vowels::a_n,2228,Laryngitis,Structural,51.1,w
+Laryngitis::2424::vowels::a_n,2558,Laryngitis,Structural,50.2,m
+Funktionelle Dysphonie::727::vowels::a_n,1415,Funktionelle Dysphonie,Other,36.7,w
+Hyperfunktionelle Dysphonie::889::vowels::a_n,1340,Hyperfunktionelle Dysphonie,Other,59.2,w
+Rekurrensparese::1789::vowels::a_n,2054,Rekurrensparese,Neurological,61.0,m
+Laryngitis::2574::vowels::a_n,2708,Laryngitis,Structural,69.7,m
+Stimmlippenpolyp::2525::vowels::a_n,2659,Stimmlippenpolyp,Structural,70.5,m
+Rekurrensparese::2469::vowels::a_n,1614,Rekurrensparese,Neurological,46.4,w
+Rekurrensparese::2100::vowels::a_n,2289,Rekurrensparese,Neurological,43.2,m
+Spasmodische Dysphonie::1565::vowels::a_n,1872,Spasmodische Dysphonie,Neurological,56.2,m
+Hyperfunktionelle Dysphonie::2151::vowels::a_n,2019,Hyperfunktionelle Dysphonie,Other,61.0,w
+Stimmlippenpolyp::2466::vowels::a_n,2600,Stimmlippenpolyp,Structural,45.2,w
+Rekurrensparese::1863::vowels::a_n,2007,Rekurrensparese,Neurological,58.7,w
+Hyperfunktionelle Dysphonie::1660::vowels::a_n,1960,Hyperfunktionelle Dysphonie,Other,33.0,w
+Hyperfunktionelle Dysphonie::1794::vowels::a_n,2060,Hyperfunktionelle Dysphonie,Other,22.2,w
+Funktionelle Dysphonie::2006::vowels::a_n,2215,Funktionelle Dysphonie,Other,29.8,m
+Laryngitis::1265::vowels::a_n,1652,Laryngitis,Structural,49.1,w
+Spasmodische Dysphonie::1908::vowels::a_n,2027,Spasmodische Dysphonie,Neurological,36.5,w
+Hyperfunktionelle Dysphonie::2338::vowels::a_n,2472,Hyperfunktionelle Dysphonie,Other,24.4,w
+Laryngitis::1447::vowels::a_n,1617,Laryngitis,Structural,38.2,w
+Rekurrensparese::1748::vowels::a_n,1942,Rekurrensparese,Neurological,64.2,m
+Hyperfunktionelle Dysphonie::888::vowels::a_n,1482,Hyperfunktionelle Dysphonie,Other,43.5,w
+Hyperfunktionelle Dysphonie::2186::vowels::a_n,2120,Hyperfunktionelle Dysphonie,Other,32.1,m
+Funktionelle Dysphonie::2290::vowels::a_n,2424,Funktionelle Dysphonie,Other,47.3,w
+Laryngitis::2370::vowels::a_n,2504,Laryngitis,Structural,48.4,w
+Reinke Ödem::1890::vowels::a_n,2115,Reinke Ödem,Other,42.5,w
+Hyperfunktionelle Dysphonie::1204::vowels::a_n,1601,Hyperfunktionelle Dysphonie,Other,29.0,w
+Hyperfunktionelle Dysphonie::1285::vowels::a_n,1673,Hyperfunktionelle Dysphonie,Other,64.2,m
+Spasmodische Dysphonie::1797::vowels::a_n,2027,Spasmodische Dysphonie,Neurological,36.2,w
+Laryngitis::1047::vowels::a_n,1543,Laryngitis,Structural,54.4,w
+Phonationsknötchen::1294::vowels::a_n,1679,Phonationsknötchen,Structural,39.5,w
+Hyperfunktionelle Dysphonie::2272::vowels::a_n,2416,Hyperfunktionelle Dysphonie,Other,28.1,w
+Hyperfunktionelle Dysphonie::2080::vowels::a_n,2269,Hyperfunktionelle Dysphonie,Other,44.3,w
+Hyperfunktionelle Dysphonie::669::vowels::a_n,1396,Hyperfunktionelle Dysphonie,Other,29.2,w
+Hyperfunktionelle Dysphonie::1608::vowels::a_n,1727,Hyperfunktionelle Dysphonie,Other,39.3,w
+Rekurrensparese::2408::vowels::a_n,2542,Rekurrensparese,Neurological,64.8,m
+Stimmlippenpolyp::2303::vowels::a_n,2420,Stimmlippenpolyp,Structural,73.5,w
+Funktionelle Dysphonie::2502::vowels::a_n,2636,Funktionelle Dysphonie,Other,56.9,w
+Laryngitis::1456::vowels::a_n,1804,Laryngitis,Structural,22.3,m
+Rekurrensparese::2491::vowels::a_n,2001,Rekurrensparese,Neurological,64.9,w
+Reinke Ödem::630::vowels::a_n,1386,Reinke Ödem,Other,64.7,w
+Funktionelle Dysphonie::1611::vowels::a_n,1911,Funktionelle Dysphonie,Other,46.8,w
+Psychogene Dysphonie::1663::vowels::a_n,1965,Psychogene Dysphonie,Other,39.7,w
+Phonationsknötchen::1745::vowels::a_n,2009,Phonationsknötchen,Structural,27.7,w
+Funktionelle Dysphonie::1640::vowels::a_n,1940,Funktionelle Dysphonie,Other,36.4,w
+Spasmodische Dysphonie::1723::vowels::a_n,1787,Spasmodische Dysphonie,Neurological,70.7,m
+Laryngitis::1665::vowels::a_n,1928,Laryngitis,Structural,51.2,m
+Spasmodische Dysphonie::1902::vowels::a_n,2027,Spasmodische Dysphonie,Neurological,36.4,w
+Stimmlippenpolyp::1639::vowels::a_n,1938,Stimmlippenpolyp,Structural,29.6,m
+Funktionelle Dysphonie::2410::vowels::a_n,2484,Funktionelle Dysphonie,Other,34.5,w
+Hyperfunktionelle Dysphonie::1284::vowels::a_n,1671,Hyperfunktionelle Dysphonie,Other,33.7,w
+Stimmlippenpolyp::1188::vowels::a_n,1587,Stimmlippenpolyp,Structural,28.3,w
+Rekurrensparese::1835::vowels::a_n,2091,Rekurrensparese,Neurological,57.7,w
+Hyperfunktionelle Dysphonie::1282::vowels::a_n,1668,Hyperfunktionelle Dysphonie,Other,40.9,m
+Rekurrensparese::2450::vowels::a_n,2584,Rekurrensparese,Neurological,50.0,m
+Rekurrensparese::2160::vowels::a_n,2357,Rekurrensparese,Neurological,40.4,w
+Hyperfunktionelle Dysphonie::1043::vowels::a_n,1539,Hyperfunktionelle Dysphonie,Other,42.6,m
+Phonationsknötchen::1800::vowels::a_n,2065,Phonationsknötchen,Structural,23.6,w
+Spasmodische Dysphonie::2030::vowels::a_n,2027,Spasmodische Dysphonie,Neurological,36.8,w
+Spasmodische Dysphonie::2396::vowels::a_n,2148,Spasmodische Dysphonie,Neurological,61.1,w
+Rekurrensparese::2507::vowels::a_n,2641,Rekurrensparese,Neurological,38.0,w
+Hyperfunktionelle Dysphonie::1044::vowels::a_n,1540,Hyperfunktionelle Dysphonie,Other,31.6,w
+Stimmlippenpolyp::2557::vowels::a_n,2690,Stimmlippenpolyp,Structural,43.7,m
+Hyperfunktionelle Dysphonie::1113::vowels::a_n,1563,Hyperfunktionelle Dysphonie,Other,26.5,w
+Rekurrensparese::2418::vowels::a_n,2552,Rekurrensparese,Neurological,60.0,m
+Hyperfunktionelle Dysphonie::1934::vowels::a_n,2145,Hyperfunktionelle Dysphonie,Other,50.1,m
+Hyperfunktionelle Dysphonie::1607::vowels::a_n,1601,Hyperfunktionelle Dysphonie,Other,30.1,w
+Hyperfunktionelle Dysphonie::1462::vowels::a_n,1808,Hyperfunktionelle Dysphonie,Other,43.4,w
+Rekurrensparese::364::vowels::a_n,1313,Rekurrensparese,Neurological,47.6,m
+Rekurrensparese::1581::vowels::a_n,1832,Rekurrensparese,Neurological,72.9,w
+Reinke Ödem::1045::vowels::a_n,1541,Reinke Ödem,Other,34.7,w
+Psychogene Dysphonie::2533::vowels::a_n,2336,Psychogene Dysphonie,Other,63.8,w
+Stimmlippenpolyp::1433::vowels::a_n,1741,Stimmlippenpolyp,Structural,57.4,m
+Laryngitis::1307::vowels::a_n,1692,Laryngitis,Structural,48.8,m
+Funktionelle Dysphonie::1258::vowels::a_n,1644,Funktionelle Dysphonie,Other,35.7,m
+Rekurrensparese::1325::vowels::a_n,1611,Rekurrensparese,Neurological,37.2,m
+Hyperfunktionelle Dysphonie::2185::vowels::a_n,2362,Hyperfunktionelle Dysphonie,Other,61.8,m
+Funktionelle Dysphonie::2431::vowels::a_n,2565,Funktionelle Dysphonie,Other,32.4,w
+Hyperfunktionelle Dysphonie::1196::vowels::a_n,1593,Hyperfunktionelle Dysphonie,Other,39.7,w
+Funktionelle Dysphonie::2442::vowels::a_n,2521,Funktionelle Dysphonie,Other,32.6,m
+Hyperfunktionelle Dysphonie::2034::vowels::a_n,2225,Hyperfunktionelle Dysphonie,Other,29.4,m
+Funktionelle Dysphonie::723::vowels::a_n,1416,Funktionelle Dysphonie,Other,37.3,m
+Funktionelle Dysphonie::870::vowels::a_n,1466,Funktionelle Dysphonie,Other,28.9,w
+Hyperfunktionelle Dysphonie::2589::vowels::a_n,2723,Hyperfunktionelle Dysphonie,Other,21.9,w
+Laryngitis::824::vowels::a_n,1436,Laryngitis,Structural,17.0,m
+Funktionelle Dysphonie::730::vowels::a_n,1422,Funktionelle Dysphonie,Other,60.4,m
+Laryngitis::1809::vowels::a_n,2074,Laryngitis,Structural,32.0,w
+Hyperfunktionelle Dysphonie::1299::vowels::a_n,1684,Hyperfunktionelle Dysphonie,Other,17.9,w
+Hyperfunktionelle Dysphonie::881::vowels::a_n,1474,Hyperfunktionelle Dysphonie,Other,17.1,w
+Stimmlippenpolyp::1164::vowels::a_n,1550,Stimmlippenpolyp,Structural,32.9,w
+Rekurrensparese::926::vowels::a_n,1518,Rekurrensparese,Neurological,21.5,w
+Rekurrensparese::2341::vowels::a_n,2246,Rekurrensparese,Neurological,26.9,m
+Hyperfunktionelle Dysphonie::2438::vowels::a_n,2483,Hyperfunktionelle Dysphonie,Other,48.4,m
+Reinke Ödem::2333::vowels::a_n,2467,Reinke Ödem,Other,31.4,w
+Hypotone Dysphonie::2020::vowels::a_n,2227,Hypotone Dysphonie,Other,37.3,m
+Funktionelle Dysphonie::1609::vowels::a_n,1909,Funktionelle Dysphonie,Other,32.1,w
+Funktionelle Dysphonie::1742::vowels::a_n,1981,Funktionelle Dysphonie,Other,21.5,w
+Laryngitis::1599::vowels::a_n,1899,Laryngitis,Structural,32.7,m
+Stimmlippenpolyp::895::vowels::a_n,1454,Stimmlippenpolyp,Structural,30.9,m
+Hyperfunktionelle Dysphonie::2062::vowels::a_n,2251,Hyperfunktionelle Dysphonie,Other,28.6,w
+Laryngitis::2191::vowels::a_n,2368,Laryngitis,Structural,38.9,m
+Laryngitis::1953::vowels::a_n,2163,Laryngitis,Structural,27.5,m
+Laryngitis::1237::vowels::a_n,1623,Laryngitis,Structural,45.6,m
+Funktionelle Dysphonie::2504::vowels::a_n,2467,Funktionelle Dysphonie,Other,32.6,w
+Laryngitis::2097::vowels::a_n,2283,Laryngitis,Structural,30.7,w
+Laryngitis::910::vowels::a_n,1502,Laryngitis,Structural,40.7,m
+Hyperfunktionelle Dysphonie::2229::vowels::a_n,2391,Hyperfunktionelle Dysphonie,Other,24.3,w
+Rekurrensparese::155::vowels::a_n,1335,Rekurrensparese,Neurological,44.8,m
+Stimmlippenpolyp::1719::vowels::a_n,2004,Stimmlippenpolyp,Structural,30.5,m
+Phonationsknötchen::1395::vowels::a_n,1743,Phonationsknötchen,Structural,26.9,w
+Hyperfunktionelle Dysphonie::2603::vowels::a_n,2729,Hyperfunktionelle Dysphonie,Other,21.2,w
+Hyperfunktionelle Dysphonie::2572::vowels::a_n,2706,Hyperfunktionelle Dysphonie,Other,38.9,m
+Hyperfunktionelle Dysphonie::1442::vowels::a_n,1789,Hyperfunktionelle Dysphonie,Other,31.6,w
+Hyperfunktionelle Dysphonie::1944::vowels::a_n,2060,Hyperfunktionelle Dysphonie,Other,22.6,w
+Phonationsknötchen::1643::vowels::a_n,1946,Phonationsknötchen,Structural,41.0,m
+Laryngitis::141::vowels::a_n,1320,Laryngitis,Structural,42.0,m
+Hyperfunktionelle Dysphonie::1816::vowels::a_n,1981,Hyperfunktionelle Dysphonie,Other,21.9,w
+Hyperfunktionelle Dysphonie::1929::vowels::a_n,2065,Hyperfunktionelle Dysphonie,Other,24.0,w
+Phonationsknötchen::1044::vowels::a_n,1540,Phonationsknötchen,Structural,31.6,w
+Hyperfunktionelle Dysphonie::2521::vowels::a_n,2655,Hyperfunktionelle Dysphonie,Other,51.9,m
+Hyperfunktionelle Dysphonie::1792::vowels::a_n,2056,Hyperfunktionelle Dysphonie,Other,29.6,w
+Hyperfunktionelle Dysphonie::2463::vowels::a_n,2597,Hyperfunktionelle Dysphonie,Other,38.8,m
+Hyperfunktionelle Dysphonie::2081::vowels::a_n,2268,Hyperfunktionelle Dysphonie,Other,28.0,m
+Hyperfunktionelle Dysphonie::1085::vowels::a_n,1557,Hyperfunktionelle Dysphonie,Other,43.7,m
+Psychogene Dysphonie::2134::vowels::a_n,2323,Psychogene Dysphonie,Other,27.4,w
+Rekurrensparese::2508::vowels::a_n,2642,Rekurrensparese,Neurological,48.7,m
+Funktionelle Dysphonie::1680::vowels::a_n,1979,Funktionelle Dysphonie,Other,16.8,w
+Laryngitis::2301::vowels::a_n,2435,Laryngitis,Structural,47.2,m
+Hyperfunktionelle Dysphonie::1051::vowels::a_n,1402,Hyperfunktionelle Dysphonie,Other,29.7,w
+Rekurrensparese::914::vowels::a_n,1313,Rekurrensparese,Neurological,48.1,m
+Stimmlippenpolyp::1317::vowels::a_n,1701,Stimmlippenpolyp,Structural,42.8,m
+Rekurrensparese::1054::vowels::a_n,1552,Rekurrensparese,Neurological,24.7,w
+Hyperfunktionelle Dysphonie::1562::vowels::a_n,1869,Hyperfunktionelle Dysphonie,Other,29.7,w
+Hyperfunktionelle Dysphonie::1118::vowels::a_n,1569,Hyperfunktionelle Dysphonie,Other,21.8,w
+Phonationsknötchen::1616::vowels::a_n,1916,Phonationsknötchen,Structural,20.4,w
+Funktionelle Dysphonie::2429::vowels::a_n,2563,Funktionelle Dysphonie,Other,20.9,m
+Hyperfunktionelle Dysphonie::1569::vowels::a_n,1876,Hyperfunktionelle Dysphonie,Other,31.6,m
+Laryngitis::2156::vowels::a_n,2353,Laryngitis,Structural,33.3,m
+Laryngitis::1161::vowels::a_n,1578,Laryngitis,Structural,33.1,m
+Hyperfunktionelle Dysphonie::2224::vowels::a_n,2385,Hyperfunktionelle Dysphonie,Other,27.2,w
+Hyperfunktionelle Dysphonie::934::vowels::a_n,1526,Hyperfunktionelle Dysphonie,Other,26.1,w
+Hyperfunktionelle Dysphonie::1189::vowels::a_n,1588,Hyperfunktionelle Dysphonie,Other,25.7,w
+Funktionelle Dysphonie::1899::vowels::a_n,2123,Funktionelle Dysphonie,Other,20.7,w
+Phonationsknötchen::1669::vowels::a_n,1968,Phonationsknötchen,Structural,29.4,w
+Stimmlippenpolyp::2572::vowels::a_n,2706,Stimmlippenpolyp,Structural,38.9,m
+Laryngitis::919::vowels::a_n,1511,Laryngitis,Structural,25.8,w
+Funktionelle Dysphonie::2313::vowels::a_n,2448,Funktionelle Dysphonie,Other,33.2,m
+Hyperfunktionelle Dysphonie::898::vowels::a_n,1490,Hyperfunktionelle Dysphonie,Other,28.7,w
+Funktionelle Dysphonie::2231::vowels::a_n,2393,Funktionelle Dysphonie,Other,37.0,m
+Rekurrensparese::2243::vowels::a_n,1970,Rekurrensparese,Neurological,32.5,m
+Laryngitis::1806::vowels::a_n,2072,Laryngitis,Structural,27.1,w
+Hyperfunktionelle Dysphonie::1602::vowels::a_n,1907,Hyperfunktionelle Dysphonie,Other,29.8,m
+Psychogene Dysphonie::1910::vowels::a_n,2132,Psychogene Dysphonie,Other,26.8,w
+Rekurrensparese::928::vowels::a_n,1521,Rekurrensparese,Neurological,25.8,w
+Hyperfunktionelle Dysphonie::1800::vowels::a_n,2065,Hyperfunktionelle Dysphonie,Other,23.6,w
+Hyperfunktionelle Dysphonie::1910::vowels::a_n,2132,Hyperfunktionelle Dysphonie,Other,26.8,w
+Laryngitis::493::vowels::a_n,1365,Laryngitis,Structural,37.0,m
+Hyperfunktionelle Dysphonie::1745::vowels::a_n,2009,Hyperfunktionelle Dysphonie,Other,27.7,w
+Psychogene Dysphonie::1477::vowels::a_n,1825,Psychogene Dysphonie,Other,45.4,m
+Rekurrensparese::2078::vowels::a_n,1970,Rekurrensparese,Neurological,32.0,m
+Hyperfunktionelle Dysphonie::2233::vowels::a_n,2395,Hyperfunktionelle Dysphonie,Other,35.6,m
+Rekurrensparese::2072::vowels::a_n,2264,Rekurrensparese,Neurological,14.8,m
+Laryngitis::2101::vowels::a_n,2290,Laryngitis,Structural,41.7,m
+Funktionelle Dysphonie::2524::vowels::a_n,2658,Funktionelle Dysphonie,Other,40.8,m
+Rekurrensparese::2058::vowels::a_n,2247,Rekurrensparese,Neurological,25.4,m
+Funktionelle Dysphonie::1318::vowels::a_n,1702,Funktionelle Dysphonie,Other,40.4,m
+Rekurrensparese::1671::vowels::a_n,1970,Rekurrensparese,Neurological,30.7,m
+Hyperfunktionelle Dysphonie::2590::vowels::a_n,2724,Hyperfunktionelle Dysphonie,Other,24.6,w
+Hyperfunktionelle Dysphonie::2420::vowels::a_n,2554,Hyperfunktionelle Dysphonie,Other,36.1,m
+Funktionelle Dysphonie::1328::vowels::a_n,1713,Funktionelle Dysphonie,Other,32.4,m
+Rekurrensparese::1272::vowels::a_n,1658,Rekurrensparese,Neurological,27.8,w
+Funktionelle Dysphonie::1281::vowels::a_n,1663,Funktionelle Dysphonie,Other,22.2,w
+Psychogene Dysphonie::2123::vowels::a_n,2312,Psychogene Dysphonie,Other,19.0,w
+Hyperfunktionelle Dysphonie::144::vowels::a_n,1323,Hyperfunktionelle Dysphonie,Other,21.6,w
+Laryngitis::2079::vowels::a_n,2272,Laryngitis,Structural,26.3,w
+Hyperfunktionelle Dysphonie::1637::vowels::a_n,1937,Hyperfunktionelle Dysphonie,Other,45.4,m
+Phonationsknötchen::1927::vowels::a_n,2138,Phonationsknötchen,Structural,19.9,w
+Laryngitis::139::vowels::a_n,1318,Laryngitis,Structural,18.1,m
+Laryngitis::498::vowels::a_n,1369,Laryngitis,Structural,26.5,w
+Laryngitis::935::vowels::a_n,1527,Laryngitis,Structural,32.7,m
+Hyperfunktionelle Dysphonie::2184::vowels::a_n,2361,Hyperfunktionelle Dysphonie,Other,18.2,w
+Laryngitis::1426::vowels::a_n,1776,Laryngitis,Structural,46.2,m
+Hyperfunktionelle Dysphonie::1927::vowels::a_n,2138,Hyperfunktionelle Dysphonie,Other,19.9,w
+Hyperfunktionelle Dysphonie::1861::vowels::a_n,2104,Hyperfunktionelle Dysphonie,Other,26.2,m
+Rekurrensparese::864::vowels::a_n,1456,Rekurrensparese,Neurological,27.5,w
+Hyperfunktionelle Dysphonie::1822::vowels::a_n,2086,Hyperfunktionelle Dysphonie,Other,26.5,w
+Spasmodische Dysphonie::2273::vowels::a_n,2417,Spasmodische Dysphonie,Neurological,35.0,m
+Psychogene Dysphonie::911::vowels::a_n,1503,Psychogene Dysphonie,Other,28.9,m
+Laryngitis::563::vowels::a_n,1378,Laryngitis,Structural,28.7,m
+Laryngitis::1613::vowels::a_n,1913,Laryngitis,Structural,36.5,m
+Laryngitis::1283::vowels::a_n,1669,Laryngitis,Structural,36.7,m
+Laryngitis::2600::vowels::a_n,2726,Laryngitis,Structural,43.4,m
+Funktionelle Dysphonie::1958::vowels::a_n,2168,Funktionelle Dysphonie,Other,24.9,w
+Hyperfunktionelle Dysphonie::2270::vowels::a_n,2414,Hyperfunktionelle Dysphonie,Other,45.4,m
+Rekurrensparese::1549::vowels::a_n,1856,Rekurrensparese,Neurological,42.1,m
+Laryngitis::1795::vowels::a_n,2059,Laryngitis,Structural,34.7,m
+Laryngitis::930::vowels::a_n,1522,Laryngitis,Structural,22.0,m
+Rekurrensparese::2148::vowels::a_n,2345,Rekurrensparese,Neurological,23.4,m
+Hyperfunktionelle Dysphonie::1492::vowels::a_n,1838,Hyperfunktionelle Dysphonie,Other,41.7,m
+Hyperfunktionelle Dysphonie::854::vowels::a_n,1452,Hyperfunktionelle Dysphonie,Other,23.0,m
+Psychogene Dysphonie::1568::vowels::a_n,1875,Psychogene Dysphonie,Other,43.7,m
+Hyperfunktionelle Dysphonie::160::vowels::a_n,1333,Hyperfunktionelle Dysphonie,Other,42.3,m
+Hyperfunktionelle Dysphonie::1682::vowels::a_n,1981,Hyperfunktionelle Dysphonie,Other,21.4,w
+Stimmlippenpolyp::1621::vowels::a_n,1922,Stimmlippenpolyp,Structural,40.2,m
+Laryngitis::2028::vowels::a_n,2236,Laryngitis,Structural,36.0,m
+Hyperfunktionelle Dysphonie::2492::vowels::a_n,2626,Hyperfunktionelle Dysphonie,Other,34.2,m
+Psychogene Dysphonie::1258::vowels::a_n,1644,Psychogene Dysphonie,Other,35.7,m
+Funktionelle Dysphonie::2123::vowels::a_n,2312,Funktionelle Dysphonie,Other,19.0,w
+Hyperfunktionelle Dysphonie::1643::vowels::a_n,1946,Hyperfunktionelle Dysphonie,Other,41.0,m
+Funktionelle Dysphonie::1827::vowels::a_n,2093,Funktionelle Dysphonie,Other,36.2,m
+Rekurrensparese::1223::vowels::a_n,1611,Rekurrensparese,Neurological,36.9,m
+Hyperfunktionelle Dysphonie::2331::vowels::a_n,2465,Hyperfunktionelle Dysphonie,Other,23.9,w
+Psychogene Dysphonie::1958::vowels::a_n,2168,Psychogene Dysphonie,Other,24.9,w
+healthy::967::vowels::a_n,770,healthy,healthy,28.6,m
+healthy::86::vowels::a_n,94,healthy,healthy,61.7,w
+healthy::1577::vowels::a_n,1883,healthy,healthy,58.0,m
+healthy::1076::vowels::a_n,856,healthy,healthy,36.3,m
+healthy::94::vowels::a_n,110,healthy,healthy,55.1,w
+healthy::1027::vowels::a_n,826,healthy,healthy,48.6,m
+healthy::831::vowels::a_n,719,healthy,healthy,57.1,w
+healthy::100::vowels::a_n,117,healthy,healthy,66.6,m
+healthy::66::vowels::a_n,66,healthy,healthy,61.3,m
+healthy::2561::vowels::a_n,2695,healthy,healthy,50.9,w
+healthy::1018::vowels::a_n,801,healthy,healthy,39.5,m
+healthy::74::vowels::a_n,77,healthy,healthy,57.8,m
+healthy::95::vowels::a_n,111,healthy,healthy,51.5,w
+healthy::1352::vowels::a_n,962,healthy,healthy,35.1,w
+healthy::90::vowels::a_n,104,healthy,healthy,75.2,w
+healthy::1710::vowels::a_n,1051,healthy,healthy,50.7,w
+healthy::1974::vowels::a_n,2184,healthy,healthy,63.9,m
+healthy::82::vowels::a_n,87,healthy,healthy,49.7,w
+healthy::941::vowels::a_n,745,healthy,healthy,50.0,m
+healthy::1703::vowels::a_n,1044,healthy,healthy,37.0,w
+healthy::2108::vowels::a_n,2297,healthy,healthy,59.8,w
+healthy::84::vowels::a_n,89,healthy,healthy,60.6,m
+healthy::96::vowels::a_n,112,healthy,healthy,70.0,m
+healthy::92::vowels::a_n,108,healthy,healthy,68.8,m
+healthy::83::vowels::a_n,88,healthy,healthy,47.0,w
+healthy::1005::vowels::a_n,804,healthy,healthy,43.1,m
+healthy::2478::vowels::a_n,2612,healthy,healthy,55.4,m
+healthy::153::vowels::a_n,1332,healthy,healthy,60.3,w
+healthy::88::vowels::a_n,100,healthy,healthy,45.5,w
+healthy::72::vowels::a_n,75,healthy,healthy,58.5,w
+healthy::1006::vowels::a_n,805,healthy,healthy,32.6,w
+healthy::54::vowels::a_n,54,healthy,healthy,22.2,w
+healthy::1034::vowels::a_n,835,healthy,healthy,29.7,m
+healthy::80::vowels::a_n,83,healthy,healthy,49.5,w
+healthy::1105::vowels::a_n,878,healthy,healthy,37.3,w
+healthy::1098::vowels::a_n,869,healthy,healthy,24.4,w
+healthy::1511::vowels::a_n,993,healthy,healthy,38.2,w
+healthy::68::vowels::a_n,71,healthy,healthy,65.6,m
+healthy::1523::vowels::a_n,1000,healthy,healthy,42.9,w
+healthy::984::vowels::a_n,790,healthy,healthy,32.2,m
+healthy::2278::vowels::a_n,1200,healthy,healthy,47.2,w
+healthy::1865::vowels::a_n,1094,healthy,healthy,48.4,w
+healthy::93::vowels::a_n,109,healthy,healthy,42.7,w
+healthy::736::vowels::a_n,641,healthy,healthy,29.1,w
+healthy::156::vowels::a_n,141,healthy,healthy,65.9,m
+healthy::45::vowels::a_n,45,healthy,healthy,37.7,w
+healthy::1598::vowels::a_n,1898,healthy,healthy,55.5,w
+healthy::102::vowels::a_n,118,healthy,healthy,39.8,w
+healthy::944::vowels::a_n,748,healthy,healthy,28.2,w
+healthy::1860::vowels::a_n,1093,healthy,healthy,44.4,w
+healthy::2250::vowels::a_n,1185,healthy,healthy,29.3,w
+healthy::705::vowels::a_n,630,healthy,healthy,39.2,w
+healthy::2244::vowels::a_n,2405,healthy,healthy,66.2,m
+healthy::70::vowels::a_n,73,healthy,healthy,73.4,w
+healthy::1815::vowels::a_n,2082,healthy,healthy,56.2,w
+healthy::1125::vowels::a_n,886,healthy,healthy,22.3,m
+healthy::91::vowels::a_n,105,healthy,healthy,65.8,w
+healthy::77::vowels::a_n,82,healthy,healthy,63.6,w
+healthy::1022::vowels::a_n,821,healthy,healthy,45.6,w
+healthy::31::vowels::a_n,30,healthy,healthy,40.5,w
+healthy::25::vowels::a_n,27,healthy,healthy,27.8,w
+healthy::1024::vowels::a_n,823,healthy,healthy,37.8,w
+healthy::87::vowels::a_n,97,healthy,healthy,68.7,m
+healthy::1008::vowels::a_n,808,healthy,healthy,50.7,m
+healthy::2163::vowels::a_n,1148,healthy,healthy,34.7,w
+healthy::998::vowels::a_n,792,healthy,healthy,29.3,m
+healthy::1278::vowels::a_n,946,healthy,healthy,34.1,w
+healthy::1067::vowels::a_n,844,healthy,healthy,33.8,w
+healthy::1123::vowels::a_n,884,healthy,healthy,28.4,w
+healthy::30::vowels::a_n,29,healthy,healthy,56.1,w
+healthy::991::vowels::a_n,789,healthy,healthy,40.7,m
+healthy::960::vowels::a_n,744,healthy,healthy,49.9,m
+healthy::116::vowels::a_n,126,healthy,healthy,40.9,w
+healthy::947::vowels::a_n,752,healthy,healthy,42.7,m
+healthy::3::vowels::a_n,3,healthy,healthy,23.6,w
+healthy::137::vowels::a_n,139,healthy,healthy,38.3,w
+healthy::78::vowels::a_n,79,healthy,healthy,62.7,w
+healthy::28::vowels::a_n,32,healthy,healthy,38.9,w
+healthy::112::vowels::a_n,122,healthy,healthy,31.7,w
+healthy::1031::vowels::a_n,830,healthy,healthy,44.2,m
+healthy::26::vowels::a_n,19,healthy,healthy,26.4,w
+healthy::85::vowels::a_n,92,healthy,healthy,59.7,m
+healthy::1336::vowels::a_n,1719,healthy,healthy,49.9,m
+healthy::1579::vowels::a_n,46,healthy,healthy,30.1,w
+healthy::1922::vowels::a_n,1119,healthy,healthy,41.8,w
+healthy::945::vowels::a_n,750,healthy,healthy,48.7,m
+healthy::65::vowels::a_n,65,healthy,healthy,73.7,w
+healthy::1837::vowels::a_n,1070,healthy,healthy,33.9,w
+healthy::852::vowels::a_n,732,healthy,healthy,63.2,w
+healthy::29::vowels::a_n,28,healthy,healthy,58.6,m
+healthy::1019::vowels::a_n,811,healthy,healthy,49.0,m
+healthy::973::vowels::a_n,777,healthy,healthy,35.8,m
+healthy::946::vowels::a_n,751,healthy,healthy,37.3,m
+healthy::1956::vowels::a_n,2166,healthy,healthy,60.4,m
+healthy::2209::vowels::a_n,1181,healthy,healthy,32.4,w
+healthy::1029::vowels::a_n,828,healthy,healthy,41.1,w
+healthy::43::vowels::a_n,43,healthy,healthy,32.6,m
+healthy::1071::vowels::a_n,850,healthy,healthy,29.2,m
+healthy::1032::vowels::a_n,833,healthy,healthy,37.5,m
+healthy::145::vowels::a_n,140,healthy,healthy,28.7,w
+healthy::97::vowels::a_n,113,healthy,healthy,21.9,w
+healthy::804::vowels::a_n,708,healthy,healthy,17.5,m
+healthy::67::vowels::a_n,69,healthy,healthy,59.4,m
+healthy::743::vowels::a_n,647,healthy,healthy,31.9,w
+healthy::839::vowels::a_n,727,healthy,healthy,17.9,w
+healthy::832::vowels::a_n,725,healthy,healthy,17.1,w
+healthy::158::vowels::a_n,143,healthy,healthy,33.5,w
+healthy::20::vowels::a_n,21,healthy,healthy,21.5,w
+healthy::977::vowels::a_n,781,healthy,healthy,26.9,m
+healthy::1030::vowels::a_n,829,healthy,healthy,49.2,m
+healthy::1214::vowels::a_n,938,healthy,healthy,31.5,w
+healthy::953::vowels::a_n,757,healthy,healthy,37.6,m
+healthy::2285::vowels::a_n,1207,healthy,healthy,32.2,w
+healthy::135::vowels::a_n,137,healthy,healthy,21.5,w
+healthy::942::vowels::a_n,746,healthy,healthy,32.7,m
+healthy::1070::vowels::a_n,848,healthy,healthy,31.1,m
+healthy::1839::vowels::a_n,1072,healthy,healthy,28.5,w
+healthy::997::vowels::a_n,797,healthy,healthy,38.5,m
+healthy::1069::vowels::a_n,847,healthy,healthy,27.7,m
+healthy::943::vowels::a_n,747,healthy,healthy,45.6,m
+healthy::2252::vowels::a_n,1187,healthy,healthy,30.7,w
+healthy::2462::vowels::a_n,2596,healthy,healthy,30.6,w
+healthy::978::vowels::a_n,782,healthy,healthy,40.6,m
+healthy::1097::vowels::a_n,868,healthy,healthy,24.3,w
+healthy::963::vowels::a_n,764,healthy,healthy,44.8,m
+healthy::1075::vowels::a_n,855,healthy,healthy,30.5,m
+healthy::747::vowels::a_n,651,healthy,healthy,26.9,w
+healthy::1066::vowels::a_n,843,healthy,healthy,21.2,w
+healthy::1036::vowels::a_n,831,healthy,healthy,39.3,m
+healthy::962::vowels::a_n,763,healthy,healthy,30.5,w
+healthy::1342::vowels::a_n,967,healthy,healthy,22.6,w
+healthy::1021::vowels::a_n,807,healthy,healthy,41.1,m
+healthy::974::vowels::a_n,778,healthy,healthy,41.9,m
+healthy::1515::vowels::a_n,997,healthy,healthy,21.9,w
+healthy::1129::vowels::a_n,891,healthy,healthy,24.0,w
+healthy::1605::vowels::a_n,46,healthy,healthy,30.2,w
+healthy::69::vowels::a_n,72,healthy,healthy,50.6,m
+healthy::1915::vowels::a_n,1112,healthy,healthy,29.7,w
+healthy::985::vowels::a_n,761,healthy,healthy,38.4,m
+healthy::994::vowels::a_n,794,healthy,healthy,28.0,m
+healthy::983::vowels::a_n,785,healthy,healthy,44.3,m
+healthy::1926::vowels::a_n,1123,healthy,healthy,27.3,w
+healthy::1460::vowels::a_n,985,healthy,healthy,49.4,m
+healthy::835::vowels::a_n,722,healthy,healthy,16.9,w
+healthy::1033::vowels::a_n,834,healthy,healthy,46.0,m
+healthy::990::vowels::a_n,788,healthy,healthy,29.5,w
+healthy::954::vowels::a_n,759,healthy,healthy,49.8,m
+healthy::1026::vowels::a_n,825,healthy,healthy,42.7,m
+healthy::1124::vowels::a_n,885,healthy,healthy,24.7,w
+healthy::1180::vowels::a_n,933,healthy,healthy,28.4,w
+healthy::36::vowels::a_n,36,healthy,healthy,21.8,w
+healthy::685::vowels::a_n,613,healthy,healthy,20.4,w
+healthy::1345::vowels::a_n,951,healthy,healthy,20.9,m
+healthy::1010::vowels::a_n,810,healthy,healthy,31.6,m
+healthy::1082::vowels::a_n,859,healthy,healthy,33.3,m
+healthy::1077::vowels::a_n,858,healthy,healthy,33.0,m
+healthy::33::vowels::a_n,33,healthy,healthy,27.2,w
+healthy::2206::vowels::a_n,1178,healthy,healthy,26.1,w
+healthy::1870::vowels::a_n,1095,healthy,healthy,25.7,w
+healthy::125::vowels::a_n,132,healthy,healthy,20.7,w
+healthy::46::vowels::a_n,46,healthy,healthy,28.0,w
+healthy::949::vowels::a_n,755,healthy,healthy,39.4,m
+healthy::709::vowels::a_n,635,healthy,healthy,25.8,w
+healthy::952::vowels::a_n,756,healthy,healthy,32.9,m
+healthy::1177::vowels::a_n,928,healthy,healthy,27.1,w
+healthy::961::vowels::a_n,762,healthy,healthy,36.9,m
+healthy::1072::vowels::a_n,851,healthy,healthy,32.5,m
+healthy::2164::vowels::a_n,1149,healthy,healthy,27.0,w
+healthy::948::vowels::a_n,753,healthy,healthy,30.0,m
+healthy::1209::vowels::a_n,940,healthy,healthy,26.8,w
+healthy::1137::vowels::a_n,899,healthy,healthy,25.8,w
+healthy::1148::vowels::a_n,912,healthy,healthy,23.6,w
+healthy::1373::vowels::a_n,981,healthy,healthy,26.8,w
+healthy::955::vowels::a_n,739,healthy,healthy,36.8,m
+healthy::2203::vowels::a_n,1175,healthy,healthy,26.8,w
+healthy::2142::vowels::a_n,2331,healthy,healthy,45.4,m
+healthy::1074::vowels::a_n,854,healthy,healthy,32.0,m
+healthy::1003::vowels::a_n,802,healthy,healthy,35.4,m
+healthy::807::vowels::a_n,711,healthy,healthy,16.1,m
+healthy::980::vowels::a_n,760,healthy,healthy,41.7,m
+healthy::1023::vowels::a_n,822,healthy,healthy,41.1,m
+healthy::1020::vowels::a_n,819,healthy,healthy,25.3,m
+healthy::1009::vowels::a_n,809,healthy,healthy,40.4,m
+healthy::1700::vowels::a_n,1041,healthy,healthy,30.3,m
+healthy::52::vowels::a_n,52,healthy,healthy,24.6,w
+healthy::968::vowels::a_n,771,healthy,healthy,36.4,m
+healthy::969::vowels::a_n,773,healthy,healthy,32.4,m
+healthy::745::vowels::a_n,649,healthy,healthy,26.4,w
+healthy::62::vowels::a_n,62,healthy,healthy,22.2,w
+healthy::842::vowels::a_n,730,healthy,healthy,19.0,w
+healthy::117::vowels::a_n,127,healthy,healthy,21.6,w
+healthy::23::vowels::a_n,24,healthy,healthy,26.3,w
+healthy::32::vowels::a_n,31,healthy,healthy,45.2,m
+healthy::16::vowels::a_n,18,healthy,healthy,19.9,w
+healthy::782::vowels::a_n,715,healthy,healthy,18.5,m
+healthy::2200::vowels::a_n,12,healthy,healthy,26.4,w
+healthy::1081::vowels::a_n,857,healthy,healthy,32.7,m
+healthy::1170::vowels::a_n,918,healthy,healthy,18.1,w
+healthy::63::vowels::a_n,63,healthy,healthy,45.0,m
+healthy::834::vowels::a_n,721,healthy,healthy,19.9,w
+healthy::860::vowels::a_n,733,healthy,healthy,26.2,m
+healthy::2040::vowels::a_n,1132,healthy,healthy,26.3,w
+healthy::1147::vowels::a_n,911,healthy,healthy,26.0,w
+healthy::975::vowels::a_n,779,healthy,healthy,35.1,m
+healthy::679::vowels::a_n,607,healthy,healthy,29.0,m
+healthy::1093::vowels::a_n,862,healthy,healthy,28.7,m
+healthy::1015::vowels::a_n,816,healthy,healthy,37.6,m
+healthy::976::vowels::a_n,780,healthy,healthy,37.8,m
+healthy::958::vowels::a_n,742,healthy,healthy,42.9,m
+healthy::1536::vowels::a_n,1017,healthy,healthy,25.0,w
+healthy::1013::vowels::a_n,814,healthy,healthy,44.8,m
+healthy::1028::vowels::a_n,827,healthy,healthy,41.9,m
+healthy::1063::vowels::a_n,840,healthy,healthy,34.7,m
+healthy::134::vowels::a_n,136,healthy,healthy,22.0,m
+healthy::1587::vowels::a_n,1033,healthy,healthy,23.4,m
+healthy::970::vowels::a_n,774,healthy,healthy,41.6,m
+healthy::1842::vowels::a_n,1074,healthy,healthy,23.0,m
+healthy::81::vowels::a_n,84,healthy,healthy,42.4,m
+healthy::1007::vowels::a_n,806,healthy,healthy,42.4,m
+healthy::13::vowels::a_n,15,healthy,healthy,21.4,w
+healthy::959::vowels::a_n,743,healthy,healthy,40.2,m
+healthy::1079::vowels::a_n,849,healthy,healthy,35.1,m
+healthy::982::vowels::a_n,772,healthy,healthy,34.2,m
+healthy::956::vowels::a_n,740,healthy,healthy,34.8,m
+healthy::1101::vowels::a_n,872,healthy,healthy,19.0,w
+healthy::964::vowels::a_n,765,healthy,healthy,40.3,m
+healthy::988::vowels::a_n,786,healthy,healthy,34.6,m
+healthy::1073::vowels::a_n,853,healthy,healthy,37.9,m
+healthy::1151::vowels::a_n,915,healthy,healthy,23.9,w
+healthy::1734::vowels::a_n,1065,healthy,healthy,25.0,w

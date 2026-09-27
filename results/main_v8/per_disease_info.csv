@@ -1,0 +1,12 @@
+disease,n_disease,matched_pairs,age_disease,age_healthy_unmatched,note
+Recurrent laryngeal nerve paralysis,212,85.0,57.6,29.4,
+Hyperfunctional dysphonia,205,132.0,44.1,29.4,
+Laryngitis,140,99.0,50.6,29.4,
+Functional dysphonia,107,85.0,48.6,29.3,
+Psychogenic dysphonia,88,59.0,49.7,29.9,
+Reinke's edema,67,45.0,54.0,29.1,
+Spasmodic dysphonia,64,25.0,54.7,29.2,
+Vocal fold polyp,44,36.0,53.8,30.6,
+Vocal fold nodules,17,16.0,34.4,35.5,matched result not reported (< 20 pairs)
+Hypotonic dysphonia,5,,,,skipped (< 10 samples)
+Parkinson's disease,1,,,,skipped (< 10 samples)

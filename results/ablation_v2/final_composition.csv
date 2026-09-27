@@ -1,0 +1,8 @@
+target_label,pathology_de,samples,speakers
+Neurological,Morbus Parkinson,1,1
+Neurological,Rekurrensparese,212,155
+Neurological,Spasmodische Dysphonie,64,12
+Structural,Laryngitis,140,128
+Structural,Phonationsknötchen,17,17
+Structural,Stimmlippenpolyp,44,39
+healthy,healthy,478,477
